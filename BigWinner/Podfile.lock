@@ -1,0 +1,180 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - AlipaySDK-iOS (15.7.9)
+  - AMap3DMap (8.1.0):
+    - AMapFoundation (~> 1.6.9)
+  - AMapFoundation (1.6.9)
+  - AMapLocation (2.8.0):
+    - AMapFoundation (~> 1.6.9)
+  - AMapSearch (8.1.0):
+    - AMapFoundation (~> 1.6.9)
+  - ATNavigationController (0.0.18)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - HappyDNS (1.0.0)
+  - IQKeyboardManager (6.5.9)
+  - JhtMarquee (1.0.6)
+  - JJException (0.2.11):
+    - JJException/All (= 0.2.11)
+  - JJException/All (0.2.11):
+    - JJException/ARC
+    - JJException/DeallocBlock
+    - JJException/Main
+    - JJException/MRC
+    - JJException/Swizzle
+  - JJException/ARC (0.2.11):
+    - JJException/DeallocBlock
+    - JJException/Main
+    - JJException/Swizzle
+  - JJException/DeallocBlock (0.2.11)
+  - JJException/Main (0.2.11)
+  - JJException/MRC (0.2.11):
+    - JJException/Main
+    - JJException/Swizzle
+  - JJException/Swizzle (0.2.11)
+  - JQLoadingStatusView (1.0.3)
+  - JSONModel (1.8.0)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - MJExtension (3.4.0)
+  - MJRefresh (3.7.2)
+  - mob_sharesdk/ShareSDK (4.4.2):
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKExtension (4.4.2):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKPlatforms/QQ (4.4.2):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKPlatforms/SinaWeibo (4.4.2):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKPlatforms/WeChatFull (4.4.2):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - mob_sharesdk/ShareSDKUI (4.4.2):
+    - mob_sharesdk/ShareSDK
+    - MOBFoundation (>= 3.2.9)
+  - MOBFoundation (3.2.27)
+  - Qiniu (8.4.0):
+    - HappyDNS (~> 1.0.0)
+  - SDCycleScrollView (1.82):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
+  - SocketRocket (0.5.1)
+  - TZImagePickerController (3.6.7)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
+  - YNPageViewController (0.2.6)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AlipaySDK-iOS
+  - AMap3DMap
+  - AMapLocation
+  - AMapSearch
+  - ATNavigationController
+  - FMDB (~> 2.7.5)
+  - IQKeyboardManager
+  - JhtMarquee
+  - JJException
+  - JQLoadingStatusView (~> 1.0.3)
+  - JSONModel (~> 1.8.0)
+  - Masonry
+  - MBProgressHUD
+  - MJExtension
+  - MJRefresh
+  - mob_sharesdk/ShareSDKExtension
+  - mob_sharesdk/ShareSDKPlatforms/QQ
+  - mob_sharesdk/ShareSDKPlatforms/SinaWeibo
+  - mob_sharesdk/ShareSDKPlatforms/WeChatFull
+  - mob_sharesdk/ShareSDKUI
+  - Qiniu (~> 8.4.0)
+  - SDCycleScrollView
+  - SocketRocket (~> 0.5.1)
+  - TZImagePickerController
+  - "UITableView+FDTemplateLayoutCell"
+  - YNPageViewController
+  - YYModel
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - AFNetworking
+    - AlipaySDK-iOS
+    - AMap3DMap
+    - AMapFoundation
+    - AMapLocation
+    - AMapSearch
+    - ATNavigationController
+    - FMDB
+    - HappyDNS
+    - IQKeyboardManager
+    - JhtMarquee
+    - JJException
+    - JQLoadingStatusView
+    - JSONModel
+    - Masonry
+    - MBProgressHUD
+    - MJExtension
+    - MJRefresh
+    - mob_sharesdk
+    - MOBFoundation
+    - Qiniu
+    - SDCycleScrollView
+    - SDWebImage
+    - SocketRocket
+    - TZImagePickerController
+    - "UITableView+FDTemplateLayoutCell"
+    - YNPageViewController
+    - YYModel
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  AlipaySDK-iOS: 94ff4c0e17c5e7d126b8207596d5033006534c25
+  AMap3DMap: 135eaaf64a29aeb2f0bca07670db26fbf3271245
+  AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
+  AMapLocation: 5ef44a1117be7dc541cb7a7d43d03c5ee91e4387
+  AMapSearch: 5c1cc07429f04b9cc76438fcb2411c66fdbbb178
+  ATNavigationController: e938686c363847103539c5aad224fa73661bb878
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  HappyDNS: 288f1be2bcd46ace74f241d4d76c13b8dd33a00c
+  IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
+  JhtMarquee: 38eb0ceb3d515092e77a88b9005e2179c7cd1b2d
+  JJException: 738a5379392769edca40815ec14cd895a000d9e7
+  JQLoadingStatusView: 3e83728165774de0341f2435125350776624ffb6
+  JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJExtension: 6c15c7b93398447252c0defdb8d69d02d218a41e
+  MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
+  mob_sharesdk: a60006891a079486ff3269ed326adfa05a967c01
+  MOBFoundation: efdc3ce6b843fbc10ae8c1c6122a02b0d845b39b
+  Qiniu: df5794ac9549e69be616eaf6a390d858a502430b
+  SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  TZImagePickerController: 679ae9fa11e189a9a81291ae96f0a4463be8edc1
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  YNPageViewController: 33040d429adf0b415d4449ffeec848d8339934ea
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 13a523cf81d220deb0d39fca219162270aa756fc
+
+COCOAPODS: 1.8.4
