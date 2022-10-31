@@ -1,0 +1,173 @@
+//
+//  PrefixHeader.pch
+//  BaseProject
+//
+//  Created by zhiqiang meng on 19/6/2019.
+//  Copyright © 2019 zhiqiang meng. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+
+
+
+#ifdef __OBJC__
+
+// 只要添加了这个宏，就不用带mas_前缀
+#define MAS_SHORTHAND3
+// 只要添加了这个宏，equalTo就等价于mas_equalTo
+#define MAS_SHORTHAND_GLOBALS
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import <AVFoundation/AVFoundation.h>
+#import <MJRefresh.h>
+#import "LLAlertView.h"
+#import "LLBaseTableView.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIFont+XJFont.h"
+#import "UIColor+ColorChange.h"
+#import "Define1.h"
+#import "HttpAdress.h"
+#import "NSString+Extension.h"
+#import "UIColor+For16.h"
+#import "UIView+Addition.h"
+#import <Masonry.h>
+#import "HttpRequestToken.h"
+#import "AFConstantKey.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+Extension.h"
+#import "MacroDefinition.h"
+#import "LMHBaseViewController.h"
+#import "UserModel.h"
+#import "MJExtension.h"
+#import "CountDown.h"
+#import "UIImage+change.h"
+#import "NSObject+Extension.h"
+#import "UIAlertController+HCAdd.h"
+#import "UIImageView+WebCache.h"
+#import "UIImageView+Extension.h"
+#import "LLShowView.h"
+#import "NSString+Regular.h"
+#import "UIButton+Extension.h"
+#import "CustomButton.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import "LLCommonDelegate.h"
+#import "AppDelegate.h"
+#import "TZImagePickerController.h"
+#import "UIViewController+Extension.h"
+#import "XJHttpTool.h"
+#import "LLGoodDetailViewController.h"
+#import "AccessTool.h"
+#import "LLGoodModel.h"
+#import "Define1.h"
+#import <ShareSDK/ShareSDK.h>
+#import "UIColor+For16.h"
+
+
+
+#import <QMLineSDK/QMLineSDK.h>
+
+//Tools
+#import "UIColor+Hex.h"
+#import "UIView+Hex.h"
+#import "QMLabelText.h"
+#import "QMRemind.h"
+#import "QMPushManager.h"
+#import "QMDateManager.h"
+#import "NSAttributedString+QMEmojiExtension.h"
+#import "QMTapGestureRecognizer.h"
+
+#import "QMAudioPlayer.h"
+#import "QMAudioRecorder.h"
+#import "SJVoiceTransform.h"
+
+#import "QMProfileManager.h"
+#import "QMActivityView.h"
+#import "QMRegexHandle.h"
+#import "UIView+LoadState.h"
+
+//Vendors
+#import "Masonry.h"
+#import "UIImage+GIF.h"
+#import "UIImageView+WebCache.h"
+#import "MLEmojiLabel.h"
+#import "MJRefresh.h"
+#import "TZImagePickerController.h"
+
+//#import <ShareSDKConnector/ShareSDKConnector.h>
+//#import <ShareSDKExtension/ShareSDK+Extension.h>
+//#import <ShareSDK/ShareSDK.h>
+//#import <ShareSDKConnector/ShareSDKConnector.h>
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+//#import <TencentOpenAPI/TencentOAuth.h>
+//#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOpenApiUmbrellaHeader.h>
+#import <MOBFoundation/MobSDK+Privacy.h>
+#import <MOBFoundation/MobSDK.h>
+
+#import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
+//#import "YCShadowView.h"
+#import "LLTabbarViewController.h"
+
+#import <CoreServices/CoreServices.h>
+//#import "LLWebViewController.h"
+#import "UILabel+Extension.h"
+#import <YNPageViewController/YNPageConfigration.h>
+#import "SDCycleScrollView.h"
+#import "ATNavigationController.h"
+#import "UIView+Frame.h"
+//#import "CountDown.h"
+//#import <JXCategoryView.h>
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import "DWQCommitBaseController.h"
+#import "NSString+Extension.h"
+#import "UIImageView+Extension.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "NSString+Extension.h"
+//#import <TABAnimated/TABAnimated.h>
+//#import <EaseCallKit/EaseCallUIKit.h>
+#import "UIImage+Extension.h"
+#import "JJPhotoManeger.h"
+#import "GKNavigationBarViewController.h"
+#import <ShareSDK/SSDKAuthViewStyle.h>
+#import <Masonry/Masonry.h>
+#import "JXUIKit.h"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <JhtMarquee/JhtVerticalMarquee.h>
+#import "LLShareView.h"
+#import <YYModel/YYModel.h>
+#import "LLWebViewController.h"
+#import "LLMeOrderListController.h"
+#import <ATAuthSDK/ATAuthSDK.h>
+
+#endif
+
+//#ifdef __OBJC__
+
+
+
+
+#ifdef DEBUG
+
+#define NSLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+
+#else
+
+#define NSLog(...)
+#define debugMethod()
+
+#endif

@@ -1,0 +1,205 @@
+/*
+  Localizable.strings
+  IMSDK
+
+  Created by lishuijiao on 2020/9/29.
+  
+*/
+
+"button.logout" = "退出";
+
+"button.topeople" = "转人工";
+
+"button.chat_img" = "图片";
+
+"button.chat_file" = "文件";
+
+"button.chat_question" = "常见问题";
+
+"button.chat_music" = "音乐";
+
+"button.chat_video" = "视频";
+
+"button.chat_other" = "其他";
+
+"button.chat_evaluate" = "评价";
+
+"button.chat_title" = "感谢您使用我们的服务，请对我们的服务做评价。";
+
+"button.chat_thank" = "感谢您对此次服务的评价，祝您生活愉快，再见。";
+
+"button.complete" = "结束";
+
+"button.back" = "返回";
+
+"button.cancel" = "取消";
+
+"button.sure" = "确定";
+
+"button.recorder_normal" = "按住通话";
+
+"button.recorder_recording" = "松开并发送";
+
+"button.recorder_want_cancel" = "释放以取消";
+
+"button.cancelsend" = "释放以取消";
+
+"button.copy" = "复制";
+
+"button.delete" = "删除";
+
+"button.send" = "发送";
+
+"button.ConvertText" = "语音转换为文本";
+
+"button.sendAgain" = "再次发送消息";
+
+"button.receiver" = "接受者";
+
+"button.speaker" = "发言者";
+
+"button.leaveMessage" = "留言";
+
+"button.signOut" = "退出";
+
+"button.yeshelp" = "有帮助";
+
+"button.nohelp" = "没帮助";
+
+"button.set" = "设置";
+
+"title.thanks_yes" = "很高兴我们能为您解决这个问题";
+
+"title.thanks_no" = "非常抱歉我们没有解决您的问题 !";
+
+"title.people" = "客户服务";
+
+"title.people_now" = "在线客户服务";
+
+"title.people_isleave" = "结束客户服务";
+
+"title.people_isline" = "客户服务离线";
+
+"title.now_robit" = "机器人服务";
+
+"title.other_writing" = "输入中...";
+
+"title.line_up" = "当前队列数";
+
+"title.connection" = "等待链接";
+
+"title.type" = "选择您咨询的类型或业务部门";
+
+"title.prompt" = "提示";
+
+"title.savePicture" = "保存图片";
+
+"title.statement" = "这样做将删除此消息并且无法恢复它。 确认删除吗？?";
+
+"title.speakS" = "说话太短";
+
+"title.apeakL" = "说话太长";
+
+"title.schedule_faile" = "其他席位授权失败";
+
+"title.schedule_notonline" = "专属席位未上线";
+
+"title.sorryconfigurationiswrong" = "无法访问咨询功能";
+
+"title.schedule_type" = "选择您咨询的时间表类型";
+
+"title.message prompts" = "客服现已下线，请稍后咨询 ";
+
+"title.iknow" = "我知道";
+
+"title.messageBoard" = "留言板";
+
+"title.messageHeader" = "请留言， 我们会尽快与您联系。";
+
+"title.pleaseLeave" = "请留言";
+
+"title.leaving" = "留言";
+
+"title.messageSuccess" = "提交留言成功";
+
+"title.messageFailure" = "提交留言失败";
+
+"title.messageContent" = "请填写留言";
+
+"title.requireItem" = "是必需的";
+
+"title.uploaded" = "上传";
+
+"title.uploadFailure" = "上传失败";
+
+"title.uploading" = "上传中";
+
+"title.downloads" = "下载";
+
+"title.notDownloaded" = "未下载";
+
+"title.downloaded" = "下载";
+
+"title.phoneNumber" = "电话号码";
+
+"title.selection" = "选择";
+
+"title.required" = "必需的";
+
+"title.good_7moor" = " 7摩尔      最好的客户服务";
+
+"title.introduction" = "及时联系在线客服\n视频、语音、打字、表情、照片、文件\n没问题！";
+
+"title.contact_im" = "让我们出发";
+
+"title.photoAuthority" = " 请允许该应用在 iPhone 上的“隐私 - 设置”选项中访问您的相册";
+
+"title.chatBegin" = "开始对话";
+
+"title.chatFinish_reopen" = "当前会话已关闭，是否重新打开会话";
+
+"title.transferAgent" = "转给其他代理人";
+
+"title.robot_evaluation" = " 机器人服务评价";
+
+"title.robot_evaluation_ok" = "机器人评价成功";
+
+"title.robot_evaluation_fail" = "机器人评价失败";
+
+"title.evaluation_remind" = "未配置的满意度";
+
+"title.evaluation_select" = "请选择满意度";
+
+"title.evaluation_label" = "请选择满意度评价标签";
+
+"title.evaluation_reason" = "请填写满意度评价的原因";
+
+"title.evaluation_timeout" = "审核超时";
+
+"title.creatConversation" = "建立对话,请稍后";
+
+"title.mayBeNumber" = "可能是个号码";
+
+"title.isBeginLeave" = "正在提交邮件，请不要重复单击";
+
+"title.autonText_fail" = "无法转换文本，请再次单击进行转换";
+
+"title.chat_question_fail" = "发送失败!";
+
+"button.call" = "呼叫";
+
+"button.solved_ok" = "已解决";
+
+"button.solved_fail" = "未解决";
+
+"button.submit.review" = "提交审核";
+
+"已拒绝" = "已拒绝";
+"已取消" = "已取消";
+"对方已取消" = "对方已取消";
+"对方已拒绝" = "对方已拒绝";
+"通话时长:" = "通话时长:";
+
+"请您对本次服务做出评价" = "请您对本次服务做出评价";
+"感谢您对本次服务做出评价" = "感谢您对本次服务做出评价";
+"立即评价" = "立即评价";
