@@ -1,0 +1,33 @@
+platform :ios,'11.0'
+use_frameworks!
+inhibit_all_warnings!
+
+
+target 'Winner' do
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+pod 'Masonry'
+pod 'JJException'
+pod 'MJExtension' #模型转换
+pod 'AFNetworking'
+pod 'MJRefresh'
+pod 'IQKeyboardManager'  #键盘
+pod 'TZImagePickerController'
+pod 'YNPageViewController'
+pod 'SDCycleScrollView'
+ pod 'MBProgressHUD'
+pod 'AMap3DMap'
+pod 'AlipaySDK-iOS'
+pod 'AMapLocation'
+pod 'AMapLocation'
+pod 'AMapSearch'
+pod 'mob_sharesdk/ShareSDKExtension'
+pod 'mob_sharesdk/ShareSDKUI'
+pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
+pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
+pod 'mob_sharesdk/ShareSDKPlatforms/WeChatFull'
+pod 'ATNavigationController'
+pod 'UITableView+FDTemplateLayoutCell'
+pod 'JhtMarquee'
+
+end
+
