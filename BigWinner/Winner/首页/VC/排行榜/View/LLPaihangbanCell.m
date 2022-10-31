@@ -49,8 +49,8 @@
     }];
     [self.showimage mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(weakself.showBackimage.mas_centerX);
-        make.width.offset(CGFloatBasedI375(20));
-        make.height.offset(CGFloatBasedI375(20));
+        make.width.offset(CGFloatBasedI375(30));
+        make.height.offset(CGFloatBasedI375(30));
         make.centerY.equalTo(weakself.showBackimage.mas_centerY);
     }];
     [self.titlelable mas_remakeConstraints:^(MASConstraintMaker *make) {

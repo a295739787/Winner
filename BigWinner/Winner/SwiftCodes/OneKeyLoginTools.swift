@@ -26,16 +26,16 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
             }
         }
         //       检测当前环境是否能一键登录
-        TXCommonHandler.sharedInstance().checkEnvAvailable(with: .loginToken) { resultDic in
-            let code = (resultDic?[AnyHashable("resultCode")] as! String);
-            if (PNSCodeSuccess == code){
-                print("-------------当前支持一键登录-------------")
-            }else{
-                
-                SMSLoginPage()
-            }
-            
-        }
+//        TXCommonHandler.sharedInstance().checkEnvAvailable(with: .loginToken) { resultDic in
+//            let code = (resultDic?[AnyHashable("resultCode")] as! String);
+//            if (PNSCodeSuccess == code){
+//                print("-------------当前支持一键登录-------------")
+//            }else{
+//                
+//                SMSLoginPage()
+//            }
+//            
+//        }
         
     }
     
@@ -206,35 +206,41 @@ private func CustomOneKeyLoginPage(target:Any,selector:Selector) -> TXCustomMode
     model.privacyVCIsCustomized = true
     model.privacyAlignment = .center
     
-    
+    var logoFrame = CGRect()
+    var numberFrame = CGRect()
+    var sloganFrame = CGRect()
+    var loginBtnFrame = CGRect()
+
+
     //    logo背景frame设置
     model.logoFrameBlock = {(screenSize,superViewSize,frame) in
         
-        let logoFrame = CGRect(x: (superViewSize.width-100)/2, y: 80, width: 100, height: 100)
+        let y = (superViewSize.height)*0.1
+         logoFrame = CGRect(x: (superViewSize.width-100)/2, y:y < 81 ? y:80, width: 100, height: 100)
         return logoFrame
     }
     //    电话frame设置
     model.numberFrameBlock = {(screenSize,superViewSize,frame) in
-        
-        let numberFrame = CGRect(x: (superViewSize.width-frame.size.width)/2, y: 200, width: frame.size.width, height: frame.size.height)
+                
+        numberFrame = CGRect(x: (superViewSize.width-frame.size.width)/2, y: logoFrame.maxY+20, width: frame.size.width, height: frame.size.height)
         return numberFrame
     }
     //    sloganframe设置
     model.sloganFrameBlock = {(screenSize,superViewSize,frame) in
         
-        let sloganFrame = CGRect(x: (superViewSize.width-frame.size.width)/2, y: 246, width: frame.size.width, height: frame.size.height)
+         sloganFrame = CGRect(x: (superViewSize.width-frame.size.width)/2, y: logoFrame.maxY+30+36, width: frame.size.width, height: frame.size.height)
         return sloganFrame
     }
     //    loginBtnframe设置
     model.loginBtnFrameBlock = {(screenSize,superViewSize,frame) in
         
-        let loginBtnFrame = CGRect(x: (superViewSize.width-(superViewSize.width-38-38))/2, y: 350, width: superViewSize.width-38-38, height: 50)
+         loginBtnFrame = CGRect(x: (superViewSize.width-(superViewSize.width-38-38))/2, y: sloganFrame.maxY+50, width: superViewSize.width-38-38, height: 50)
         return loginBtnFrame
     }
     //    切换到其他方式frame设置
     model.customViewLayoutBlock = {(screenSize,contentViewFrame,navFrame,titleBarFrame,logoFrame,sloganFrame,numberFrame,loginFrame,changeBtnFrame,privacyFrame) in
         
-        otherButton.frame = CGRect(x: (screenSize.width-120)/2, y: privacyFrame.minY-120, width: 120, height: 40)
+        otherButton.frame = CGRect(x: (screenSize.width-120)/2, y: privacyFrame.minY-80, width: 120, height: 40)
     }
     
     
@@ -256,5 +262,5 @@ private func changeText(contentText:String,fontSize:CGFloat,color:UIColor)->NSMu
 private func SMSLoginPage(){
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
-    delegate.loginVc()
+    delegate.showLoginVc()
 }

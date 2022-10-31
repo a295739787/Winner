@@ -40,15 +40,29 @@
 }
 #pragma mark--createUI
 -(void)createUI{
-    [self creatbutton];
+    
+    NSString *titleString = @"";
+    int topH = 0;
+    if (self.addressType == LLMeAdressLogis) {
+        titleString = @"物流地址";
+        _selectIndex = 0;
+    }else if (self.addressType == LLMeAdressDelivery){
+        titleString = @"配送地址";
+        _selectIndex = 1;
+    }else{
+        titleString = @"收货地址";
+        topH = 46;
+        [self creatbutton];
+    }
+    
     _currentPage = 1;
     self.view.backgroundColor = BG_Color;
-    self.customNavBar.title = @"收货地址";
+    self.customNavBar.title = titleString;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.bottomView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(CGFloatBasedI375(46)+SCREEN_top);
+        make.top.mas_equalTo(CGFloatBasedI375(topH)+SCREEN_top);
         make.left.right.mas_equalTo(0);
         make.bottom.mas_equalTo(-SCREEN_Bottom - CGFloatBasedI375(50));
     }];
@@ -58,6 +72,7 @@
     if (!adressData) {
         [self getProvinceUrl];
     }
+    
 }
 
 #pragma mark - 创建界面

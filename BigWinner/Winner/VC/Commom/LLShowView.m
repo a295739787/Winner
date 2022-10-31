@@ -27,7 +27,7 @@
     CGFloat withd =  CGFloatBasedI375(60);
     CGFloat heighs = CGFloatBasedI375(60);
     CGFloat x =  CGFloatBasedI375(10);
-    CGFloat y =  CGFloatBasedI375(4);
+    CGFloat y =  CGFloatBasedI375(0);
     CGFloat yB = CGFloatBasedI375(0);
     if(style == ShowViewNormalState){
         withd = CGFloatBasedI375(60);
@@ -74,7 +74,7 @@
 -(UILabel *)titlelable{
     if(!_titlelable){
         _titlelable = [[UILabel alloc]init];
-        _titlelable.font = [UIFont systemFontOfSize:CGFloatBasedI375(14)];
+        _titlelable.font = [UIFont systemFontOfSize:CGFloatBasedI375(11)];
         _titlelable.textAlignment = NSTextAlignmentCenter;
         _titlelable.text = @"";
         _titlelable.textColor = [UIColor colorWithHexString:@"#443415"];

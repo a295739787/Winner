@@ -46,8 +46,8 @@
          }];
   
     [self.titlelable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(weakself.shopcarBtn.mas_right).mas_equalTo(-CGFloatBasedI375(3));
-        make.top.equalTo(CGFloatBasedI375(1));
+        make.right.equalTo(weakself.shopcarBtn.mas_right).mas_equalTo(-CGFloatBasedI375(12));
+        make.top.equalTo(CGFloatBasedI375(0));
         make.width.mas_equalTo(CGFloatBasedI375(16));
         make.height.mas_equalTo(CGFloatBasedI375(16));
      }];

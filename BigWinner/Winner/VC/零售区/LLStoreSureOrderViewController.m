@@ -39,17 +39,18 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
     self.customNavBar.title = @"确认订单";
     [self setLayout];
     [self postDatas];
-    [self getAdressListUrl:NO];
+    [self getAdressListUrl:NO addressType:0];
 }
 
 #pragma mark--获取地址列表
--(void)getAdressListUrl:(BOOL)isLoad{
+-(void)getAdressListUrl:(BOOL)isLoad addressType:(int)type{
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:@"" forKey:@"keyword"];
     [params setObject:@(10) forKey:@"pageSize"];
     [params setObject:@"" forKey:@"sidx"];
     [params setObject:@"asc" forKey:@"sort"];
-    
+    [params setObject:@(type) forKey:@"addrType"];
+
     [XJHttpTool post:L_adressListUrl method:GET params:params isToken:YES success:^(id  _Nonnull responseObj) {
         
         NSString *code = responseObj[@"code"];
@@ -362,6 +363,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
             if(self.addressModel){
                 LLMeAdressController *vc = [[LLMeAdressController alloc]init];
                 vc.isChoice = YES;
+                vc.addressType = LLMeAdressLogis;
                 vc.getAressBlock = ^(LLGoodModel * _Nonnull model) {
                     weakself.addressModel = model;
                     [weakself postDatas];
@@ -377,7 +379,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
                 LLMeAdressEditController *vc = [[LLMeAdressEditController alloc]init];
                 vc.adressType = 300;
                 vc.getAddressBlock = ^{
-                    [weakself getAdressListUrl:YES];
+                    [weakself getAdressListUrl:YES addressType:0];
                 };
                 [self.navigationController pushViewController:vc animated:YES];
 
@@ -388,6 +390,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
             if(self.addressModel){
                 LLMeAdressController *vc = [[LLMeAdressController alloc]init];
                 vc.isChoice = YES;
+                vc.addressType = LLMeAdressDelivery;
                 vc.getAressBlock = ^(LLGoodModel * _Nonnull model) {
                     weakself.addressModel = model;
                     [weakself postDatas];
@@ -404,7 +407,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
                 LLMeAdressEditController *vc = [[LLMeAdressEditController alloc]init];
                 vc.adressType = 300;
                 vc.getAddressBlock = ^{
-                    [weakself getAdressListUrl:YES];
+                    [weakself getAdressListUrl:YES addressType:1];
                 };
                 [self.navigationController pushViewController:vc animated:YES];
 

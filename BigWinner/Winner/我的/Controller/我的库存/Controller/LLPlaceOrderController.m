@@ -47,7 +47,8 @@
     [params setObject:@(10) forKey:@"pageSize"];
     [params setObject:@"" forKey:@"sidx"];
     [params setObject:@"asc" forKey:@"sort"];
-    
+    [params setObject:@(0) forKey:@"addrType"];
+
     [XJHttpTool post:L_adressListUrl method:GET params:params isToken:YES success:^(id  _Nonnull responseObj) {
         
         NSString *code = responseObj[@"code"];
@@ -190,6 +191,7 @@
         if(self.addressModel){
             LLMeAdressController *vc = [[LLMeAdressController alloc]init];
             vc.isChoice = YES;
+            vc.addressType = LLMeAdressLogis;
             vc.getAressBlock = ^(LLGoodModel * _Nonnull model) {
                 weakself.addressModel = model;
                     [weakself.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];

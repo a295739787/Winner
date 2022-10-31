@@ -91,7 +91,8 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
     [params setObject:@(10) forKey:@"pageSize"];
     [params setObject:@"" forKey:@"sidx"];
     [params setObject:@"asc" forKey:@"sort"];
-    
+    [params setObject:@(1) forKey:@"addrType"];
+
     [XJHttpTool post:L_adressListUrl method:GET params:params isToken:YES success:^(id  _Nonnull responseObj) {
         
         NSString *code = responseObj[@"code"];
@@ -374,6 +375,7 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
     if(self.addressModel){
         LLMeAdressController *vc = [[LLMeAdressController alloc]init];
         vc.isChoice = YES;
+        vc.addressType = LLMeAdressDelivery;
         vc.getAressBlock = ^(LLGoodModel * _Nonnull model) {
             weakself.addressModel = model;
 //            if(self.tagindex == 1){

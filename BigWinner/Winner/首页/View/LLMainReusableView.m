@@ -102,8 +102,8 @@
     }];
     [self.headImage mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(weakself.showBackimage.mas_centerX);
-        make.width.offset(CGFloatBasedI375(20));
-        make.height.offset(CGFloatBasedI375(20));
+        make.width.offset(CGFloatBasedI375(24));
+        make.height.offset(CGFloatBasedI375(24));
         make.centerY.equalTo(weakself.showBackimage.mas_centerY);
     }];
 
@@ -194,7 +194,7 @@
         self.numlable.text = _model.userInfo.ranking;
         self.titlelable.text = @"我的排名";;
         self.timelable.text = FORMAT(@"活动时间:%@ 至 %@",_model.userInfo.startTime,_model.userInfo.endTime);
-        [self.headImage sd_setImageWithUrlString:_model.userInfo.headIcon];
+        [self.headImage sd_setImageWithUrlString:_model.userInfo.headIcon placeholderImage:[UIImage imageNamed:@"headimages"]];
         self.delable.text = FORMAT(@"%@点",_model.userInfo.spotNum);
     }else{
         self.noimage.hidden = NO;

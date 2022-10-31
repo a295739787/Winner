@@ -302,6 +302,7 @@
         }else if (index == 103){
             //我的地址
             LLMeAdressController *adressVC = [[LLMeAdressController alloc]init];
+            adressVC.addressType = LLMeAdressAll;
             [weakself.navigationController pushViewController:adressVC animated:YES];
         }else if (index == 104){
             //发票信息

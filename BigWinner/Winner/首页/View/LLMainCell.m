@@ -152,7 +152,7 @@
         _titlelable.text = @"银色星芒刺绣网纱底 裤红色棉麻…";
         _titlelable.textColor = [UIColor colorWithHexString:@"#333333"];
         _titlelable.textAlignment = NSTextAlignmentLeft;
-        _titlelable.font = [UIFont systemFontOfSize:CGFloatBasedI375(13)];
+        _titlelable.font = [UIFont systemFontOfSize:CGFloatBasedI375(15)];
         [self.backView addSubview:self.titlelable];
         _titlelable.numberOfLines =2;
     }
