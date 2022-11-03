@@ -45,10 +45,10 @@
     int topH = 0;
     if (self.addressType == LLMeAdressLogis) {
         titleString = @"物流地址";
-        _selectIndex = 0;
+        _selectIndex = 1;
     }else if (self.addressType == LLMeAdressDelivery){
         titleString = @"配送地址";
-        _selectIndex = 1;
+        _selectIndex = 2;
     }else{
         titleString = @"收货地址";
         topH = 46;
@@ -82,7 +82,7 @@
     topView.backgroundColor = White_Color;
     [self.view addSubview:topView];
     
-    _selectIndex = 0;
+    _selectIndex = 1;
     
     CGFloat btnX = SCREEN_WIDTH/2-100;
     CGFloat btnWidth = 80;
@@ -115,11 +115,11 @@
     self.currentPage = 1;
     sender.selected = YES;
     if (sender.tag == 101) {
-        _selectIndex = 0;
+        _selectIndex = 1;
         [_logisButton setTitleColor:Main_Color forState:UIControlStateNormal];
         [_deliveryButton setTitleColor:[UIColor colorWithHexString:@"#0A0A0A"] forState:UIControlStateNormal];
     }else{
-        _selectIndex = 1;
+        _selectIndex = 2;
         [_deliveryButton setTitleColor:Main_Color forState:UIControlStateNormal];
         [_logisButton setTitleColor:[UIColor colorWithHexString:@"#0A0A0A"] forState:UIControlStateNormal];
     }
@@ -228,6 +228,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LLMeAdressTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLMeAdressTableCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.addressType = self.selectIndex;
     if (self.dataArray.count > 0) {
         cell.listModel = self.dataArray[indexPath.row];
     }

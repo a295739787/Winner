@@ -186,7 +186,11 @@ static NSString *const LLPaihangbanCellid = @"LLPaihangbanCell";
 //        MJRefreshAutoNormalFooter *footer = [[MJRefreshAutoNormalFooter alloc] init];
 //        [footer setRefreshingTarget:self refreshingAction:@selector(footer)];
 //        _tableView.mj_footer = footer;
-        [_tableView setContentInset:UIEdgeInsetsMake(CGFloatBasedI375(310), 0, 0, 0)];
+        if (IS_X_) {
+            [_tableView setContentInset:UIEdgeInsetsMake(CGFloatBasedI375(310), 0, 0, 0)];
+        }else{
+            [_tableView setContentInset:UIEdgeInsetsMake(CGFloatBasedI375(255), 0, 0, 0)];
+        }
         adjustsScrollViewInsets_NO(_tableView, self);
     }
     return _tableView;

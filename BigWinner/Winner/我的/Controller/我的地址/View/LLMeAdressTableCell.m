@@ -102,8 +102,7 @@
     
     _nameLabel.text = listModel.receiveName;
     _phoneLabel.text = [NSString setPhoneMidHid:listModel.receivePhone];
-    _adressLabel.text = [NSString stringWithFormat:@"%@%@%@%@",listModel.province,listModel.city,listModel.area,listModel.locations];
-    _adressDetailLabel.text = listModel.address;
+    
     if (listModel.isDefault == YES) {
         _defaultView.hidden = NO;
         _defaultLabel.hidden = NO;
@@ -111,7 +110,19 @@
         _defaultView.hidden = YES;
         _defaultLabel.hidden = YES;
     }
-    
+    if (self.addressType == 1) {
+        self.adressDetailLabel.hidden = YES;
+        _adressLabel.text = [NSString stringWithFormat:@"%@%@%@%@%@",listModel.province,listModel.city,listModel.area,listModel.locations,listModel.address];
+        
+
+        
+    }else{
+        self.adressDetailLabel.hidden = NO;
+        _adressLabel.text = [NSString stringWithFormat:@"%@%@%@%@",listModel.province,listModel.city,listModel.area,listModel.locations];
+        _adressDetailLabel.text = listModel.address;
+        
+    }
+   
 }
 
 #pragma mark--lazy

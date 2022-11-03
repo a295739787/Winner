@@ -328,7 +328,11 @@
     return 0.01;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.01;
+    if (section == 2) {
+        return CGFloatBasedI375(10);
+    }else{
+        return 0.01;
+    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     return nil;

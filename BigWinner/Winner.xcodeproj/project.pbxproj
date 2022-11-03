@@ -343,6 +343,7 @@
 		42EC93A327F1B72F00B32810 /* CustomMapAnnotationViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EC93A027F1B72F00B32810 /* CustomMapAnnotationViews.m */; };
 		42EC93A927F1DDF400B32810 /* CodeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EC93A627F1DDF400B32810 /* CodeInputView.m */; };
 		42EC93AA27F1DDF400B32810 /* EnterPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EC93A727F1DDF400B32810 /* EnterPasswordView.m */; };
+		DB0022A32910C28A00A4526E /* XYSystemUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0022A22910C28A00A4526E /* XYSystemUpdate.swift */; };
 		DB0FCBB2290633F8003F7E6D /* PrivacyWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FCBB1290633F8003F7E6D /* PrivacyWebViewController.swift */; };
 		DB0FCBB52907AECC003F7E6D /* XYAddressPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FCBB42907AECC003F7E6D /* XYAddressPickerView.swift */; };
 		DB0FCBB72907C48D003F7E6D /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0FCBB62907C48D003F7E6D /* city.plist */; };
@@ -1105,6 +1106,7 @@
 		42EC93A827F1DDF400B32810 /* CodeInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeInputView.h; sourceTree = "<group>"; };
 		42F28DEC283BC23100516EBA /* Winner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Winner.entitlements; sourceTree = "<group>"; };
 		6749133E1A6A8EB68D53054B /* Pods_Winner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Winner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB0022A22910C28A00A4526E /* XYSystemUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYSystemUpdate.swift; sourceTree = "<group>"; };
 		DB0FCBB1290633F8003F7E6D /* PrivacyWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyWebViewController.swift; sourceTree = "<group>"; };
 		DB0FCBB42907AECC003F7E6D /* XYAddressPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYAddressPickerView.swift; sourceTree = "<group>"; };
 		DB0FCBB62907C48D003F7E6D /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
@@ -2756,6 +2758,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DB0022A12910C1AB00A4526E /* XYSystemUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				DB0022A22910C28A00A4526E /* XYSystemUpdate.swift */,
+			);
+			path = XYSystemUpdate;
+			sourceTree = "<group>";
+		};
 		DB0FCBB329079084003F7E6D /* XYAddressPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2785,6 +2795,7 @@
 		DB8F334C28FFD12900474235 /* SwiftCodes */ = {
 			isa = PBXGroup;
 			children = (
+				DB0022A12910C1AB00A4526E /* XYSystemUpdate */,
 				DB0FCBB329079084003F7E6D /* XYAddressPickerView */,
 				DB8F334D28FFD15F00474235 /* Winner-Bridging-Header.h */,
 				DB8F335A290136EF00474235 /* OneKeyLoginTools.swift */,
@@ -3623,6 +3634,7 @@
 				429055B6278C09BA0053C4E1 /* GKBaseTransitionAnimation.m in Sources */,
 				4295E7C627E1C86B00744204 /* LLReturnServiceCell.m in Sources */,
 				429055B4278C09BA0053C4E1 /* GKPushTransitionAnimation.m in Sources */,
+				DB0022A32910C28A00A4526E /* XYSystemUpdate.swift in Sources */,
 				42D3943427FD7DBC008B4138 /* QMChatListCardCell.m in Sources */,
 				F9ADEC06279D91F500F16885 /* LLBuybackRecordDetailVC.m in Sources */,
 				F97499DC279E48D0000B8C4A /* LLBillInfoController.m in Sources */,

@@ -39,7 +39,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
     self.customNavBar.title = @"确认订单";
     [self setLayout];
     [self postDatas];
-    [self getAdressListUrl:NO addressType:0];
+    [self getAdressListUrl:NO addressType:1];
 }
 
 #pragma mark--获取地址列表
@@ -243,7 +243,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
     }];
     [self.boView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.offset(0);
-        make.height.offset(DeviceXTabbarHeigh(CGFloatBasedI375(70)));
+        make.height.offset(DeviceXTabbarHeigh(CGFloatBasedI375(50)));
 
     }];
 }
@@ -379,7 +379,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
                 LLMeAdressEditController *vc = [[LLMeAdressEditController alloc]init];
                 vc.adressType = 300;
                 vc.getAddressBlock = ^{
-                    [weakself getAdressListUrl:YES addressType:0];
+                    [weakself getAdressListUrl:YES addressType:1];
                 };
                 [self.navigationController pushViewController:vc animated:YES];
 
@@ -407,7 +407,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
                 LLMeAdressEditController *vc = [[LLMeAdressEditController alloc]init];
                 vc.adressType = 300;
                 vc.getAddressBlock = ^{
-                    [weakself getAdressListUrl:YES addressType:1];
+                    [weakself getAdressListUrl:YES addressType:2];
                 };
                 [self.navigationController pushViewController:vc animated:YES];
 
@@ -442,7 +442,8 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
         WS(weakself);
         _headView.tapClick = ^(NSInteger tagindex) {//1是同城  2是配送
             weakself.tagindex = tagindex;
-            [weakself postDatas];
+            [weakself getAdressListUrl:YES addressType:tagindex];
+//            [weakself postDatas];
             [weakself.tableView reloadData];
         };
     }

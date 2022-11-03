@@ -22,6 +22,8 @@ typedef void(^LLMeAdressDefaulBtntBlock)(BOOL isSelect);
 
 @property (nonatomic,strong)AdressListModel *listModel ;
 
+@property (nonatomic ,assign) NSInteger addressType;
+
 @end
 
 

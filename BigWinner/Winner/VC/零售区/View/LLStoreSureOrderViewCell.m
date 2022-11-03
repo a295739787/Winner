@@ -560,12 +560,20 @@
             self.titlelable.text = FORMAT(@"我的库存(剩余库存: %@)",_model.stock);
             self.detailsLabel.hidden  = NO;
             if(_model.stock.length > 0){
-                CGFloat stocks = _model.stock.integerValue*_model.totalPrice.floatValue;
+                
+                NSInteger goodsStocks = _model.stock.integerValue;
+                CGFloat stocks = 0.0;
+                if (_counts > goodsStocks) {
+                    stocks = goodsStocks*_model.goodsPrice.floatValue;
+                }else{
+                    stocks = _counts*_model.goodsPrice.floatValue;
+                }
+                
                 NSString *notics = @"";
                 if(_model.stockPrice.floatValue > 0){
                     notics = @"-￥";
                 }
-            self.detailsLabel.attributedText = [self getAttribuStrWithStrings:@[notics,FORMAT(@"%.2f",_model.stockPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont boldFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ [UIColor colorWithHexString:@"#443415"], [UIColor colorWithHexString:@"#443415"]]];
+            self.detailsLabel.attributedText = [self getAttribuStrWithStrings:@[notics,FORMAT(@"%.2f",stocks)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont boldFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ [UIColor colorWithHexString:@"#443415"], [UIColor colorWithHexString:@"#443415"]]];
             }
 
         }else if(_indexs == 2){

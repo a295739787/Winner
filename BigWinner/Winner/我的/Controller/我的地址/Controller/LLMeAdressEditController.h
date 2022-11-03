@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger,  MeAddressOptions) {
-    MeAddressOptionsLogis,
-    MeAddressOptionsDelivery,
+    MeAddressOptionsLogis     = 1,
+    MeAddressOptionsDelivery  = 2,
 };
 
 @interface LLMeAdressEditController : LMHBaseViewController

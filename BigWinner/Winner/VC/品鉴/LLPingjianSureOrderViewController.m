@@ -334,15 +334,44 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
             cell.model =  self.model;
             cell.AddBlock = ^(UILabel * _Nonnull countLabel, NSInteger indexs, NSInteger counts) {
                 weakself.counts = FORMAT(@"%ld",counts);
-                weakself.boView.priceStr = FORMAT(@"%.2f",weakself.model.totalPrice.floatValue *counts);
+                
+                NSInteger goodsStocks = weakself.model.stock.integerValue;
+                if (counts > goodsStocks) {
+                    CGFloat goods = goodsStocks*weakself.model.goodsPrice.floatValue;
+                    CGFloat stocks = counts*weakself.model.goodsPrice.floatValue;
+                    CGFloat addSum = stocks-goods;
+                    weakself.boView.priceStr = FORMAT(@"%.2f",addSum);
+                }else{
+                    
+                    weakself.boView.priceStr = [NSString stringWithFormat:@"0.00"];
+                    
+                    [weakself.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:3]] withRowAnimation:UITableViewRowAnimationNone];
+                }
+                                
                 weakself.boView.detailsLabel.text = FORMAT(@"共%@瓶，含配送费",weakself.counts );
-                [weakself.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [weakself.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationNone];
             };
+            
             cell.CutBlock = ^(UILabel * _Nonnull countLabel, NSInteger indexs, NSInteger counts) {
                 weakself.counts =FORMAT(@"%ld",counts);
-                weakself.boView.priceStr = FORMAT(@"%.2f",weakself.model.totalPrice.floatValue *counts);
+                
+                NSInteger goodsStocks = weakself.model.stock.integerValue;
+                if (counts > goodsStocks) {
+                    
+                    CGFloat goods = goodsStocks*weakself.model.goodsPrice.floatValue;
+                    CGFloat stocks = counts*weakself.model.goodsPrice.floatValue;
+                    CGFloat addSum = stocks-goods;
+                    weakself.boView.priceStr = FORMAT(@"%.2f",addSum);
+                }else{
+                    
+                    weakself.boView.priceStr = [NSString stringWithFormat:@"0.00"];
+                    
+                    [weakself.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:3]] withRowAnimation:UITableViewRowAnimationNone];
+                }
+                
                 weakself.boView.detailsLabel.text = FORMAT(@"共%@瓶，含配送费",weakself.counts );
-                [weakself.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [weakself.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationNone];
+                
             };
             return cell;
         }
@@ -357,6 +386,7 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
         return cell;
     }else if(indexPath.section == 2){
         LLStoreSureOrderViewCommonCell*cell = [tableView dequeueReusableCellWithIdentifier:LLStoreSureOrderViewCommonCellid];
+        cell.counts = self.counts.integerValue;
         cell.status = _status;
         cell.model = self.model;
         cell.indexs = indexPath.row;

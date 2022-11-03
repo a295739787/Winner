@@ -31,10 +31,10 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
 //            if (PNSCodeSuccess == code){
 //                print("-------------当前支持一键登录-------------")
 //            }else{
-//                
+//
 //                SMSLoginPage()
 //            }
-//            
+//
 //        }
         
     }
@@ -198,7 +198,7 @@ private func CustomOneKeyLoginPage(target:Any,selector:Selector) -> TXCustomMode
         superCustomView.addSubview(otherButton)
     }
     
-    model.privacyPreText = "若您的账号未注册，将为您自动注册。注册或登录及代表您同意我们的"
+    model.privacyPreText = "若您的账号未注册，将为您自动注册。注册或登录即代表您同意我们的"
     model.privacyOne = ["服务协议","yonghuxieyi"]
     model.privacyTwo = ["隐私政策","yisizhengce"]
     model.privacyOperatorIndex = 3

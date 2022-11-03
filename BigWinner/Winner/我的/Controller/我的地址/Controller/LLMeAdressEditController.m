@@ -297,7 +297,7 @@
     LLMeAdressEditTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLMeAdressEditTableCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.leftStr = @[@"收货人",@"手机号码",@"收货地区",@"详细地址",@"设为默认地址"][indexPath.row];
-    cell.placeholderStr = @[@"收货人姓名",@"收货人手机号码",@"请选择地址",@"街道、楼牌号",@""][indexPath.row];
+    cell.placeholderStr = @[@"收货人姓名",@"收货人手机号码",@"请选择地区",@"街道、楼牌号",@""][indexPath.row];
     cell.index = indexPath.row;
     cell.contentStr = self.dataArray[indexPath.row];
     

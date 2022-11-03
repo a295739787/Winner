@@ -257,8 +257,36 @@ static NSString *kf_userId = @"1234567a8ADC";
 #pragma mark - 一键登录认证
 -(void)oneKeyLoginAuthSDKInfo{
     
+    NSString *systemDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"SYSTEMUPDATEDATE"];
+
+    NSInteger day = [self dateComponent:systemDate];
+    
+    if ((systemDate == nil) || (day > 7)) {
+        XYSystemUpdate *update = [[XYSystemUpdate alloc]initWithFrame:(CGRectMake(0, 0, KScreenWidth, KScreenHeight))];
+    }
+    
     [OneKeyLoginTools OneKeyLoginAuthSDKInfo];
     
 }
-
+#pragma mark - 时间比较
+-(NSInteger)dateComponent:(NSString *)systemDate{
+    
+    if (systemDate == nil) {
+        return 0;
+    }
+    
+    NSString *currentDate = [NSString getCurrentTimesYYDD];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    
+    NSDate *startDate = [dateFormatter dateFromString:systemDate];
+    NSDate *endDate = [dateFormatter dateFromString:currentDate];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendarUnit unit = NSCalendarUnitDay;
+    NSDateComponents *delta = [calendar components:unit fromDate:startDate toDate:endDate options:0];
+    NSLog(@"%ld",delta.day);
+    return  delta.day;
+}
 @end

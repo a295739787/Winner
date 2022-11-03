@@ -64,7 +64,7 @@
     }];
     
     _showimage.layer.masksToBounds = YES;
-    _showimage.layer.cornerRadius = CGFloatBasedI375(10);
+    _showimage.layer.cornerRadius = CGFloatBasedI375(15);
 }
 -(void)setModel:(LLGoodModel *)model{
     _model = model;
