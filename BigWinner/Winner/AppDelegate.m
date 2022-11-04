@@ -262,7 +262,7 @@ static NSString *kf_userId = @"1234567a8ADC";
     NSInteger day = [self dateComponent:systemDate];
     
     if ((systemDate == nil) || (day > 7)) {
-        XYSystemUpdate *update = [[XYSystemUpdate alloc]initWithFrame:(CGRectMake(0, 0, KScreenWidth, KScreenHeight))];
+        [XYSystemUpdate sharedInstance];
     }
     
     [OneKeyLoginTools OneKeyLoginAuthSDKInfo];

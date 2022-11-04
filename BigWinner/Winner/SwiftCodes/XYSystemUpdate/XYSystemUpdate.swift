@@ -18,13 +18,13 @@ import AFNetworking
     private var sureButton = UIButton()
     private var cancelButton = UIButton()
     private var AppID : String = "1586242929"
-
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        SystemUpadat()
-    }
     
+    static let sharedInstance = XYSystemUpdate()
+    
+    override init(frame: CGRect) {
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        SystemUpadate()
+    }
     //MARK: - 加载主视图
     private func loadMainSubView(contentString:String){
         
@@ -104,11 +104,9 @@ import AFNetworking
             UIApplication.shared.open(url!)
         }
     }
-
-
     
    ///显示界面
-    public func showView(){
+    private func showView(){
         let window = UIApplication.shared.keyWindow
         window?.addSubview(self)
         self.layoutIfNeeded()
@@ -125,7 +123,7 @@ import AFNetworking
     }
     
     ///关闭界面
-    public func hideView(){
+    private func hideView(){
         self.layoutIfNeeded()
         UIView.animate(withDuration: 0.25) {
         } completion: { finished in
@@ -148,7 +146,7 @@ import AFNetworking
     }
  
     
-    func SystemUpadat (){
+  private func SystemUpadate (){
         
         let infoDictionary = Bundle.main.infoDictionary! as NSDictionary
         let locVersion = infoDictionary.object(forKey: "CFBundleShortVersionString") as! String
@@ -191,7 +189,7 @@ import AFNetworking
         }
     }
 
-    func compareOnlineVersion(online:String,local:String) -> ComparisonResult {
+  private func compareOnlineVersion(online:String,local:String) -> ComparisonResult {
         
         let onlineArray = online.components(separatedBy: ".") as NSArray
         let localArray = local.components(separatedBy: ".") as NSArray
@@ -213,8 +211,5 @@ import AFNetworking
         return .orderedSame
     }
 
-    
-
-    
 }
 
