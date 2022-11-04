@@ -85,7 +85,7 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
     [params setObject:self.ID forKey:@"id"];
     WS(weakself);
-    [XJHttpTool post:FORMAT(@"%@/%@",LL_StorageTakeUrl,self.ID) method:GET params:params isToken:NO success:^(id  _Nonnull responseObj) {
+    [XJHttpTool post:FORMAT(@"%@/%@",LL_StorageTakeUrl,self.ID) method:GET params:params isToken:YES success:^(id  _Nonnull responseObj) {
         
         NSString *code = responseObj[@"code"];
 //        [MBProgressHUD showSuccess:responseObj[@"msg"]];

@@ -34,6 +34,8 @@
 @property( NS_NONATOMIC_IPHONEONLY) CLLocationCoordinate2D coordinateplace;
 
 @property (nonatomic,copy) NSString *textStr;/** <#class#> **/
+
+@property (nonatomic ,assign) CGFloat mapViewHeight;
 @end
 
 @implementation LLMapChoiceViewController
@@ -45,7 +47,8 @@
     self.customNavBar.title = @"所在位置";
 //    [self.customNavBar wr_setRightButtonWithTitle:@"确定" titleColor:Main_Color];
     [self setupMapView];
-    
+    CGFloat top = SCREEN_top;
+    _mapViewHeight = KScreenHeight-top;
 
     WS(weakself);
     self.customNavBar.onClickLeftButton = ^{
@@ -333,6 +336,21 @@
             weakself.isMapViewRegionChangedFromTableView = YES;
             weakself.textStr = text;
             [weakself choicetetxt:text];
+        };
+        
+        _addressTabelView.textFieldDidBegin = ^(NSString * _Nonnull text) {
+            [weakself.addressTabelView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.right.bottom.equalTo(0);
+                make.height.equalTo(weakself.mapViewHeight);
+            }];
+        };
+        _addressTabelView.textFieldDidEnd = ^(NSString * _Nonnull text) {
+            
+            [weakself.addressTabelView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.right.bottom.equalTo(0);
+                make.height.equalTo(CGFloatBasedI375(350)+60);
+            }];
+           
         };
         _addressTabelView.choicePoi = ^(AMapPOI * _Nonnull poi) {
             if(weakself.isChat){

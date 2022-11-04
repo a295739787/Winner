@@ -19,7 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) void(^choicePoi)(AMapPOI *poi);/** <#class#> **/
 @property (nonatomic,copy) void(^textblock)(NSString *text);/** <#class#> **/
-
+///弹出键盘
+@property (nonatomic,copy) void(^textFieldDidBegin)(NSString *text);
+///回退键盘
+@property (nonatomic,copy) void(^textFieldDidEnd)(NSString *text);
 @end
 
 NS_ASSUME_NONNULL_END

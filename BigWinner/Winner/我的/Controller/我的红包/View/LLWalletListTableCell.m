@@ -87,7 +87,7 @@
     }else if ([_listModel.type intValue] == 3){
         _typeNameLabel.text = @"回购商品";
     }else if ([_listModel.type intValue] == 4){
-        _typeNameLabel.text = @"配送任务库存金额反还";
+        _typeNameLabel.text = @"配送任务库存金额返还";
     }else if ([_listModel.type intValue] == 5){
         _typeNameLabel.text = @"配送任务佣金奖励";
     }else if ([_listModel.type intValue] == 6){

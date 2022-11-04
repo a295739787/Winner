@@ -140,8 +140,8 @@ static NSString *const LLocationCellid = @"LLocationCell";
            textfield.placeholder = @"搜索";
         
         [textfield addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-
-
+        [textfield addTarget:self action:@selector(textFieldDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
+        [textfield addTarget:self action:@selector(textFieldDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
 
     }
     return _searchBarView;
@@ -149,6 +149,16 @@ static NSString *const LLocationCellid = @"LLocationCell";
 - (void) textFieldDidChange:(UITextField*) textfield {
     if(self.textblock){
         self.textblock(textfield.text);
+    }
+}
+- (void)textFieldDidBegin:(UITextField*) textfield {
+    if (self.textFieldDidBegin) {
+        self.textFieldDidBegin(@"开始");
+    }
+}
+- (void)textFieldDidEnd:(UITextField*) textfield {
+    if (self.textFieldDidEnd) {
+        self.textFieldDidEnd(@"结束");
     }
 }
 @end
