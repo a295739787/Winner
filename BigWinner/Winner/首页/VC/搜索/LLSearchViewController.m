@@ -12,7 +12,7 @@
 #import "LLSearchResultViewController.h"
 static NSString *const LLMainCellid = @"LLMainCell";
 static NSString *const LLSearchCellid = @"LLSearchCell";
-@interface LLSearchViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface LLSearchViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate>
 @property (nonatomic,strong)UICollectionView * collectionView;
 @property (nonatomic,strong)UICollectionViewFlowLayout * collectionLayout;
 @property (nonatomic,strong) NSMutableArray *historyArray;/** <#class#> **/
@@ -37,7 +37,7 @@ static NSString *const LLSearchCellid = @"LLSearchCell";
     WS(weakself);
     CGFloat orY = CGFloatBasedI375(25);
     if([NSString isPhoneXxxx]){
-        orY += CGFloatBasedI375(40);
+        orY += CGFloatBasedI375(20);
     }
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(SCREEN_top);
@@ -62,8 +62,9 @@ static NSString *const LLSearchCellid = @"LLSearchCell";
     }];
 }
 -(void)clickRecult{
-    [self saveHistoryAdjustLocation:  self.titlelable.text ];
+    [self saveHistoryAdjustLocation:self.titlelable.text];
 }
+#pragma  mark -textField 点击与代理发放
 - (void) textFieldDidChange:(id) sender {
     UITextField *textField = (UITextField *)sender;
     NSLog(@"textField == %@",textField.text);
@@ -77,6 +78,15 @@ static NSString *const LLSearchCellid = @"LLSearchCell";
         [self.collectionView reloadData];
     }
 }
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [self saveHistoryAdjustLocation:self.titlelable.text];
+
+    [textField resignFirstResponder];
+
+    return YES;
+}
+
 - (void)saveHistoryAdjustLocation:(NSString *)searchText {
     if(searchText.length > 0){
     [self.historyArray containsObject:searchText] ? ([self.historyArray removeObject:searchText]) : nil;
@@ -221,8 +231,10 @@ static NSString *const LLSearchCellid = @"LLSearchCell";
     if(!_titlelable){
         _titlelable =[[UITextField alloc]init];
         _titlelable.placeholder = @"搜索商品名称 ";
+        _titlelable.returnKeyType = UIReturnKeySearch;
         _titlelable.textColor = [UIColor colorWithHexString:@"#333333"];
         _titlelable.font = [UIFont systemFontOfSize:CGFloatBasedI375(11)];
+        _titlelable.delegate = self;
         [self.backImage addSubview:self.titlelable];
         [_titlelable addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }

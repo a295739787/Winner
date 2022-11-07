@@ -275,6 +275,7 @@
     }else if(model.type == 1){
         LLGoodDetailViewController *vc = [[LLGoodDetailViewController alloc]init];
         vc.ID = model.goodsId;
+        vc.status = RoleStatusStore;
         [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
     }else if(model.type == 2){
         NSString *url = model.link;

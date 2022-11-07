@@ -91,8 +91,13 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
     [params setObject:@(10) forKey:@"pageSize"];
     [params setObject:@"" forKey:@"sidx"];
     [params setObject:@"asc" forKey:@"sort"];
-    [params setObject:@(1) forKey:@"addrType"];
-
+    
+    if(_status == RoleStatusStockPeisong){
+        [params setObject:@(1) forKey:@"addrType"];
+    }else{
+        [params setObject:@(2) forKey:@"addrType"];
+    }
+    
     [XJHttpTool post:L_adressListUrl method:GET params:params isToken:YES success:^(id  _Nonnull responseObj) {
         
         NSString *code = responseObj[@"code"];
@@ -405,7 +410,11 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
     if(self.addressModel){
         LLMeAdressController *vc = [[LLMeAdressController alloc]init];
         vc.isChoice = YES;
-        vc.addressType = LLMeAdressDelivery;
+        if (_status == RoleStatusStockPeisong) {
+            vc.addressType = LLMeAdressLogis;
+        }else{
+            vc.addressType = LLMeAdressDelivery;
+        }
         vc.getAressBlock = ^(LLGoodModel * _Nonnull model) {
             weakself.addressModel = model;
 //            if(self.tagindex == 1){
@@ -418,6 +427,11 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
     }else{
         WS(weakself);
         LLMeAdressEditController *vc = [[LLMeAdressEditController alloc]init];
+        if (_status == RoleStatusStockPeisong) {
+            vc.options = MeAddressOptionsLogis;
+        }else{
+            vc.options = MeAddressOptionsDelivery;
+        }
         vc.adressType = 300;
         vc.getAddressBlock = ^{
             [weakself getAdressListUrl];

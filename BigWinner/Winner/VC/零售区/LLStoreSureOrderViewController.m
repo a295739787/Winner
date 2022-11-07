@@ -43,7 +43,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
 }
 
 #pragma mark--获取地址列表
--(void)getAdressListUrl:(BOOL)isLoad addressType:(int)type{
+-(void)getAdressListUrl:(BOOL)isLoad addressType:(NSInteger)type{
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:@"" forKey:@"keyword"];
     [params setObject:@(10) forKey:@"pageSize"];
@@ -377,6 +377,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
             }else{
                 WS(weakself);
                 LLMeAdressEditController *vc = [[LLMeAdressEditController alloc]init];
+                vc.options = MeAddressOptionsLogis;
                 vc.adressType = 300;
                 vc.getAddressBlock = ^{
                     [weakself getAdressListUrl:YES addressType:1];
@@ -406,6 +407,7 @@ static NSString *const LLStoreSureOrderViewDeliverCellid = @"LLStoreSureOrderVie
       
                 LLMeAdressEditController *vc = [[LLMeAdressEditController alloc]init];
                 vc.adressType = 300;
+                vc.options = MeAddressOptionsDelivery;
                 vc.getAddressBlock = ^{
                     [weakself getAdressListUrl:YES addressType:2];
                 };

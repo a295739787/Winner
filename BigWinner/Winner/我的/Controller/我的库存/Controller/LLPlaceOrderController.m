@@ -201,6 +201,7 @@
   
             LLMeAdressEditController *vc = [[LLMeAdressEditController alloc]init];
             vc.adressType = 300;
+            vc.options = MeAddressOptionsLogis;
             vc.getAddressBlock = ^{
                 [weakself getAdressListUrl];
             };
