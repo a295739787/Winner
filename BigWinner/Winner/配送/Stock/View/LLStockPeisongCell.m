@@ -7,10 +7,12 @@
 
 #import "LLStockPeisongCell.h"
 @interface LLStockPeisongCell ()
+@property (nonatomic ,strong) UIView *mainView;
 @property(nonatomic,strong)UIImageView *showImage;
 @property(nonatomic,strong)UILabel *titlelable;
 @property(nonatomic,strong)UILabel *attrlable;
 @property (nonatomic,strong) UIButton *sureButton;/** <#class#> **/
+@property (nonatomic,strong) UIButton *stockDetailButton;
 @property(nonatomic,strong)UILabel *stocklable;
 @property (nonatomic,strong) UIView *lineView;/** <#class#> **/
 @property (nonatomic,strong) UILabel *pricelable;/** <#class#> **/
@@ -32,14 +34,20 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor HexString:@"#F2F2F2"];
         [self setLayout];
     }
     return self;
 }
 -(void)setLayout{
-    WS(weakself);
  
+    [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.offset(10);
+        make.right.offset(-10);
+        make.bottom.offset(0);
+    }];
+    
+    WS(weakself);
     [self.showImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(CGFloatBasedI375(15));
         make.top.offset(CGFloatBasedI375(15));
@@ -81,17 +89,25 @@
         make.right.offset(-CGFloatBasedI375(15));
 
     }];
+    
     [self.sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-CGFloatBasedI375(15));
         make.bottom.offset(-CGFloatBasedI375(18));
         make.height.mas_equalTo(CGFloatBasedI375(30));
-        make.width.mas_equalTo(CGFloatBasedI375(70));
+        make.width.mas_equalTo(CGFloatBasedI375(80));
     }];
-    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.offset(-CGFloatBasedI375(0));
-        make.bottom.top.offset(-CGFloatBasedI375(0));
-        make.height.mas_equalTo(CGFloatBasedI375(1));
+    
+    [self.stockDetailButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakself.sureButton.mas_left).offset(-10);
+        make.bottom.offset(-CGFloatBasedI375(18));
+        make.height.mas_equalTo(CGFloatBasedI375(30));
+        make.width.mas_equalTo(CGFloatBasedI375(80));
     }];
+//    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.offset(-CGFloatBasedI375(0));
+//        make.bottom.top.offset(-CGFloatBasedI375(0));
+//        make.height.mas_equalTo(CGFloatBasedI375(1));
+//    }];
 }
 
 -(void)setModel:(LLGoodModel *)model{
@@ -103,10 +119,20 @@
 
     self.stocklable.text = FORMAT(@"库存:%@  |  待入库: %@",_model.goodsNum,_model.stayStock);
 }
+-(UIView *)mainView{
+    if (!_mainView) {
+        _mainView = [[UIView alloc] init];
+        _mainView.backgroundColor = [UIColor whiteColor];
+        _mainView.layer.masksToBounds = YES;
+        _mainView.layer.cornerRadius = 5;
+        [self.contentView addSubview:self.mainView];
+    }
+    return  _mainView;
+}
 -(UILabel *)attrlable{
     if(!_attrlable){
         _attrlable = [JXUIKit labelWithBackgroundColor:[UIColor clearColor] textColor:[UIColor colorWithHexString:@"#999999"] textAlignment:NSTextAlignmentLeft numberOfLines:1 fontSize:CGFloatBasedI375(12) font:[UIFont systemFontOfSize:CGFloatBasedI375(14)] text:@"1支装(500ML)"];
-        [self.contentView addSubview:self.attrlable];
+        [self.mainView addSubview:self.attrlable];
     }
     return _attrlable;
 }
@@ -117,7 +143,7 @@
         _showImage.clipsToBounds = YES;
         _showImage.image =[UIImage imageNamed:@"sp1"];
         _showImage.backgroundColor = [UIColor colorWithHexString:@"#F5F5F5"];
-        [self.contentView addSubview:self.showImage];
+        [self.mainView addSubview:self.showImage];
     }
     return _showImage;
 }
@@ -128,7 +154,7 @@
         _titlelable.textColor = [UIColor colorWithHexString:@"#333333"];
         _titlelable.textAlignment = NSTextAlignmentLeft;
         _titlelable.font = [UIFont systemFontOfSize:CGFloatBasedI375(13)];
-        [self.contentView addSubview:self.titlelable];
+        [self.mainView addSubview:self.titlelable];
         _titlelable.numberOfLines =2;
     }
     return _titlelable;
@@ -136,28 +162,45 @@
 -(UILabel *)stocklable{
     if(!_stocklable){
         _stocklable = [JXUIKit labelWithBackgroundColor:[UIColor clearColor] textColor:[UIColor colorWithHexString:@"#999999"] textAlignment:NSTextAlignmentLeft numberOfLines:2 fontSize:CGFloatBasedI375(14) font:[UIFont systemFontOfSize:CGFloatBasedI375(14)] text:@"库存:1  |  待入库: 0"];
-        [self.contentView addSubview:self.stocklable];
+        [self.mainView addSubview:self.stocklable];
        
     }
     return _stocklable;
 }
+
+-(UIButton *)stockDetailButton{
+    if(!_stockDetailButton){
+        _stockDetailButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _stockDetailButton.layer.cornerRadius = CGFloatBasedI375(15);
+        _stockDetailButton.layer.masksToBounds = YES;
+        _stockDetailButton.layer.borderWidth = 1;
+        _stockDetailButton.layer.borderColor = [UIColor HexString:@"#999999"].CGColor;
+        _stockDetailButton.tag = 101;
+        [_stockDetailButton setTitle:@"库存明细" forState:UIControlStateNormal];
+        _stockDetailButton.backgroundColor = [UIColor whiteColor];
+        NSLog(@"[UserModel sharedUserInfo].userIdentity  == %ld",[UserModel sharedUserInfo].userIdentity );
+        [_stockDetailButton setTitleColor:[UIColor colorWithHexString:@"#443415"] forState:UIControlStateNormal];
+        _stockDetailButton.titleLabel.font = [UIFont systemFontOfSize:CGFloatBasedI375(14)];
+        [_stockDetailButton addTarget:self action:@selector(clickTap:) forControlEvents:UIControlEventTouchUpInside];
+        [self.mainView addSubview:self.stockDetailButton];
+    }
+    return _stockDetailButton;
+}
+
 -(UIButton *)sureButton{
     if(!_sureButton){
         _sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _sureButton.layer.cornerRadius = CGFloatBasedI375(15);
         _sureButton.layer.masksToBounds = YES;
+        _sureButton.tag = 102;
         [_sureButton setTitle:@"去采购" forState:UIControlStateNormal];
         _sureButton.backgroundColor = Main_Color;
-        _sureButton.userInteractionEnabled = NO;
-        _sureButton.hidden = NO;
         NSLog(@"[UserModel sharedUserInfo].userIdentity  == %ld",[UserModel sharedUserInfo].userIdentity );
-        if([UserModel sharedUserInfo].isShop){
-            _sureButton.hidden = YES;
-        }
+
         [_sureButton setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _sureButton.titleLabel.font = [UIFont systemFontOfSize:CGFloatBasedI375(14)];
-//        [_sureButton addTarget:self action:@selector(clickTap:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:self.sureButton];
+        [_sureButton addTarget:self action:@selector(clickTap:) forControlEvents:UIControlEventTouchUpInside];
+        [self.mainView addSubview:self.sureButton];
     }
     return _sureButton;
 }
@@ -165,7 +208,7 @@
     if(!_pricelable){
         _pricelable = [JXUIKit labelWithBackgroundColor:[UIColor clearColor] textColor:[UIColor colorWithHexString:@"#443415"] textAlignment:NSTextAlignmentLeft numberOfLines:1 fontSize:CGFloatBasedI375(14) font:[UIFont boldFontWithFontSize:CGFloatBasedI375(14)] text:@"¥ 119.00"];
         _pricelable.hidden = YES;
-        [self.contentView addSubview:self.pricelable];
+        [self.mainView addSubview:self.pricelable];
     }
     return _pricelable;
 }
@@ -173,11 +216,14 @@
     if(!_lineView){
         _lineView = [[UIView alloc]init];
         _lineView.backgroundColor = BG_Color;
-        [self.contentView addSubview:_lineView];
+//        [self.contentView addSubview:_lineView];
     }
     return _lineView;;
 }
 -(void)clickTap:(UIButton *)sender{
-    
+  
+    if (self.delegate && [self.delegate respondsToSelector:@selector(joinStockDetailAndShop:dataSource:)]) {
+        [self.delegate joinStockDetailAndShop:sender dataSource:self.model];
+    }
 }
 @end

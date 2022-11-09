@@ -27,13 +27,13 @@
 #define DEVICEID UIDevice.currentDevice.identifierForVendor.UUIDString
 
 //  线下
-#define API_HOST @"http://api_test.dayingjiamall.com"
-#define API_IMAGEHOST @"http://api_test.dayingjiamall.com/api/file/Image/images/"
-#define apiQiUrl @"http://api_test.dayingjiamall.com"
+//#define API_HOST @"http://api_test.dayingjiamall.com"
+//#define API_IMAGEHOST @"http://api_test.dayingjiamall.com/api/file/Image/images/"
+//#define apiQiUrl @"http://api_test.dayingjiamall.com"
 //  线上
-//#define API_HOST @"https://api.dayingjiamall.com"
-//#define API_IMAGEHOST @"https://api.dayingjiamall.com/api/file/Image/images/"
-//#define apiQiUrl @"https://api.dayingjiamall.com"
+#define API_HOST @"https://api.dayingjiamall.com"
+#define API_IMAGEHOST @"https://api.dayingjiamall.com/api/file/Image/images/"
+#define apiQiUrl @"https://api.dayingjiamall.com"
 
 
 

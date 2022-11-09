@@ -225,7 +225,7 @@
                 [weakself.navigationController pushViewController:walletVC animated:YES];
             }else if (index == 200){
                 //我的库存
-                LLStorageController *storageVC = [[LLStorageController alloc]init];
+                StockDetaileViewController *storageVC = [[StockDetaileViewController alloc]init];
                 [weakself.navigationController pushViewController:storageVC animated:YES];
             }else if (index == 201){
                 if(weakself.tagsindex == 1){

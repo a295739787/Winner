@@ -8,7 +8,8 @@
 #import "LLStockPeisongViewController.h"
 #import "LLStockPeisongCell.h"
 #import "LLMainPeisongHeadView.h"
-@interface LLStockPeisongViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "Winner-Swift.h"
+@interface LLStockPeisongViewController ()<UITableViewDelegate,UITableViewDataSource,LLStockPeisongDelegate>
 @property (nonatomic,strong) LLBaseTableView *tableView;/** <#class#> **/
 @property (nonatomic,strong) NSMutableArray *dataArr;/** <#class#> **/
 @property (nonatomic,assign) NSInteger page;/** class **/
@@ -98,41 +99,55 @@ static NSString *const LLStockPeisongCellid = @"LLStockPeisongCell";
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArr.count;
 }
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return CGFloatBasedI375(120);
+    return CGFloatBasedI375(190);
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.001;
+    return 10;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return CGFloatBasedI375(0.001);
+    return 0.01;
 }
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CGFloatBasedI375(10))];
-    return header;
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    UIView *header = [[UIView alloc]init];
+//    return header;
+//}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *footer = [[UIView alloc]init];
+    return footer;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LLStockPeisongCell *cell = [tableView dequeueReusableCellWithIdentifier:LLStockPeisongCellid];
     if(self.dataArr.count){
         cell.model = self.dataArr[indexPath.row];
     }
+    cell.delegate = self;
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if([UserModel sharedUserInfo].isShop){
-        return;;
-    }
-    LLGoodDetailViewController *vc = [[LLGoodDetailViewController alloc]init];
-    vc.status = RoleStatusStockPeisong;
-    LLGoodModel *model = self.dataArr[indexPath.row];
-    vc.ID = model.ID;
-    vc.stocks = model.stayStock;
-    vc.distDistGoodsId = model.ID;
-    [self.navigationController pushViewController:vc animated:YES];
+   
+    
 }
+
+-(void)joinStockDetailAndShop:(UIButton *)sender dataSource:(LLGoodModel *)model{
+    
+    if (sender.tag == 101) {
+        
+        StockDetaileViewController *detail = [[StockDetaileViewController alloc]init];
+        [self.navigationController pushViewController:detail animated:YES];
+
+    }else{
+        
+        LLGoodDetailViewController *vc = [[LLGoodDetailViewController alloc]init];
+        vc.status = RoleStatusStockPeisong;
+        vc.ID = model.ID;
+        vc.stocks = model.stayStock;
+        vc.distDistGoodsId = model.ID;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+}
+
 #pragma mark  懒加载
 -(UITableView *)tableView{
     if(!_tableView){

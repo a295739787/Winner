@@ -200,6 +200,7 @@
             }else if (index == 101){
                 //收货地址
                 LLMeAdressController *adressVC = [[LLMeAdressController alloc]init];
+                adressVC.addressType = LLMeAdressLogis;
                 [weakself.navigationController pushViewController:adressVC animated:YES];
             }else if (index == 102){
                 //系统设置
@@ -289,6 +290,7 @@
         }else if (index == 101){
             //收货地址
             LLMeAdressController *adressVC = [[LLMeAdressController alloc]init];
+            adressVC.addressType = LLMeAdressLogis;
             [weakself.navigationController pushViewController:adressVC animated:YES];
         }else if (index == 102){
             //系统设置

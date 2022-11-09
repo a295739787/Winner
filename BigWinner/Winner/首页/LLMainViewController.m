@@ -190,7 +190,7 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
     }];
     CGFloat orY = CGFloatBasedI375(32);
     if([NSString isPhoneXxxx]){
-        orY += CGFloatBasedI375(28);
+        orY += 16;
     }
     [self.redLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(orY);
