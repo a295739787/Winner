@@ -31,10 +31,10 @@ import AFNetworking
         self.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
          contentH = XYSystemUpdate.getLabelHeight(byWidth: self.frame.size.width-70, title: contentString, font: UIFont.systemFont(ofSize: 15))
-        if contentH < 50 {
-            contentH = 50
-        }else if contentH > 150{
-            contentH = 150
+        if contentH < 100 {
+            contentH = 100
+        }else if contentH > 200{
+            contentH = 200
         }
         
         let backViewH = 60+40+1+contentH

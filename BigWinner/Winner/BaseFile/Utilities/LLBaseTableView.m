@@ -8,6 +8,7 @@
 
 #import "LLBaseTableView.h"
 #import "LLNoticeContentView.h"
+#import "Winner-Swift.h"
 
 @interface LLBaseTableView (){
     LLNoticeContentView *_noContentView;

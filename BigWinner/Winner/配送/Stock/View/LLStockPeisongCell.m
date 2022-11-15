@@ -66,7 +66,7 @@
         make.right.offset(-CGFloatBasedI375(15));
 
     }];
-    if([UserModel sharedUserInfo].isClerk){//是否存在配送员
+//    if([UserModel sharedUserInfo].isClerk){//是否存在配送员
         self.pricelable.hidden = NO;
         [self.attrlable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
@@ -74,15 +74,15 @@
             make.right.offset(-CGFloatBasedI375(15));
             
         }];
-    }else{//是否存在推广点
-        self.pricelable.hidden = YES;
-        [self.attrlable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
-            make.top.equalTo(weakself.titlelable.mas_bottom).offset(CGFloatBasedI375(5));
-            make.right.offset(-CGFloatBasedI375(15));
-            
-        }];
-    }
+//    }else{//是否存在推广点
+//        self.pricelable.hidden = NO;
+//        [self.attrlable mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
+//            make.top.equalTo(weakself.titlelable.mas_bottom).offset(CGFloatBasedI375(5));
+//            make.right.offset(-CGFloatBasedI375(15));
+//            
+//        }];
+//    }
     [self.stocklable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
         make.top.equalTo(weakself.attrlable.mas_bottom).offset(CGFloatBasedI375(5));

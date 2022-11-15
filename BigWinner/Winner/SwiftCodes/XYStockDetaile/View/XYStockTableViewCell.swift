@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StockTableViewCell: UITableViewCell {
+class XYStockTableViewCell: UITableViewCell {
 
     var noteLabel = UILabel()
     var sumLabel = UILabel()
@@ -15,6 +15,8 @@ class StockTableViewCell: UITableViewCell {
     var timeLabel = UILabel()
     var lineView = UIView()
 
+    var model = StockModel()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -69,6 +71,16 @@ class StockTableViewCell: UITableViewCell {
         orderNumberLabel.frame = CGRect(x: 16, y: noteLabel.frame.maxY+10, width: (self.frame.size.width-32)/2, height: 10)
         timeLabel.frame = CGRect(x: orderNumberLabel.frame.maxX, y: sumLabel.frame.maxY+10, width: (self.frame.size.width-32)/2, height: 10)
         lineView.frame = CGRect(x: 15, y: self.frame.size.height-1, width: (self.frame.size.width-30), height: 1)
+        
+        noteLabel.text = model.type
+        let num = model.goodsNum
+        if num > 0 {
+            sumLabel.text = "+\(model.goodsNum)"
+        }else{
+            sumLabel.text = "\(model.goodsNum)"
+        }
+        orderNumberLabel.text = model.orderNo
+        timeLabel.text = model.createTime
     }
     
     

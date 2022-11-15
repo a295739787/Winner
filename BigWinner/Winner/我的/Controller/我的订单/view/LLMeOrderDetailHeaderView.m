@@ -636,6 +636,12 @@
 
 @property (nonatomic,strong)UIView *bottomView;
 
+@property (nonatomic ,strong) UIView *infoView;
+@property (nonatomic ,strong) UIImageView *serviceImageView;
+@property (nonatomic ,strong) UILabel *serviceLabel;
+@property (nonatomic ,strong) UIButton *serviceButton;
+
+
 @end
 
 @implementation LLmeOrderDetailInfoFooterView
@@ -653,8 +659,72 @@
     self.backgroundColor = [UIColor clearColor];
     [self addSubview:self.bottomView];
 }
-
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    
+    if (_showInfo == YES) {
+        [self addSubview: self.infoView];
+        [self.infoView addSubview:self.questionLabel];
+        [self.infoView addSubview:self.serviceImageView];
+        [self.infoView addSubview:self.serviceLabel];
+        [self.infoView addSubview:self.serviceButton];
+        
+        self.infoView.frame = CGRectMake(0, CGRectGetMaxY(self.bottomView.frame)+20, self.frame.size.width, 50);
+        self.questionLabel.frame = CGRectMake(self.infoView.frame.size.width * 0.264, (self.infoView.frame.size.height-14)/2, 95, 14);
+        self.serviceImageView.frame = CGRectMake(CGRectGetMaxX(self.questionLabel.frame)+7, (self.infoView.frame.size.height-14)/2, 21, 18);
+        self.serviceLabel.frame = CGRectMake(CGRectGetMaxX(self.serviceImageView.frame)+5, (self.infoView.frame.size.height-14)/2, 60, 14);
+        
+        self.serviceButton.frame = CGRectMake(0, 0, self.infoView.frame.size.width, self.infoView.frame.size.height);
+    }
+}
+-(void)buttonCilck:(UIButton *)sender{
+    if (self.serviceBlock) {
+        self.serviceBlock();
+    }
+}
 #pragma mark--lazy
+- (UIView *)infoView{
+    if (!_infoView) {
+        _infoView = [[UIView alloc]init];
+        _infoView.backgroundColor = UIColor.clearColor;
+    }
+    return  _infoView;
+}
+- (UIButton *)serviceButton{
+    if (!_serviceButton) {
+        _serviceButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [_serviceButton addTarget:self action:@selector(buttonCilck:) forControlEvents:(UIControlEventTouchUpInside)];
+
+    }
+    return _serviceButton;
+}
+- (UILabel *)questionLabel{
+    if (!_questionLabel) {
+        _questionLabel = [[UILabel alloc]init];
+        _questionLabel.textColor = [UIColor HexString:@"#999999"];
+        _questionLabel.font = [UIFont systemFontOfSize:14];
+        _questionLabel.textAlignment = NSTextAlignmentLeft;
+    }
+    return _questionLabel;
+}
+- (UIImageView *)serviceImageView{
+    if (!_serviceImageView) {
+        _serviceImageView = [[UIImageView alloc]init];
+        _serviceImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _serviceImageView.image = [UIImage imageNamed:@"service_red"];
+    }
+    return _serviceImageView;
+}
+- (UILabel *)serviceLabel{
+    if (!_serviceLabel) {
+        _serviceLabel = [[UILabel alloc]init];
+        _serviceLabel.textColor = [UIColor HexString:@"#333333"];
+        _serviceLabel.font = [UIFont systemFontOfSize:14];
+        _serviceLabel.textAlignment = NSTextAlignmentLeft;
+        _serviceLabel.text = @"联系客服";
+    }
+    return _serviceLabel;
+}
 -(UIView *)bottomView{
     if (!_bottomView) {
         _bottomView = [[UIView alloc]initWithFrame:CGRectMake(CGFloatBasedI375(10), 0, SCREEN_WIDTH - CGFloatBasedI375(20), CGFloatBasedI375(15))];

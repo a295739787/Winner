@@ -94,7 +94,8 @@
 -(void)setModel:(LLGoodModel *)model{
     _model = model;
     [self.showImage  sd_setImageWithUrlString:FORMAT(@"%@",_model.coverImage) placeholderImage:[UIImage imageNamed:morenpic]];
-    _delable.text = FORMAT(@"销量%@",_model.realSalesVolume);
+    int allSales = _model.realSalesVolume.intValue+_model.salesVolume.intValue;
+    _delable.text = FORMAT(@"销量%d",allSales);
     _titlelable.text = _model.name;
     _pricelable.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont boldFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ Main_Color, Main_Color]];
     

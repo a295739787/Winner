@@ -18,7 +18,7 @@
 #import "LLOrderDeliverViewController.h"
 #import "LLMeOrderheaderView.h"
 #import "LLMeAdressController.h"
-
+#import "Winner-Swift.h"
 @interface LLMeOrderDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)UITableView *tableView;
@@ -452,20 +452,20 @@
             if(self.detailModel.taskStatus == 2){//待接单
                 return CGFloatBasedI375(180);
             }else{//其他状态
-                return CGFloatBasedI375(0.01);;
+                return CGFloatBasedI375(0.01);
             }
         }else if(self.detailModel.orderType.integerValue == 2){//惊喜红包
-            return CGFloatBasedI375(25);;
+            return CGFloatBasedI375(25);
         }else if(self.detailModel.expressType.integerValue == 2 && self.detailModel.orderType.integerValue == 1){//同城提货 待提货
             if((self.detailModel.taskStatus == 3 && self.detailModel.orderStatus.integerValue != 6) || self.detailModel.orderStatus.integerValue == 4){  //待提货  待评价
-                return CGFloatBasedI375(0.001);;
+                return CGFloatBasedI375(0.001);
             }
             return CGFloatBasedI375(160);
         }
         return CGFloatBasedI375(160);
     }else if (section == 3) {
         if(self.detailModel.orderStatus.integerValue == 7 && self.appOrderEvaluateVo.count){//所有已完成订单
-            return CGFloatBasedI375(25);;
+            return CGFloatBasedI375(95);
         }
         if(self.detailModel.orderType.integerValue == 3 && ( self.detailModel.taskStatus == 3 || self.detailModel.orderStatus.integerValue == 4)){//品鉴区域
             return CGFloatBasedI375(180);
@@ -473,15 +473,43 @@
             if((self.detailModel.taskStatus == 3 && self.detailModel.orderStatus.integerValue != 6)|| self.detailModel.orderStatus.integerValue == 4){  //待提货  待评价
                 return CGFloatBasedI375(180);
             }
-            return CGFloatBasedI375(0.0001);;
+            return CGFloatBasedI375(0.0001);
         }
-        return CGFloatBasedI375(0.0001);;
-    }else if (section == 2) {
-        return CGFloatBasedI375(25);;
+        return CGFloatBasedI375(0.0001);
     }
-    return CGFloatBasedI375(25);;
+    
+    if(self.detailModel.orderStatus.integerValue == 7 && self.appOrderEvaluateVo.count){//所有已完成订单
+        if (self.detailModel.expressType.integerValue == 1 && self.detailModel.orderType.integerValue == 2) {
+            if (section == 3) {
+                return CGFloatBasedI375(95);
+            }
+        }else{
+            if (section == 2) {
+                return CGFloatBasedI375(95);
+            }
+        }
+       
+    }
+    if(self.detailModel.expressType.integerValue == 1  && (self.detailModel.orderStatus.integerValue == 2 || self.detailModel.orderStatus.integerValue == 4) && self.detailModel.orderType.integerValue != 3){  //配送员，待发货,待评价,3=待收货
+        if (section == 2) {
+            return CGFloatBasedI375(95);
+        }
+    }
+    if(((self.detailModel.expressType.integerValue == 1 || self.detailModel.expressType.integerValue == 2) && self.detailModel.orderStatus.integerValue == 6)){  //交易关闭 取消订单
+        if (section == 2) {
+            return CGFloatBasedI375(95);
+        }
+    }
+    if((self.detailModel.taskStatus == 3 && self.detailModel.orderStatus.integerValue != 6)|| self.detailModel.orderStatus.integerValue == 4){  //待提货  待评价
+        if (section == 4) {
+            return CGFloatBasedI375(95);
+        }
+    }
+    
+    return CGFloatBasedI375(25);
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    WS(weakself);
     if (section == 0) {
         return nil;
     }else if (section == 1) {
@@ -516,8 +544,15 @@
         return  footerView;
     }else if (section == 3) {
         if(self.detailModel.orderStatus.integerValue == 7 && self.appOrderEvaluateVo.count){//所有已完成订单
+        
             LLmeOrderDetailInfoFooterView *footerView =  [[LLmeOrderDetailInfoFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
-            
+            footerView.showInfo = YES;
+            footerView.questionLabel.text = @"订单遇到问题？";
+            footerView.serviceBlock = ^{
+               
+                [weakself footViewJoinServiceView];
+                
+            };
             return  footerView;
         }
         if(self.detailModel.orderType.integerValue == 3 && ( self.detailModel.taskStatus == 3 || self.detailModel.orderStatus.integerValue == 4)){//品鉴区域
@@ -533,11 +568,58 @@
             }
             return  footerView;
         }
+    }else if (section == 2){
+        
+        if(self.detailModel.orderStatus.integerValue == 7 && self.appOrderEvaluateVo.count){//所有已完成订单
+            
+            LLmeOrderDetailInfoFooterView *footerView =  [[LLmeOrderDetailInfoFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
+            return  footerView;
+        }else{
+            
+            LLmeOrderDetailInfoFooterView *footerView =  [[LLmeOrderDetailInfoFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
+            footerView.showInfo = YES;
+            footerView.questionLabel.text = @"订单遇到问题？";
+            footerView.serviceBlock = ^{
+               
+                [weakself footViewJoinServiceView];
+                
+            };
+            return  footerView;
+        }
+        
     }
-    LLmeOrderDetailInfoFooterView *footerView =  [[LLmeOrderDetailInfoFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
     
-    return  footerView;
+    if(self.detailModel.taskStatus == 3 || self.detailModel.taskStatus == 4){
+        if (section == 4){
+            
+            LLmeOrderDetailInfoFooterView *footerView =  [[LLmeOrderDetailInfoFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
+            footerView.showInfo = YES;
+            footerView.questionLabel.text = @"订单遇到问题？";
+            footerView.serviceBlock = ^{
+               
+                [weakself footViewJoinServiceView];
+                
+            };
+            return  footerView;
+        }
+    }
+    
+    return nil;
 }
+
+#pragma  mark - 尾视图跳转客服
+-(void)footViewJoinServiceView{
+    
+    WS(weakself);
+    XYServiceTipsViewController *serviceVC = [[XYServiceTipsViewController alloc]init];
+    serviceVC.pushBlock = ^(UIViewController * view) {
+        [weakself.navigationController pushViewController:view animated:YES];
+    };
+    serviceVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    serviceVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:serviceVC animated:YES completion:nil];
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         return 0.1;

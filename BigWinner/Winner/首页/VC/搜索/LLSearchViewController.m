@@ -63,6 +63,7 @@ static NSString *const LLSearchCellid = @"LLSearchCell";
 }
 -(void)clickRecult{
     [self saveHistoryAdjustLocation:self.titlelable.text];
+    [self.titlelable resignFirstResponder];
 }
 #pragma  mark -textField 点击与代理发放
 - (void) textFieldDidChange:(id) sender {

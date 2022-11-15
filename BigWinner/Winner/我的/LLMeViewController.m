@@ -81,7 +81,7 @@
         self.commissinNoteView.content = self.conten;
         
     } failure:^(NSError * _Nonnull error) {
-     
+        
     }];
     
 }
@@ -91,19 +91,19 @@
         NSDictionary *data = responseObj[@"data"];
         self.tagsindex = [FORMAT(@"%@",data[@"content"])integerValue];
     } failure:^(NSError * _Nonnull error) {
-     
+        
     }];
     
 }
 
 -(void)header{
     if([UserModel sharedUserInfo].token.length > 0){
-  
+        
         [self getPersonalUrl];
         [self getHData];
     }else{
-    [AccessTool  removeUserInfo];
-    [UserModel resetModel:nil];
+        [AccessTool  removeUserInfo];
+        [UserModel resetModel:nil];
         self.personalModel  = nil;
         self.headerView.personalModel = self.personalModel;
         [self.tableView reloadData];
@@ -113,13 +113,13 @@
 
 #pragma mark - 一键登录点击其他号码登录
 -(void)joinOtherLoginView{
-
+    
     [OneKeyLoginTools signOutOneKeyLoginWithCompletion:^{
-
+        
         AppDelegate *dele = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [dele showLoginVc];
     }];
- 
+    
 }
 
 #pragma mark--getPersonalUrl
@@ -140,7 +140,7 @@
             self.topView.redLabel.hidden = NO;
             self.topView.redLabel.text = FORMAT(@"%ld",self.personalModel.messageNum);
         }
-   
+        
         
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
@@ -151,7 +151,7 @@
 }
 -(void)getPersonUrl{
     [self.guideView hidden];
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     WS(weakself);
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
     [params setValue:@"3" forKey:@"type"];//编辑类型（1昵称、2头像、3切换身份）
@@ -174,11 +174,11 @@
                     [dele loginPeisongVc];
                 }
             });
-           
-        
+            
+            
         });
-      
-
+        
+        
     } failure:^(NSError * _Nonnull error) {
         
     }];
@@ -186,13 +186,13 @@
 }
 #pragma mark--UITableViewDelegate,UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     if (indexPath.section == 0) {
         LLMeSectionTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLMeSectionTableCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -217,15 +217,15 @@
                 [weakself.navigationController pushViewController:walletVC animated:YES];
             }else if (index == 102){
                 //累计推广佣金
-//                LLMePromoteVC *promoteVC  = [[LLMePromoteVC alloc]init];
-//                promoteVC.content = weakself.conten;
-//                [weakself.navigationController pushViewController:promoteVC animated:YES];
+                //                LLMePromoteVC *promoteVC  = [[LLMePromoteVC alloc]init];
+                //                promoteVC.content = weakself.conten;
+                //                [weakself.navigationController pushViewController:promoteVC animated:YES];
                 LLWalletController *walletVC = [[LLWalletController alloc]init];
                 walletVC.balance = weakself.personalModel.totalConsumeRedPrice;
                 [weakself.navigationController pushViewController:walletVC animated:YES];
             }else if (index == 200){
                 //我的库存
-                StockDetaileViewController *storageVC = [[StockDetaileViewController alloc]init];
+                LLStorageController *storageVC = [[LLStorageController alloc]init];
                 [weakself.navigationController pushViewController:storageVC animated:YES];
             }else if (index == 201){
                 if(weakself.tagsindex == 1){
@@ -237,7 +237,7 @@
                     LLMePromoteController *vc = [[LLMePromoteController alloc]init];
                     [weakself.navigationController pushViewController:vc animated:YES];
                 }
-   
+                
             }else if (index == 0){
                 [weakself.commissinNoteView show];
             }
@@ -271,51 +271,59 @@
                 }
             }
         };
-         
+        
+        return cell;
+    }else if (indexPath.section == 2){
+        LLMeMoudleTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLMeMoudleTableCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.imgArray = @[@"jfsc",@"gmjl",@"hgzx",@"shdd",@"fpgl",@"xtsz"];
+        cell.titleArray = @[@"我的钱包",@"惊喜活动专区购买记录",@"回购中心",@"收货地址",@"发票信息",@"系统设置"];
+        WS(weakself);
+        cell.moudleBtnBlock = ^(NSInteger index) {
+            if([UserModel sharedUserInfo].token.length <= 0){
+                AppDelegate *dele = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [dele loginVc];
+                return ;
+            }
+            if (index == 100) {
+                //我的钱包
+                LLWalletController *walletVC = [[LLWalletController alloc]init];
+                walletVC.type = @"1";
+                walletVC.balance = self.personalModel.balance;
+                [weakself.navigationController pushViewController:walletVC animated:YES];
+            }else if (index == 101){
+                //惊喜活动购买记录
+                LLSurpriseRegBagRecordViewController *vc = [[LLSurpriseRegBagRecordViewController alloc]init];
+                [weakself.navigationController pushViewController:vc animated:YES];
+            }else if (index == 102){
+                //回购中心
+                LLMeBuyBackController *buybackVC = [[LLMeBuyBackController alloc]init];
+                [weakself.navigationController pushViewController:buybackVC animated:YES];
+            }else if (index == 103){
+                //我的地址
+                LLMeAdressController *adressVC = [[LLMeAdressController alloc]init];
+                adressVC.addressType = LLMeAdressAll;
+                [weakself.navigationController pushViewController:adressVC animated:YES];
+            }else if (index == 104){
+                //发票信息
+                LLBillInfoController *billInfoVC = [[LLBillInfoController alloc]init];
+                [weakself.navigationController pushViewController:billInfoVC animated:YES];
+            }else if (index == 105){
+                //系统设置
+                LLSystemSettingController *systemVC = [[LLSystemSettingController alloc]init];
+                [weakself.navigationController pushViewController:systemVC animated:YES];
+            }
+        };
+        
+        return cell;
+        
+    }else{
+        
+        XYMeServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XYServiceCell" forIndexPath:indexPath];
+        
         return cell;
     }
-    LLMeMoudleTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLMeMoudleTableCell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.imgArray = @[@"jfsc",@"gmjl",@"hgzx",@"shdd",@"fpgl",@"xtsz"];
-    cell.titleArray = @[@"我的钱包",@"惊喜活动专区购买记录",@"回购中心",@"收货地址",@"发票信息",@"系统设置"];
-    WS(weakself);
-    cell.moudleBtnBlock = ^(NSInteger index) {
-        if([UserModel sharedUserInfo].token.length <= 0){
-            AppDelegate *dele = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [dele loginVc];
-            return ;
-        }
-        if (index == 100) {
-            //我的钱包
-            LLWalletController *walletVC = [[LLWalletController alloc]init];
-            walletVC.type = @"1";
-            walletVC.balance = self.personalModel.balance;
-            [weakself.navigationController pushViewController:walletVC animated:YES];
-        }else if (index == 101){
-            //惊喜活动购买记录
-            LLSurpriseRegBagRecordViewController *vc = [[LLSurpriseRegBagRecordViewController alloc]init];
-            [weakself.navigationController pushViewController:vc animated:YES];
-        }else if (index == 102){
-            //回购中心
-            LLMeBuyBackController *buybackVC = [[LLMeBuyBackController alloc]init];
-            [weakself.navigationController pushViewController:buybackVC animated:YES];
-        }else if (index == 103){
-            //我的地址
-            LLMeAdressController *adressVC = [[LLMeAdressController alloc]init];
-            adressVC.addressType = LLMeAdressAll;
-            [weakself.navigationController pushViewController:adressVC animated:YES];
-        }else if (index == 104){
-            //发票信息
-            LLBillInfoController *billInfoVC = [[LLBillInfoController alloc]init];
-            [weakself.navigationController pushViewController:billInfoVC animated:YES];
-        }else if (index == 105){
-            //系统设置
-            LLSystemSettingController *systemVC = [[LLSystemSettingController alloc]init];
-            [weakself.navigationController pushViewController:systemVC animated:YES];
-        }
-    };
-     
-    return cell;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -324,11 +332,13 @@
         return CGFloatBasedI375(122);;
     }else if (indexPath.section == 2){
         return CGFloatBasedI375(49) * 6;
+    }else if (indexPath.section == 3){
+        return CGFloatBasedI375(49);
     }
     return 0.01;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 2) {
+    if (section == 3) {
         return CGFloatBasedI375(10);
     }else{
         return 0.01;
@@ -347,6 +357,24 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    if (indexPath.section == 3){
+        
+        if([UserModel sharedUserInfo].token.length <= 0){
+            AppDelegate *dele = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [dele loginVc];
+            return ;
+        }
+        WS(weakself);
+        XYServiceTipsViewController *serviceVC = [[XYServiceTipsViewController alloc]init];
+        serviceVC.pushBlock = ^(UIViewController * view) {
+            [weakself.navigationController pushViewController:view animated:YES];
+        };
+        serviceVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        serviceVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:serviceVC animated:YES completion:nil];
+        
+    }
+    
 }
 
 -(UITableView *)tableView{
@@ -360,6 +388,7 @@
         [_tableView registerClass:[LLMeSectionTableCell class] forCellReuseIdentifier:@"LLMeSectionTableCell"];
         [_tableView registerClass:[LLMeOrderTableCell class] forCellReuseIdentifier:@"LLMeOrderTableCell"];
         [_tableView registerClass:[LLMeMoudleTableCell class] forCellReuseIdentifier:@"LLMeMoudleTableCell"];
+        [_tableView registerClass:[XYMeServiceTableViewCell class] forCellReuseIdentifier:@"XYServiceCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         MJRefreshNormalHeader *header = [[MJRefreshNormalHeader alloc] init];
         [header setRefreshingTarget:self refreshingAction:@selector(header)];
@@ -381,19 +410,19 @@
         
         WS(weakself);
         _headerView.tapBlock = ^{
-                NSString *guide_psy_status = [[NSUserDefaults standardUserDefaults] objectForKey:@"guide_psy_status"];
-                if (guide_psy_status.length <= 0) {
-                    if( weakself.personalModel.isClerk){
-                        weakself.guideView.type = @"1";
-                    }else if( weakself.personalModel.isShop){
-                        weakself.guideView.type = @"2";
-                    }
-                    [weakself.guideView show];
-                }else{
-                    [weakself getPersonUrl];
+            NSString *guide_psy_status = [[NSUserDefaults standardUserDefaults] objectForKey:@"guide_psy_status"];
+            if (guide_psy_status.length <= 0) {
+                if( weakself.personalModel.isClerk){
+                    weakself.guideView.type = @"1";
+                }else if( weakself.personalModel.isShop){
+                    weakself.guideView.type = @"2";
                 }
-
-   
+                [weakself.guideView show];
+            }else{
+                [weakself getPersonUrl];
+            }
+            
+            
         };
         _headerView.personalBtnBlock = ^{
             if([UserModel sharedUserInfo].token.length <= 0){
@@ -406,7 +435,7 @@
             personalVC.personalModel = weakself.personalModel;
             [weakself.navigationController pushViewController:personalVC animated:YES];
         };
-
+        
         _headerView.loginBtnBlock = ^{
             
             [OneKeyLoginTools JoinOneKeyLoginPageWithView:weakself joinOtherLoginView:@selector(joinOtherLoginView)];
@@ -420,8 +449,8 @@
         _commissinNoteView = [[LLMeCommissionNoteView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         WS(weakself);
         _commissinNoteView.LLCommissionNoteBlock = ^{
-//            LLWalletController *walletVC = [[LLWalletController alloc]init];
-//            [weakself.navigationController pushViewController:walletVC animated:YES];
+            //            LLWalletController *walletVC = [[LLWalletController alloc]init];
+            //            [weakself.navigationController pushViewController:walletVC animated:YES];
             
             LLMePromoteVC *promoteVC  = [[LLMePromoteVC alloc]init];
             promoteVC.content = weakself.conten;

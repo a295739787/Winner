@@ -67,7 +67,7 @@
 #import "QMActivityView.h"
 #import "QMRegexHandle.h"
 #import "UIView+LoadState.h"
-
+#import "QMChatRoomViewController.h"
 //Vendors
 #import "Masonry.h"
 #import "UIImage+GIF.h"

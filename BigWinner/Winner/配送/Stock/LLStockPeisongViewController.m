@@ -133,7 +133,8 @@ static NSString *const LLStockPeisongCellid = @"LLStockPeisongCell";
     
     if (sender.tag == 101) {
         
-        StockDetaileViewController *detail = [[StockDetaileViewController alloc]init];
+        XYStockDetaileViewController *detail = [[XYStockDetaileViewController alloc]init];
+        detail.goodModel = model;
         [self.navigationController pushViewController:detail animated:YES];
 
     }else{

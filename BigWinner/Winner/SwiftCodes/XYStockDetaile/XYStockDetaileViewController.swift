@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StockDetaileViewController: LMHBaseViewController {
+@objcMembers class XYStockDetaileViewController: LMHBaseViewController {
     
     var topView = UIView()
     var topImageView = UIImageView()
@@ -26,10 +26,11 @@ class StockDetaileViewController: LMHBaseViewController {
     var changeLineView = UIView()
     
     /// 数据列表
-    var tableView = UITableView()
-    var dataArray = NSMutableArray()
-    var page  = 1
-    
+    var tableView = LLBaseTableView()
+    var dataArray = [StockModel]()
+    private var status : String = "1"
+    private var userType : String = ""
+    public var goodModel = LLGoodModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class StockDetaileViewController: LMHBaseViewController {
         self.customNavBar.title = "库存明细"
         self.view.backgroundColor = UIColor.hexString("#F0EFED")
         loadSubMainView()
+        loadMainNetwork()
     }
     
     /// 初始化界面
@@ -44,7 +46,7 @@ class StockDetaileViewController: LMHBaseViewController {
         let y =  UIApplication.shared.statusBarFrame.height+44
         
         topView = UIView.init()
-        topView.frame = CGRect(x: 10, y: y+10, width: UIScreen.main.bounds.width-20, height: 128)
+        topView.frame = CGRect(x: 10, y: y+10, width: UIScreen.main.bounds.width-20, height: 140)
         topView.backgroundColor = .white
         topView.layer.masksToBounds = true
         topView.layer.cornerRadius = 5
@@ -57,7 +59,7 @@ class StockDetaileViewController: LMHBaseViewController {
         topView.addSubview(topImageView)
         
         topGoddsInfoLabel = UILabel.init()
-        topGoddsInfoLabel.frame = CGRect(x: topImageView.frame.maxX+10, y: 13, width: (topView.frame.size.width-topImageView.frame.maxX-20), height: 30)
+        topGoddsInfoLabel.frame = CGRect(x: topImageView.frame.maxX+10, y: 13, width: (topView.frame.size.width-topImageView.frame.maxX-20), height: 40)
         topGoddsInfoLabel.numberOfLines = 2
         topGoddsInfoLabel.font = UIFont.systemFont(ofSize: 13)
         topGoddsInfoLabel.textColor = UIColor.hexString("#443415")
@@ -105,9 +107,11 @@ class StockDetaileViewController: LMHBaseViewController {
         topGoodsShopButton = UIButton.init(type: .custom)
         topGoodsShopButton.frame = CGRect(x: topView.frame.size.width-73, y: topView.frame.size.height-60, width: 60, height: 30)
         topGoodsShopButton.setBackgroundImage(UIImage(named: "topGoodsShopButton"), for: .normal)
+        topGoodsShopButton.setBackgroundImage(UIImage(named: "topGoodsShopButton"), for: .highlighted)
         topGoodsShopButton.setTitle("去采购", for: .normal)
         topGoodsShopButton.setTitleColor(UIColor.hexString("#FFFFFF"), for: .normal)
         topGoodsShopButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        topGoodsShopButton.addTarget(self, action: #selector(joinShopping(_:)), for: .touchUpInside)
         topView.addSubview(topGoodsShopButton)
         
         changeKuCunView = UIView.init()
@@ -142,54 +146,69 @@ class StockDetaileViewController: LMHBaseViewController {
         changeKuCunView.addSubview(changeLineView)
         
         
-        tableView = UITableView.init(frame: CGRect(x: 10, y:changeKuCunView.frame.maxY , width: UIScreen.main.bounds.width-20, height: UIScreen.main.bounds.height-changeKuCunView.frame.maxY), style: .plain)
+        tableView = LLBaseTableView.init(frame: CGRect(x: 10, y:changeKuCunView.frame.maxY , width: UIScreen.main.bounds.width-20, height: UIScreen.main.bounds.height-changeKuCunView.frame.maxY), style: .plain)
         tableView.backgroundColor = UIColor.hexString("#F0EFED")
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(StockTableViewCell.self, forCellReuseIdentifier: "StockCell")
+        tableView.register(XYStockTableViewCell.self, forCellReuseIdentifier: "StockCell")
         self.view.addSubview(tableView)
-        
-        tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(header))
-        tableView.mj_footer = MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: #selector(footer))
-
-    }
-    @objc func header() {
-        page = 1
-    }
-    @objc func footer() {
-        page += 1
-    }
     
+        tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(header))
+        
+        topImageView.sd_setImage(withUrlString: goodModel.coverImage, placeholderImageName: morenpic)
+        topGoddsInfoLabel.text = goodModel.name
+        topGoodsPriceLabel.attributedText = self.getAttribuStr(withStrings: ["￥","\(goodModel.purchasePrice)"], fonts: [UIFont.systemFont(ofSize: 12),UIFont.systemFont(ofSize: 16)], colors: [UIColor.hexString("#D40006"),UIColor.hexString("#D40006")])
+        topGoodsVolumeLabel.text = goodModel.specsValName
+        topGoodsKuCunLabel.text = "库存: \(goodModel.goodsNum)"
+        topGoodsDaiRuKuLabel.text = "待入库: \(goodModel.stayStock)"
+    }
+        
     /// 网络请求
     private func loadMainNetwork(){
         
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        if (delegate.status == .peisong) {
+            userType = "3"
+        }else{
+            userType = "2"
+        }
+        let userId = UserModel.sharedUserInfo().userId
         let param = NSMutableDictionary()
-        
-        XJHttpTool.posts("", method: GET, params: param, isToken: true) { [self] responseObj in
+        param.setValue(status, forKey: "status")
+        param.setValue(userId, forKey: "userId")
+        param.setValue(userType, forKey: "userType")
+        param.setValue(goodModel.goodsId, forKey: "goodId")
+
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        XJHttpTool.post(L_getUserStockDetail, method: GET, params: param, isToken: true) { [self] responseObj in
             
-            if (page == 1){
-                dataArray.removeAllObjects()
-            }
+            MBProgressHUD.hide(for: self.view, animated: true)
             
             let data = responseObj as! NSDictionary
-            let code = data.object(forKey: "code") as? Int
-            if code == 200 {
+            let msg = data.object(forKey: "msg") as? String
+            if msg == "Success" {
+                let listArray = data.object(forKey: "data") as! NSArray
+                let modelArray =  StockModel.mj_objectArray(withKeyValuesArray: listArray).copy() as? [StockModel]
+                dataArray = modelArray!
                 
             }
             
+            if(dataArray.count <= 0){
+                tableView.showEmpty(withType: 0, imagename: "", noticename: "暂无数据")
+            }else{
+                tableView.removeEmpty()
+            }
             
+            tableView.mj_header?.endRefreshing()
             tableView.reloadData()
-            tableView.mj_header?.endRefreshing()
-            tableView.mj_footer?.endRefreshing()
-        } failure: { [self] errore in
-            tableView.mj_header?.endRefreshing()
-            tableView.mj_footer?.endRefreshing()
             
+        } failure: { errore in
+            self.tableView.mj_header?.endRefreshing()
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
-
     }
     
     ///切左右上圆角
@@ -202,7 +221,11 @@ class StockDetaileViewController: LMHBaseViewController {
         view.layer.mask = shapeLayer
         
     }
-
+    ///上拉刷新
+    @objc private func header(){
+        
+        loadMainNetwork()
+    }
     
     /// 切换数据
     @objc private func buttonClick(_ sender:UIButton){
@@ -211,25 +234,38 @@ class StockDetaileViewController: LMHBaseViewController {
             
             changeKuCunButton.setTitleColor(UIColor.hexString("#D40006"), for: .normal)
             changeDaiRuKuButton.setTitleColor(UIColor.hexString("#443415"), for: .normal)
+            status = "1"
         }else{
+            status = "2"
             changeKuCunButton.setTitleColor(UIColor.hexString("#443415"), for: .normal)
             changeDaiRuKuButton.setTitleColor(UIColor.hexString("#D40006"), for: .normal)
         }
-    
+        
         UIView.animate(withDuration: 0.3) { [self] in
             
             changeLineView.frame.origin.x = sender.center.x-12
         }
         
+        loadMainNetwork()
     }
     
+    /// 去采购
+    @objc private func joinShopping(_ sender:UIButton){
+       
+        let vc = LLGoodDetailViewController()
+        vc.status = .stockPeisong
+        vc.id = goodModel.id
+        vc.stocks = goodModel.stayStock
+        vc.distDistGoodsId = goodModel.id
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 //MARK: - tableview模块
-extension StockDetaileViewController:UITableViewDataSource,UITableViewDelegate{
+extension XYStockDetaileViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -238,8 +274,9 @@ extension StockDetaileViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell  = tableView.dequeueReusableCell(withIdentifier: "StockCell") as! StockTableViewCell
-        
+        let cell  = tableView.dequeueReusableCell(withIdentifier: "StockCell") as! XYStockTableViewCell
+        let dataModel = dataArray[indexPath.row]
+        cell.model = dataModel
         return cell
     }
     

@@ -10,6 +10,7 @@
 #import "LLReturnServiceCell.h"
 #import "LLReturnShowView.h"
 #import "LLMeOrderDetailHeaderView.h"
+#import "Winner-Swift.h"
 
 static NSString *const LLReturnServiceCellid = @"LLReturnServiceCell";
 static NSString *const LLReturnServiceComCellid = @"LLReturnServiceComCellid";
@@ -604,15 +605,15 @@ static NSString *const LLReturnApplyOnmonyComCellid = @"LLReturnApplyOnmonyComCe
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if(_tagIndex == OrderRefundOnlyMonState){
-        return 4;;
+        return 4;
     }else if (_tagIndex == OrderRefundStockState){
         return 4;
     }else if (_tagIndex == OrderRefundBothMonState){
-        return 4;;
+        return 4;
     }else if (_tagIndex == OrderRefundExpressState){
-        return 6;;
+        return 6;
     }else{
-        return 4;;
+        return 5;
     }
     
 }
@@ -856,7 +857,7 @@ static NSString *const LLReturnApplyOnmonyComCellid = @"LLReturnApplyOnmonyComCe
             cell.detailsLabel.text = self.refundReason;
         }
         return cell;
-    }else{
+    }else if(indexPath.section == 3){
         if(indexPath.row == 0){
                 LLReturnApplyComTextCell *cell = [tableView dequeueReusableCellWithIdentifier:LLReturnApplyComTextCellid];
                 cell.nameLabel1.text = @"申请说明";
@@ -875,6 +876,10 @@ static NSString *const LLReturnApplyOnmonyComCellid = @"LLReturnApplyOnmonyComCe
                 weakself.imageArr = image;
             };
         return cell;
+    }else{
+        XYOrderQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XYQuestionCell" forIndexPath:indexPath];
+        cell.questionLabel.text = @"售后遇到问题？";
+        return  cell;
     }
    
 }
@@ -1429,6 +1434,17 @@ static NSString *const LLReturnApplyOnmonyComCellid = @"LLReturnApplyOnmonyComCe
         }else if(indexPath.section == 5 &&indexPath.row == 0  ){//选择快递公司
             [self clickshowView:3];
         }
+        if (indexPath.section == 4) {
+            
+            WS(weakself);
+            XYServiceTipsViewController *serviceVC = [[XYServiceTipsViewController alloc]init];
+            serviceVC.pushBlock = ^(UIViewController * view) {
+                [weakself.navigationController pushViewController:view animated:YES];
+            };
+            serviceVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+            serviceVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            [self presentViewController:serviceVC animated:YES completion:nil];
+        }
     }
 }
 #pragma mark  懒加载
@@ -1444,6 +1460,7 @@ static NSString *const LLReturnApplyOnmonyComCellid = @"LLReturnApplyOnmonyComCe
         _tableView.backgroundColor = [UIColor clearColor];
         [ _tableView  registerClass:[LLReturnApplyComCell class] forCellReuseIdentifier:LLReturnApplyComCellid];
         [ _tableView  registerClass:[LLReturnServiceCell class] forCellReuseIdentifier:LLReturnServiceCellid];
+        [ _tableView  registerClass:[XYOrderQuestionTableViewCell class] forCellReuseIdentifier:@"XYQuestionCell"];
         [ _tableView  registerClass:[LLReturnApplyComMonCell class] forCellReuseIdentifier:LLReturnApplyComMonCellid];
         [ _tableView  registerClass:[LLReturnApplyComTextCell class] forCellReuseIdentifier:LLReturnApplyComTextCellid];
         [ _tableView  registerClass:[LLReturnApplyComPicCell class] forCellReuseIdentifier:LLReturnApplyComPicCellid];

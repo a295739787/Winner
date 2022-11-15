@@ -46,6 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LLmeOrderDetailInfoFooterView : UIView
 @property (nonatomic,strong) LLGoodModel *model;/** <#class#> **/
 @property (nonatomic,strong)LLMeOrderDetailModel *detailModel;
+@property (nonatomic ,assign) BOOL showInfo;
+@property (nonatomic ,strong) UILabel *questionLabel;
+@property (nonatomic,copy) void (^serviceBlock)(void);
+
 
 @end
 

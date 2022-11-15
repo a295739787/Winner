@@ -43,7 +43,7 @@
 
 #import <Photos/Photos.h>
 #import "QMLogistcsInfoModel.h"
-
+#import "Winner-Swift.h"
 #define Heights 100
 #define QMWeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define QMStrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
@@ -225,7 +225,9 @@
         });
     }];
     
-    [self insertCardInfoMessage];
+    if (self.model != nil) {
+        [self insertCardInfoMessage];
+    }
     
 //    [self insertNewCardInfoMessage];
     

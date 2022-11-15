@@ -10,6 +10,7 @@
 #import "LLWalletListTableCell.h"
 #import "LLPersonalModel.h"
 #import "LLAddBankCardController.h"
+#import "Winner-Swift.h"
 
 @interface LLWalletDrawController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -76,58 +77,101 @@
 #pragma mark
 #pragma mark--UITableViewDelegate,UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 2;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    LLWalletAddBankCardTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLWalletAddBankCardTableCell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.section == 0) {
+        LLWalletAddBankCardTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLWalletAddBankCardTableCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.personalModel =self.personalModel;
+        return cell;
+    }else{
+        XYOrderQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XYQuestionCell" forIndexPath:indexPath];
+        cell.questionLabel.text = @"提现遇到问题？";
+        return  cell;
+    }
     
-    cell.personalModel =self.personalModel;
-    return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return CGFloatBasedI375(54);
+    if (indexPath.section == 0) {
+        return CGFloatBasedI375(54);
+    }else{
+        return CGFloatBasedI375(50);
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return CGFloatBasedI375(147);
+    if (section == 0) {
+        return CGFloatBasedI375(147);
+    }else{
+        return CGFloatBasedI375(0.01);
+    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    LLWalletDrawFooterView *footerView = [[LLWalletDrawFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
-    WS(weakself);
-    footerView.clickTap = ^{
-        [weakself postUrl];
-    };
-    return footerView;
+    
+    if (section == 0) {
+        LLWalletDrawFooterView *footerView = [[LLWalletDrawFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
+        WS(weakself);
+        footerView.clickTap = ^{
+            [weakself postUrl];
+        };
+        return footerView;
+    }else{
+        return nil;
+    }
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return CGFloatBasedI375(155);
+    
+    if (section == 0) {
+        return CGFloatBasedI375(155);
+    }else{
+        return CGFloatBasedI375(0.01);
+    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    LLWalletDrawView *headerView = [[LLWalletDrawView alloc]initWithFrame:tableView.tableHeaderView.frame];
-    self.headerView = headerView;
-    headerView.model = self.personalModel;
-    return headerView;
+    if (section == 0) {
+        LLWalletDrawView *headerView = [[LLWalletDrawView alloc]initWithFrame:tableView.tableHeaderView.frame];
+        self.headerView = headerView;
+        headerView.model = self.personalModel;
+        return headerView;
+    }else{
+        return nil;
+    }
+    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WS(weakself);
-    //    if ([self.personalModel.isBank intValue] == 0) {
-    LLAddBankCardController *vc = [[LLAddBankCardController alloc]init];
-    vc.ID = self.personalModel.bankId;
-    
-    vc.addBankSuccessBlock = ^(NSMutableDictionary * _Nonnull dict) {
-//        weakself.personalModel.isBank = @"1";
-        weakself.personalModel.bankName = dict[@"bankName"];
-        weakself.personalModel.bankCardNum = dict[@"bankCardNum"];
-        [weakself getPersonalUrl];
+    if (indexPath.section == 0) {
+        //    if ([self.personalModel.isBank intValue] == 0) {
+        LLAddBankCardController *vc = [[LLAddBankCardController alloc]init];
+        vc.ID = self.personalModel.bankId;
         
-        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
-        [weakself.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
-    };
-    [self.navigationController pushViewController:vc animated:YES];
-    //    }
+        vc.addBankSuccessBlock = ^(NSMutableDictionary * _Nonnull dict) {
+            //        weakself.personalModel.isBank = @"1";
+            weakself.personalModel.bankName = dict[@"bankName"];
+            weakself.personalModel.bankCardNum = dict[@"bankCardNum"];
+            [weakself getPersonalUrl];
+            
+            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
+            [weakself.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+        };
+        [self.navigationController pushViewController:vc animated:YES];
+        //    }
+    }else{
+        
+        XYServiceTipsViewController *serviceVC = [[XYServiceTipsViewController alloc]init];
+        serviceVC.pushBlock = ^(UIViewController * view) {
+            [weakself.navigationController pushViewController:view animated:YES];
+        };
+        serviceVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        serviceVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:serviceVC animated:YES completion:nil];
+    }
+    
 }
 -(UITableView *)tableView{
     if (!_tableView) {
@@ -136,6 +180,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView registerClass:[LLWalletAddBankCardTableCell class] forCellReuseIdentifier:@"LLWalletAddBankCardTableCell"];
+        [_tableView registerClass:[XYOrderQuestionTableViewCell class] forCellReuseIdentifier:@"XYQuestionCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;

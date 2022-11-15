@@ -348,13 +348,17 @@
 		DB0FCBB52907AECC003F7E6D /* XYAddressPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FCBB42907AECC003F7E6D /* XYAddressPickerView.swift */; };
 		DB0FCBB72907C48D003F7E6D /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0FCBB62907C48D003F7E6D /* city.plist */; };
 		DB0FCBBD29091A09003F7E6D /* SJXSignTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0FCBBB29091A09003F7E6D /* SJXSignTextView.m */; };
+		DB1CA99129232BDC001F3730 /* XYOrderQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1CA99029232BDC001F3730 /* XYOrderQuestionTableViewCell.swift */; };
 		DB8F335228FFF4A700474235 /* ATAuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8F335128FFF4A700474235 /* ATAuthSDK.framework */; };
 		DB8F335428FFF6C700474235 /* ATAuthSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DB8F335328FFF6C700474235 /* ATAuthSDK.bundle */; };
 		DB8F335828FFF7C800474235 /* YTXMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8F335528FFF7C600474235 /* YTXMonitor.framework */; };
 		DB8F335928FFF7C800474235 /* YTXOperators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8F335728FFF7C800474235 /* YTXOperators.framework */; };
 		DB8F335B290136EF00474235 /* OneKeyLoginTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8F335A290136EF00474235 /* OneKeyLoginTools.swift */; };
-		DBABCA8B2918E6E80028E7B9 /* StockDetaileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA8A2918E6E80028E7B9 /* StockDetaileViewController.swift */; };
-		DBABCA90291A37300028E7B9 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA8F291A37300028E7B9 /* StockTableViewCell.swift */; };
+		DBABCA8B2918E6E80028E7B9 /* XYStockDetaileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA8A2918E6E80028E7B9 /* XYStockDetaileViewController.swift */; };
+		DBABCA90291A37300028E7B9 /* XYStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA8F291A37300028E7B9 /* XYStockTableViewCell.swift */; };
+		DBABCA95291C96B50028E7B9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA94291C96B50028E7B9 /* DataModel.swift */; };
+		DBBB731B291CFC6800010368 /* XYMeServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB731A291CFC6800010368 /* XYMeServiceTableViewCell.swift */; };
+		DBBB7320291DF36200010368 /* XYServiceTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB731F291DF36200010368 /* XYServiceTipsViewController.swift */; };
 		F9093CE827E43920003E37B6 /* LLOrderApplyBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9093CE727E4391F003E37B6 /* LLOrderApplyBillModel.m */; };
 		F9093CEB27E4392A003E37B6 /* LLOrderApplyBillStatusConoller.m in Sources */ = {isa = PBXBuildFile; fileRef = F9093CEA27E4392A003E37B6 /* LLOrderApplyBillStatusConoller.m */; };
 		F90CC63B27C491930046C38F /* PromoteDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F90CC63A27C491930046C38F /* PromoteDetailModel.m */; };
@@ -1114,14 +1118,18 @@
 		DB0FCBB62907C48D003F7E6D /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		DB0FCBBB29091A09003F7E6D /* SJXSignTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJXSignTextView.m; sourceTree = "<group>"; };
 		DB0FCBBC29091A09003F7E6D /* SJXSignTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJXSignTextView.h; sourceTree = "<group>"; };
+		DB1CA99029232BDC001F3730 /* XYOrderQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYOrderQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		DB8F334D28FFD15F00474235 /* Winner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Winner-Bridging-Header.h"; sourceTree = "<group>"; };
 		DB8F335128FFF4A700474235 /* ATAuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ATAuthSDK.framework; sourceTree = "<group>"; };
 		DB8F335328FFF6C700474235 /* ATAuthSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ATAuthSDK.bundle; path = ATAuthSDK.framework/ATAuthSDK.bundle; sourceTree = "<group>"; };
 		DB8F335528FFF7C600474235 /* YTXMonitor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YTXMonitor.framework; sourceTree = "<group>"; };
 		DB8F335728FFF7C800474235 /* YTXOperators.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YTXOperators.framework; sourceTree = "<group>"; };
 		DB8F335A290136EF00474235 /* OneKeyLoginTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneKeyLoginTools.swift; sourceTree = "<group>"; };
-		DBABCA8A2918E6E80028E7B9 /* StockDetaileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetaileViewController.swift; sourceTree = "<group>"; };
-		DBABCA8F291A37300028E7B9 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
+		DBABCA8A2918E6E80028E7B9 /* XYStockDetaileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYStockDetaileViewController.swift; sourceTree = "<group>"; };
+		DBABCA8F291A37300028E7B9 /* XYStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYStockTableViewCell.swift; sourceTree = "<group>"; };
+		DBABCA94291C96B50028E7B9 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		DBBB731A291CFC6800010368 /* XYMeServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMeServiceTableViewCell.swift; sourceTree = "<group>"; };
+		DBBB731F291DF36200010368 /* XYServiceTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYServiceTipsViewController.swift; sourceTree = "<group>"; };
 		DBE589B258262DBEA89F5BF9 /* Pods-Winner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Winner.debug.xcconfig"; path = "Target Support Files/Pods-Winner/Pods-Winner.debug.xcconfig"; sourceTree = "<group>"; };
 		EFAE02D4182852E15AA216E6 /* Pods-Winner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Winner.release.xcconfig"; path = "Target Support Files/Pods-Winner/Pods-Winner.release.xcconfig"; sourceTree = "<group>"; };
 		F9093CE627E4391F003E37B6 /* LLOrderApplyBillModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLOrderApplyBillModel.h; sourceTree = "<group>"; };
@@ -2799,7 +2807,9 @@
 		DB8F334C28FFD12900474235 /* SwiftCodes */ = {
 			isa = PBXGroup;
 			children = (
-				DBABCA892918E6A30028E7B9 /* StockDetaile */,
+				DBBB7318291CFA7000010368 /* XYMySelf */,
+				DBABCA91291C95E40028E7B9 /* DataModel */,
+				DBABCA892918E6A30028E7B9 /* XYStockDetaile */,
 				DB0022A12910C1AB00A4526E /* XYSystemUpdate */,
 				DB0FCBB329079084003F7E6D /* XYAddressPickerView */,
 				DB8F334D28FFD15F00474235 /* Winner-Bridging-Header.h */,
@@ -2820,21 +2830,55 @@
 			path = OneKeyLogin;
 			sourceTree = "<group>";
 		};
-		DBABCA892918E6A30028E7B9 /* StockDetaile */ = {
+		DBABCA892918E6A30028E7B9 /* XYStockDetaile */ = {
 			isa = PBXGroup;
 			children = (
 				DBABCA8C2918EA750028E7B9 /* View */,
-				DBABCA8A2918E6E80028E7B9 /* StockDetaileViewController.swift */,
+				DBABCA8A2918E6E80028E7B9 /* XYStockDetaileViewController.swift */,
 			);
-			path = StockDetaile;
+			path = XYStockDetaile;
 			sourceTree = "<group>";
 		};
 		DBABCA8C2918EA750028E7B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DBABCA8F291A37300028E7B9 /* StockTableViewCell.swift */,
+				DBABCA8F291A37300028E7B9 /* XYStockTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DBABCA91291C95E40028E7B9 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				DBABCA94291C96B50028E7B9 /* DataModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		DBBB7318291CFA7000010368 /* XYMySelf */ = {
+			isa = PBXGroup;
+			children = (
+				DBBB731C291DED5100010368 /* ServiceTips */,
+				DBBB7319291CFAEA00010368 /* MeView */,
+			);
+			path = XYMySelf;
+			sourceTree = "<group>";
+		};
+		DBBB7319291CFAEA00010368 /* MeView */ = {
+			isa = PBXGroup;
+			children = (
+				DB1CA99029232BDC001F3730 /* XYOrderQuestionTableViewCell.swift */,
+				DBBB731A291CFC6800010368 /* XYMeServiceTableViewCell.swift */,
+			);
+			path = MeView;
+			sourceTree = "<group>";
+		};
+		DBBB731C291DED5100010368 /* ServiceTips */ = {
+			isa = PBXGroup;
+			children = (
+				DBBB731F291DF36200010368 /* XYServiceTipsViewController.swift */,
+			);
+			path = ServiceTips;
 			sourceTree = "<group>";
 		};
 		F9093CE527E4391F003E37B6 /* Model */ = {
@@ -3748,6 +3792,7 @@
 				4260AAD927CB2E60007A3228 /* GoodsPriceModel.m in Sources */,
 				42905586278C08AE0053C4E1 /* WRNavigationBar.m in Sources */,
 				42D3944D27FD7DBC008B4138 /* QMFormDateView.m in Sources */,
+				DBBB7320291DF36200010368 /* XYServiceTipsViewController.swift in Sources */,
 				42D3945627FD7DBC008B4138 /* QMFormSingleLineCell.m in Sources */,
 				F9ADEBEA279D142400F16885 /* LLMeAdressEditController.m in Sources */,
 				F9ADEBE1279D002300F16885 /* LLMeAdressController.m in Sources */,
@@ -3898,6 +3943,8 @@
 				42D3944327FD7DBC008B4138 /* QMChatLogistcsInfoCell.m in Sources */,
 				F9ADEC03279D887500F16885 /* LLBuybackRecordController.m in Sources */,
 				42D3941427FD7DBB008B4138 /* QMAudioAnimation.m in Sources */,
+				DBABCA95291C96B50028E7B9 /* DataModel.swift in Sources */,
+				DBBB731B291CFC6800010368 /* XYMeServiceTableViewCell.swift in Sources */,
 				42905559278C08600053C4E1 /* UIColor+For16.m in Sources */,
 				428F369F2793BC75009251A5 /* NSDate+Extension.m in Sources */,
 				42D3944A27FD7DBC008B4138 /* AnswerMoreView.m in Sources */,
@@ -3908,6 +3955,7 @@
 				429055BA278C09BA0053C4E1 /* UINavigationController+GKCategory.m in Sources */,
 				42D3945827FD7DBC008B4138 /* QMFormSingleChoiceView.m in Sources */,
 				F95D0EAC27C396150066DA75 /* LLWalletListModel.m in Sources */,
+				DB1CA99129232BDC001F3730 /* XYOrderQuestionTableViewCell.swift in Sources */,
 				F95D0EA927C38F0E0066DA75 /* PromoteUserListModel.m in Sources */,
 				42905587278C08AE0053C4E1 /* WRCustomNavigationBar.m in Sources */,
 				F9A99768279C4A6E00D23C6E /* XLPageTitleCell.m in Sources */,
@@ -4005,7 +4053,7 @@
 				42D3942827FD7DBC008B4138 /* NSAttributedString+QMEmojiExtension.m in Sources */,
 				F9A99729279BC37000D23C6E /* LLPersonalChangeVC.m in Sources */,
 				F9D3F6D0279AFFA800A6A5E7 /* LLPersonalTableCell.m in Sources */,
-				DBABCA8B2918E6E80028E7B9 /* StockDetaileViewController.swift in Sources */,
+				DBABCA8B2918E6E80028E7B9 /* XYStockDetaileViewController.swift in Sources */,
 				F9A9972C279BCD7F00D23C6E /* LLCertificationController.m in Sources */,
 				F9A99741279BF9E500D23C6E /* LLStorageController.m in Sources */,
 				4298F9DA27D49D6500B3DB37 /* MFlowLayOut.m in Sources */,
@@ -4053,7 +4101,7 @@
 				42D3944227FD7DBC008B4138 /* QMQuestionCell.m in Sources */,
 				42D3941E27FD7DBC008B4138 /* QMProfileManager.m in Sources */,
 				428F36A32793BC75009251A5 /* UITableViewCell+Helper.m in Sources */,
-				DBABCA90291A37300028E7B9 /* StockTableViewCell.swift in Sources */,
+				DBABCA90291A37300028E7B9 /* XYStockTableViewCell.swift in Sources */,
 				F9A99765279C4A6E00D23C6E /* XLPageSegmentedTitleView.m in Sources */,
 				42D3945227FD7DBC008B4138 /* QMChatFormViewController.m in Sources */,
 				4285868227CB797300B1E992 /* SVIndefiniteAnimatedView.m in Sources */,

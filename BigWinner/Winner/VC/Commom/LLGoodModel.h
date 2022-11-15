@@ -104,6 +104,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *scribingPrice;/** <#class#> **/
 @property (nonatomic,copy) NSString *salesPrice;/** <#class#> **/
 @property (nonatomic,copy) NSString *realSalesVolume;/** <#class#> **/
+@property (nonatomic,copy) NSString *salesVolume;/** <#class#> **/
 @property (nonatomic,copy) NSString *stock;/** <#class#> **/
 @property (nonatomic, copy) NSString *cancelTime;
 
@@ -117,7 +118,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *nickName;/** <#class#> **/
 @property (nonatomic,copy) NSString *shopName;/** <#class#> **/
 @property (nonatomic, copy) NSString *purchasePrice;
-
+@property (nonatomic, copy) NSString *userId;
 
 @end
 
