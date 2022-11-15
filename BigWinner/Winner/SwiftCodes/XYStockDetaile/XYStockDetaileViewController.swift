@@ -40,7 +40,10 @@ import UIKit
         loadSubMainView()
         loadMainNetwork()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadGoodsInfo()
+    }
     /// 初始化界面
     private func loadSubMainView(){
         let y =  UIApplication.shared.statusBarFrame.height+44
@@ -162,8 +165,6 @@ import UIKit
         topGoddsInfoLabel.text = goodModel.name
         topGoodsPriceLabel.attributedText = self.getAttribuStr(withStrings: ["￥","\(goodModel.purchasePrice)"], fonts: [UIFont.systemFont(ofSize: 12),UIFont.systemFont(ofSize: 16)], colors: [UIColor.hexString("#D40006"),UIColor.hexString("#D40006")])
         topGoodsVolumeLabel.text = goodModel.specsValName
-        topGoodsKuCunLabel.text = "库存: \(goodModel.goodsNum)"
-        topGoodsDaiRuKuLabel.text = "待入库: \(goodModel.stayStock)"
     }
         
     /// 网络请求
@@ -210,7 +211,28 @@ import UIKit
             MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
-    
+    /// 商品详情
+    private func loadGoodsInfo(){
+        let param = NSMutableDictionary()
+        param.setValue(goodModel.goodsId, forKey: "goodId")
+        
+        XJHttpTool.post(L_apiappjudgegoodsdiststockgetList, method: GET, params: param, isToken: true) { [self] responseObj in
+            
+            let data = responseObj as! NSDictionary
+            let msg = data.object(forKey: "msg") as? String
+            if msg == "Success" {
+                let dataDic = data.object(forKey: "data") as! NSDictionary
+                let listArray = dataDic.object(forKey: "list") as! NSArray
+                let listDic = listArray.firstObject as! NSDictionary
+
+                let goodsNum = listDic["goodsNum"] as! Int
+                let stayStock = listDic["stayStock"] as! Int
+                topGoodsKuCunLabel.text = "库存: \(goodsNum)"
+                topGoodsDaiRuKuLabel.text = "待入库: \(stayStock)"
+            }
+        } failure: { errore in
+        }
+    }
     ///切左右上圆角
     private func loadMasksTopLeftOrRight(view:UIView){
         
