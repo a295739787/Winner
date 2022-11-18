@@ -206,23 +206,31 @@
             }
             if (index == 100) {
                 //累计现金红包
-                LLWalletController *walletVC = [[LLWalletController alloc]init];
-                walletVC.balance = weakself.personalModel.totalConsumeRedPrice;
-                [weakself.navigationController pushViewController:walletVC animated:YES];
+//                LLWalletController *walletVC = [[LLWalletController alloc]init];
+//                walletVC.balance = weakself.personalModel.totalConsumeRedPrice;
+//                [weakself.navigationController pushViewController:walletVC animated:YES];
+                
+                XYMyWalletViewController *vc = [[XYMyWalletViewController alloc] init];
+                vc.walletType = MyWalletTypeNormal;
+                [weakself.navigationController pushViewController:vc animated:YES];
+                
             }else if (index == 101){
                 //累计消费红包
-                LLWalletController *walletVC = [[LLWalletController alloc]init];
-                walletVC.type = @"2";
-                walletVC.balance = weakself.personalModel.totalConsumeRedPrice;
-                [weakself.navigationController pushViewController:walletVC animated:YES];
+//                LLWalletController *walletVC = [[LLWalletController alloc]init];
+//                walletVC.type = @"2";
+//                walletVC.balance = weakself.personalModel.totalConsumeRedPrice;
+//                [weakself.navigationController pushViewController:walletVC animated:YES];
+                XYMyWalletViewController *vc = [[XYMyWalletViewController alloc] init];
+                vc.walletType = MyWalletTypeConsume;
+                [weakself.navigationController pushViewController:vc animated:YES];
             }else if (index == 102){
                 //累计推广佣金
-                //                LLMePromoteVC *promoteVC  = [[LLMePromoteVC alloc]init];
-                //                promoteVC.content = weakself.conten;
-                //                [weakself.navigationController pushViewController:promoteVC animated:YES];
-                LLWalletController *walletVC = [[LLWalletController alloc]init];
-                walletVC.balance = weakself.personalModel.totalConsumeRedPrice;
-                [weakself.navigationController pushViewController:walletVC animated:YES];
+                LLMePromoteVC *promoteVC  = [[LLMePromoteVC alloc]init];
+                promoteVC.content = weakself.conten;
+                [weakself.navigationController pushViewController:promoteVC animated:YES];
+                //                LLWalletController *walletVC = [[LLWalletController alloc]init];
+                //                walletVC.balance = weakself.personalModel.totalConsumeRedPrice;
+                //                [weakself.navigationController pushViewController:walletVC animated:YES];
             }else if (index == 200){
                 //我的库存
                 LLStorageController *storageVC = [[LLStorageController alloc]init];

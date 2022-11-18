@@ -671,7 +671,7 @@
         
         self.infoView.frame = CGRectMake(0, CGRectGetMaxY(self.bottomView.frame)+20, self.frame.size.width, 50);
         self.questionLabel.frame = CGRectMake(self.infoView.frame.size.width * 0.264, (self.infoView.frame.size.height-14)/2, 95, 14);
-        self.serviceImageView.frame = CGRectMake(CGRectGetMaxX(self.questionLabel.frame)+7, (self.infoView.frame.size.height-14)/2, 21, 18);
+        self.serviceImageView.frame = CGRectMake(CGRectGetMaxX(self.questionLabel.frame)+7, (self.infoView.frame.size.height-18)/2, 21, 18);
         self.serviceLabel.frame = CGRectMake(CGRectGetMaxX(self.serviceImageView.frame)+5, (self.infoView.frame.size.height-14)/2, 60, 14);
         
         self.serviceButton.frame = CGRectMake(0, 0, self.infoView.frame.size.width, self.infoView.frame.size.height);

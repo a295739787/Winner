@@ -222,6 +222,11 @@
 
 /* 库存明细*/
 #define L_getUserStockDetail @"/api/app/user/getUserStockDetail"
+/* 用户钱包(累计收入/累计支出/余额)*/
+#define L_getUserWallet @"/api/app/user/getUserWallet"
+/* 用户钱包-明细*/
+#define L_getRecord @"/api/app/user/balance/getRecord"
+
 
 /* 收货地址 */
  /* 获取行政区域 */

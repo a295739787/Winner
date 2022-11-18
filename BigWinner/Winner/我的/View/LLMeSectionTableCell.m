@@ -43,7 +43,7 @@
     }];
     
     
-    NSArray *titleArray = @[@"累计现金红包",@"累计消费红包",@"累计已到佣金"];
+    NSArray *titleArray = @[@"钱包余额",@"消费红包余额",@"累计已到佣金"];
     CGFloat btnWidth = (SCREEN_WIDTH - CGFloatBasedI375(20)) / 3;
     
     for (int i = 0; i < titleArray.count; i++) {

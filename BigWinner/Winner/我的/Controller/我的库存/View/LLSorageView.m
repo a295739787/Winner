@@ -90,10 +90,10 @@
   
     self.leftLabel.hidden = YES;
     self.addCarBtn.hidden = YES;
-    if([UserModel sharedUserInfo].isShop){
-        self.leftLabel.hidden = NO;
-        self.addCarBtn.hidden = NO;
-    }
+//    if([UserModel sharedUserInfo].isShop){
+//        self.leftLabel.hidden = NO;
+//        self.addCarBtn.hidden = NO;
+//    }
 }
 
 #pragma mark--addBtnClick

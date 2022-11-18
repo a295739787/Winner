@@ -6,26 +6,26 @@
 //
 
 import UIKit
- 
+
 @objcMembers class XYServiceTipsViewController: UIViewController {
-  
+    
     var bottomView = UIView()
     var telPhoneButton = UIButton()
     var onLineService = UIButton()
     var lineView = UIView()
     var serviceDic = NSDictionary()
     var pushBlock :((UIViewController) -> Void)?
-
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(dissMissView(_:))))
         
-       loadMainView()
+        loadMainView()
     }
     
     private func loadMainView(){
@@ -58,7 +58,7 @@ import UIKit
         lineView.frame = CGRect(x: 15, y: telPhoneButton.frame.maxY, width: bottomView.frame.size.width-30, height: 1)
         lineView.backgroundColor = UIColor.hexString("#F5F5F5")
         bottomView.addSubview(lineView)
-
+        
         onLineService = UIButton.init(type: .custom)
         onLineService.tag = 102;
         onLineService.frame = CGRect(x: 0, y: lineView.frame.maxY, width: bottomView.frame.size.width, height: 50)
@@ -100,7 +100,7 @@ import UIKit
         if sender.tag == 101 {
             
             let callWebview = UIWebView()
-            callWebview.loadRequest(NSURLRequest(url: URL(string: "tel:18588777825")!) as URLRequest)
+            callWebview.loadRequest(NSURLRequest(url: URL(string: "tel:400-156-9788")!) as URLRequest)
             self.view.addSubview(callWebview)
         }else{
             loadService()
@@ -122,7 +122,7 @@ import UIKit
                 if scheduleEnable == true {
                     serviceShowMessage(scheduleDic: dic)
                 }else{
-                   getPeers()
+                    getPeers()
                 }
                 
             }
@@ -130,7 +130,7 @@ import UIKit
         } fail: {
             
         }
-
+        
     }
     ///获取技能组信息
     private func getPeers(){
@@ -138,7 +138,7 @@ import UIKit
         QMConnect.sdkGetPeers { peerArray in
             let peers = peerArray! as NSArray
             DispatchQueue.main.async { [self] in
-            
+                
                 if (peers.count == 1 && peers.count != 0) {
                     let first = peers.firstObject
                     let dic = first as! NSDictionary
@@ -151,18 +151,18 @@ import UIKit
         } failureBlock: {
             
         }
-
+        
         
         
     }
     /// 客服回调提示
     private func serviceShowMessage(scheduleDic:[String:Any]){
-       
+        
         let scheduleId = scheduleDic["scheduleId"] as! String
         let processId = scheduleDic["processId"] as! String
         let entranceNode = scheduleDic["entranceNode"] as! NSDictionary
         let leavemsgNodes = scheduleDic["leavemsgNodes"] as! String
-
+        
         if (scheduleId.isEmpty ||
             processId.isEmpty ||
             entranceNode.count <= 0 ||
@@ -196,7 +196,7 @@ import UIKit
                 let processType = dic.object(forKey: "processType") as! String
                 let _id = dic.object(forKey: "_id") as! String
                 let id = dic.object(forKey: "id") as! String
-
+                
                 let scheduleEnable = serviceDic["scheduleEnable"] as! Bool
                 if scheduleEnable == true {
                     showChatRoomViewController(peerId: processTo, processType: processType, entranceId: _id)
@@ -244,9 +244,7 @@ import UIKit
         
         self.pushBlock!(chatRoomViewController)
     }
-
-    
-    
+ 
     //MARK: -界面退出
     func dismissView(){
         self.dismiss(animated: true, completion: nil)

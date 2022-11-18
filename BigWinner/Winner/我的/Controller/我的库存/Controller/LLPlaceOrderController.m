@@ -154,10 +154,10 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 1) {
-        if([UserModel sharedUserInfo].isShop){
+//        if([UserModel sharedUserInfo].isShop){
             return CGFloatBasedI375(110);
-        }
-        return CGFloatBasedI375(110)/2;
+//        }
+//        return CGFloatBasedI375(110)/2;
     }
     return 0.1;
 }

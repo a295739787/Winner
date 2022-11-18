@@ -349,6 +349,15 @@
 		DB0FCBB72907C48D003F7E6D /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0FCBB62907C48D003F7E6D /* city.plist */; };
 		DB0FCBBD29091A09003F7E6D /* SJXSignTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0FCBBB29091A09003F7E6D /* SJXSignTextView.m */; };
 		DB1CA99129232BDC001F3730 /* XYOrderQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1CA99029232BDC001F3730 /* XYOrderQuestionTableViewCell.swift */; };
+		DB5C428B2923745800442CB5 /* XYMyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C428A2923745800442CB5 /* XYMyWalletViewController.swift */; };
+		DB5C428E2923828E00442CB5 /* XYMyWalletHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C428D2923828E00442CB5 /* XYMyWalletHeaderView.swift */; };
+		DB5C4290292382BC00442CB5 /* XYMyWalletTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C428F292382BC00442CB5 /* XYMyWalletTitleHeaderView.swift */; };
+		DB5C4292292382D800442CB5 /* XYMyWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C4291292382D800442CB5 /* XYMyWalletTableViewCell.swift */; };
+		DB5C429429247A1200442CB5 /* XYTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C429329247A1200442CB5 /* XYTool.swift */; };
+		DB5C42972925D0F500442CB5 /* XYDealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C42962925D0F500442CB5 /* XYDealDetailViewController.swift */; };
+		DB5C429A2925D6CF00442CB5 /* DealDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C42992925D6CF00442CB5 /* DealDetailHeaderView.swift */; };
+		DB5C429C2925DECF00442CB5 /* DealDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C429B2925DECF00442CB5 /* DealDetailTableViewCell.swift */; };
+		DB5C429E2925E2BD00442CB5 /* DealDetailFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C429D2925E2BD00442CB5 /* DealDetailFootView.swift */; };
 		DB8F335228FFF4A700474235 /* ATAuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8F335128FFF4A700474235 /* ATAuthSDK.framework */; };
 		DB8F335428FFF6C700474235 /* ATAuthSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DB8F335328FFF6C700474235 /* ATAuthSDK.bundle */; };
 		DB8F335828FFF7C800474235 /* YTXMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8F335528FFF7C600474235 /* YTXMonitor.framework */; };
@@ -1119,6 +1128,15 @@
 		DB0FCBBB29091A09003F7E6D /* SJXSignTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJXSignTextView.m; sourceTree = "<group>"; };
 		DB0FCBBC29091A09003F7E6D /* SJXSignTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJXSignTextView.h; sourceTree = "<group>"; };
 		DB1CA99029232BDC001F3730 /* XYOrderQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYOrderQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		DB5C428A2923745800442CB5 /* XYMyWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyWalletViewController.swift; sourceTree = "<group>"; };
+		DB5C428D2923828E00442CB5 /* XYMyWalletHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyWalletHeaderView.swift; sourceTree = "<group>"; };
+		DB5C428F292382BC00442CB5 /* XYMyWalletTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyWalletTitleHeaderView.swift; sourceTree = "<group>"; };
+		DB5C4291292382D800442CB5 /* XYMyWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyWalletTableViewCell.swift; sourceTree = "<group>"; };
+		DB5C429329247A1200442CB5 /* XYTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYTool.swift; sourceTree = "<group>"; };
+		DB5C42962925D0F500442CB5 /* XYDealDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYDealDetailViewController.swift; sourceTree = "<group>"; };
+		DB5C42992925D6CF00442CB5 /* DealDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailHeaderView.swift; sourceTree = "<group>"; };
+		DB5C429B2925DECF00442CB5 /* DealDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailTableViewCell.swift; sourceTree = "<group>"; };
+		DB5C429D2925E2BD00442CB5 /* DealDetailFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailFootView.swift; sourceTree = "<group>"; };
 		DB8F334D28FFD15F00474235 /* Winner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Winner-Bridging-Header.h"; sourceTree = "<group>"; };
 		DB8F335128FFF4A700474235 /* ATAuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ATAuthSDK.framework; sourceTree = "<group>"; };
 		DB8F335328FFF6C700474235 /* ATAuthSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ATAuthSDK.bundle; path = ATAuthSDK.framework/ATAuthSDK.bundle; sourceTree = "<group>"; };
@@ -2770,21 +2788,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DB0022A12910C1AB00A4526E /* XYSystemUpdate */ = {
+		DB0022A12910C1AB00A4526E /* XYSystemUpdate(系统更新) */ = {
 			isa = PBXGroup;
 			children = (
 				DB0022A22910C28A00A4526E /* XYSystemUpdate.swift */,
 			);
-			path = XYSystemUpdate;
+			path = "XYSystemUpdate(系统更新)";
 			sourceTree = "<group>";
 		};
-		DB0FCBB329079084003F7E6D /* XYAddressPickerView */ = {
+		DB0FCBB329079084003F7E6D /* XYAddressPickerView(地址) */ = {
 			isa = PBXGroup;
 			children = (
 				DB0FCBB62907C48D003F7E6D /* city.plist */,
 				DB0FCBB42907AECC003F7E6D /* XYAddressPickerView.swift */,
 			);
-			path = XYAddressPickerView;
+			path = "XYAddressPickerView(地址)";
 			sourceTree = "<group>";
 		};
 		DB0FCBB9290919F8003F7E6D /* Tools */ = {
@@ -2804,14 +2822,54 @@
 			path = SJXSignTextView;
 			sourceTree = "<group>";
 		};
+		DB5C42892923730200442CB5 /* XYMyWallet(钱包) */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C42952925D00D00442CB5 /* DealDetail(交易详情) */,
+				DB5C428C2923822A00442CB5 /* View */,
+				DB5C428A2923745800442CB5 /* XYMyWalletViewController.swift */,
+			);
+			path = "XYMyWallet(钱包)";
+			sourceTree = "<group>";
+		};
+		DB5C428C2923822A00442CB5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C428D2923828E00442CB5 /* XYMyWalletHeaderView.swift */,
+				DB5C428F292382BC00442CB5 /* XYMyWalletTitleHeaderView.swift */,
+				DB5C4291292382D800442CB5 /* XYMyWalletTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB5C42952925D00D00442CB5 /* DealDetail(交易详情) */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C42982925D6AF00442CB5 /* View */,
+				DB5C42962925D0F500442CB5 /* XYDealDetailViewController.swift */,
+			);
+			path = "DealDetail(交易详情)";
+			sourceTree = "<group>";
+		};
+		DB5C42982925D6AF00442CB5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C42992925D6CF00442CB5 /* DealDetailHeaderView.swift */,
+				DB5C429D2925E2BD00442CB5 /* DealDetailFootView.swift */,
+				DB5C429B2925DECF00442CB5 /* DealDetailTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DB8F334C28FFD12900474235 /* SwiftCodes */ = {
 			isa = PBXGroup;
 			children = (
-				DBBB7318291CFA7000010368 /* XYMySelf */,
-				DBABCA91291C95E40028E7B9 /* DataModel */,
-				DBABCA892918E6A30028E7B9 /* XYStockDetaile */,
-				DB0022A12910C1AB00A4526E /* XYSystemUpdate */,
-				DB0FCBB329079084003F7E6D /* XYAddressPickerView */,
+				DB5C42892923730200442CB5 /* XYMyWallet(钱包) */,
+				DBBB7318291CFA7000010368 /* XYMySelf(我的) */,
+				DBABCA91291C95E40028E7B9 /* DataModel(公共) */,
+				DBABCA892918E6A30028E7B9 /* XYStockDetaile(库存明细) */,
+				DB0022A12910C1AB00A4526E /* XYSystemUpdate(系统更新) */,
+				DB0FCBB329079084003F7E6D /* XYAddressPickerView(地址) */,
 				DB8F334D28FFD15F00474235 /* Winner-Bridging-Header.h */,
 				DB8F335A290136EF00474235 /* OneKeyLoginTools.swift */,
 				DB0FCBB1290633F8003F7E6D /* PrivacyWebViewController.swift */,
@@ -2830,13 +2888,13 @@
 			path = OneKeyLogin;
 			sourceTree = "<group>";
 		};
-		DBABCA892918E6A30028E7B9 /* XYStockDetaile */ = {
+		DBABCA892918E6A30028E7B9 /* XYStockDetaile(库存明细) */ = {
 			isa = PBXGroup;
 			children = (
 				DBABCA8C2918EA750028E7B9 /* View */,
 				DBABCA8A2918E6E80028E7B9 /* XYStockDetaileViewController.swift */,
 			);
-			path = XYStockDetaile;
+			path = "XYStockDetaile(库存明细)";
 			sourceTree = "<group>";
 		};
 		DBABCA8C2918EA750028E7B9 /* View */ = {
@@ -2847,21 +2905,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DBABCA91291C95E40028E7B9 /* DataModel */ = {
+		DBABCA91291C95E40028E7B9 /* DataModel(公共) */ = {
 			isa = PBXGroup;
 			children = (
 				DBABCA94291C96B50028E7B9 /* DataModel.swift */,
+				DB5C429329247A1200442CB5 /* XYTool.swift */,
 			);
-			path = DataModel;
+			path = "DataModel(公共)";
 			sourceTree = "<group>";
 		};
-		DBBB7318291CFA7000010368 /* XYMySelf */ = {
+		DBBB7318291CFA7000010368 /* XYMySelf(我的) */ = {
 			isa = PBXGroup;
 			children = (
 				DBBB731C291DED5100010368 /* ServiceTips */,
 				DBBB7319291CFAEA00010368 /* MeView */,
 			);
-			path = XYMySelf;
+			path = "XYMySelf(我的)";
 			sourceTree = "<group>";
 		};
 		DBBB7319291CFAEA00010368 /* MeView */ = {
@@ -3799,6 +3858,7 @@
 				4260AAC227CB0BD2007A3228 /* LLGoodBoView.m in Sources */,
 				F9AA326927BFE60F00A889AC /* AdressListModel.m in Sources */,
 				F9A99732279BE0FE00D23C6E /* LLAddBankCardFooterView.m in Sources */,
+				DB5C428B2923745800442CB5 /* XYMyWalletViewController.swift in Sources */,
 				4260AADE27CB2E60007A3228 /* CountView.m in Sources */,
 				42B3F78527D59AF300CA254B /* LLMeDeliverListVC.m in Sources */,
 				4295E7C127E1C86B00744204 /* LLogView.m in Sources */,
@@ -3816,6 +3876,7 @@
 				4285EABC27BDE08600480F90 /* LEEStarRating.m in Sources */,
 				42905566278C08600053C4E1 /* UIImageView+Extension.m in Sources */,
 				429055B5278C09BA0053C4E1 /* GKPopTransitionAnimation.m in Sources */,
+				DB5C4290292382BC00442CB5 /* XYMyWalletTitleHeaderView.swift in Sources */,
 				42CA75D127F2BA0900F681AF /* LLGoodPraiseCell.m in Sources */,
 				428F369C2793BC75009251A5 /* NSData+zh_JSON.m in Sources */,
 				42D3941327FD7DBB008B4138 /* QMAudioRecorder.m in Sources */,
@@ -3857,6 +3918,7 @@
 				047649B127B3872F0064F76F /* LLPingjianSureOrderViewController.m in Sources */,
 				42905505278C07850053C4E1 /* AccessTool.m in Sources */,
 				428F36A62793BCA2009251A5 /* DCNewFeatureCell.m in Sources */,
+				DB5C429A2925D6CF00442CB5 /* DealDetailHeaderView.swift in Sources */,
 				F9DC022D27E974890089298B /* LLStockOrderDetailTopView.m in Sources */,
 				045846DD27AA96BB00AB8587 /* LLStoreSureOrderViewController.m in Sources */,
 				428C700A27912CF20063F821 /* UIButton+Extension.m in Sources */,
@@ -3868,6 +3930,7 @@
 				F9A99766279C4A6E00D23C6E /* XLPageBasicTitleView.m in Sources */,
 				F9DF2020279FF37900C20B51 /* LLTextView.m in Sources */,
 				429055B7278C09BA0053C4E1 /* GKNavigationInteractiveTransition.m in Sources */,
+				DB5C429C2925DECF00442CB5 /* DealDetailTableViewCell.swift in Sources */,
 				F9A99756279C363800D23C6E /* LLMePromoteDetailVC.m in Sources */,
 				F9093CEB27E4392A003E37B6 /* LLOrderApplyBillStatusConoller.m in Sources */,
 				42905569278C08600053C4E1 /* UIView+Addition.m in Sources */,
@@ -3942,6 +4005,7 @@
 				045846D027A9685600AB8587 /* LLShopCarViewController.m in Sources */,
 				42D3944327FD7DBC008B4138 /* QMChatLogistcsInfoCell.m in Sources */,
 				F9ADEC03279D887500F16885 /* LLBuybackRecordController.m in Sources */,
+				DB5C42972925D0F500442CB5 /* XYDealDetailViewController.swift in Sources */,
 				42D3941427FD7DBB008B4138 /* QMAudioAnimation.m in Sources */,
 				DBABCA95291C96B50028E7B9 /* DataModel.swift in Sources */,
 				DBBB731B291CFC6800010368 /* XYMeServiceTableViewCell.swift in Sources */,
@@ -4019,6 +4083,7 @@
 				42B511A527D1EE9000A2EB2D /* LLMainPeisongHeadView.m in Sources */,
 				4298F9E227D49D6500B3DB37 /* MShowGroupAllSet.m in Sources */,
 				F9DF2026279FF9A800C20B51 /* ImgCollectionViewCell.m in Sources */,
+				DB5C429E2925E2BD00442CB5 /* DealDetailFootView.swift in Sources */,
 				42D3942B27FD7DBC008B4138 /* QMCustomLayout.m in Sources */,
 				4260AADD27CB2E60007A3228 /* JXUIKit.m in Sources */,
 				4294A02627DC95A700EF8560 /* LLSearchHistoryModel.m in Sources */,
@@ -4049,6 +4114,7 @@
 				4260AAE127CB2E60007A3228 /* ChoosTypeTableViewCell.m in Sources */,
 				F9A99769279C4A6E00D23C6E /* XLPageViewControllerUtil.m in Sources */,
 				047BCE0627BD41E600555052 /* UICollectionView+XHWebImageAutoSize.m in Sources */,
+				DB5C429429247A1200442CB5 /* XYTool.swift in Sources */,
 				42905589278C08AE0053C4E1 /* BasicGuideViewController.m in Sources */,
 				42D3942827FD7DBC008B4138 /* NSAttributedString+QMEmojiExtension.m in Sources */,
 				F9A99729279BC37000D23C6E /* LLPersonalChangeVC.m in Sources */,
@@ -4089,6 +4155,7 @@
 				045846B927A6901A00AB8587 /* LLNewsViewController.m in Sources */,
 				047BCE0527BD41E600555052 /* XHWebImageAutoSizeCache.m in Sources */,
 				4260AADA27CB2E60007A3228 /* GoodsTypeModel.m in Sources */,
+				DB5C4292292382D800442CB5 /* XYMyWalletTableViewCell.swift in Sources */,
 				4285868027CB797300B1E992 /* SVProgressAnimatedView.m in Sources */,
 				4294A02327DC94B700EF8560 /* LLSearchCell.m in Sources */,
 				F9F72918279A6143005EDE25 /* SceneDelegate.m in Sources */,
@@ -4105,6 +4172,7 @@
 				F9A99765279C4A6E00D23C6E /* XLPageSegmentedTitleView.m in Sources */,
 				42D3945227FD7DBC008B4138 /* QMChatFormViewController.m in Sources */,
 				4285868227CB797300B1E992 /* SVIndefiniteAnimatedView.m in Sources */,
+				DB5C428E2923828E00442CB5 /* XYMyWalletHeaderView.swift in Sources */,
 				42D3946F27FD7DBC008B4138 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
