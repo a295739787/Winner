@@ -358,6 +358,9 @@
 		DB5C429A2925D6CF00442CB5 /* DealDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C42992925D6CF00442CB5 /* DealDetailHeaderView.swift */; };
 		DB5C429C2925DECF00442CB5 /* DealDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C429B2925DECF00442CB5 /* DealDetailTableViewCell.swift */; };
 		DB5C429E2925E2BD00442CB5 /* DealDetailFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C429D2925E2BD00442CB5 /* DealDetailFootView.swift */; };
+		DB5C42A2292C6A4100442CB5 /* XYShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C42A1292C6A4000442CB5 /* XYShopDetailViewController.swift */; };
+		DB5C42A5292C6DCB00442CB5 /* XYShopDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C42A4292C6DCB00442CB5 /* XYShopDetailHeaderView.swift */; };
+		DB5C42A7292C6DDD00442CB5 /* XYShopDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C42A6292C6DDD00442CB5 /* XYShopDetailTableViewCell.swift */; };
 		DB8F335228FFF4A700474235 /* ATAuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8F335128FFF4A700474235 /* ATAuthSDK.framework */; };
 		DB8F335428FFF6C700474235 /* ATAuthSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DB8F335328FFF6C700474235 /* ATAuthSDK.bundle */; };
 		DB8F335828FFF7C800474235 /* YTXMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8F335528FFF7C600474235 /* YTXMonitor.framework */; };
@@ -1137,6 +1140,9 @@
 		DB5C42992925D6CF00442CB5 /* DealDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailHeaderView.swift; sourceTree = "<group>"; };
 		DB5C429B2925DECF00442CB5 /* DealDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailTableViewCell.swift; sourceTree = "<group>"; };
 		DB5C429D2925E2BD00442CB5 /* DealDetailFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailFootView.swift; sourceTree = "<group>"; };
+		DB5C42A1292C6A4000442CB5 /* XYShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYShopDetailViewController.swift; sourceTree = "<group>"; };
+		DB5C42A4292C6DCB00442CB5 /* XYShopDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYShopDetailHeaderView.swift; sourceTree = "<group>"; };
+		DB5C42A6292C6DDD00442CB5 /* XYShopDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYShopDetailTableViewCell.swift; sourceTree = "<group>"; };
 		DB8F334D28FFD15F00474235 /* Winner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Winner-Bridging-Header.h"; sourceTree = "<group>"; };
 		DB8F335128FFF4A700474235 /* ATAuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ATAuthSDK.framework; sourceTree = "<group>"; };
 		DB8F335328FFF6C700474235 /* ATAuthSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ATAuthSDK.bundle; path = ATAuthSDK.framework/ATAuthSDK.bundle; sourceTree = "<group>"; };
@@ -2861,9 +2867,36 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DB5C429F292C650C00442CB5 /* ShoppingPoint(推广点) */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C42A0292C69C400442CB5 /* ShopDetail(店铺详情) */,
+			);
+			path = "ShoppingPoint(推广点)";
+			sourceTree = "<group>";
+		};
+		DB5C42A0292C69C400442CB5 /* ShopDetail(店铺详情) */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C42A3292C6DAF00442CB5 /* View */,
+				DB5C42A1292C6A4000442CB5 /* XYShopDetailViewController.swift */,
+			);
+			path = "ShopDetail(店铺详情)";
+			sourceTree = "<group>";
+		};
+		DB5C42A3292C6DAF00442CB5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C42A4292C6DCB00442CB5 /* XYShopDetailHeaderView.swift */,
+				DB5C42A6292C6DDD00442CB5 /* XYShopDetailTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DB8F334C28FFD12900474235 /* SwiftCodes */ = {
 			isa = PBXGroup;
 			children = (
+				DB5C429F292C650C00442CB5 /* ShoppingPoint(推广点) */,
 				DB5C42892923730200442CB5 /* XYMyWallet(钱包) */,
 				DBBB7318291CFA7000010368 /* XYMySelf(我的) */,
 				DBABCA91291C95E40028E7B9 /* DataModel(公共) */,
@@ -3863,6 +3896,7 @@
 				42B3F78527D59AF300CA254B /* LLMeDeliverListVC.m in Sources */,
 				4295E7C127E1C86B00744204 /* LLogView.m in Sources */,
 				429E8A67279EA44900BA54CD /* LLMainReusableView.m in Sources */,
+				DB5C42A2292C6A4100442CB5 /* XYShopDetailViewController.swift in Sources */,
 				F90CC63B27C491930046C38F /* PromoteDetailModel.m in Sources */,
 				42B3F78327D59AF300CA254B /* LLMeDeliverCommissionRecordVC.m in Sources */,
 				F9ADEBFD279D4BB100F16885 /* LLBuyBackView.m in Sources */,
@@ -3928,6 +3962,7 @@
 				4290555B278C08600053C4E1 /* YBHTextView.m in Sources */,
 				42D3941727FD7DBC008B4138 /* QMDateManager.m in Sources */,
 				F9A99766279C4A6E00D23C6E /* XLPageBasicTitleView.m in Sources */,
+				DB5C42A5292C6DCB00442CB5 /* XYShopDetailHeaderView.swift in Sources */,
 				F9DF2020279FF37900C20B51 /* LLTextView.m in Sources */,
 				429055B7278C09BA0053C4E1 /* GKNavigationInteractiveTransition.m in Sources */,
 				DB5C429C2925DECF00442CB5 /* DealDetailTableViewCell.swift in Sources */,
@@ -4084,6 +4119,7 @@
 				4298F9E227D49D6500B3DB37 /* MShowGroupAllSet.m in Sources */,
 				F9DF2026279FF9A800C20B51 /* ImgCollectionViewCell.m in Sources */,
 				DB5C429E2925E2BD00442CB5 /* DealDetailFootView.swift in Sources */,
+				DB5C42A7292C6DDD00442CB5 /* XYShopDetailTableViewCell.swift in Sources */,
 				42D3942B27FD7DBC008B4138 /* QMCustomLayout.m in Sources */,
 				4260AADD27CB2E60007A3228 /* JXUIKit.m in Sources */,
 				4294A02627DC95A700EF8560 /* LLSearchHistoryModel.m in Sources */,

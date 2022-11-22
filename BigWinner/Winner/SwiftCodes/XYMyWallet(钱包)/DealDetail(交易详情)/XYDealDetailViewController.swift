@@ -27,7 +27,7 @@ class XYDealDetailViewController: LMHBaseViewController {
         
         self.customNavBar.title = "交易详情"
         
-        tableView = LLBaseTableView.init(frame: CGRect(x: 0, y:statusBarForHeight+44 , width: deviceWidth, height: deviceHeight-(statusBarForHeight+44)), style: .grouped)
+        tableView = UITableView.init(frame: CGRect(x: 0, y:statusBarForHeight+44 , width: deviceWidth, height: deviceHeight-(statusBarForHeight+44)), style: .grouped)
         tableView.backgroundColor = .white
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false

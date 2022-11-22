@@ -299,7 +299,7 @@
             if(_personalModel.isShop){
                 self.changeLabel.text = @"推广点";
                 self.changeView.hidden = NO;
-                self.shopNumberLabel.hidden = YES;
+                self.shopNumberLabel.hidden = NO;
             }else if(_personalModel.isClerk){
                 self.changeView.hidden = NO;
                 self.changeLabel.text = @"配送员";

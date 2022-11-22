@@ -6,7 +6,7 @@
 //
 
 #import "LLPersonalChangeVC.h"
-
+#import "Winner-Swift.h"
 @interface LLPersonalChangeVC ()
 
 @property (nonatomic,strong)UIView *bottomView;

@@ -22,7 +22,7 @@ import UIKit
     
     private var titleView = XYMyWalletTitleHeaderView()
     
-    private var tableView = UITableView()
+    private var tableView = LLBaseTableView()
     
     private var page = 1
     
@@ -164,6 +164,12 @@ import UIKit
                 }else{
                     tableView.mj_footer?.isHidden = false
                 }
+            }
+            
+            if(dataArray.count <= 0){
+                tableView.showEmpty(withType: 0, imagename: "", noticename: "暂无数据")
+            }else{
+                tableView.removeEmpty()
             }
             
             tableView.mj_header?.endRefreshing()

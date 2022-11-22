@@ -375,6 +375,11 @@
         _headerView.personalBtnBlock = ^{
             //个人资料
         
+            if ([UserModel sharedUserInfo].isShop) {
+                XYShopDetailViewController *shopVC = [[XYShopDetailViewController alloc] init];
+                [weakself.navigationController pushViewController:shopVC animated:YES];
+            }
+            
         };
         _headerView.loginBtnBlock = ^{
             

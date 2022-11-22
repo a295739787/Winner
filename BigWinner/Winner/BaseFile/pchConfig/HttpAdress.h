@@ -85,7 +85,7 @@
 
 /* 惊喜红包商品购买记录 */
 #define L_apiappredgoodsgetList  @"/api/app/red/goods/getList"
-/* 上次图片 */
+/* 上传图片 */
 #define L_apifileUploaderimages  @"/api/file/Uploader/images"
 /* 轮播图 */
 #define L_apiappgoodsgetGoodsCarousel  @"/api/app/goods/getGoodsCarousel"

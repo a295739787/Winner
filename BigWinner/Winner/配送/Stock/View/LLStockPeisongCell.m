@@ -90,19 +90,19 @@
 
     }];
     
-    [self.sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.stockDetailButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-CGFloatBasedI375(15));
         make.bottom.offset(-CGFloatBasedI375(18));
         make.height.mas_equalTo(CGFloatBasedI375(30));
         make.width.mas_equalTo(CGFloatBasedI375(80));
     }];
     
-    [self.stockDetailButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(weakself.sureButton.mas_left).offset(-10);
-        make.bottom.offset(-CGFloatBasedI375(18));
-        make.height.mas_equalTo(CGFloatBasedI375(30));
-        make.width.mas_equalTo(CGFloatBasedI375(80));
-    }];
+//    [self.sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(weakself.sureButton.mas_left).offset(-10);
+//        make.bottom.offset(-CGFloatBasedI375(18));
+//        make.height.mas_equalTo(CGFloatBasedI375(30));
+//        make.width.mas_equalTo(CGFloatBasedI375(80));
+//    }];
 //    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.right.offset(-CGFloatBasedI375(0));
 //        make.bottom.top.offset(-CGFloatBasedI375(0));
@@ -200,7 +200,7 @@
         [_sureButton setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _sureButton.titleLabel.font = [UIFont systemFontOfSize:CGFloatBasedI375(14)];
         [_sureButton addTarget:self action:@selector(clickTap:) forControlEvents:UIControlEventTouchUpInside];
-        [self.mainView addSubview:self.sureButton];
+//        [self.mainView addSubview:self.sureButton];
     }
     return _sureButton;
 }

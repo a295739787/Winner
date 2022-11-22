@@ -58,6 +58,13 @@ func labelForHeight(width:CGFloat,font:Float,string:NSString) -> CGFloat {
     return height.height
 }
 
+///切圆
+func loadMasksToBounds(targetView:UIView,corners:CGFloat){
+     
+    targetView.layer.masksToBounds = true
+    targetView.layer.cornerRadius = corners
+    
+}
 // MARK: - UILabel模块
 extension UILabel {
    
