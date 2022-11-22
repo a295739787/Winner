@@ -34,11 +34,11 @@ class DealDetailFootView: UIView {
     private func loadMainView(){
         
         lineView = UIView.init()
-        lineView.backgroundColor = .hexString("#837D71")
+        lineView.backgroundColor = .hexString("#F5F5F5")
         self.addSubview(lineView)
         
         questionLabel = UILabel.init()
-        questionLabel.loadMasksDynamicLabel(text: "订单遇到问题？", color: .hexString("#999999"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14))
+        questionLabel.loadMasksDynamicLabel(text: "订单遇到问题?", color: .hexString("#999999"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14))
         self.addSubview(questionLabel)
         
         serviceImageView = UIImageView.init()

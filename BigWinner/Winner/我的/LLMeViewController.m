@@ -295,10 +295,13 @@
             }
             if (index == 100) {
                 //我的钱包
-                LLWalletController *walletVC = [[LLWalletController alloc]init];
-                walletVC.type = @"1";
-                walletVC.balance = self.personalModel.balance;
-                [weakself.navigationController pushViewController:walletVC animated:YES];
+//                LLWalletController *walletVC = [[LLWalletController alloc]init];
+//                walletVC.type = @"1";
+//                walletVC.balance = self.personalModel.balance;
+//                [weakself.navigationController pushViewController:walletVC animated:YES];
+                XYMyWalletViewController *vc = [[XYMyWalletViewController alloc] init];
+                vc.walletType = MyWalletTypeNormal;
+                [weakself.navigationController pushViewController:vc animated:YES];
             }else if (index == 101){
                 //惊喜活动购买记录
                 LLSurpriseRegBagRecordViewController *vc = [[LLSurpriseRegBagRecordViewController alloc]init];

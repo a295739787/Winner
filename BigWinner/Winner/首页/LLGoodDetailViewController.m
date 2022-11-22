@@ -24,6 +24,8 @@
 #import "LLGoodPraiseViewController.h"
 #import "QMChatRoomViewController.h"
 #import "PLLocationManage.h"
+#import "Winner-Swift.h"
+
 static NSString *const LLGoodPicCellid = @"LLGoodPicCell";
 static NSString *const LLGoodDetailCellid = @"LLGoodDetailCell";
 static NSString *const LLPraiseAllCellid = @"LLPraiseAllCell";
@@ -245,21 +247,32 @@ static NSString *const LLPraiseAllCellid = @"LLPraiseAllCell";
     }
 }
 -(void)initKefu{
-    [QMConnect sdkGetWebchatScheduleConfig:^(NSDictionary * _Nonnull scheduleDic) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.dictionary = scheduleDic;
-            NSLog(@"self.dictionary == %@",self.dictionary);
-            if ([self.dictionary[@"scheduleEnable"] intValue] == 1) {
-                NSLog(@"日程管理");
-                [self starSchedule];
-            }else{
-                NSLog(@"技能组");
-                [self getPeers];
-            }
-        });
-    } failBlock:^{
-        [self getPeers];
-    }];
+    
+    WS(weakself);
+    XYServiceTipsViewController *serviceVC = [[XYServiceTipsViewController alloc]init];
+    serviceVC.pushBlock = ^(UIViewController * view) {
+        [weakself.navigationController pushViewController:view animated:YES];
+    };
+    serviceVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    serviceVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:serviceVC animated:YES completion:nil];
+    
+    
+//    [QMConnect sdkGetWebchatScheduleConfig:^(NSDictionary * _Nonnull scheduleDic) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.dictionary = scheduleDic;
+//            NSLog(@"self.dictionary == %@",self.dictionary);
+//            if ([self.dictionary[@"scheduleEnable"] intValue] == 1) {
+//                NSLog(@"日程管理");
+//                [self starSchedule];
+//            }else{
+//                NSLog(@"技能组");
+//                [self getPeers];
+//            }
+//        });
+//    } failBlock:^{
+//        [self getPeers];
+//    }];
 }
 #pragma mark - 技能组选择
 - (void)getPeers {

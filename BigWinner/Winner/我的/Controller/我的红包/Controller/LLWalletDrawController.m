@@ -91,7 +91,7 @@
         return cell;
     }else{
         XYOrderQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XYQuestionCell" forIndexPath:indexPath];
-        cell.questionLabel.text = @"提现遇到问题？";
+        cell.questionLabel.text = @"提现遇到问题?";
         return  cell;
     }
     

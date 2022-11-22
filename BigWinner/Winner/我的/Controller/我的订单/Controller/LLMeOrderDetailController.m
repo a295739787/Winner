@@ -505,6 +505,11 @@
             return CGFloatBasedI375(95);
         }
     }
+    if (self.detailModel.taskStatus == 1 && self.detailModel.orderStatus.integerValue == 3 && self.detailModel.orderType.integerValue == 2) {
+        if (section == 2) {
+            return CGFloatBasedI375(95);
+        }
+    }
     
     return CGFloatBasedI375(25);
 }
@@ -547,7 +552,7 @@
         
             LLmeOrderDetailInfoFooterView *footerView =  [[LLmeOrderDetailInfoFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
             footerView.showInfo = YES;
-            footerView.questionLabel.text = @"订单遇到问题？";
+            footerView.questionLabel.text = @"订单遇到问题?";
             footerView.serviceBlock = ^{
                
                 [weakself footViewJoinServiceView];
@@ -578,7 +583,7 @@
             
             LLmeOrderDetailInfoFooterView *footerView =  [[LLmeOrderDetailInfoFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
             footerView.showInfo = YES;
-            footerView.questionLabel.text = @"订单遇到问题？";
+            footerView.questionLabel.text = @"订单遇到问题?";
             footerView.serviceBlock = ^{
                
                 [weakself footViewJoinServiceView];
@@ -594,7 +599,7 @@
             
             LLmeOrderDetailInfoFooterView *footerView =  [[LLmeOrderDetailInfoFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
             footerView.showInfo = YES;
-            footerView.questionLabel.text = @"订单遇到问题？";
+            footerView.questionLabel.text = @"订单遇到问题?";
             footerView.serviceBlock = ^{
                
                 [weakself footViewJoinServiceView];

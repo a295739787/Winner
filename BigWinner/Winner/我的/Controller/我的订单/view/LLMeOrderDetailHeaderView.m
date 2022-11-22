@@ -710,7 +710,7 @@
 - (UIImageView *)serviceImageView{
     if (!_serviceImageView) {
         _serviceImageView = [[UIImageView alloc]init];
-        _serviceImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _serviceImageView.contentMode = UIViewContentModeScaleAspectFill;
         _serviceImageView.image = [UIImage imageNamed:@"service_red"];
     }
     return _serviceImageView;

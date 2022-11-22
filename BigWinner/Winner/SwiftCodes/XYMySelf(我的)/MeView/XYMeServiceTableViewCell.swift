@@ -36,13 +36,13 @@ import UIKit
         contentView.addSubview(bgView)
         
         serviceImageView = UIImageView.init()
-        serviceImageView.contentMode = .scaleAspectFit
+        serviceImageView.contentMode = .scaleAspectFill
         serviceImageView.image = UIImage.init(named: "service_red")
         bgView.addSubview(serviceImageView)
         
         serviceLabel = UILabel.init()
         serviceLabel.text = "联系客服"
-        serviceLabel.textColor = .black
+        serviceLabel.textColor = .hexString("#333333")
         serviceLabel.font = .systemFont(ofSize: 14)
         serviceLabel.textAlignment = .left
         bgView.addSubview(serviceLabel)

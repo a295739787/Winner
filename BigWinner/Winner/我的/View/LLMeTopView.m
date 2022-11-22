@@ -116,7 +116,8 @@
 @property (nonatomic,strong)UIView *changeView;
 @property (nonatomic,strong)UIImageView *changeImgView;
 @property (nonatomic,strong) LLGoodCarNoticeView *noticeView;/** <#class#> **/
-
+///推广点编号
+@property (nonatomic ,strong) UILabel *shopNumberLabel;
 @end
 
 @implementation LLMeHeaderView
@@ -184,6 +185,15 @@
         make.height.mas_equalTo(CGFloatBasedI375(28));
 
     }];
+    
+    [self.shopNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-CGFloatBasedI375(15));
+        make.top.mas_equalTo(self.changeView.mas_bottom).offset(4);
+        make.width.mas_equalTo(CGFloatBasedI375(80));
+        make.height.mas_equalTo(CGFloatBasedI375(10));
+
+    }];
+    
     [self.changeImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(CGFloatBasedI375(10));
         make.centerY.mas_equalTo(self.changeView);
@@ -289,6 +299,7 @@
             if(_personalModel.isShop){
                 self.changeLabel.text = @"推广点";
                 self.changeView.hidden = NO;
+                self.shopNumberLabel.hidden = YES;
             }else if(_personalModel.isClerk){
                 self.changeView.hidden = NO;
                 self.changeLabel.text = @"配送员";
@@ -352,6 +363,20 @@
     if(self.tapBlock){
         self.tapBlock();
     }
+}
+- (UILabel *)shopNumberLabel{
+    
+    if (!_shopNumberLabel) {
+        
+        _shopNumberLabel = [[UILabel alloc]init];
+        _shopNumberLabel.textColor = [UIColor HexString:@"#FFFFFF"];
+        _shopNumberLabel.textAlignment = NSTextAlignmentCenter;
+        _shopNumberLabel.font = [UIFont systemFontOfSize:10];
+        _shopNumberLabel.text = @"黔999999";
+        _shopNumberLabel.hidden = YES;
+        [self addSubview:_shopNumberLabel];
+    }
+    return  _shopNumberLabel;
 }
 -(UILabel *)changeLabel{
     if (!_changeLabel) {

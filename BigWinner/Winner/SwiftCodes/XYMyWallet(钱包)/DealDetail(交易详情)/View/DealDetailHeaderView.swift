@@ -34,7 +34,7 @@ class DealDetailHeaderView: UIView {
         self.addSubview(moneyLabel)
         
         lineView = UIView.init()
-        lineView.backgroundColor = .hexString("#837D71")
+        lineView.backgroundColor = .hexString("#F5F5F5")
         self.addSubview(lineView)
         
     }

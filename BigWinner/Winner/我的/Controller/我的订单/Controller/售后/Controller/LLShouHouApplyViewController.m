@@ -878,7 +878,7 @@ static NSString *const LLReturnApplyOnmonyComCellid = @"LLReturnApplyOnmonyComCe
         return cell;
     }else{
         XYOrderQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XYQuestionCell" forIndexPath:indexPath];
-        cell.questionLabel.text = @"售后遇到问题？";
+        cell.questionLabel.text = @"售后遇到问题?";
         return  cell;
     }
    

@@ -37,9 +37,8 @@ class XYDealDetailViewController: LMHBaseViewController {
         tableView.register(DealDetailTableViewCell.self, forCellReuseIdentifier: "DealDetailCell")
         self.view.addSubview(tableView)
         
-        let symbol = WalletSymbol[model.type]!
         let price = String(format: "%.2f", model.price)
-        dealPrice = "\(symbol)\(price)"
+        dealPrice = "\(price)"
         var msg = "成功"
         var colorHex = "#443415"
         if !model.withdrawalMsg.isEmpty {

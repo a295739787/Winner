@@ -147,7 +147,7 @@ class XYMyWalletHeaderView: UIView {
         }else{
             
             button.setTitle("去使用", for: .normal)
-            moneyTipsLabel.text = "消费红包(元)"
+            moneyTipsLabel.text = "红包余额(元)"
             incomeTipsLabel.text = "累计获得红包"
             recoverTipsLabel.text = "累计已使用"
             bgImageView.image = UIImage(named: "consume")
