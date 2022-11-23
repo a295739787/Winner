@@ -6,7 +6,7 @@
 //
 
 #import "LLPersonalModel.h"
-
+#import "Winner-Swift.h"
 @implementation LLPersonalModel
 
 @end

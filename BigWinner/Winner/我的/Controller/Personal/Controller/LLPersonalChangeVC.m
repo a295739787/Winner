@@ -25,7 +25,7 @@
 -(void)createUI{
     
     self.view.backgroundColor = UIColorFromRGB(0xF0EFED);
-    self.customNavBar.title = @"修改昵称";
+    self.customNavBar.title = self.titleStr;
     
     
     [self.customNavBar wr_setLeftButtonWithTitle:@"取消" titleColor:UIColorFromRGB(0x999999)];
@@ -68,8 +68,14 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
     [params setObject:_textField.text forKey:@"value"];
     [params setObject:@"1" forKey:@"type"];
+    NSString *shopUrl = L_UpdateUserInfo;
+    if (self.userType != nil) {
+        [params setObject:_userType forKey:@"userType"];
+        shopUrl = L_updateUserById;
+    }
+    
     WS(weakself);
-    [XJHttpTool post:L_UpdateUserInfo method:POST params:params isToken:YES success:^(id  _Nonnull responseObj) {
+    [XJHttpTool post:shopUrl method:POST params:params isToken:YES success:^(id  _Nonnull responseObj) {
             
         NSString *code = responseObj[@"code"];
         

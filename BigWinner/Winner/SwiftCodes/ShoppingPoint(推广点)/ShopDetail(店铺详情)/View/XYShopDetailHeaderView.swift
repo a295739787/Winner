@@ -11,9 +11,15 @@ class XYShopDetailHeaderView: UIView {
     
     private var iconImageView = UIImageView()
     private var noteImgView = UIImageView()
-    var selectIconButton = UIButton()
     private var spaceView = UIView()
-    
+    var selectIconButton = UIButton()
+    var iconURL : String?{
+        
+        didSet{
+            iconImageView.sd_setImage(withUrlString: iconURL ?? "", placeholderImageName: "headimages")
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white

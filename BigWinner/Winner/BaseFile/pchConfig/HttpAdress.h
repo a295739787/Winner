@@ -168,6 +168,9 @@
 #define L_getUserInfo  @"/api/app/user/getUserInfo"
 /* 编辑用户信息 */
 #define L_UpdateUserInfo @"/api/app/user/updateById"
+/* 推广员信息编辑 */
+#define L_updateUserById @"/api/app/user/updateUserById"
+
 /* 实名认证 */
 #define L_RealAuth @"/api/app/user/realAuth"
 /* 添加银行卡*/

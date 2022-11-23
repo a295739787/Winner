@@ -397,6 +397,8 @@ typedef NS_ENUM(NSInteger,RoleStatus) {
     RoleStatusHadOrder=10, // 已接单
     RoleStatusDoneOrder=11, // 已完成
     RoleStatusTransOrder=12, // 已转单
+    RoleStatusGeneral=13, // 普通用户
+
 };
 #define APPKEYHX @"1128210407148694#uu"
 #define SHOPCARCOUNT @"SHOPCARCOUNT"

@@ -279,11 +279,24 @@
         
         _loginBtn.hidden = YES;
         _personalBtn.hidden = NO;
-        _nameLabel.text = _personalModel.nickName;
-        if (_personalModel.account) {
-            _numberLabel.text = [NSString setPhoneMidHid:_personalModel.account];
+        
+        AppDelegate *dele = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        if (dele.status == RoleStatusTuiguang) {
+            
+            _nameLabel.text = _personalModel.shopName;
+            _numberLabel.text = _personalModel.shopNo;
+            [_headerImgView sd_setImageWithUrlString:FORMAT(@"%@%@",API_IMAGEHOST,_personalModel.shopPhoto) placeholderImage:[UIImage imageNamed:morentouxiang]];
+            
+        }else{
+          
+            _nameLabel.text = _personalModel.nickName;
+            if (_personalModel.account) {
+                _numberLabel.text = [NSString setPhoneMidHid:_personalModel.account];
+            }
+            [_headerImgView sd_setImageWithUrlString:FORMAT(@"%@",_personalModel.headIcon) placeholderImage:[UIImage imageNamed:morentouxiang]];
         }
-        [_headerImgView sd_setImageWithUrlString:FORMAT(@"%@",_personalModel.headIcon) placeholderImage:[UIImage imageNamed:morentouxiang]];
+        
+        _shopNumberLabel.text = _personalModel.shopNo;
         
         if(_isPeisong){//配送员/推广员
             self.changeView.hidden = NO;

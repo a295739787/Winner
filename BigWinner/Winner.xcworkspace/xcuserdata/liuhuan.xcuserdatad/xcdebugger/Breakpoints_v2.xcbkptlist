@@ -19,22 +19,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DA51A1B8-25AE-42BC-8B4C-99E6FD594489"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Winner/&#x6211;&#x7684;/LLMeViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-getPersonUrl"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8D3EB41F-0B78-4875-AF1D-D10DFD2E506F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -205,6 +189,22 @@
             startingLineNumber = "155"
             endingLineNumber = "155"
             landmarkName = "loadUserWalletListNetwork()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E3CA8DB-4D3F-4657-84E2-C7D4542665DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Winner/&#x6211;&#x7684;/Controller/Personal/Controller/LLPersonalController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-updateUserInfoUtl:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

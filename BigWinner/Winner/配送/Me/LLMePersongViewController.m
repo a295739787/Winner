@@ -131,6 +131,8 @@
         NSDictionary *data = responseObj[@"data"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            AppDelegate *dele = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            dele.status = RoleStatusGeneral;
             LLTabbarViewController *vc = [[LLTabbarViewController alloc]init];
             vc.selectedIndex = 3;
             [UIApplication sharedApplication].delegate.window.rootViewController  = vc;
@@ -377,6 +379,7 @@
         
             if ([UserModel sharedUserInfo].isShop) {
                 XYShopDetailViewController *shopVC = [[XYShopDetailViewController alloc] init];
+                shopVC.personalModel = weakself.personalModel;
                 [weakself.navigationController pushViewController:shopVC animated:YES];
             }
             

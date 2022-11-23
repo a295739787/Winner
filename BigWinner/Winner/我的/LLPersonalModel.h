@@ -64,6 +64,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *distStockStayReceivingOrderNum;//配送库存待收货订单数量
 @property (nonatomic,copy)NSString *accumulatedCommissionPrice;//用户手机号
 
+/* 推广员 */
+@property (nonatomic,copy)NSString *shopStatus;
+@property (nonatomic,copy)NSString *shopProvince;
+@property (nonatomic,copy)NSString *shopBusinessLicense;
+@property (nonatomic,copy)NSString *shopTelePhone;
+@property (nonatomic,copy)NSString *shopLongitude;
+@property (nonatomic,copy)NSString *shopCity;
+@property (nonatomic,copy)NSString *shopArea;
+@property (nonatomic,copy)NSString *shopPhoto;
+@property (nonatomic,copy)NSString *shopAddress;
+@property (nonatomic,copy)NSString *shopName;
+@property (nonatomic,copy)NSString *shopLatitude;
+@property (nonatomic,copy)NSString *shopNo;
 
 
 @end

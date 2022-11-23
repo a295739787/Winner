@@ -193,6 +193,7 @@
             LLPersonalChangeVC *changeVC = [[LLPersonalChangeVC alloc]init];
             NSString *nickName = self.personalModel.nickName;
             changeVC.nameStr = nickName;
+            changeVC.titleStr = @"修改昵称";
             WS(weakself);
             changeVC.changeSuccessBlock = ^(NSString * _Nonnull changeText) {
                 weakself.personalModel.nickName = changeText;

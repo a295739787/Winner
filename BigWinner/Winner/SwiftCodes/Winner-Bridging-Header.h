@@ -121,5 +121,7 @@
 #import <ATAuthSDK/ATAuthSDK.h>
 #import "LLWalletDrawController.h"
 #import "LLPersonalChangeVC.h"
+#import "LLPersonalModel.h"
+
 
 

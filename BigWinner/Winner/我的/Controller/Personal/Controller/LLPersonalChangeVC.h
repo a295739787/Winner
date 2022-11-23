@@ -14,6 +14,8 @@ typedef void(^LLPersonalChangeSuccessBlock) (NSString *changeText);
 @interface LLPersonalChangeVC : LMHBaseViewController
 
 @property (nonatomic,strong)NSString *nameStr;
+@property (nonatomic,strong)NSString *titleStr;
+@property (nonatomic,strong)NSString *userType;
 @property (nonatomic,copy)LLPersonalChangeSuccessBlock changeSuccessBlock;
 
 @end
