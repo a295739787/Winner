@@ -370,6 +370,11 @@
         _headerView = [[LLMeHeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CGFloatBasedI375(100))];
         _headerView.changeLabel.text = @"普通用户";
         _headerView.isPeisong = YES;
+        if ([UserModel sharedUserInfo].isShop) {
+            _headerView.type = LLMeHeaderTypeShop;
+        }else{
+            _headerView.type = LLMeHeaderTypeClerk;
+        }
         WS(weakself);
         _headerView.tapBlock = ^{
             [weakself getPersonChangeUrl];

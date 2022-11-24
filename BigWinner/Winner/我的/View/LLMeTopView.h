@@ -23,6 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+typedef NS_OPTIONS(NSUInteger,  LLMeHeaderType) {
+    LLMeHeaderTypeNormal     = 0,
+    LLMeHeaderTypeShop        = 1 << 0,
+    LLMeHeaderTypeClerk       = 1 << 1,
+    
+};
 
 @interface LLMeHeaderView : UIView
 @property (nonatomic, copy) void(^tapBlock)(void);
@@ -33,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)reloadInfo;
 @property (nonatomic,strong)LLPersonalModel *personalModel;
 @property (nonatomic,strong)LLMeLoginBtnBlock loginBtnBlock;
-
+@property (nonatomic ,assign) LLMeHeaderType type;
 @end
 @interface LLGoodCarNoticeView : UIView
 @property (nonatomic,strong) UIImageView *showImage;

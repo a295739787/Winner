@@ -429,7 +429,7 @@
 -(LLMeHeaderView *)headerView{
     if (!_headerView) {
         _headerView = [[LLMeHeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CGFloatBasedI375(100))];
-        
+        _headerView.type = LLMeHeaderTypeNormal;
         WS(weakself);
         _headerView.tapBlock = ^{
             NSString *guide_psy_status = [[NSUserDefaults standardUserDefaults] objectForKey:@"guide_psy_status"];

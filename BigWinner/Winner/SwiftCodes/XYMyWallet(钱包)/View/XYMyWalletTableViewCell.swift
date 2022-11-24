@@ -72,8 +72,8 @@ class XYMyWalletTableViewCell: UITableViewCell {
         bgView.addSubview(messageView)
      
         messageImageView = UIImageView.init()
-//        messageView.backgroundColor = .red
-        messageView.contentMode = .scaleAspectFit
+        messageImageView.image = UIImage(named: "walletWarn")
+        messageImageView.contentMode = .scaleAspectFit
         messageView.addSubview(messageImageView)
         
         messageLabel = UILabel.init()

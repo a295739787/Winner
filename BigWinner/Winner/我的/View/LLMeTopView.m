@@ -129,6 +129,39 @@
     }
     return self;
 }
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    if ((self.type == LLMeHeaderTypeNormal) || (self.type == LLMeHeaderTypeClerk)) {
+        
+        [self.noteImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(self.nameLabel);
+            make.left.mas_equalTo(self.nameLabel.mas_right).offset(CGFloatBasedI375(2));
+            make.width.mas_equalTo(CGFloatBasedI375(66));
+            make.height.mas_equalTo(CGFloatBasedI375(22));
+        }];
+        
+        [self.numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.nameLabel);
+            make.top.mas_equalTo(self.nameLabel.mas_bottom).offset(CGFloatBasedI375(10));
+        }];
+        
+    }else{
+       
+        [self.noteImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.nameLabel);
+            make.top.mas_equalTo(self.nameLabel.mas_bottom).offset(CGFloatBasedI375(0));
+            make.width.mas_equalTo(CGFloatBasedI375(66));
+            make.height.mas_equalTo(CGFloatBasedI375(22));
+        }];
+        
+        [self.numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.noteImgView);
+            make.top.mas_equalTo(self.noteImgView.mas_bottom).offset(CGFloatBasedI375(0));
+        }];
+    }
+}
 #pragma mark--createUI
 -(void)createUI{
     
@@ -162,20 +195,8 @@
     }];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.headerImgView.mas_top).offset(CGFloatBasedI375(10));
+        make.top.mas_equalTo(self.headerImgView.mas_top).offset(CGFloatBasedI375(5));
         make.left.mas_equalTo(self.headerImgView.mas_right).offset(CGFloatBasedI375(10));
-    }];
-    
-    [self.noteImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.nameLabel);
-        make.left.mas_equalTo(self.nameLabel.mas_right).offset(CGFloatBasedI375(2));
-        make.width.mas_equalTo(CGFloatBasedI375(66));
-        make.height.mas_equalTo(CGFloatBasedI375(22));
-    }];
-    
-    [self.numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.nameLabel);
-        make.top.mas_equalTo(self.nameLabel.mas_bottom).offset(CGFloatBasedI375(10));
     }];
     
     [self.changeView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -483,7 +504,7 @@
         _numberLabel = [[UILabel alloc]init];
         _numberLabel.textColor = UIColorFromRGB(0xFFFFFF);
         _numberLabel.textAlignment = NSTextAlignmentCenter;
-        _numberLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(14)];
+        _numberLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(12)];
         _numberLabel.text = @"";
     }
     return _numberLabel;
