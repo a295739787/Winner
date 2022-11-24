@@ -195,16 +195,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2E3CA8DB-4D3F-4657-84E2-C7D4542665DC"
-            shouldBeEnabled = "Yes"
+            uuid = "B7E37F4B-EA10-4006-81FA-D9FA35EE8E4C"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Winner/&#x6211;&#x7684;/Controller/Personal/Controller/LLPersonalController.m"
+            filePath = "Winner/SwiftCodes/XYMyWallet(&#x94b1;&#x5305;)/XYMyWalletViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-updateUserInfoUtl:"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "loadUserWalletNetwork()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

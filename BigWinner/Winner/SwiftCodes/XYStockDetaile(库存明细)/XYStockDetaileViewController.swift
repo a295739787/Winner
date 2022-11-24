@@ -79,7 +79,7 @@ import UIKit
         topView.addSubview(topGoodsPriceLabel)
         
         topGoodsVolumeLabel = UILabel.init()
-        topGoodsVolumeLabel.frame = CGRect(x: topImageView.frame.maxX+12, y: topGoodsPriceLabel.frame.maxY+10, width: 120, height: 12)
+        topGoodsVolumeLabel.frame = CGRect(x: topImageView.frame.maxX+12, y: topGoodsPriceLabel.frame.maxY+10, width: topView.frame.size.width-topImageView.frame.maxX-12-80, height: 12)
         topGoodsVolumeLabel.textAlignment = .left
         topGoodsVolumeLabel.textColor = UIColor.hexString("#999999")
         topGoodsVolumeLabel.font = UIFont.systemFont(ofSize: 12)
@@ -173,8 +173,10 @@ import UIKit
         let delegate = UIApplication.shared.delegate as! AppDelegate
         if (delegate.status == .peisong) {
             userType = "3"
+            topGoodsShopButton.isHidden = false
         }else{
             userType = "2"
+            topGoodsShopButton.isHidden = true
         }
         let userId = UserModel.sharedUserInfo().userId
         let param = NSMutableDictionary()
@@ -222,13 +224,21 @@ import UIKit
             let msg = data.object(forKey: "msg") as? String
             if msg == "Success" {
                 let dataDic = data.object(forKey: "data") as! NSDictionary
-                let listArray = dataDic.object(forKey: "list") as! NSArray
-                let listDic = listArray.firstObject as! NSDictionary
-
-                let goodsNum = listDic["goodsNum"] as! Int
-                let stayStock = listDic["stayStock"] as! Int
-                topGoodsKuCunLabel.text = "库存: \(goodsNum)"
-                topGoodsDaiRuKuLabel.text = "待入库: \(stayStock)"
+                
+                let list = dataDic.object(forKey: "list") as? NSArray
+                
+                if list != nil {
+                    let listArray = list!
+                    let listDic = listArray.firstObject as! NSDictionary
+                    let goodsNum = listDic["goodsNum"] as! Int
+                    let stayStock = listDic["stayStock"] as! Int
+                    topGoodsKuCunLabel.text = "库存: \(goodsNum)"
+                    topGoodsDaiRuKuLabel.text = "待入库: \(stayStock)"
+                }else{
+                    topGoodsKuCunLabel.text = "库存: 0"
+                    topGoodsDaiRuKuLabel.text = "待入库: 0"
+                }
+               
             }
         } failure: { errore in
         }

@@ -134,20 +134,31 @@
         [AccessTool saveUserInfo];
         [UserModel saveInfo];
         self.personalModel = [LLPersonalModel mj_objectWithKeyValues:data];
-        self.headerView.personalModel = self.personalModel;
         self.topView.redLabel.hidden = YES;
         if(self.personalModel.messageNum > 0){
             self.topView.redLabel.hidden = NO;
             self.topView.redLabel.text = FORMAT(@"%ld",self.personalModel.messageNum);
         }
-        
-        
-        [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
+        [weakself loadUserWalletNetwork];
     } failure:^(NSError * _Nonnull error) {
-        [self.tableView.mj_header endRefreshing];
+        
     }];
-    [self.tableView reloadData];
+}
+-(void)loadUserWalletNetwork{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    WS(weakself);
+    [XJHttpTool post:L_getUserWallet method:GET params:params isToken:YES success:^(id  _Nonnull responseObj) {
+      
+        NSDictionary *data = responseObj[@"data"];
+        self.personalModel.totalReConsumeRedPrice = data[@"totalReConsumeRedPrice"];
+        self.personalModel.totalReCashRedPrice = data[@"totalReCashRedPrice"];
+        self.headerView.personalModel = self.personalModel;
+        
+        [weakself.tableView reloadData];
+        [weakself.tableView.mj_header endRefreshing];
+    } failure:^(NSError * _Nonnull error) {
+        [weakself.tableView.mj_header endRefreshing];
+    }];
 }
 -(void)getPersonUrl{
     [self.guideView hidden];

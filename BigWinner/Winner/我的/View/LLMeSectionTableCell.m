@@ -99,9 +99,9 @@
 -(void)setPersonalModel:(LLPersonalModel *)personalModel{
     _personalModel = personalModel;
     //累计现金红包
-    NSString *totalCashRedPrice = [_personalModel.totalCashRedPrice length] > 0 ? _personalModel.totalCashRedPrice : @"0.00";
+    NSString *totalCashRedPrice = _personalModel.totalReCashRedPrice > 0 ? _personalModel.totalReCashRedPrice : @"0.00";
     //累计消费红包
-    NSString *totalConsumeRedPrice = [_personalModel.totalConsumeRedPrice length] > 0  ? _personalModel.totalConsumeRedPrice : @"0.00";
+    NSString *totalConsumeRedPrice = _personalModel.totalReConsumeRedPrice > 0  ? _personalModel.totalReConsumeRedPrice : @"0.00";
     //累计推广佣金
     NSString *totalPromotionPrice = [_personalModel.totalPromotionPrice length] > 0 ? _personalModel.totalPromotionPrice : @"0.00";
     

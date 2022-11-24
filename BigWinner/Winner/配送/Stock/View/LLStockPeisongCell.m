@@ -27,7 +27,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 #pragma mark ============= 头部 =============
@@ -40,7 +40,7 @@
     return self;
 }
 -(void)setLayout{
- 
+    
     [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.offset(10);
         make.right.offset(-10);
@@ -58,56 +58,70 @@
         make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
         make.top.equalTo(weakself.showImage.mas_top).offset(CGFloatBasedI375(3));
         make.right.offset(-CGFloatBasedI375(15));
-
+        
     }];
     [self.pricelable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
         make.top.equalTo(weakself.titlelable.mas_bottom).offset(CGFloatBasedI375(5));
         make.right.offset(-CGFloatBasedI375(15));
-
+        
     }];
-//    if([UserModel sharedUserInfo].isClerk){//是否存在配送员
-        self.pricelable.hidden = NO;
-        [self.attrlable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
-            make.top.equalTo(weakself.pricelable.mas_bottom).offset(CGFloatBasedI375(5));
-            make.right.offset(-CGFloatBasedI375(15));
-            
-        }];
-//    }else{//是否存在推广点
-//        self.pricelable.hidden = NO;
-//        [self.attrlable mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
-//            make.top.equalTo(weakself.titlelable.mas_bottom).offset(CGFloatBasedI375(5));
-//            make.right.offset(-CGFloatBasedI375(15));
-//            
-//        }];
-//    }
+    //    if([UserModel sharedUserInfo].isClerk){//是否存在配送员
+    self.pricelable.hidden = NO;
+    [self.attrlable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
+        make.top.equalTo(weakself.pricelable.mas_bottom).offset(CGFloatBasedI375(5));
+        make.right.offset(-CGFloatBasedI375(15));
+        
+    }];
+    //    }else{//是否存在推广点
+    //        self.pricelable.hidden = NO;
+    //        [self.attrlable mas_makeConstraints:^(MASConstraintMaker *make) {
+    //            make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
+    //            make.top.equalTo(weakself.titlelable.mas_bottom).offset(CGFloatBasedI375(5));
+    //            make.right.offset(-CGFloatBasedI375(15));
+    //
+    //        }];
+    //    }
+    
     [self.stocklable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakself.showImage.mas_right).offset(CGFloatBasedI375(5));
         make.top.equalTo(weakself.attrlable.mas_bottom).offset(CGFloatBasedI375(5));
         make.right.offset(-CGFloatBasedI375(15));
+        
+    }];
+    
+    if([UserModel sharedUserInfo].isClerk){//是否存在配送员
+        
+        [self.sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.offset(-CGFloatBasedI375(15));
+            make.bottom.offset(-CGFloatBasedI375(18));
+            make.height.mas_equalTo(CGFloatBasedI375(30));
+            make.width.mas_equalTo(CGFloatBasedI375(80));
+        }];
+        [self.stockDetailButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(weakself.sureButton.mas_left).offset(-10);
+            make.bottom.offset(-CGFloatBasedI375(18));
+            make.height.mas_equalTo(CGFloatBasedI375(30));
+            make.width.mas_equalTo(CGFloatBasedI375(80));
+        }];
+        
+    }else{
+        
+        [self.stockDetailButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.offset(-CGFloatBasedI375(15));
+            make.bottom.offset(-CGFloatBasedI375(18));
+            make.height.mas_equalTo(CGFloatBasedI375(30));
+            make.width.mas_equalTo(CGFloatBasedI375(80));
+        }];
+        
+    }
 
-    }];
-    
-    [self.stockDetailButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.offset(-CGFloatBasedI375(15));
-        make.bottom.offset(-CGFloatBasedI375(18));
-        make.height.mas_equalTo(CGFloatBasedI375(30));
-        make.width.mas_equalTo(CGFloatBasedI375(80));
-    }];
-    
-//    [self.sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(weakself.sureButton.mas_left).offset(-10);
-//        make.bottom.offset(-CGFloatBasedI375(18));
-//        make.height.mas_equalTo(CGFloatBasedI375(30));
-//        make.width.mas_equalTo(CGFloatBasedI375(80));
-//    }];
-//    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.offset(-CGFloatBasedI375(0));
-//        make.bottom.top.offset(-CGFloatBasedI375(0));
-//        make.height.mas_equalTo(CGFloatBasedI375(1));
-//    }];
+    //    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.right.offset(-CGFloatBasedI375(0));
+    //        make.bottom.top.offset(-CGFloatBasedI375(0));
+    //        make.height.mas_equalTo(CGFloatBasedI375(1));
+    //    }];
 }
 
 -(void)setModel:(LLGoodModel *)model{
@@ -116,7 +130,7 @@
     self.attrlable.text = FORMAT(@"%@",_model.specsValName);
     _titlelable.text = _model.name;
     _pricelable.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.purchasePrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont boldFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ Main_Color, Main_Color]];
-
+    
     self.stocklable.text = FORMAT(@"库存:%@  |  待入库: %@",_model.goodsNum,_model.stayStock);
 }
 -(UIView *)mainView{
@@ -163,7 +177,7 @@
     if(!_stocklable){
         _stocklable = [JXUIKit labelWithBackgroundColor:[UIColor clearColor] textColor:[UIColor colorWithHexString:@"#999999"] textAlignment:NSTextAlignmentLeft numberOfLines:2 fontSize:CGFloatBasedI375(14) font:[UIFont systemFontOfSize:CGFloatBasedI375(14)] text:@"库存:1  |  待入库: 0"];
         [self.mainView addSubview:self.stocklable];
-       
+        
     }
     return _stocklable;
 }
@@ -196,11 +210,11 @@
         [_sureButton setTitle:@"去采购" forState:UIControlStateNormal];
         _sureButton.backgroundColor = Main_Color;
         NSLog(@"[UserModel sharedUserInfo].userIdentity  == %ld",[UserModel sharedUserInfo].userIdentity );
-
+        
         [_sureButton setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _sureButton.titleLabel.font = [UIFont systemFontOfSize:CGFloatBasedI375(14)];
         [_sureButton addTarget:self action:@selector(clickTap:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.mainView addSubview:self.sureButton];
+        [self.mainView addSubview:self.sureButton];
     }
     return _sureButton;
 }
@@ -216,12 +230,12 @@
     if(!_lineView){
         _lineView = [[UIView alloc]init];
         _lineView.backgroundColor = BG_Color;
-//        [self.contentView addSubview:_lineView];
+        //        [self.contentView addSubview:_lineView];
     }
     return _lineView;;
 }
 -(void)clickTap:(UIButton *)sender{
-  
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(joinStockDetailAndShop:dataSource:)]) {
         [self.delegate joinStockDetailAndShop:sender dataSource:self.model];
     }

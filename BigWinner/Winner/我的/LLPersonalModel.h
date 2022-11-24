@@ -30,8 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *stayPayOrderNum;
 @property (nonatomic,copy)NSString *stayReceivingOrderNum;
 @property (nonatomic,copy)NSString *stock;
-@property (nonatomic,copy)NSString *totalCashRedPrice;
-@property (nonatomic,copy)NSString *totalConsumeRedPrice;
+@property (nonatomic,copy)NSString *totalReCashRedPrice;
+@property (nonatomic,copy)NSString *totalReConsumeRedPrice;
 @property (nonatomic,copy)NSString *totalPromotionPrice;
 @property (nonatomic,copy)NSString *promotionUserNum;
 @property (nonatomic,copy)NSString *userId;
