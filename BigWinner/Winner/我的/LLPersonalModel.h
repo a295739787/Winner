@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *totalReCashRedPrice;
 @property (nonatomic,copy)NSString *totalReConsumeRedPrice;
 @property (nonatomic,copy)NSString *totalPromotionPrice;
+
+@property (nonatomic,copy)NSString *totalConsumeRedPrice;
+
 @property (nonatomic,copy)NSString *promotionUserNum;
 @property (nonatomic,copy)NSString *userId;
 @property (nonatomic,copy)NSString *userIdentity;//用户身份（1普通用户，2推广点，3配送员）

@@ -19,6 +19,20 @@ var deviceHeight: CGFloat{
 var statusBarForHeight: CGFloat{
     return UIApplication.shared.statusBarFrame.height
 }
+/// 窗口底部安全区域间距
+var windowSafeAreaBottomMargin: CGFloat {
+    if #available(iOS 11.0, *) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let window = appDelegate.window else {
+                return 0.0
+        }
+        return window.safeAreaInsets.bottom
+    } else {
+        // Fallback on earlier versions
+        return 0.0
+    }
+}
+
 
 ///动态切四周圆角
 func loadMasksDynamicCorner(targetView:UIView,corners:UIRectCorner = .allCorners,cornerRadii:CGSize){
@@ -58,23 +72,44 @@ func labelForHeight(width:CGFloat,font:Float,string:NSString) -> CGFloat {
     return height.height
 }
 
-///切圆
-func loadMasksToBounds(targetView:UIView,corners:CGFloat){
+
+/// 切圆角及边线
+/// - Parameters:
+///   - targetView: 目标view，必填
+///   - corners: 圆角，必填
+///   - borderWidth: 边宽,可选
+///   - borderColor: 变宽色。可选
+func loadMasksToBounds(targetView:UIView,corners:CGFloat,borderWidth:CGFloat = 0,borderColor:UIColor = .white){
      
     targetView.layer.masksToBounds = true
     targetView.layer.cornerRadius = corners
-    
+    targetView.layer.borderWidth = borderWidth
+    targetView.layer.borderColor = borderColor.cgColor
 }
+
 // MARK: - UILabel模块
 extension UILabel {
    
     ///初始化label
-    func loadMasksDynamicLabel(text:String,color:UIColor,textAlignment:NSTextAlignment,font:UIFont) {
+    func loadMasksDynamicLabel(text:String,color:UIColor,textAlignment:NSTextAlignment,font:UIFont,number:Int) {
         self.text = text
         self.textColor = color
         self.textAlignment = textAlignment
         self.font = font
+        self.numberOfLines = number
     }
     
 }
 
+// MARK: - UIbutton模块
+extension UIButton{
+    
+    func loadMasksButton(title:String,color:UIColor,fontSize:CGFloat) {
+    
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(color, for: .normal)
+        self.titleLabel?.font = .systemFont(ofSize: fontSize)
+        
+    }
+    
+}

@@ -33,7 +33,7 @@ class XYMyWalletTitleHeaderView: UIView {
         self.addSubview(bgView)
 
         titleLabel = UILabel.init()
-        titleLabel.loadMasksDynamicLabel(text: "记录明细", color: .hexString("#666666"), textAlignment: .left, font: UIFont.systemFont(ofSize: 15))
+        titleLabel.loadMasksDynamicLabel(text: "记录明细", color: .hexString("#666666"), textAlignment: .left, font: UIFont.systemFont(ofSize: 15),number: 1)
         bgView.addSubview(titleLabel)
     }
     

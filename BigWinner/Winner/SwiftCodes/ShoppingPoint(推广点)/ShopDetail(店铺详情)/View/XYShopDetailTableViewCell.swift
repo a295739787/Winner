@@ -45,11 +45,11 @@ class XYShopDetailTableViewCell: UITableViewCell {
     private func loadMainView(){
         
         titleLabel = UILabel.init()
-        titleLabel.loadMasksDynamicLabel(text: "店铺名称", color: .hexString("#443415"), textAlignment: .left, font: UIFont.systemFont(ofSize: 13))
+        titleLabel.loadMasksDynamicLabel(text: "店铺名称", color: .hexString("#443415"), textAlignment: .left, font: UIFont.systemFont(ofSize: 13),number: 1)
         contentView.addSubview(titleLabel)
         
         contentLabel = UILabel.init()
-        contentLabel.loadMasksDynamicLabel(text: "大赢家四小店", color: .hexString("#666666"), textAlignment: .left, font: UIFont.systemFont(ofSize: 15))
+        contentLabel.loadMasksDynamicLabel(text: "大赢家四小店", color: .hexString("#666666"), textAlignment: .left, font: UIFont.systemFont(ofSize: 15),number: 1)
         contentView.addSubview(contentLabel)
         
         moreImageView = UIImageView.init()

@@ -43,12 +43,12 @@ class DealDetailTableViewCell: UITableViewCell {
     private func loadMainView(){
         
         keyLabel = UILabel.init()
-        keyLabel.loadMasksDynamicLabel(text: "交易类型", color: .hexString("#919191"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14))
+        keyLabel.loadMasksDynamicLabel(text: "交易类型", color: .hexString("#919191"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14),number: 1)
         contentView.addSubview(keyLabel)
         
         valueLabel = UILabel.init()
         valueLabel.numberOfLines = 0
-        valueLabel.loadMasksDynamicLabel(text: "推广佣金", color: .hexString("#443415"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14))
+        valueLabel.loadMasksDynamicLabel(text: "推广佣金", color: .hexString("#443415"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14),number: 1)
         contentView.addSubview(valueLabel)
         
     }

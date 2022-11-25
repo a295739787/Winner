@@ -56,6 +56,7 @@
 -(void)header{
     self.currentPage = 1;
     [self getTeamUserListUrl];
+    [self getTeamCountUrl];
 }
 -(void)footer{
     self.currentPage ++;

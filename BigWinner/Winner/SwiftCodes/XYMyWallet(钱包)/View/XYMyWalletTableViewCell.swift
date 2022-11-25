@@ -52,19 +52,19 @@ class XYMyWalletTableViewCell: UITableViewCell {
         contentView.addSubview(bgView)
         
         titleLabel = UILabel.init()
-        titleLabel.loadMasksDynamicLabel(text: "提现", color: .hexString("#443415"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14))
+        titleLabel.loadMasksDynamicLabel(text: "提现", color: .hexString("#443415"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14),number: 1)
         bgView.addSubview(titleLabel)
         
         moneyLabel = UILabel.init()
-        moneyLabel.loadMasksDynamicLabel(text: "-95.20", color: .hexString("#C43136"), textAlignment: .right, font: UIFont.systemFont(ofSize: 14))
+        moneyLabel.loadMasksDynamicLabel(text: "-95.20", color: .hexString("#C43136"), textAlignment: .right, font: UIFont.systemFont(ofSize: 14),number: 1)
         bgView.addSubview(moneyLabel)
         
         timeLabel = UILabel.init()
-        timeLabel.loadMasksDynamicLabel(text: "2022-10-22  10:00:01", color: .hexString("#999999"), textAlignment: .left, font: UIFont.systemFont(ofSize: 12))
+        timeLabel.loadMasksDynamicLabel(text: "2022-10-22  10:00:01", color: .hexString("#999999"), textAlignment: .left, font: UIFont.systemFont(ofSize: 12),number: 1)
         bgView.addSubview(timeLabel)
         
         balanceLabel = UILabel.init()
-        balanceLabel.loadMasksDynamicLabel(text: "余额 9800", color: .hexString("#999999"), textAlignment: .right, font: UIFont.systemFont(ofSize: 12))
+        balanceLabel.loadMasksDynamicLabel(text: "余额 9800", color: .hexString("#999999"), textAlignment: .right, font: UIFont.systemFont(ofSize: 12),number: 1)
         bgView.addSubview(balanceLabel)
         
         messageView = UIView.init()
@@ -77,7 +77,7 @@ class XYMyWalletTableViewCell: UITableViewCell {
         messageView.addSubview(messageImageView)
         
         messageLabel = UILabel.init()
-        messageLabel.loadMasksDynamicLabel(text: "提现失败，银行退回汇款，原因为该收款账号支…", color: .hexString("#CA363B"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14))
+        messageLabel.loadMasksDynamicLabel(text: "提现失败，银行退回汇款，原因为该收款账号支…", color: .hexString("#CA363B"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14),number: 1)
         messageView.addSubview(messageLabel)
         
         lineView = UIView.init()

@@ -30,7 +30,7 @@ class DealDetailHeaderView: UIView {
     private func loadMainView(){
         
         moneyLabel = UILabel.init()
-        moneyLabel.loadMasksDynamicLabel(text: "+300.00", color: .hexString("#443415"), textAlignment: .center, font: UIFont.systemFont(ofSize: 30))
+        moneyLabel.loadMasksDynamicLabel(text: "+300.00", color: .hexString("#443415"), textAlignment: .center, font: UIFont.systemFont(ofSize: 30),number: 1)
         self.addSubview(moneyLabel)
         
         lineView = UIView.init()

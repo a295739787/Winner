@@ -38,7 +38,7 @@ class DealDetailFootView: UIView {
         self.addSubview(lineView)
         
         questionLabel = UILabel.init()
-        questionLabel.loadMasksDynamicLabel(text: "订单遇到问题?", color: .hexString("#999999"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14))
+        questionLabel.loadMasksDynamicLabel(text: "订单遇到问题?", color: .hexString("#999999"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14),number: 1)
         self.addSubview(questionLabel)
         
         serviceImageView = UIImageView.init()
@@ -47,7 +47,7 @@ class DealDetailFootView: UIView {
         self.addSubview(serviceImageView)
         
         serviceLabel = UILabel.init()
-        serviceLabel.loadMasksDynamicLabel(text: "联系客服", color: .hexString("#333333"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14))
+        serviceLabel.loadMasksDynamicLabel(text: "联系客服", color: .hexString("#333333"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14),number: 1)
         self.addSubview(serviceLabel)
         
         serviceButton = UIButton(type: .custom)

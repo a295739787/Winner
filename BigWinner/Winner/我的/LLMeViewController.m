@@ -295,8 +295,8 @@
     }else if (indexPath.section == 2){
         LLMeMoudleTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLMeMoudleTableCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imgArray = @[@"jfsc",@"gmjl",@"hgzx",@"shdd",@"fpgl",@"xtsz"];
-        cell.titleArray = @[@"我的钱包",@"惊喜活动专区购买记录",@"回购中心",@"收货地址",@"发票信息",@"系统设置"];
+        cell.imgArray = @[@"jfsc",@"jfsc",@"gmjl",@"hgzx",@"shdd",@"fpgl",@"xtsz"];
+        cell.titleArray = @[@"我的钱包",@"我的酒卡",@"惊喜活动专区购买记录",@"回购中心",@"收货地址",@"发票信息",@"系统设置"];
         WS(weakself);
         cell.moudleBtnBlock = ^(NSInteger index) {
             if([UserModel sharedUserInfo].token.length <= 0){
@@ -314,23 +314,28 @@
                 vc.walletType = MyWalletTypeNormal;
                 [weakself.navigationController pushViewController:vc animated:YES];
             }else if (index == 101){
+                
+                XYMyLiquorCardViewController *vc = [[XYMyLiquorCardViewController alloc] init];
+                [weakself.navigationController pushViewController:vc animated:YES];
+                
+            }else if (index == 102){
                 //惊喜活动购买记录
                 LLSurpriseRegBagRecordViewController *vc = [[LLSurpriseRegBagRecordViewController alloc]init];
                 [weakself.navigationController pushViewController:vc animated:YES];
-            }else if (index == 102){
+            }else if (index == 103){
                 //回购中心
                 LLMeBuyBackController *buybackVC = [[LLMeBuyBackController alloc]init];
                 [weakself.navigationController pushViewController:buybackVC animated:YES];
-            }else if (index == 103){
+            }else if (index == 104){
                 //我的地址
                 LLMeAdressController *adressVC = [[LLMeAdressController alloc]init];
                 adressVC.addressType = LLMeAdressAll;
                 [weakself.navigationController pushViewController:adressVC animated:YES];
-            }else if (index == 104){
+            }else if (index == 105){
                 //发票信息
                 LLBillInfoController *billInfoVC = [[LLBillInfoController alloc]init];
                 [weakself.navigationController pushViewController:billInfoVC animated:YES];
-            }else if (index == 105){
+            }else if (index == 106){
                 //系统设置
                 LLSystemSettingController *systemVC = [[LLSystemSettingController alloc]init];
                 [weakself.navigationController pushViewController:systemVC animated:YES];
@@ -353,7 +358,7 @@
     }else if (indexPath.section == 1){
         return CGFloatBasedI375(122);;
     }else if (indexPath.section == 2){
-        return CGFloatBasedI375(49) * 6;
+        return CGFloatBasedI375(49) * 7;
     }else if (indexPath.section == 3){
         return CGFloatBasedI375(49);
     }

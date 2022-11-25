@@ -40,7 +40,7 @@ import UIKit
         }
         
         bottomView = UIView.init()
-        bottomView.frame = CGRect(x: 0, y: UIScreen.main.bounds.size.height-135, width: UIScreen.main.bounds.size.width, height: bottomH)
+        bottomView.frame = CGRect(x: 0, y: UIScreen.main.bounds.size.height-bottomH, width: UIScreen.main.bounds.size.width, height: bottomH)
         bottomView.backgroundColor = .white
         self.view.addSubview(bottomView)
         loadMasksTopLeftOrRight(view: bottomView)

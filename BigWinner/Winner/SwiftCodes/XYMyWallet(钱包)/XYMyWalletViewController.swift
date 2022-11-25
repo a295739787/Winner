@@ -81,6 +81,7 @@ import UIKit
         tableView.mj_footer?.isHidden = false
         page = 1
         loadUserWalletListNetwork()
+        loadUserWalletNetwork()
     }
     
     ///下拉加载
