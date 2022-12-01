@@ -8,7 +8,7 @@
 import UIKit
 
 class XYMessageTipsView: UIView {
-
+    
     private var backView = UIView()
     private var noticeLabel = UILabel()
     private var contentView = UILabel()
@@ -20,7 +20,7 @@ class XYMessageTipsView: UIView {
     public var tipsContent : String =   "您的酒卡已绑定成功，您可以入我的库存中查看或继续绑卡。"
     public var cancel : String = "继续绑卡"
     public var sure : String = "查看库存"
-
+    
     ///选中省市区
     var buttonClickBlock :((Int) -> Void)?
     
@@ -44,7 +44,7 @@ class XYMessageTipsView: UIView {
         backView.layer.cornerRadius = 10
         backView.backgroundColor = .white
         self.addSubview(backView)
-
+        
         noticeLabel = UILabel.init()
         noticeLabel.frame = CGRect(x: 5, y: 19, width: backView.frame.size.width-10, height: 20)
         noticeLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -61,7 +61,7 @@ class XYMessageTipsView: UIView {
         contentView.textColor = .hexString("#666666")
         contentView.numberOfLines = 2
         backView.addSubview(contentView)
-
+        
         lineView = UIView.init()
         lineView.frame = CGRect(x: 0, y: contentView.frame.maxY+20, width: backView.frame.size.width, height: 1)
         lineView.backgroundColor = UIColor.hexString("#F0EFED")
@@ -86,16 +86,16 @@ class XYMessageTipsView: UIView {
         sureButton.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
         backView.addSubview(sureButton)
     }
-
+    
     ///取消和确认按钮点击方法
     @objc private func buttonClick(_ sender:UIButton){
         
         hideView()
-
+        
         self.buttonClickBlock?(sender.tag)
     }
     
-   ///显示界面
+    ///显示界面
     public func showView(){
         let window = UIApplication.shared.keyWindow
         window?.addSubview(self)
@@ -126,7 +126,7 @@ class XYMessageTipsView: UIView {
             }
         }
     }
-  
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -134,5 +134,5 @@ class XYMessageTipsView: UIView {
     deinit {
         
     }
-
+    
 }

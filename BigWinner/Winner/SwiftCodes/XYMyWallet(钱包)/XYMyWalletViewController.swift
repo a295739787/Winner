@@ -98,7 +98,7 @@ import UIKit
             let drawVC = LLWalletDrawController()
             drawVC.clickTap = {
                 self.page = 1
-//                self.loadUserWalletListNetwork()
+                //                self.loadUserWalletListNetwork()
             }
             self.navigationController?.pushViewController(drawVC, animated: true)
         }else{
@@ -140,7 +140,7 @@ import UIKit
         param.setValue(type, forKey: "type")
         param.setValue(page, forKey: "currentPage")
         param.setValue("10", forKey: "pageSize")
-    
+        
         MBProgressHUD.showAdded(to: self.view, animated: true)
         XJHttpTool.post(L_getRecord, method: GET, params: param, isToken: true) { [self] responseObj in
             
@@ -183,7 +183,7 @@ import UIKit
             tableView.mj_footer?.endRefreshing()
         }
     }
- 
+    
 }
 
 //MARK: - tableview模块
@@ -216,7 +216,7 @@ extension XYMyWalletViewController:UITableViewDataSource,UITableViewDelegate {
         let dataModel = dataArray[indexPath.row]
         
         if walletType == .normal {
-           
+            
             if dataModel.withdrawalMsg.isEmpty {
                 
                 cell.messageView.isHidden = true
@@ -227,7 +227,7 @@ extension XYMyWalletViewController:UITableViewDataSource,UITableViewDelegate {
         }else{
             cell.messageView.isHidden = true
         }
-      
+        
         cell.model = dataModel
         
         return cell

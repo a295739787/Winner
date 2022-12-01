@@ -44,7 +44,7 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         bottomView.backgroundColor = .hexString("#F8F4F4");
         self.view.insertSubview(bottomView, belowSubview: contentView)
         
-      let  bottomImageView = UIImageView.init()
+        let  bottomImageView = UIImageView.init()
         bottomImageView.frame = CGRect(x: 57, y: 32, width: bottomView.frame.size.width-114, height: bottomView.frame.size.height-32-50)
         bottomImageView.image = UIImage(named: "bottomCard")
         bottomView.addSubview(bottomImageView)
@@ -84,7 +84,6 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         accountTextField.addTarget(self, action: #selector(changeTextFieldValue(textField:)), for: .editingChanged)
         view.addSubview(accountTextField)
         loadTextFieldBlankView(textField: accountTextField)
-        
         
         let passWordCardLabel = UILabel.init()
         passWordCardLabel.loadMasksDynamicLabel(text: "密码", color: .hexString("#443415"), textAlignment: .center, font: .systemFont(ofSize: 14), number: 1)
@@ -163,7 +162,6 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         }
     }
     
-    
     ///TextField方法
     @objc private func changeTextFieldValue(textField:UITextField){
         
@@ -178,10 +176,7 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
                 bindButton.isEnabled = false
                 bindButton.backgroundColor = .hexString("#D40006").withAlphaComponent(0.33)
             }
-            
         }
-        
     }
-    
 }
 

@@ -8,13 +8,13 @@
 import UIKit
 
 class XYStockTableViewCell: UITableViewCell {
-
+    
     var noteLabel = UILabel()
     var sumLabel = UILabel()
     var orderNumberLabel = UILabel()
     var timeLabel = UILabel()
     var lineView = UIView()
-
+    
     var model = StockModel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -28,39 +28,39 @@ class XYStockTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-   private func loadSubviews() {
-       
-       noteLabel = UILabel.init()
-       noteLabel.text = "个人库存转入"
-       noteLabel.textColor = UIColor.hexString("#443415")
-       noteLabel.font = UIFont.systemFont(ofSize: 14)
-       noteLabel.textAlignment = .left
-       contentView.addSubview(noteLabel)
-       
-       sumLabel = UILabel.init()
-       sumLabel.text = "+3"
-       sumLabel.textColor = UIColor.hexString("#443415")
-       sumLabel.font = UIFont.systemFont(ofSize: 14)
-       sumLabel.textAlignment = .right
-       contentView.addSubview(sumLabel)
-       
-       orderNumberLabel = UILabel.init()
-       orderNumberLabel.text = "20210445616464642"
-       orderNumberLabel.textColor = UIColor.hexString("#999999")
-       orderNumberLabel.font = UIFont.systemFont(ofSize: 12)
-       orderNumberLabel.textAlignment = .left
-       contentView.addSubview(orderNumberLabel)
-       
-       timeLabel = UILabel.init()
-       timeLabel.text = "2021-10-22 19:26:57"
-       timeLabel.textColor = UIColor.hexString("#999999")
-       timeLabel.font = UIFont.systemFont(ofSize: 12)
-       timeLabel.textAlignment = .right
-       contentView.addSubview(timeLabel)
+    private func loadSubviews() {
         
-       lineView = UIView.init()
-       lineView.backgroundColor = UIColor.hexString("#F5F5F5")
-       contentView.addSubview(lineView)
+        noteLabel = UILabel.init()
+        noteLabel.text = "个人库存转入"
+        noteLabel.textColor = UIColor.hexString("#443415")
+        noteLabel.font = UIFont.systemFont(ofSize: 14)
+        noteLabel.textAlignment = .left
+        contentView.addSubview(noteLabel)
+        
+        sumLabel = UILabel.init()
+        sumLabel.text = "+3"
+        sumLabel.textColor = UIColor.hexString("#443415")
+        sumLabel.font = UIFont.systemFont(ofSize: 14)
+        sumLabel.textAlignment = .right
+        contentView.addSubview(sumLabel)
+        
+        orderNumberLabel = UILabel.init()
+        orderNumberLabel.text = "20210445616464642"
+        orderNumberLabel.textColor = UIColor.hexString("#999999")
+        orderNumberLabel.font = UIFont.systemFont(ofSize: 12)
+        orderNumberLabel.textAlignment = .left
+        contentView.addSubview(orderNumberLabel)
+        
+        timeLabel = UILabel.init()
+        timeLabel.text = "2021-10-22 19:26:57"
+        timeLabel.textColor = UIColor.hexString("#999999")
+        timeLabel.font = UIFont.systemFont(ofSize: 12)
+        timeLabel.textAlignment = .right
+        contentView.addSubview(timeLabel)
+        
+        lineView = UIView.init()
+        lineView.backgroundColor = UIColor.hexString("#F5F5F5")
+        contentView.addSubview(lineView)
     }
     
     override func layoutSubviews() {
@@ -83,12 +83,9 @@ class XYStockTableViewCell: UITableViewCell {
         timeLabel.text = model.createTime
     }
     
-    
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
 }

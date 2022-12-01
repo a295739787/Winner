@@ -8,7 +8,7 @@
 import UIKit
 
 class DealDetailHeaderView: UIView {
-
+    
     var moneyLabel = UILabel()
     private var lineView = UIView()
     

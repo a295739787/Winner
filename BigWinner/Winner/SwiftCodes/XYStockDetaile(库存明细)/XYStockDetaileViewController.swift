@@ -158,7 +158,7 @@ import UIKit
         tableView.dataSource = self
         tableView.register(XYStockTableViewCell.self, forCellReuseIdentifier: "StockCell")
         self.view.addSubview(tableView)
-    
+        
         tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(header))
         
         topImageView.sd_setImage(withUrlString: goodModel.coverImage, placeholderImageName: morenpic)
@@ -166,7 +166,7 @@ import UIKit
         topGoodsPriceLabel.attributedText = self.getAttribuStr(withStrings: ["￥","\(goodModel.purchasePrice)"], fonts: [UIFont.systemFont(ofSize: 12),UIFont.systemFont(ofSize: 16)], colors: [UIColor.hexString("#D40006"),UIColor.hexString("#D40006")])
         topGoodsVolumeLabel.text = goodModel.specsValName
     }
-        
+    
     /// 网络请求
     private func loadMainNetwork(){
         
@@ -184,7 +184,7 @@ import UIKit
         param.setValue(userId, forKey: "userId")
         param.setValue(userType, forKey: "userType")
         param.setValue(goodModel.goodsId, forKey: "goodId")
-
+        
         MBProgressHUD.showAdded(to: self.view, animated: true)
         XJHttpTool.post(L_getUserStockDetail, method: GET, params: param, isToken: true) { [self] responseObj in
             
@@ -238,7 +238,7 @@ import UIKit
                     topGoodsKuCunLabel.text = "库存: 0"
                     topGoodsDaiRuKuLabel.text = "待入库: 0"
                 }
-               
+                
             }
         } failure: { errore in
         }
@@ -283,7 +283,7 @@ import UIKit
     
     /// 去采购
     @objc private func joinShopping(_ sender:UIButton){
-       
+        
         let vc = LLGoodDetailViewController()
         vc.status = .stockPeisong
         vc.id = goodModel.id
@@ -311,6 +311,5 @@ extension XYStockDetaileViewController:UITableViewDataSource,UITableViewDelegate
         cell.model = dataModel
         return cell
     }
-    
     
 }

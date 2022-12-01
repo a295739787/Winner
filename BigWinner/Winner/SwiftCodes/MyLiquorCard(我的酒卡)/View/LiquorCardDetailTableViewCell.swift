@@ -8,7 +8,7 @@
 import UIKit
 
 class LiquorCardDetailTableViewCell: UITableViewCell {
-
+    
     ///提货单
     var oddNumberLabel = UILabel()
     ///单号时间
@@ -19,9 +19,9 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
     var goodsMoneyTimeLabel = UILabel()
     
     var lineView = UIView()
-
+    
     var model = LiquorCardDetailModel()
-
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,7 +38,7 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func loadMainView(){
         
         oddNumberLabel = UILabel.init()
@@ -71,7 +71,7 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
         goodsMoneyLabel.frame = CGRect(x: oddNumberLabel.frame.maxX+10, y: 14, width: (self.frame.size.width-25-25-10)*0.4, height: 11)
         
         goodsMoneyTimeLabel.frame = CGRect(x: oddTimeLabel.frame.maxX+10, y: goodsMoneyLabel.frame.maxY+17, width: (self.frame.size.width-25-25-10)/2, height: 10)
-
+        
         lineView.frame = CGRect(x: 25, y: self.frame.size.height-1, width:(self.frame.size.width-50) , height: 1)
         
         if model.goodsNum > 0 {
@@ -85,7 +85,7 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
         oddTimeLabel.text = model.createTime
         goodsMoneyLabel.text = "\(model.goodsNum)"
         goodsMoneyTimeLabel.text = "余额 \(model.remainNum)"
-
+        
         
     }
 }

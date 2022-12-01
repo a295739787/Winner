@@ -23,8 +23,8 @@ var statusBarForHeight: CGFloat{
 var windowSafeAreaBottomMargin: CGFloat {
     if #available(iOS 11.0, *) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let window = appDelegate.window else {
-                return 0.0
+              let window = appDelegate.window else {
+            return 0.0
         }
         return window.safeAreaInsets.bottom
     } else {
@@ -36,7 +36,7 @@ var windowSafeAreaBottomMargin: CGFloat {
 
 ///动态切四周圆角
 func loadMasksDynamicCorner(targetView:UIView,corners:UIRectCorner = .allCorners,cornerRadii:CGSize){
-     
+    
     let path = UIBezierPath.init(roundedRect: targetView.bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
     let shapeLayer = CAShapeLayer.init()
     shapeLayer.frame = targetView.bounds
@@ -89,7 +89,7 @@ func loadTextFieldBlankView(textField:UITextField,sepac:CGFloat = 15){
 ///   - borderWidth: 边宽,可选
 ///   - borderColor: 变宽色。可选
 func loadMasksToBounds(targetView:UIView,corners:CGFloat,borderWidth:CGFloat = 0,borderColor:UIColor = .white){
-     
+    
     targetView.layer.masksToBounds = true
     targetView.layer.cornerRadius = corners
     targetView.layer.borderWidth = borderWidth
@@ -98,7 +98,7 @@ func loadMasksToBounds(targetView:UIView,corners:CGFloat,borderWidth:CGFloat = 0
 
 // MARK: - UILabel模块
 extension UILabel {
-   
+    
     ///初始化label
     func loadMasksDynamicLabel(text:String,color:UIColor,textAlignment:NSTextAlignment,font:UIFont,number:Int) {
         self.text = text
@@ -114,11 +114,10 @@ extension UILabel {
 extension UIButton{
     
     func loadMasksButton(title:String,color:UIColor,fontSize:CGFloat) {
-    
+        
         self.setTitle(title, for: .normal)
         self.setTitleColor(color, for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: fontSize)
         
     }
-    
 }

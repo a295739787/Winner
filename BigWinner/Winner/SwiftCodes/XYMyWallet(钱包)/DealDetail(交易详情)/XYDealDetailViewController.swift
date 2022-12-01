@@ -8,7 +8,7 @@
 import UIKit
 
 class XYDealDetailViewController: LMHBaseViewController {
-
+    
     private var tableView = UITableView()
     
     var dealPrice = ""
@@ -16,7 +16,7 @@ class XYDealDetailViewController: LMHBaseViewController {
     
     var dataArrar = [[String:String]]()
     var model = WalletIncomeAndRecoverModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -47,7 +47,7 @@ class XYDealDetailViewController: LMHBaseViewController {
         }
         dataArrar = [["key":"交易类型","value":WalletType[model.type]!,"color":"#443415"],["key":"交易金额","value":dealPrice,"color":"#443415"],["key":"交易时间","value":model.createTime,"color":"#443415"],["key":"交易单号","value":model.orderNo,"color":"#443415"],["key":"交易状态","value":msg ,"color":colorHex]]
     }
-
+    
 }
 
 extension XYDealDetailViewController:UITableViewDelegate,UITableViewDataSource {
@@ -112,5 +112,5 @@ extension XYDealDetailViewController:UITableViewDelegate,UITableViewDataSource {
         serviceVC.modalPresentationStyle = .overFullScreen
         self.present(serviceVC, animated: true)
     }
-
+    
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class DealDetailTableViewCell: UITableViewCell {
-
+    
     var keyLabel = UILabel()
     var valueLabel = UILabel()
     
@@ -28,18 +28,18 @@ class DealDetailTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
- 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-       
+        
+        
     }
-
+    
     private func loadMainView(){
         
         keyLabel = UILabel.init()

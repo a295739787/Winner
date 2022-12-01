@@ -9,7 +9,7 @@ import UIKit
 
 
 @objcMembers class XYLiquorCardDetailViewController: UIViewController {
-
+    
     private var mainView = UIView()
     private var topView = UIView()
     private var tableView = UITableView()
@@ -18,13 +18,13 @@ import UIKit
     public var status : String = ""
     public var userId : String = ""
     public var userType : String = ""
-
+    
     var dataArray = [LiquorCardDetailModel]()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loadMainView()
         loadMainNetwork()
     }
@@ -75,7 +75,6 @@ import UIKit
         bottomView.addSubview(bottomCanceButton)
         bottomCanceButton.addTarget(self, action: #selector(cilckButton(_:)), for: .touchUpInside)
         loadMasksToBounds(targetView: bottomCanceButton, corners: 37/2)
-        
     }
     
     ///点击背景退出界面
@@ -99,7 +98,7 @@ import UIKit
         param.setValue(userId, forKey: "userId")
         param.setValue(status, forKey: "status")
         param.setValue(goodId, forKey: "goodId")
-
+        
         XJHttpTool.post(L_cardGetMyStockUrl, method:GET, params: param, isToken: true) { [self] responseObj in
             
             let data = responseObj as! NSDictionary
@@ -117,7 +116,6 @@ import UIKit
         }
     }
     
-    
     /// 退出界面按钮
     @objc private func cilckButton(_ sender:UIButton){
         
@@ -132,7 +130,7 @@ import UIKit
 
 //MARK: - TableView模块
 extension XYLiquorCardDetailViewController:UITableViewDelegate,UITableViewDataSource{
-      
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return dataArray.count
@@ -142,7 +140,7 @@ extension XYLiquorCardDetailViewController:UITableViewDelegate,UITableViewDataSo
         
         return 60
     }
- 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell  = tableView.dequeueReusableCell(withIdentifier: "LiquorCardDetailCell") as! LiquorCardDetailTableViewCell
@@ -152,5 +150,4 @@ extension XYLiquorCardDetailViewController:UITableViewDelegate,UITableViewDataSo
         
         return cell
     }
-    
 }

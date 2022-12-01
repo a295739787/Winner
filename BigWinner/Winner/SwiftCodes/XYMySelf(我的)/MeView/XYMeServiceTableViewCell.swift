@@ -23,7 +23,7 @@ import UIKit
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -46,7 +46,7 @@ import UIKit
         serviceLabel.font = .systemFont(ofSize: 14)
         serviceLabel.textAlignment = .left
         bgView.addSubview(serviceLabel)
-
+        
     }
     ///布局及加载数据
     override func layoutSubviews() {
@@ -58,5 +58,5 @@ import UIKit
         
     }
     
-
+    
 }

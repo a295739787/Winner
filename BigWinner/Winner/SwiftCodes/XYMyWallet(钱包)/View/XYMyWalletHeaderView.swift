@@ -120,11 +120,11 @@ class XYMyWalletHeaderView: UIView {
         moneyTipsLabel.frame = CGRect(x: 30, y: moneyNumberLabel.frame.maxY+5, width: 80, height: 12)
         
         bottomView.frame = CGRect(x: 0, y: bgView.frame.size.height-50, width: bgView.frame.size.width, height: 50)
-       
+        
         incomeLabel.frame = CGRect(x: 0, y: 12, width: (bottomView.frame.size.width-5)/2, height: 10)
         
         incomeTipsLabel.frame = CGRect(x: 0, y: incomeLabel.frame.maxY+5, width: (bottomView.frame.size.width-5)/2, height: 12)
-
+        
         lineView.frame = CGRect(x: (bottomView.frame.size.width)/2, y: (bottomView.frame.size.height-27)/2, width: 1, height: 27)
         
         recoverLabel.frame = CGRect(x: lineView.frame.maxX+5, y: 12, width: (bottomView.frame.size.width-5)/2, height: 10)
@@ -143,7 +143,7 @@ class XYMyWalletHeaderView: UIView {
             incomeTipsLabel.text = "累计收入"
             recoverTipsLabel.text = "累计提现"
             bgImageView.image = UIImage(named: "normal")
-
+            
         }else{
             
             button.setTitle("去使用", for: .normal)
@@ -151,7 +151,7 @@ class XYMyWalletHeaderView: UIView {
             incomeTipsLabel.text = "累计获得红包"
             recoverTipsLabel.text = "累计已使用"
             bgImageView.image = UIImage(named: "consume")
-
+            
         }
         
     }

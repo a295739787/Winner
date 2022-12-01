@@ -8,7 +8,7 @@
 import UIKit
 
 class XYMyWalletTableViewCell: UITableViewCell {
-
+    
     var showOtherLabel : Bool = false
     
     var bgView = UIView()
@@ -21,9 +21,9 @@ class XYMyWalletTableViewCell: UITableViewCell {
     var messageView = UIView()
     var messageLabel = UILabel()
     var messageImageView = UIImageView()
-
+    
     var model = WalletIncomeAndRecoverModel()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -36,7 +36,7 @@ class XYMyWalletTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -44,7 +44,7 @@ class XYMyWalletTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
     private func loadMainView(){
         
         bgView = UIView.init()
@@ -70,7 +70,7 @@ class XYMyWalletTableViewCell: UITableViewCell {
         messageView = UIView.init()
         messageView.backgroundColor = UIColor.white
         bgView.addSubview(messageView)
-     
+        
         messageImageView = UIImageView.init()
         messageImageView.image = UIImage(named: "walletWarn")
         messageImageView.contentMode = .scaleAspectFit
@@ -102,7 +102,7 @@ class XYMyWalletTableViewCell: UITableViewCell {
         messageImageView.frame = CGRect(x: 16, y: (messageView.frame.size.height-11)/2, width: 11, height: 11)
         
         messageLabel.frame = CGRect(x: messageImageView.frame.maxX+5, y: (messageView.frame.size.height-15)/2, width: messageView.frame.size.width-messageImageView.frame.maxX-5-18, height: 15)
-
+        
         lineView.frame = CGRect(x: 15, y: bgView.frame.size.height-1, width:(bgView.frame.size.width-30) , height: 1)
         
         loadDataSource()

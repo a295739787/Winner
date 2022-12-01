@@ -11,7 +11,6 @@ import UIKit
 //一键认证所需要的key值
 let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcWdMsYFqJ5OncyoDKNkW9BXMxvcaWShqkbCAR6DvaxsXMXJONOLsTitjKd1ycZ1EuFn2f6g4jbZ45ADu+pHaVb8moDj12ff+soK3jkYOhed3Kg4/fDGkntreQYdrrk2bvkbRShP4W1+SC3Tm1KMVKe31dNHynjaO6Ss6KgIl2CoXf32NJzJ1EGe/XA/VE67iXxV4Gl2xByaGsXVdyECDkgrxUGQQ=="
 
-
 @objcMembers class OneKeyLoginTools : NSObject{
     
     // MARK: - 一键登录授权
@@ -26,16 +25,16 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
             }
         }
         //       检测当前环境是否能一键登录
-//        TXCommonHandler.sharedInstance().checkEnvAvailable(with: .loginToken) { resultDic in
-//            let code = (resultDic?[AnyHashable("resultCode")] as! String);
-//            if (PNSCodeSuccess == code){
-//                print("-------------当前支持一键登录-------------")
-//            }else{
-//
-//                SMSLoginPage()
-//            }
-//
-//        }
+        //        TXCommonHandler.sharedInstance().checkEnvAvailable(with: .loginToken) { resultDic in
+        //            let code = (resultDic?[AnyHashable("resultCode")] as! String);
+        //            if (PNSCodeSuccess == code){
+        //                print("-------------当前支持一键登录-------------")
+        //            }else{
+        //
+        //                SMSLoginPage()
+        //            }
+        //
+        //        }
         
     }
     
@@ -69,7 +68,6 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
                     let privacyUrl = (resultDic["url"] as! String)
                     let privacyName = (resultDic["urlName"] as! String)
                     
-                    
                     if (privacyName == "服务协议") || (privacyName == "隐私政策"){
                         let vc = LLWebViewController()
                         vc.isHiddenNavgationBar = true
@@ -98,7 +96,6 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
                             navigationController = (view.presentedViewController as! UINavigationController)
                         }
                         navigationController?.pushViewController(privacy, animated: true)
-                        
                     }
                     
                 }else if(PNSCodeSuccess == code){
@@ -124,7 +121,6 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
         param.setValue(tonken, forKey: "mobileToken")
         param.setValue("5", forKey: "platform")
         param.setValue(timestamp, forKey: "timestamp")
-        
         
         let url = "\(L_apioauthLogin)?n=5&client_id=admin&client_secret=123456&scope=all&grant_type=password"
         XJHttpTool.post(url, method: POST, params: param, isToken: false) { responseObj in
@@ -157,7 +153,6 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
         DispatchQueue.main.async {
             TXCommonHandler.sharedInstance().cancelLoginVC(animated: true, complete: completion)
         }
-        
     }
 }
 
@@ -210,31 +205,30 @@ private func CustomOneKeyLoginPage(target:Any,selector:Selector) -> TXCustomMode
     var numberFrame = CGRect()
     var sloganFrame = CGRect()
     var loginBtnFrame = CGRect()
-
-
+    
     //    logo背景frame设置
     model.logoFrameBlock = {(screenSize,superViewSize,frame) in
         
         let y = (superViewSize.height)*0.1
-         logoFrame = CGRect(x: (superViewSize.width-100)/2, y:y < 81 ? y:80, width: 100, height: 100)
+        logoFrame = CGRect(x: (superViewSize.width-100)/2, y:y < 81 ? y:80, width: 100, height: 100)
         return logoFrame
     }
     //    电话frame设置
     model.numberFrameBlock = {(screenSize,superViewSize,frame) in
-                
+        
         numberFrame = CGRect(x: (superViewSize.width-frame.size.width)/2, y: logoFrame.maxY+20, width: frame.size.width, height: frame.size.height)
         return numberFrame
     }
     //    sloganframe设置
     model.sloganFrameBlock = {(screenSize,superViewSize,frame) in
         
-         sloganFrame = CGRect(x: (superViewSize.width-frame.size.width)/2, y: logoFrame.maxY+30+36, width: frame.size.width, height: frame.size.height)
+        sloganFrame = CGRect(x: (superViewSize.width-frame.size.width)/2, y: logoFrame.maxY+30+36, width: frame.size.width, height: frame.size.height)
         return sloganFrame
     }
     //    loginBtnframe设置
     model.loginBtnFrameBlock = {(screenSize,superViewSize,frame) in
         
-         loginBtnFrame = CGRect(x: (superViewSize.width-(superViewSize.width-38-38))/2, y: sloganFrame.maxY+50, width: superViewSize.width-38-38, height: 50)
+        loginBtnFrame = CGRect(x: (superViewSize.width-(superViewSize.width-38-38))/2, y: sloganFrame.maxY+50, width: superViewSize.width-38-38, height: 50)
         return loginBtnFrame
     }
     //    切换到其他方式frame设置
@@ -242,8 +236,6 @@ private func CustomOneKeyLoginPage(target:Any,selector:Selector) -> TXCustomMode
         
         otherButton.frame = CGRect(x: (screenSize.width-120)/2, y: privacyFrame.minY-80, width: 120, height: 40)
     }
-    
-    
     return model
 }
 // MARK: - 富文本

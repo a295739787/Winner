@@ -140,14 +140,11 @@ import UIKit
             tableView.mj_header?.endRefreshing()
             tableView.mj_footer?.endRefreshing()
         }
-        
     }
-
-    
 }
 //MARK: - TableView模块
 extension XYMyLiquorCardViewController:UITableViewDelegate,UITableViewDataSource,MyLiquorCardDelegate{
-      
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 5
@@ -157,7 +154,7 @@ extension XYMyLiquorCardViewController:UITableViewDelegate,UITableViewDataSource
         
         return 160
     }
-         
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         return 10
@@ -183,12 +180,11 @@ extension XYMyLiquorCardViewController:UITableViewDelegate,UITableViewDataSource
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .coverVertical
             self.present(vc, animated: true)
-    
+            
         }else{
             
         }
     }
-    
 }
 
 

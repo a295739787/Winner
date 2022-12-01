@@ -15,7 +15,7 @@ class DealDetailFootView: UIView {
     private var serviceImageView = UIImageView()
     private var serviceLabel = UILabel()
     var serviceButton = UIButton()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -61,12 +61,12 @@ class DealDetailFootView: UIView {
         lineView.isHidden = showLineView
         
         questionLabel.frame = CGRect(x: self.frame.size.width * 0.264, y: lineView.frame.maxY+18,width: 95, height: 14);
-
+        
         serviceImageView.frame = CGRect(x: questionLabel.frame.maxX+7, y: lineView.frame.maxY+16, width: 21, height: 18)
         
         serviceLabel.frame = CGRect(x: serviceImageView.frame.maxX+5, y: lineView.frame.maxY+18, width: 60, height: 14)
         
         serviceButton.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
     }
-
+    
 }

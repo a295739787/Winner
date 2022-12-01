@@ -8,7 +8,7 @@
 import UIKit
 
 @objcMembers class XYAddressPickerView: UIView{
-
+    
     var containView = UIView()
     var pickerView = UIPickerView()
     
@@ -28,7 +28,7 @@ import UIKit
     var selectCity :String = ""
     ///默认选中的区
     var selectArea :String = ""
-
+    
     ///选中省市区
     var addressClickBlock :((String,String,String) -> Void)?
     
@@ -39,11 +39,11 @@ import UIKit
     ///   - area: 区
     public init(province:String,city:String,area:String) {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-       selectProvince = province
+        selectProvince = province
         selectCity = city
         selectArea = area
         
-       loadMainSubView()
+        loadMainSubView()
     }
     
     //MARK: - 加载主视图
@@ -82,7 +82,7 @@ import UIKit
         pickerView.delegate = self
         pickerView.dataSource = self
         containView.addSubview(pickerView)
-  
+        
         loadMainDataSource()
     }
     
@@ -94,7 +94,7 @@ import UIKit
         let tempArray = NSMutableArray()
         
         for  index in 0..<dataSource.count {
-           let tempDic = dataSource[index] as! NSDictionary
+            let tempDic = dataSource[index] as! NSDictionary
             for tempIndex in 0..<tempDic.allKeys.count {
                 tempArray.add(tempDic.allKeys[tempIndex])
             }
@@ -119,13 +119,13 @@ import UIKit
         var provinceIndex = 0
         var cityIndex = 0
         var areaIndex = 0
-
+        
         for p in 0..<provinceArray.count {
             let pString = provinceArray[p] as! String
             if selectProvince == pString {
                 selectProvinceIndex = p
                 provinceIndex = p
-               cityArray = getCityFromProvinceIndex(index: p)
+                cityArray = getCityFromProvinceIndex(index: p)
                 for c in 0..<cityArray.count {
                     let cString = cityArray[c] as! String
                     if selectCity == cString {
@@ -166,14 +166,14 @@ import UIKit
     
     //MARK: - 获取区数据
     private func getAreaFromProvinceAndcCity(provinceIndex:Int,cityIndex:Int) ->NSArray{
-
+        
         let provinceDic = dataSource[provinceIndex] as! NSDictionary
         let cityDic = provinceDic.object(forKey: provinceArray[provinceIndex]) as! NSDictionary
         let areaDic = cityDic.allValues[cityIndex] as! NSDictionary
         var array = NSArray()
         array = areaDic.object(forKey: cityArray[cityIndex]) as! NSArray
         
-       return array
+        return array
     }
     
     //MARK: - 显示地址页面
@@ -207,7 +207,6 @@ import UIKit
         }
     }
     
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -217,7 +216,7 @@ import UIKit
 }
 //MARK: - 多重选择代理
 extension XYAddressPickerView :UIPickerViewDelegate,UIPickerViewDataSource{
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
@@ -233,12 +232,12 @@ extension XYAddressPickerView :UIPickerViewDelegate,UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-
+        
         let label = UILabel.init()
         label.frame = CGRect(x: 0, y: 0, width: self.frame.size.width/3, height: 30)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
-
+        
         if (component == 0) {
             label.text = provinceArray[row] as? String
         }else if (component == 1){
@@ -246,7 +245,7 @@ extension XYAddressPickerView :UIPickerViewDelegate,UIPickerViewDataSource{
         }else{
             label.text = areaArray[row] as? String
         }
-
+        
         return label
     }
     
@@ -262,7 +261,7 @@ extension XYAddressPickerView :UIPickerViewDelegate,UIPickerViewDataSource{
             pickerView.selectRow(0, inComponent: 1, animated: true)
             pickerView.reloadComponent(2)
             pickerView.selectRow(0, inComponent: 2, animated: true)
-
+            
             selectProvince = provinceArray[row] as! String
             selectCity = cityArray[0] as! String
             selectArea = areaArray[0] as! String
@@ -280,5 +279,4 @@ extension XYAddressPickerView :UIPickerViewDelegate,UIPickerViewDataSource{
             selectArea = areaArray[row] as! String
         }
     }
-    
 }

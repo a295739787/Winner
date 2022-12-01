@@ -244,7 +244,7 @@ import UIKit
         
         self.pushBlock!(chatRoomViewController)
     }
- 
+    
     //MARK: -界面退出
     func dismissView(){
         self.dismiss(animated: true, completion: nil)

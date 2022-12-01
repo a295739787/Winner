@@ -8,7 +8,7 @@
 import UIKit
 
 @objcMembers class XYOrderQuestionTableViewCell: UITableViewCell {
-
+    
     var bgView = UIView()
     var questionLabel = UILabel()
     var serviceImageView = UIImageView()
@@ -44,7 +44,7 @@ import UIKit
         serviceLabel.font = .systemFont(ofSize: 14)
         serviceLabel.textAlignment = .left
         bgView.addSubview(serviceLabel)
-
+        
     }
     ///布局及加载数据
     override func layoutSubviews() {
@@ -63,7 +63,7 @@ import UIKit
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
-
+    
 }

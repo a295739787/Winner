@@ -70,7 +70,7 @@ extension XYShopDetailViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = XYShopDetailHeaderView.init()
-    
+        
         if !personalModel.shopPhoto.isEmpty {
             headerView.iconURL = personalModel.shopPhoto
         }
@@ -102,7 +102,7 @@ extension XYShopDetailViewController:UITableViewDelegate,UITableViewDataSource {
         
         if (indexPath.row == 0) {
             let dic = dataArray[indexPath.row]
-
+            
             let changeVC = LLPersonalChangeVC.init()
             let nickName = (dic["content"] as! String)
             changeVC.nameStr = nickName;
@@ -131,14 +131,14 @@ extension XYShopDetailViewController:UITableViewDelegate,UITableViewDataSource {
         imagePickerVc?.naviTitleColor = .black
         imagePickerVc?.oKButtonTitleColorDisabled = .black
         imagePickerVc?.didFinishPickingPhotosHandle = { [self] photos,assets,isSelectOriginalPhoto in
-      
+            
             if (photos?[0] == nil) {
                 return
             }
             
             updateShopIcon(photo: photos![0])
         }
-
+        
         imagePickerVc?.navigationBar.barTintColor = .hexString("#D53329");
         self.present(imagePickerVc!, animated: true)
     }
@@ -176,7 +176,7 @@ extension XYShopDetailViewController:UITableViewDelegate,UITableViewDataSource {
             let data = responseObj as! NSDictionary
             let code = data.object(forKey: "code") as? Int
             if code == 200 {
-               
+                
                 headerImgStr = pic
                 tableView.reloadData()
             }

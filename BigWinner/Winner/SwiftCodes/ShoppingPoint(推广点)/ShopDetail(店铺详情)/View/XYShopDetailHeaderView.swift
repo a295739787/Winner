@@ -19,7 +19,7 @@ class XYShopDetailHeaderView: UIView {
             iconImageView.sd_setImage(withUrlString: iconURL ?? "", placeholderImageName: "headimages")
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white

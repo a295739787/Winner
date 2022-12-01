@@ -40,12 +40,12 @@ class WalletOrConsumeModel:NSObject{
 var WalletType : [Int:String] {
     
     let type = [1:"惊喜红包奖励",2:"推广佣金",3:"回购商品",4:"配送任务库存金额反还",5:"配送任务佣金奖励",6:"提现",7:"配送任务超时罚款",9:"红包购买商品抵扣",14:"扫码开盖/幸运红包",15:"配送超时消费红包",16:"排行包消费红包",18:"提现失败余额退回"]
-  return type
+    return type
 }
 ///钱包符号对应列表
 var WalletSymbol : [Int:String] {
     
-   let symbol = [1:"+",2:"+",3:"+",4:"+",5:"+",6:"-",7:"-",9:"-",14:"+",15:"+",16:"+",18:"+"]
+    let symbol = [1:"+",2:"+",3:"+",4:"+",5:"+",6:"-",7:"-",9:"-",14:"+",15:"+",16:"+",18:"+"]
     return symbol
 }
 
@@ -85,5 +85,5 @@ class LiquorCardDetailModel:NSObject{
     @objc var remainNum : Int = 0
     @objc var type : String = ""
     @objc var createTime : String = ""
-
+    
 }

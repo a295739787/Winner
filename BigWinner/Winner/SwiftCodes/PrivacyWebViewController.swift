@@ -9,14 +9,14 @@ import UIKit
 import WebKit
 
 class PrivacyWebViewController: LMHBaseViewController,WKNavigationDelegate,WKUIDelegate{
-
+    
     var url : String = ""
     var urlName : String = ""
     var isHiddenNavgationBar :Bool = false
     var webView = WKWebView()
-   
+    
     override func viewWillAppear(_ animated: Bool) {
-       super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         if !isHiddenNavgationBar {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
@@ -30,14 +30,13 @@ class PrivacyWebViewController: LMHBaseViewController,WKNavigationDelegate,WKUID
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if (urlName.isEmpty){
-          urlName = "服务协议"
+            urlName = "服务协议"
         }
         self.customNavBar.title = urlName
         
         loadSubView()
-        
     }
     
     private func loadSubView(){
@@ -46,7 +45,7 @@ class PrivacyWebViewController: LMHBaseViewController,WKNavigationDelegate,WKUID
         preference.minimumFontSize = 0
         preference.javaScriptCanOpenWindowsAutomatically = true
         config.preferences = preference
-
+        
         let y = (44 + UIApplication.shared.statusBarFrame.height)
         webView = WKWebView.init(frame: CGRect(x: 0, y: y, width:UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height-y), configuration: config)
         // 是否允许手势左滑返回上一级, 类似导航控制的左滑返回
@@ -60,8 +59,5 @@ class PrivacyWebViewController: LMHBaseViewController,WKNavigationDelegate,WKUID
             let request = URLRequest(url: webUrl!)
             webView.load(request)
         }
-        
     }
-
-
 }

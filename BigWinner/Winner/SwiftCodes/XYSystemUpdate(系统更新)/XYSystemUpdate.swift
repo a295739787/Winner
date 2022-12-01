@@ -9,7 +9,7 @@ import UIKit
 import AFNetworking
 
 @objcMembers class XYSystemUpdate: UIView {
-
+    
     private var backView = UIView()
     private var noticeLabel = UILabel()
     private var contentView = UITextView()
@@ -30,7 +30,7 @@ import AFNetworking
         
         self.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
-         contentH = XYSystemUpdate.getLabelHeight(byWidth: self.frame.size.width-70, title: contentString, font: UIFont.systemFont(ofSize: 15))
+        contentH = XYSystemUpdate.getLabelHeight(byWidth: self.frame.size.width-70, title: contentString, font: UIFont.systemFont(ofSize: 15))
         if contentH < 100 {
             contentH = 100
         }else if contentH > 200{
@@ -44,7 +44,7 @@ import AFNetworking
         backView.layer.cornerRadius = 10
         backView.backgroundColor = .white
         self.addSubview(backView)
-
+        
         noticeLabel = UILabel.init()
         noticeLabel.frame = CGRect(x: 5, y: 15, width: backView.frame.size.width-10, height: 20)
         noticeLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -61,7 +61,7 @@ import AFNetworking
         contentView.isEditable = false
         contentView.isSelectable = false
         backView.addSubview(contentView)
-
+        
         lineView = UIView.init()
         lineView.frame = CGRect(x: 0, y: contentView.frame.maxY, width: backView.frame.size.width, height: 1)
         lineView.backgroundColor = UIColor.hexString("#F0EFED")
@@ -86,12 +86,12 @@ import AFNetworking
         sureButton.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
         backView.addSubview(sureButton)
     }
-
+    
     ///取消和确认按钮点击方法
     @objc private func buttonClick(_ sender:UIButton){
         
         hideView()
-
+        
         if sender.tag == 101 {
             
             let currentDate = NSString.getCurrentTimesYYDD()
@@ -105,7 +105,7 @@ import AFNetworking
         }
     }
     
-   ///显示界面
+    ///显示界面
     private func showView(){
         let window = UIApplication.shared.keyWindow
         window?.addSubview(self)
@@ -136,7 +136,7 @@ import AFNetworking
             }
         }
     }
-  
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -144,9 +144,8 @@ import AFNetworking
     deinit {
         
     }
- 
     
-  private func SystemUpadate (){
+    private func SystemUpadate (){
         
         let infoDictionary = Bundle.main.infoDictionary! as NSDictionary
         let locVersion = infoDictionary.object(forKey: "CFBundleShortVersionString") as! String
@@ -154,10 +153,10 @@ import AFNetworking
         
         AFHTTPSessionManager.init().get(appStoreUrl, parameters: nil, headers: nil) { progress in
         } success: { task, responseObj in
-                        
+            
             let data = responseObj as! NSDictionary
             let resultCount = data.object(forKey: "resultCount") as! Int
-
+            
             if (resultCount > 0){
                 //取出线上的版本号
                 let results = data.object(forKey: "results") as! NSArray
@@ -165,10 +164,10 @@ import AFNetworking
                 let onlineVersion = version.object(forKey: "version") as! String
                 //获取更新版本信息
                 let updateMessage = version.object(forKey: "releaseNotes") as! String
-
+                
                 let comparisonResult = self.compareOnlineVersion(online: onlineVersion, local: locVersion)
                 switch comparisonResult {
-
+                    
                 case .orderedAscending:
                     //线上的版本小不做操作
                     break
@@ -188,8 +187,8 @@ import AFNetworking
             
         }
     }
-
-  private func compareOnlineVersion(online:String,local:String) -> ComparisonResult {
+    
+    private func compareOnlineVersion(online:String,local:String) -> ComparisonResult {
         
         let onlineArray = online.components(separatedBy: ".") as NSArray
         let localArray = local.components(separatedBy: ".") as NSArray
@@ -199,7 +198,7 @@ import AFNetworking
             
             let v1 = onlineArray.count > points ? (onlineArray.object(at: points) as AnyObject).integerValue : 0
             let v2 = localArray.count > points ? (localArray.object(at: points) as AnyObject).integerValue : 0
-
+            
             if (v1! < v2!) {
                 return .orderedAscending
             }else if (v1! > v2!){
@@ -210,6 +209,5 @@ import AFNetworking
         
         return .orderedSame
     }
-
 }
 
