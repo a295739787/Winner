@@ -315,7 +315,7 @@
                 [weakself.navigationController pushViewController:vc animated:YES];
             }else if (index == 101){
                 
-                XYMyLiquorCardViewController *vc = [[XYMyLiquorCardViewController alloc] init];
+                XYBandLiquorCardViewController *vc = [[XYBandLiquorCardViewController alloc] init];
                 [weakself.navigationController pushViewController:vc animated:YES];
                 
             }else if (index == 102){

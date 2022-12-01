@@ -81,6 +81,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *shopLatitude;
 @property (nonatomic,copy)NSString *shopNo;
 
+/* 是否绑卡 */
+@property (nonatomic,assign)int bindCardNum;
+
 
 @end
 

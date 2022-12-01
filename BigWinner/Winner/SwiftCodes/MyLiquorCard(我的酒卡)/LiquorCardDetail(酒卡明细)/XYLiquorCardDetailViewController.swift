@@ -8,22 +8,32 @@
 import UIKit
 
 
-class XYLiquorCardDetailViewController: UIViewController {
+@objcMembers class XYLiquorCardDetailViewController: UIViewController {
 
     private var mainView = UIView()
     private var topView = UIView()
     private var tableView = UITableView()
     private var bottomView = UIView()
+    public var goodId : String = ""
+    public var status : String = ""
+    public var userId : String = ""
+    public var userType : String = ""
+
+    var dataArray = [LiquorCardDetailModel]()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         loadMainView()
+        loadMainNetwork()
     }
     
     private func loadMainView(){
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-
+        self.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(dissMissView(_:))))
+        
         mainView = UIView.init()
         mainView.backgroundColor = .white
         mainView.frame = CGRect(x: 0, y: deviceHeight-(deviceHeight * 0.6), width: deviceWidth, height: deviceHeight * 0.6)
@@ -40,9 +50,8 @@ class XYLiquorCardDetailViewController: UIViewController {
         topView.addSubview(messageLabel)
         
         let topCanceButton = UIButton(type: .custom)
-        topCanceButton.setImage(UIImage(named: ""), for: .normal)
+        topCanceButton.setImage(UIImage(named: "close_btn"), for: .normal)
         topCanceButton.frame = CGRect(x: topView.width-50, y: 0, width: 50, height: 50)
-        topCanceButton.backgroundColor = .red
         topView.addSubview(topCanceButton)
         topCanceButton.addTarget(self, action: #selector(cilckButton(_:)), for: .touchUpInside)
         
@@ -69,6 +78,46 @@ class XYLiquorCardDetailViewController: UIViewController {
         
     }
     
+    ///点击背景退出界面
+    @objc private func dissMissView(_ tap:UITapGestureRecognizer){
+        
+        if tap.state == .ended {
+            
+            let point = tap.location(in: nil)
+            
+            if !(mainView.point(inside: mainView.convert(point, from: mainView.window), with: nil)) {
+                dismissView()
+            }
+        }
+    }
+    
+    /// 绑卡网络请求
+    private func loadMainNetwork(){
+        
+        let param = NSMutableDictionary()
+        param.setValue(userType, forKey: "userType")
+        param.setValue(userId, forKey: "userId")
+        param.setValue(status, forKey: "status")
+        param.setValue(goodId, forKey: "goodId")
+
+        XJHttpTool.post(L_cardGetMyStockUrl, method:GET, params: param, isToken: true) { [self] responseObj in
+            
+            let data = responseObj as! NSDictionary
+            let code = data.object(forKey: "code") as? Int
+            if code == 200 {
+                
+                let listArray = data.object(forKey: "data") as! NSArray
+                let modelArray =  LiquorCardDetailModel.mj_objectArray(withKeyValuesArray: listArray).copy() as? [LiquorCardDetailModel]
+                dataArray = modelArray!
+                
+            }
+            tableView.reloadData()
+        } failure: {  errore in
+            
+        }
+    }
+    
+    
     /// 退出界面按钮
     @objc private func cilckButton(_ sender:UIButton){
         
@@ -86,7 +135,7 @@ extension XYLiquorCardDetailViewController:UITableViewDelegate,UITableViewDataSo
       
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -97,6 +146,9 @@ extension XYLiquorCardDetailViewController:UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell  = tableView.dequeueReusableCell(withIdentifier: "LiquorCardDetailCell") as! LiquorCardDetailTableViewCell
+        
+        let dataModel = dataArray[indexPath.row]
+        cell.model = dataModel
         
         return cell
     }

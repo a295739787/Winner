@@ -36,7 +36,6 @@
 //#define apiQiUrl @"https://api.dayingjiamall.com"
 
 
-
 //#define API_imageUrl @"http://img01.lygouwu.com/"
 //#define apiQiUrl @"http://qr4pnc7zx.hn-bkt.clouddn.com/"
 //#define API_imageUrl @"http://qr4pnc7zx.hn-bkt.clouddn.com/cats/"
@@ -208,7 +207,7 @@
 #define L_apiapporderafterExpress @"/api/app/order/after/getExpress"
 
 /* 0元*/
-#define L_apiapporderpayZero@"/api/app/order/payZero"
+#define L_apiapporderpayZero @"/api/app/order/payZero"
 
 
 /* 回购记录*/
@@ -279,5 +278,12 @@
 #define L_orderListUrl @"/api/app/order/getList"
 #define L_orderDetailUrl @"/api/app/order/getById"
 
+/* 我的酒卡 */
+/* 绑卡 */
+#define L_cardBindUrl @"/api/app/card/bind"
+/* 酒卡列表 */
+#define L_cardGetListUrl @"/api/app/card/getList"
+/* 酒卡明细 */
+#define L_cardGetMyStockUrl @"/api/app/user/getMyStockDetail"
 
 #endif /* HttpAdress_h */

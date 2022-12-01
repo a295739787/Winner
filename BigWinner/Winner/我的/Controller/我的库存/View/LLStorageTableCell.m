@@ -14,6 +14,7 @@
 @property (nonatomic,strong)UILabel *goodsSpecLabel;
 @property (nonatomic,strong)UILabel *goodsCountLabel;
 @property (nonatomic,strong)UIButton *letBtn;
+@property (nonatomic,strong)UIButton *rightBtn;
 @property (nonatomic,strong)UIView *line;
 
 @end
@@ -35,36 +36,44 @@
     [self.contentView addSubview:self.goodsSpecLabel];
     [self.contentView addSubview:self.goodsCountLabel];
     [self.contentView addSubview:self.letBtn];
+    [self.contentView addSubview:self.rightBtn];
     [self.contentView addSubview:self.line];
     
     [self.goodsImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.mas_equalTo(CGFloatBasedI375(15));
-        make.centerY.mas_equalTo(self.contentView);
+        make.top.mas_equalTo(CGFloatBasedI375(10));
+        make.left.mas_equalTo(CGFloatBasedI375(15));
         make.width.height.mas_equalTo(CGFloatBasedI375(80));
-        make.bottom.mas_equalTo(CGFloatBasedI375(-15));
     }];
     
     [self.goodsNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.goodsImgView);
+        make.top.mas_equalTo(12);
         make.left.mas_equalTo(CGFloatBasedI375(105));
         make.right.mas_equalTo(CGFloatBasedI375(-15));
     }];
     
     [self.goodsSpecLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.goodsNameLabel);
-        make.top.mas_equalTo(CGFloatBasedI375(58));
+        make.top.mas_equalTo(self.goodsNameLabel.mas_bottom).offset(12);
     }];
     
     [self.goodsCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.goodsNameLabel);
-        make.bottom.mas_equalTo(CGFloatBasedI375(-17));
+        make.top.mas_equalTo(self.goodsSpecLabel.mas_bottom).offset(9);
+
     }];
     
     [self.letBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(CGFloatBasedI375(-15));
-        make.bottom.mas_equalTo(CGFloatBasedI375(-20));
+        make.bottom.mas_equalTo(CGFloatBasedI375(-14));
         make.height.mas_equalTo(CGFloatBasedI375(30));
-        make.width.mas_equalTo(CGFloatBasedI375(60));
+        make.width.mas_equalTo(CGFloatBasedI375(80));
+    }];
+    
+    [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.letBtn.mas_left).offset(-10);
+        make.bottom.mas_equalTo(CGFloatBasedI375(-14));
+        make.height.mas_equalTo(CGFloatBasedI375(30));
+        make.width.mas_equalTo(CGFloatBasedI375(80));
     }];
     
     [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -78,6 +87,10 @@
 }
 
 -(void)setListModel:(LLStorageListModel *)listModel{
+    
+    if (self.showOther == YES) {
+        [_rightBtn setHidden:NO];
+    }
     
     _listModel = listModel;
     
@@ -110,6 +123,13 @@
 
     if (self.storageBtnBlock) {
         self.storageBtnBlock(_listModel.ID);
+    }
+}
+#pragma mark--letBtnClick
+-(void)rightBtnClick:(UIButton *)btn{
+
+    if (self.rightBtnBlock) {
+        self.rightBtnBlock(_listModel);
     }
 }
 #pragma mark--lazy
@@ -164,6 +184,22 @@
         _letBtn.layer.borderWidth = CGFloatBasedI375(1);
     }
     return _letBtn;
+}
+-(UIButton *)rightBtn{
+    if (!_rightBtn) {
+        _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _rightBtn.backgroundColor = [UIColor whiteColor];
+        [_rightBtn setTitle:@"查看明细" forState:UIControlStateNormal];
+        [_rightBtn setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
+        _rightBtn.titleLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(13)];
+        [_rightBtn addTarget:self action:@selector(rightBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        _rightBtn.layer.cornerRadius = CGFloatBasedI375(15);
+        _rightBtn.clipsToBounds = YES;
+        _rightBtn.layer.borderColor = UIColorFromRGB(0x999999).CGColor;
+        _rightBtn.layer.borderWidth = CGFloatBasedI375(1);
+        [_rightBtn setHidden:YES];
+    }
+    return _rightBtn;
 }
 -(UIView *)line{
     if (!_line) {

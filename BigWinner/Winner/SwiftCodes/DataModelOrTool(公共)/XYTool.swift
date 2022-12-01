@@ -72,7 +72,16 @@ func labelForHeight(width:CGFloat,font:Float,string:NSString) -> CGFloat {
     return height.height
 }
 
-
+/// textField 光标间隔
+/// - Parameters:
+///   - textField: 目标textField
+///   - sepac: 间隔 默认15
+func loadTextFieldBlankView(textField:UITextField,sepac:CGFloat = 15){
+    let blankView = UIView.init()
+    blankView.frame = CGRect(x: textField.frame.origin.x, y: textField.frame.origin.y, width: sepac, height: textField.frame.size.height)
+    textField.leftView = blankView
+    textField.leftViewMode = .always
+}
 /// 切圆角及边线
 /// - Parameters:
 ///   - targetView: 目标view，必填

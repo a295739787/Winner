@@ -20,6 +20,8 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
     
     var lineView = UIView()
 
+    var model = LiquorCardDetailModel()
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -71,6 +73,19 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
         goodsMoneyTimeLabel.frame = CGRect(x: oddTimeLabel.frame.maxX+10, y: goodsMoneyLabel.frame.maxY+17, width: (self.frame.size.width-25-25-10)/2, height: 10)
 
         lineView.frame = CGRect(x: 25, y: self.frame.size.height-1, width:(self.frame.size.width-50) , height: 1)
+        
+        if model.goodsNum > 0 {
+            goodsMoneyLabel.textColor = .hexString("#999999")
+            
+        }else{
+            goodsMoneyLabel.textColor = .hexString("#D40006")
+        }
+        
+        oddNumberLabel.text = model.type
+        oddTimeLabel.text = model.createTime
+        goodsMoneyLabel.text = "\(model.goodsNum)"
+        goodsMoneyTimeLabel.text = "余额 \(model.remainNum)"
+
         
     }
 }

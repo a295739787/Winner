@@ -139,6 +139,9 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 121;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         LLStorageAdressTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLStorageAdressTableCell" forIndexPath:indexPath];
@@ -149,6 +152,7 @@
     LLStorageTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLStorageTableCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.isHidden = YES;
+    cell.showOther = NO;
     cell.stockListModel =  self.stockListModel ;
     return cell;
 }
