@@ -352,6 +352,7 @@
 		DB39C4B32930B10C00BF75AF /* LiquorCardDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB39C4B22930B10C00BF75AF /* LiquorCardDetailTableViewCell.swift */; };
 		DB39C4B62930B7DE00BF75AF /* XYBandLiquorCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB39C4B52930B7DE00BF75AF /* XYBandLiquorCardViewController.swift */; };
 		DB39C4B82935FF1100BF75AF /* XYMessageTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB39C4B72935FF1100BF75AF /* XYMessageTipsView.swift */; };
+		DB39C4F62939D90D00BF75AF /* AliyunEmasServices-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB39C4F52939D90C00BF75AF /* AliyunEmasServices-Info.plist */; };
 		DB5C428B2923745800442CB5 /* XYMyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C428A2923745800442CB5 /* XYMyWalletViewController.swift */; };
 		DB5C428E2923828E00442CB5 /* XYMyWalletHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C428D2923828E00442CB5 /* XYMyWalletHeaderView.swift */; };
 		DB5C4290292382BC00442CB5 /* XYMyWalletTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C428F292382BC00442CB5 /* XYMyWalletTitleHeaderView.swift */; };
@@ -1140,6 +1141,7 @@
 		DB39C4B22930B10C00BF75AF /* LiquorCardDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquorCardDetailTableViewCell.swift; sourceTree = "<group>"; };
 		DB39C4B52930B7DE00BF75AF /* XYBandLiquorCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYBandLiquorCardViewController.swift; sourceTree = "<group>"; };
 		DB39C4B72935FF1100BF75AF /* XYMessageTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMessageTipsView.swift; sourceTree = "<group>"; };
+		DB39C4F52939D90C00BF75AF /* AliyunEmasServices-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AliyunEmasServices-Info.plist"; sourceTree = "<group>"; };
 		DB5C428A2923745800442CB5 /* XYMyWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyWalletViewController.swift; sourceTree = "<group>"; };
 		DB5C428D2923828E00442CB5 /* XYMyWalletHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyWalletHeaderView.swift; sourceTree = "<group>"; };
 		DB5C428F292382BC00442CB5 /* XYMyWalletTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyWalletTitleHeaderView.swift; sourceTree = "<group>"; };
@@ -1799,6 +1801,7 @@
 		429054D4278C06670053C4E1 = {
 			isa = PBXGroup;
 			children = (
+				DB39C4F52939D90C00BF75AF /* AliyunEmasServices-Info.plist */,
 				429054DF278C06670053C4E1 /* Winner */,
 				429054DE278C06670053C4E1 /* Products */,
 				4046DC2544843F917CEE77A2 /* Pods */,
@@ -3755,6 +3758,7 @@
 				42D3942F27FD7DBC008B4138 /* video_chat_tip_receiver.aac in Resources */,
 				4298F9E027D49D6500B3DB37 /* MGroupCell.xib in Resources */,
 				4285868327CB797300B1E992 /* SVProgressHUD.bundle in Resources */,
+				DB39C4F62939D90D00BF75AF /* AliyunEmasServices-Info.plist in Resources */,
 				42D3942C27FD7DBC008B4138 /* city.json in Resources */,
 				42DEBD9E27FE7A84003DD949 /* Localizable.strings in Resources */,
 				4298F9DD27D49D6500B3DB37 /* MImaCell.xib in Resources */,

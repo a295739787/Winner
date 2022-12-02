@@ -5,6 +5,8 @@ inhibit_all_warnings!
 
 target 'Winner' do
 source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/aliyun/aliyun-specs.git'
 pod 'Masonry'
 pod 'JJException'
 pod 'MJExtension' #模型转换
@@ -34,5 +36,7 @@ pod 'SocketRocket', '~> 0.5.1'
 pod 'Qiniu', '~> 8.4.0'
 pod 'FMDB', '~> 2.7.5'
 pod 'JQLoadingStatusView', '~> 1.0.3'
+#阿里推送
+pod 'AlicloudPush', '~> 1.9.9'
 end
 
