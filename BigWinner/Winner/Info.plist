@@ -96,5 +96,7 @@
 	<true/>
 	<key>User Interface Style</key>
 	<string>Light</string>
+	<key>com.openinstall.APP_KEY</key>
+	<string>tokhzy</string>
 </dict>
 </plist>

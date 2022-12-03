@@ -373,6 +373,15 @@
 		DB99C65E292F66EC00145C2C /* XYMyLiquorCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99C65D292F66EC00145C2C /* XYMyLiquorCardViewController.swift */; };
 		DB99C661292F738500145C2C /* MyLiquorCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99C660292F738500145C2C /* MyLiquorCardTableViewCell.swift */; };
 		DB99C66429309DE100145C2C /* XYLiquorCardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99C66329309DE100145C2C /* XYLiquorCardDetailViewController.swift */; };
+		DBA8A0B92939FCF2009E6051 /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B42939FCF1009E6051 /* CloudPushSDK.framework */; };
+		DBA8A0BA2939FCF2009E6051 /* AlicloudSender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B52939FCF1009E6051 /* AlicloudSender.framework */; };
+		DBA8A0BB2939FCF2009E6051 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B62939FCF2009E6051 /* UTMini.framework */; };
+		DBA8A0BC2939FCF2009E6051 /* EMASRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B72939FCF2009E6051 /* EMASRest.framework */; };
+		DBA8A0BD2939FCF2009E6051 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B82939FCF2009E6051 /* AlicloudUtils.framework */; };
+		DBA8A0C12939FD60009E6051 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0C02939FD60009E6051 /* CoreTelephony.framework */; };
+		DBA8A0C32939FD74009E6051 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0C22939FD74009E6051 /* SystemConfiguration.framework */; };
+		DBA8A0C72939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA8A0C62939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift */; };
+		DBA8A0D2293B26C5009E6051 /* libOpenInstallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0CF293B26C5009E6051 /* libOpenInstallSDK.a */; };
 		DBABCA8B2918E6E80028E7B9 /* XYStockDetaileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA8A2918E6E80028E7B9 /* XYStockDetaileViewController.swift */; };
 		DBABCA90291A37300028E7B9 /* XYStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA8F291A37300028E7B9 /* XYStockTableViewCell.swift */; };
 		DBABCA95291C96B50028E7B9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA94291C96B50028E7B9 /* DataModel.swift */; };
@@ -1163,6 +1172,18 @@
 		DB99C65D292F66EC00145C2C /* XYMyLiquorCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyLiquorCardViewController.swift; sourceTree = "<group>"; };
 		DB99C660292F738500145C2C /* MyLiquorCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLiquorCardTableViewCell.swift; sourceTree = "<group>"; };
 		DB99C66329309DE100145C2C /* XYLiquorCardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYLiquorCardDetailViewController.swift; sourceTree = "<group>"; };
+		DBA8A0B42939FCF1009E6051 /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CloudPushSDK.framework; sourceTree = "<group>"; };
+		DBA8A0B52939FCF1009E6051 /* AlicloudSender.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudSender.framework; sourceTree = "<group>"; };
+		DBA8A0B62939FCF2009E6051 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
+		DBA8A0B72939FCF2009E6051 /* EMASRest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EMASRest.framework; sourceTree = "<group>"; };
+		DBA8A0B82939FCF2009E6051 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
+		DBA8A0BE2939FD36009E6051 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		DBA8A0C02939FD60009E6051 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		DBA8A0C22939FD74009E6051 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DBA8A0C62939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XYAppDelegate+CloudPushSDK.swift"; sourceTree = "<group>"; };
+		DBA8A0CF293B26C5009E6051 /* libOpenInstallSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOpenInstallSDK.a; sourceTree = "<group>"; };
+		DBA8A0D0293B26C5009E6051 /* OpeninstallData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpeninstallData.h; sourceTree = "<group>"; };
+		DBA8A0D1293B26C5009E6051 /* OpenInstallSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenInstallSDK.h; sourceTree = "<group>"; };
 		DBABCA8A2918E6E80028E7B9 /* XYStockDetaileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYStockDetaileViewController.swift; sourceTree = "<group>"; };
 		DBABCA8F291A37300028E7B9 /* XYStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYStockTableViewCell.swift; sourceTree = "<group>"; };
 		DBABCA94291C96B50028E7B9 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -1376,16 +1397,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA8A0C32939FD74009E6051 /* SystemConfiguration.framework in Frameworks */,
+				DBA8A0C12939FD60009E6051 /* CoreTelephony.framework in Frameworks */,
+				DBA8A0B92939FCF2009E6051 /* CloudPushSDK.framework in Frameworks */,
 				DB8F335228FFF4A700474235 /* ATAuthSDK.framework in Frameworks */,
 				DB8F335828FFF7C800474235 /* YTXMonitor.framework in Frameworks */,
+				DBA8A0BB2939FCF2009E6051 /* UTMini.framework in Frameworks */,
 				42BEC91E27FC307D0057F1C3 /* libresolv.tbd in Frameworks */,
 				42BEC91B27FC2FD10057F1C3 /* libsqlite3.tbd in Frameworks */,
+				DBA8A0D2293B26C5009E6051 /* libOpenInstallSDK.a in Frameworks */,
+				DBA8A0BC2939FCF2009E6051 /* EMASRest.framework in Frameworks */,
 				42BEC91A27FC2FD10057F1C3 /* libz.tbd in Frameworks */,
+				DBA8A0BA2939FCF2009E6051 /* AlicloudSender.framework in Frameworks */,
 				42D3933527FD7DB1008B4138 /* QMLineSDK.framework in Frameworks */,
 				DB8F335928FFF7C800474235 /* YTXOperators.framework in Frameworks */,
 				426BA40D27EB39F700B7D318 /* Pods_Winner.framework in Frameworks */,
 				42BEC91C27FC2FD10057F1C3 /* libresolv.tbd in Frameworks */,
 				42D3947227FD7DBC008B4138 /* libmp3lame.a in Frameworks */,
+				DBA8A0BD2939FCF2009E6051 /* AlicloudUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1822,6 +1851,7 @@
 			children = (
 				DB0FCBB9290919F8003F7E6D /* Tools */,
 				DB8F335028FFF2DF00474235 /* OneKeyLogin */,
+				DBA8A0CE293B26C5009E6051 /* OpenInstallSDK */,
 				DB8F334C28FFD12900474235 /* SwiftCodes */,
 				42F28DEC283BC23100516EBA /* Winner.entitlements */,
 				42D3933627FD7DBB008B4138 /* 客服 */,
@@ -2799,6 +2829,9 @@
 		6C4F17E645B010D8B1855BAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBA8A0C22939FD74009E6051 /* SystemConfiguration.framework */,
+				DBA8A0C02939FD60009E6051 /* CoreTelephony.framework */,
+				DBA8A0BE2939FD36009E6051 /* libz.tbd */,
 				42D3933427FD7DB1008B4138 /* QMLineSDK.framework */,
 				42BEC91827FC2FD10057F1C3 /* libresolv.tbd */,
 				42BEC91D27FC307D0057F1C3 /* libresolv.tbd */,
@@ -2919,6 +2952,7 @@
 		DB8F334C28FFD12900474235 /* SwiftCodes */ = {
 			isa = PBXGroup;
 			children = (
+				DBA8A09B2939F19E009E6051 /* CloudPush(阿里推送) */,
 				DB99C65C292F658E00145C2C /* MyLiquorCard(我的酒卡) */,
 				DB5C429F292C650C00442CB5 /* ShoppingPoint(推广点) */,
 				DB5C42892923730200442CB5 /* XYMyWallet(钱包) */,
@@ -2972,6 +3006,37 @@
 				DB99C66329309DE100145C2C /* XYLiquorCardDetailViewController.swift */,
 			);
 			path = "LiquorCardDetail(酒卡明细)";
+			sourceTree = "<group>";
+		};
+		DBA8A09B2939F19E009E6051 /* CloudPush(阿里推送) */ = {
+			isa = PBXGroup;
+			children = (
+				DBA8A0C62939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift */,
+				DBA8A0A72939FA0B009E6051 /* XYFrameworks */,
+			);
+			path = "CloudPush(阿里推送)";
+			sourceTree = "<group>";
+		};
+		DBA8A0A72939FA0B009E6051 /* XYFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DBA8A0B52939FCF1009E6051 /* AlicloudSender.framework */,
+				DBA8A0B82939FCF2009E6051 /* AlicloudUtils.framework */,
+				DBA8A0B42939FCF1009E6051 /* CloudPushSDK.framework */,
+				DBA8A0B72939FCF2009E6051 /* EMASRest.framework */,
+				DBA8A0B62939FCF2009E6051 /* UTMini.framework */,
+			);
+			path = XYFrameworks;
+			sourceTree = "<group>";
+		};
+		DBA8A0CE293B26C5009E6051 /* OpenInstallSDK */ = {
+			isa = PBXGroup;
+			children = (
+				DBA8A0CF293B26C5009E6051 /* libOpenInstallSDK.a */,
+				DBA8A0D0293B26C5009E6051 /* OpeninstallData.h */,
+				DBA8A0D1293B26C5009E6051 /* OpenInstallSDK.h */,
+			);
+			path = OpenInstallSDK;
 			sourceTree = "<group>";
 		};
 		DBABCA892918E6A30028E7B9 /* XYStockDetaile(库存明细) */ = {
@@ -4095,6 +4160,7 @@
 				42D3943127FD7DBC008B4138 /* QMQuestionModel.m in Sources */,
 				42905568278C08600053C4E1 /* UILabel+Extension.m in Sources */,
 				42D3945427FD7DBC008B4138 /* QMFormBaseCell.m in Sources */,
+				DBA8A0C72939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift in Sources */,
 				4298F9E627D4A79A00B3DB37 /* LLMapChoiceViewController.m in Sources */,
 				045846D027A9685600AB8587 /* LLShopCarViewController.m in Sources */,
 				42D3944327FD7DBC008B4138 /* QMChatLogistcsInfoCell.m in Sources */,
@@ -4430,6 +4496,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Winner/OneKeyLogin",
 					"$(PROJECT_DIR)/Winner/OneKeyLogin/YTXOperators2_v1.2.9-SNAPSHOT_Release_25222179",
+					"$(PROJECT_DIR)/Winner/SwiftCodes/CloudPush(阿里推送)/XYFrameworks",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Winner/BaseFile/pchConfig/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4458,6 +4525,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Winner/客服/Thirty/Voice",
+					"$(PROJECT_DIR)/Winner/SwiftCodes/OpenInstallSDK",
+					"$(PROJECT_DIR)/Winner/OpenInstallSDK",
 				);
 				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gzdayingjia.dyjapp;
@@ -4493,6 +4562,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Winner/OneKeyLogin",
 					"$(PROJECT_DIR)/Winner/OneKeyLogin/YTXOperators2_v1.2.9-SNAPSHOT_Release_25222179",
+					"$(PROJECT_DIR)/Winner/SwiftCodes/CloudPush(阿里推送)/XYFrameworks",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Winner/BaseFile/pchConfig/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4521,6 +4591,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Winner/客服/Thirty/Voice",
+					"$(PROJECT_DIR)/Winner/SwiftCodes/OpenInstallSDK",
+					"$(PROJECT_DIR)/Winner/OpenInstallSDK",
 				);
 				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gzdayingjia.dyjapp;

@@ -11,9 +11,10 @@
 #import "LLTabbarPeisongViewController.h"
 #import "PLLocationManage.h"
 #import "DCNewFeatureViewController.h"
+#import "OpenInstallSDK.h"
 #import "Winner-Swift.h"
 
-@interface AppDelegate ()<WXApiDelegate>
+@interface AppDelegate ()<WXApiDelegate,OpenInstallDelegate>
 @property (nonatomic,strong) CLLocationManager *locationManager ;/** <#class#> **/
 @property (nonatomic,strong) AMapLocationManager *manager ;/** <#class#> **/
 //@property (nonatomic, copy) NSString *customView;
@@ -43,6 +44,9 @@ static NSString *kf_userId = @"1234567a8ADC";
     [QMConnect switchServiceRoute:QMServiceLineAliy];
     [QMConnect registerSDKWithAppKey:kf_appkey userName:kf_name userId:kf_userId];
     [self oneKeyLoginAuthSDKInfo];
+    //只使用了H5携带参数安装功能，初始化即可
+    [OpenInstallSDK initWithDelegate:self];
+//    [self initCloudPush];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -289,4 +293,15 @@ static NSString *kf_userId = @"1234567a8ADC";
     NSLog(@"%ld",delta.day);
     return  delta.day;
 }
+
+#pragma mark - AssociatedDomains,h5拉起页面
+
+-(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+    
+    //处理通过openinstall一键唤起App时传递的数据
+    [OpenInstallSDK continueUserActivity:userActivity];
+    //其他第三方回调；
+    return YES;
+}
+
 @end
