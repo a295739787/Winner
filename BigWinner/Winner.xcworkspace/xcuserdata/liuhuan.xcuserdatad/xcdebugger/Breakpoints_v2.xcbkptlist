@@ -25,5 +25,69 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "005A8291-1862-40CC-86C7-EB651ECA4FD2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Winner_content_extension/NotificationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "didReceive(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3D7F220-2B9F-43AA-91E5-B7935702662F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Winner/SwiftCodes/CloudPush(&#x963f;&#x91cc;&#x63a8;&#x9001;)/XYAppDelegate+CloudPushSDK.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "onMessageReceivedFunc(notification:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D3D7F220-2B9F-43AA-91E5-B7935702662F - b2493425cb8dd579"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__C.AppDelegate.onMessageReceivedFunc(notification: Foundation.Notification) -&gt; ()"
+                  moduleName = "Winner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuhuan/Winner/BigWinner/Winner/SwiftCodes/CloudPush(%E9%98%BF%E9%87%8C%E6%8E%A8%E9%80%81)/XYAppDelegate+CloudPushSDK.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "1268">
+               </Location>
+               <Location
+                  uuid = "D3D7F220-2B9F-43AA-91E5-B7935702662F - b2493425cb8dd579"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__C.AppDelegate.onMessageReceivedFunc(notification: Foundation.Notification) -&gt; ()"
+                  moduleName = "Winner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuhuan/Winner/BigWinner/Winner/SwiftCodes/CloudPush(%E9%98%BF%E9%87%8C%E6%8E%A8%E9%80%81)/XYAppDelegate+CloudPushSDK.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "1336">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

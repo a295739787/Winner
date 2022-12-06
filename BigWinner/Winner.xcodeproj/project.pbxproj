@@ -380,11 +380,14 @@
 		DBA8A0BD2939FCF2009E6051 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B82939FCF2009E6051 /* AlicloudUtils.framework */; };
 		DBA8A0C12939FD60009E6051 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0C02939FD60009E6051 /* CoreTelephony.framework */; };
 		DBA8A0C32939FD74009E6051 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0C22939FD74009E6051 /* SystemConfiguration.framework */; };
-		DBA8A0C72939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA8A0C62939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift */; };
 		DBA8A0D2293B26C5009E6051 /* libOpenInstallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0CF293B26C5009E6051 /* libOpenInstallSDK.a */; };
 		DBABCA8B2918E6E80028E7B9 /* XYStockDetaileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA8A2918E6E80028E7B9 /* XYStockDetaileViewController.swift */; };
 		DBABCA90291A37300028E7B9 /* XYStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA8F291A37300028E7B9 /* XYStockTableViewCell.swift */; };
 		DBABCA95291C96B50028E7B9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBABCA94291C96B50028E7B9 /* DataModel.swift */; };
+		DBAEFA82293DA29A00C04E45 /* XYAppDelegate+CloudPushSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAEFA81293DA29A00C04E45 /* XYAppDelegate+CloudPushSDK.swift */; };
+		DBAEFACF293EF0E500C04E45 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAEFACE293EF0E500C04E45 /* NotificationService.swift */; };
+		DBAEFAD3293EF0E500C04E45 /* Winner-service-extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DBAEFACC293EF0E500C04E45 /* Winner-service-extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DBAEFADA293F2A9100C04E45 /* winner-logo-local.png in Resources */ = {isa = PBXBuildFile; fileRef = DBAEFAD9293F2A9100C04E45 /* winner-logo-local.png */; };
 		DBBB731B291CFC6800010368 /* XYMeServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB731A291CFC6800010368 /* XYMeServiceTableViewCell.swift */; };
 		DBBB7320291DF36200010368 /* XYServiceTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB731F291DF36200010368 /* XYServiceTipsViewController.swift */; };
 		F9093CE827E43920003E37B6 /* LLOrderApplyBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9093CE727E4391F003E37B6 /* LLOrderApplyBillModel.m */; };
@@ -488,6 +491,30 @@
 		F9F72934279A9A58005EDE25 /* LLMeSectionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F72933279A9A57005EDE25 /* LLMeSectionTableCell.m */; };
 		F9F72937279A9E63005EDE25 /* LLMoudleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F72936279A9E62005EDE25 /* LLMoudleButton.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DBAEFAD1293EF0E500C04E45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 429054D5278C06670053C4E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBAEFACB293EF0E500C04E45;
+			remoteInfo = "Winner-service-extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DBAEFA92293DC65F00C04E45 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DBAEFAD3293EF0E500C04E45 /* Winner-service-extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04183B3B27B0E04A00569AB6 /* LLSurpriseRegBagSureOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLSurpriseRegBagSureOrderViewController.h; sourceTree = "<group>"; };
@@ -1180,13 +1207,19 @@
 		DBA8A0BE2939FD36009E6051 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DBA8A0C02939FD60009E6051 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		DBA8A0C22939FD74009E6051 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		DBA8A0C62939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XYAppDelegate+CloudPushSDK.swift"; sourceTree = "<group>"; };
 		DBA8A0CF293B26C5009E6051 /* libOpenInstallSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOpenInstallSDK.a; sourceTree = "<group>"; };
 		DBA8A0D0293B26C5009E6051 /* OpeninstallData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpeninstallData.h; sourceTree = "<group>"; };
 		DBA8A0D1293B26C5009E6051 /* OpenInstallSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenInstallSDK.h; sourceTree = "<group>"; };
 		DBABCA8A2918E6E80028E7B9 /* XYStockDetaileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYStockDetaileViewController.swift; sourceTree = "<group>"; };
 		DBABCA8F291A37300028E7B9 /* XYStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYStockTableViewCell.swift; sourceTree = "<group>"; };
 		DBABCA94291C96B50028E7B9 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		DBAEFA81293DA29A00C04E45 /* XYAppDelegate+CloudPushSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XYAppDelegate+CloudPushSDK.swift"; sourceTree = "<group>"; };
+		DBAEFAB7293DD14D00C04E45 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		DBAEFAB9293DD14D00C04E45 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		DBAEFACC293EF0E500C04E45 /* Winner-service-extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Winner-service-extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBAEFACE293EF0E500C04E45 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		DBAEFAD0293EF0E500C04E45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBAEFAD9293F2A9100C04E45 /* winner-logo-local.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winner-logo-local.png"; sourceTree = "<group>"; };
 		DBBB731A291CFC6800010368 /* XYMeServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMeServiceTableViewCell.swift; sourceTree = "<group>"; };
 		DBBB731F291DF36200010368 /* XYServiceTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYServiceTipsViewController.swift; sourceTree = "<group>"; };
 		DBE589B258262DBEA89F5BF9 /* Pods-Winner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Winner.debug.xcconfig"; path = "Target Support Files/Pods-Winner/Pods-Winner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1415,6 +1448,13 @@
 				42BEC91C27FC2FD10057F1C3 /* libresolv.tbd in Frameworks */,
 				42D3947227FD7DBC008B4138 /* libmp3lame.a in Frameworks */,
 				DBA8A0BD2939FCF2009E6051 /* AlicloudUtils.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBAEFAC9293EF0E500C04E45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1832,6 +1872,7 @@
 			children = (
 				DB39C4F52939D90C00BF75AF /* AliyunEmasServices-Info.plist */,
 				429054DF278C06670053C4E1 /* Winner */,
+				DBAEFACD293EF0E500C04E45 /* Winner-service-extension */,
 				429054DE278C06670053C4E1 /* Products */,
 				4046DC2544843F917CEE77A2 /* Pods */,
 				6C4F17E645B010D8B1855BAA /* Frameworks */,
@@ -1842,6 +1883,7 @@
 			isa = PBXGroup;
 			children = (
 				429054DD278C06670053C4E1 /* Winner.app */,
+				DBAEFACC293EF0E500C04E45 /* Winner-service-extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2838,6 +2880,8 @@
 				42BEC91927FC2FD10057F1C3 /* libsqlite3.tbd */,
 				42BEC91727FC2FD10057F1C3 /* libz.tbd */,
 				6749133E1A6A8EB68D53054B /* Pods_Winner.framework */,
+				DBAEFAB7293DD14D00C04E45 /* UserNotifications.framework */,
+				DBAEFAB9293DD14D00C04E45 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3011,7 +3055,7 @@
 		DBA8A09B2939F19E009E6051 /* CloudPush(阿里推送) */ = {
 			isa = PBXGroup;
 			children = (
-				DBA8A0C62939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift */,
+				DBAEFA81293DA29A00C04E45 /* XYAppDelegate+CloudPushSDK.swift */,
 				DBA8A0A72939FA0B009E6051 /* XYFrameworks */,
 			);
 			path = "CloudPush(阿里推送)";
@@ -3063,6 +3107,16 @@
 				DB5C429329247A1200442CB5 /* XYTool.swift */,
 			);
 			path = "DataModelOrTool(公共)";
+			sourceTree = "<group>";
+		};
+		DBAEFACD293EF0E500C04E45 /* Winner-service-extension */ = {
+			isa = PBXGroup;
+			children = (
+				DBAEFAD9293F2A9100C04E45 /* winner-logo-local.png */,
+				DBAEFACE293EF0E500C04E45 /* NotificationService.swift */,
+				DBAEFAD0293EF0E500C04E45 /* Info.plist */,
+			);
+			path = "Winner-service-extension";
 			sourceTree = "<group>";
 		};
 		DBBB7318291CFA7000010368 /* XYMySelf(我的) */ = {
@@ -3757,15 +3811,34 @@
 				429054DB278C06670053C4E1 /* Resources */,
 				ADC688DA1FC9CA9F4C8E9AF7 /* [CP] Embed Pods Frameworks */,
 				62E7AE79664851CF3814FFD9 /* [CP] Copy Pods Resources */,
+				DBAEFA92293DC65F00C04E45 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DBAEFAD2293EF0E500C04E45 /* PBXTargetDependency */,
 			);
 			name = Winner;
 			productName = Winner;
 			productReference = 429054DD278C06670053C4E1 /* Winner.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DBAEFACB293EF0E500C04E45 /* Winner-service-extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBAEFAD4293EF0E600C04E45 /* Build configuration list for PBXNativeTarget "Winner-service-extension" */;
+			buildPhases = (
+				DBAEFAC8293EF0E500C04E45 /* Sources */,
+				DBAEFAC9293EF0E500C04E45 /* Frameworks */,
+				DBAEFACA293EF0E500C04E45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Winner-service-extension";
+			productName = "Winner-service-extension";
+			productReference = DBAEFACC293EF0E500C04E45 /* Winner-service-extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -3774,11 +3847,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					429054DC278C06670053C4E1 = {
 						CreatedOnToolsVersion = 13.1;
 						LastSwiftMigration = 1340;
+					};
+					DBAEFACB293EF0E500C04E45 = {
+						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
@@ -3796,6 +3873,7 @@
 			projectRoot = "";
 			targets = (
 				429054DC278C06670053C4E1 /* Winner */,
+				DBAEFACB293EF0E500C04E45 /* Winner-service-extension */,
 			);
 		};
 /* End PBXProject section */
@@ -3839,6 +3917,14 @@
 				429055C0278C09BA0053C4E1 /* GKNavigationBarViewController.bundle in Resources */,
 				42D3943027FD7DBC008B4138 /* expressionImage.plist in Resources */,
 				429054EB278C06680053C4E1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBAEFACA293EF0E500C04E45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBAEFADA293F2A9100C04E45 /* winner-logo-local.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3946,6 +4032,7 @@
 				42B511A827D1EEA500A2EB2D /* LLMainPeisongCell.m in Sources */,
 				428C700727912CC90063F821 /* NSObject+Extension.m in Sources */,
 				F9ADEBF4279D372800F16885 /* LLMeBuyBackController.m in Sources */,
+				DBAEFA82293DA29A00C04E45 /* XYAppDelegate+CloudPushSDK.swift in Sources */,
 				42D3941227FD7DBB008B4138 /* UIColor+Hex.m in Sources */,
 				42905520278C07CB0053C4E1 /* AFmanager.m in Sources */,
 				4295E7B327E1C71E00744204 /* LLShouHouApplyViewController.m in Sources */,
@@ -4160,7 +4247,6 @@
 				42D3943127FD7DBC008B4138 /* QMQuestionModel.m in Sources */,
 				42905568278C08600053C4E1 /* UILabel+Extension.m in Sources */,
 				42D3945427FD7DBC008B4138 /* QMFormBaseCell.m in Sources */,
-				DBA8A0C72939FFFE009E6051 /* XYAppDelegate+CloudPushSDK.swift in Sources */,
 				4298F9E627D4A79A00B3DB37 /* LLMapChoiceViewController.m in Sources */,
 				045846D027A9685600AB8587 /* LLShopCarViewController.m in Sources */,
 				42D3944327FD7DBC008B4138 /* QMChatLogistcsInfoCell.m in Sources */,
@@ -4339,7 +4425,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBAEFAC8293EF0E500C04E45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBAEFACF293EF0E500C04E45 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DBAEFAD2293EF0E500C04E45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBAEFACB293EF0E500C04E45 /* Winner-service-extension */;
+			targetProxy = DBAEFAD1293EF0E500C04E45 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		429054E9278C06680053C4E1 /* Main.storyboard */ = {
@@ -4477,6 +4579,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DBE589B258262DBEA89F5BF9 /* Pods-Winner.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -4544,6 +4647,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EFAE02D4182852E15AA216E6 /* Pods-Winner.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -4605,6 +4709,65 @@
 			};
 			name = Release;
 		};
+		DBAEFAD5293EF0E600C04E45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X8AWZXYXWN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Winner-service-extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Winner-service-extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gzdayingjia.dyjapp.Winner-service-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		DBAEFAD6293EF0E600C04E45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X8AWZXYXWN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Winner-service-extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Winner-service-extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gzdayingjia.dyjapp.Winner-service-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4622,6 +4785,15 @@
 			buildConfigurations = (
 				429054F7278C06690053C4E1 /* Debug */,
 				429054F8278C06690053C4E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBAEFAD4293EF0E600C04E45 /* Build configuration list for PBXNativeTarget "Winner-service-extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBAEFAD5293EF0E600C04E45 /* Debug */,
+				DBAEFAD6293EF0E600C04E45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

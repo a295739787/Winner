@@ -12,6 +12,7 @@
 #import "PLLocationManage.h"
 #import "DCNewFeatureViewController.h"
 #import "OpenInstallSDK.h"
+#import <CloudPushSDK/CloudPushSDK.h>
 #import "Winner-Swift.h"
 
 @interface AppDelegate ()<WXApiDelegate,OpenInstallDelegate>
@@ -46,7 +47,8 @@ static NSString *kf_userId = @"1234567a8ADC";
     [self oneKeyLoginAuthSDKInfo];
     //只使用了H5携带参数安装功能，初始化即可
     [OpenInstallSDK initWithDelegate:self];
-//    [self initCloudPush];
+    //阿里推送
+    [self loadCloudPush:application didFinishLaunchingWithOptions:launchOptions];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -168,6 +170,7 @@ static NSString *kf_userId = @"1234567a8ADC";
 //}
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [QMConnect setServerToken:deviceToken];
+    [self loadDeviceToken:deviceToken];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -302,6 +305,28 @@ static NSString *kf_userId = @"1234567a8ADC";
     [OpenInstallSDK continueUserActivity:userActivity];
     //其他第三方回调；
     return YES;
+}
+
+#pragma mark - 阿里推送
+/*
+ *  APNs注册成功回调，将返回的deviceToken上传到CloudPush服务器
+ */
+- (void)loadDeviceToken:(NSData *)deviceToken {
+    NSLog(@"Upload deviceToken to CloudPush server.");
+    [CloudPushSDK registerDevice:deviceToken withCallback:^(CloudPushCallbackResult *res) {
+        if (res.success) {
+            NSLog(@"Register deviceToken success, deviceToken: %@", [CloudPushSDK getApnsDeviceToken]);
+        } else {
+            NSLog(@"Register deviceToken failed, error: %@", res.error);
+        }
+    }];
+}
+
+/*
+ *  APNs注册失败回调
+ */
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"didFailToRegisterForRemoteNotificationsWithError %@", error);
 }
 
 @end
