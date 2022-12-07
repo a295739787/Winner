@@ -9,6 +9,7 @@
 
 @interface LLStorageTableCell ()
 
+@property (nonatomic,strong)UIView *mainView;
 @property (nonatomic,strong)UIImageView *goodsImgView;
 @property (nonatomic,strong)UILabel *goodsNameLabel;
 @property (nonatomic,strong)UILabel *goodsSpecLabel;
@@ -24,6 +25,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         [self createUI];
     }
     return self;
@@ -31,13 +33,21 @@
 #pragma mark--createUI
 -(void)createUI{
     
-    [self.contentView addSubview:self.goodsImgView];
-    [self.contentView addSubview:self.goodsNameLabel];
-    [self.contentView addSubview:self.goodsSpecLabel];
-    [self.contentView addSubview:self.goodsCountLabel];
-    [self.contentView addSubview:self.letBtn];
-    [self.contentView addSubview:self.rightBtn];
-    [self.contentView addSubview:self.line];
+    [self.contentView addSubview:self.mainView];
+    [self.mainView addSubview:self.goodsImgView];
+    [self.mainView addSubview:self.goodsNameLabel];
+    [self.mainView addSubview:self.goodsSpecLabel];
+    [self.mainView addSubview:self.goodsCountLabel];
+    [self.mainView addSubview:self.letBtn];
+    [self.mainView addSubview:self.rightBtn];
+    [self.mainView addSubview:self.line];
+    
+    [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView).offset(0);
+        make.left.equalTo(self.contentView).offset(10);
+        make.right.equalTo(self.contentView).offset(-10);
+        make.bottom.equalTo(self.contentView).offset(-10);
+    }];
     
     [self.goodsImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(CGFloatBasedI375(10));
@@ -142,6 +152,15 @@
     }
 }
 #pragma mark--lazy
+-(UIView *)mainView{
+    if (!_mainView) {
+        _mainView = [[UIView alloc] init];
+        _mainView.backgroundColor = [UIColor whiteColor];
+        _mainView.layer.masksToBounds = YES;
+        _mainView.layer.cornerRadius = 5.0f;
+    }
+    return _mainView;
+}
 -(UIImageView *)goodsImgView{
     if (!_goodsImgView) {
         _goodsImgView = [[UIImageView alloc]init];

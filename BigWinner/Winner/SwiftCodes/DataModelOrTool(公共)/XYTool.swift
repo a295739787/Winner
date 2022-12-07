@@ -96,6 +96,29 @@ func loadMasksToBounds(targetView:UIView,corners:CGFloat,borderWidth:CGFloat = 0
     targetView.layer.borderColor = borderColor.cgColor
 }
 
+///获取当前显示的控制器 UIWindow (Visible)
+func getCurrentViewController() -> UIViewController {
+    let keywindow = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController//UIApplication.shared.keyWindow
+    let rootVC = keywindow!//UIApplication.shared.keyWindow!.rootViewController!
+    return getVisibleViewControllerFrom(vc: rootVC)
+}
+
+///获取当前
+func getVisibleViewControllerFrom(vc: UIViewController) -> UIViewController {
+
+    if vc.isKind(of: UINavigationController.self) {
+        return getVisibleViewControllerFrom(vc: (vc as! UINavigationController).visibleViewController!)
+    } else if vc.isKind(of: UITabBarController.self) {
+        return getVisibleViewControllerFrom(vc: (vc as! UITabBarController).selectedViewController!)
+    } else {
+        if (vc.presentedViewController != nil) {
+            return getVisibleViewControllerFrom(vc: vc.presentedViewController!)
+        } else {
+            return vc
+        }
+    }
+}
+
 // MARK: - UILabel模块
 extension UILabel {
     

@@ -245,6 +245,7 @@
             }else if (index == 200){
                 //我的库存
                 LLStorageController *storageVC = [[LLStorageController alloc]init];
+                storageVC.popViewOption = popView;
                 [weakself.navigationController pushViewController:storageVC animated:YES];
             }else if (index == 201){
                 if(weakself.tagsindex == 1){
@@ -295,8 +296,8 @@
     }else if (indexPath.section == 2){
         LLMeMoudleTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLMeMoudleTableCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.imgArray = @[@"jfsc",@"jfsc",@"gmjl",@"hgzx",@"shdd",@"fpgl",@"xtsz"];
-        cell.titleArray = @[@"我的钱包",@"我的酒卡",@"惊喜活动专区购买记录",@"回购中心",@"收货地址",@"发票信息",@"系统设置"];
+        cell.imgArray = @[@"jfsc",@"bandLiquorCard",@"gmjl",@"hgzx",@"shdd",@"fpgl",@"xtsz"];
+        cell.titleArray = @[@"我的钱包",@"绑定酒卡",@"惊喜活动专区购买记录",@"回购中心",@"收货地址",@"发票信息",@"系统设置"];
         WS(weakself);
         cell.moudleBtnBlock = ^(NSInteger index) {
             if([UserModel sharedUserInfo].token.length <= 0){

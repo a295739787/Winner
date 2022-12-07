@@ -31,7 +31,15 @@
     _currentPage = 1;
     self.view.backgroundColor = BG_Color;
     self.customNavBar.title = @"我的库存";
+    WS(weakself);
+    self.customNavBar.onClickLeftButton = ^{
         
+        if (weakself.popViewOption == popView) {
+            [weakself.navigationController popViewControllerAnimated:YES];
+        }else{
+            [weakself.navigationController popToRootViewControllerAnimated:YES];
+        }
+    };
     
     self.tableView = [[LLBaseTableView alloc]initWithFrame:CGRectMake(0, self.customNavBar.height, SCREEN_WIDTH, SCREEN_HEIGHT - self.customNavBar.height-49-[self safeAreaBottom]) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -143,7 +151,7 @@
     return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    return 160;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LLStorageTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLStorageTableCell" forIndexPath:indexPath];
@@ -181,7 +189,7 @@
     return nil;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.1;
+    return 10;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return nil;

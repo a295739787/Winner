@@ -306,7 +306,14 @@ static NSString *kf_userId = @"1234567a8ADC";
     //其他第三方回调；
     return YES;
 }
-
+//跳转绑卡页面
+-(void)getWakeUpParams:(OpeninstallData *)appData{
+  
+    UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
+    LLNavigationViewController *nav = tbc.viewControllers[tbc.selectedIndex];
+    XYBandLiquorCardViewController *vc =[[XYBandLiquorCardViewController alloc]init];
+    [nav pushViewController:vc animated:YES];
+}
 #pragma mark - 阿里推送
 /*
  *  APNs注册成功回调，将返回的deviceToken上传到CloudPush服务器

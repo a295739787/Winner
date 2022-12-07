@@ -9,7 +9,7 @@ import UIKit
 
 class XYBandLiquorCardViewController: LMHBaseViewController {
     
-    var topImageView = UIImageView()
+    var topView = UIView()
     var contentView = UIView()
     var bottomView = UIView()
     
@@ -27,29 +27,41 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         
         self.customNavBar.title = "绑定酒卡"
         
-        topImageView = UIImageView.init()
-        topImageView.frame = CGRect(x: 0, y: statusBarForHeight+44, width: deviceWidth, height: deviceHeight*0.25)
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .hexString("#F8F4F4");
+        scrollView.frame = CGRect(x: 0, y: statusBarForHeight+44, width: deviceWidth, height: deviceHeight-statusBarForHeight-44)
+        self.view.addSubview(scrollView)
+        
+        topView = UIView.init()
+        topView.frame = CGRect(x: 0, y: 0, width: deviceWidth, height: 204)
+        topView.backgroundColor = .hexString("#FA4C55");
+        scrollView.addSubview(topView)
+        
+        let topImageView = UIImageView.init()
+        topImageView.frame = CGRect(x: 0, y: 0, width: topView.frame.size.width, height: topView.frame.size.height)
         topImageView.image = UIImage(named: "topCard")
-        self.view.addSubview(topImageView)
+        //        topImageView.contentMode = .scaleAspectFill
+        topView.addSubview(topImageView)
         
         contentView = UIView.init()
-        contentView.frame = CGRect(x: 0, y: topImageView.frame.maxY-12, width: deviceWidth, height: deviceHeight*0.43)
+        contentView.frame = CGRect(x: 0, y: topView.frame.maxY-12, width: deviceWidth, height: 350)
         contentView.backgroundColor = .white
-        self.view.addSubview(contentView)
+        scrollView.addSubview(contentView)
         loadMasksToBounds(targetView: contentView, corners: 10)
         loadContentSubView(view: contentView)
         
         bottomView = UIView.init()
-        bottomView.frame = CGRect(x: 0, y: contentView.frame.maxY-12, width: deviceWidth, height: deviceHeight-contentView.frame.maxY+12)
+        bottomView.frame = CGRect(x: 0, y: contentView.frame.maxY-12, width: deviceWidth, height: 182)
         bottomView.backgroundColor = .hexString("#F8F4F4");
-        self.view.insertSubview(bottomView, belowSubview: contentView)
+        scrollView.insertSubview(bottomView, belowSubview: contentView)
         
         let  bottomImageView = UIImageView.init()
-        bottomImageView.frame = CGRect(x: 57, y: 32, width: bottomView.frame.size.width-114, height: bottomView.frame.size.height-32-50)
+        bottomImageView.frame = CGRect(x: 57, y: 32, width: bottomView.frame.size.width-114, height: bottomView.frame.size.height-32)
         bottomImageView.contentMode = .scaleAspectFit
         bottomImageView.image = UIImage(named: "bottomCard")
         bottomView.addSubview(bottomImageView)
         
+        scrollView.contentSize = CGSize(width: deviceWidth, height: bottomView.frame.maxY)
     }
     ///点击背景退出键盘
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -152,9 +164,9 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
                         accountTextField.text = ""
                         passWordTextField.text = ""
                     }else{
-                        let vc = LLTabbarViewController()
-                        vc.selectedIndex = 3
-                        UIApplication.shared.keyWindow?.rootViewController = vc
+                        let vc = LLStorageController()
+                        vc.popViewOption = .popRootView
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
             }

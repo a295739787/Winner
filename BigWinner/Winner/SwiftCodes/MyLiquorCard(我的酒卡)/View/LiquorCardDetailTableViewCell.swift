@@ -86,7 +86,7 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
             goodsNumString = "+\(model.goodsNum)"
         }
         
-        oddNumberLabel.text = model.type
+        oddNumberLabel.text = "\(model.type)\(model.orderNo)"
         oddTimeLabel.text = model.createTime
         goodsMoneyLabel.text = goodsNumString
         goodsMoneyTimeLabel.text = "余额 \(model.remainNum)"

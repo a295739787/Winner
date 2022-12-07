@@ -157,6 +157,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         // 通知打开回执上报
         CloudPushSDK.sendNotificationAck(userInfo)
         print("Notification, date: \(noticeDate), title: \(title), subtitle: \(subtitle), body: \(body), badge: \(badge), extras: \(String(describing: extras)).")
+//        cilckPushJumpView(type: "1001")
     }
     
     //MARK: - App处于前台时收到通知(iOS 10+)
@@ -207,5 +208,27 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             }
         }
     }
+    
+    //MARK: - 点击推送跳转对应界面
+    private func cilckPushJumpView(type:String){
+        
+        if type == "1000" {
+            //推广审核通过
+            let vc = LLTabbarViewController()
+            vc.selectedIndex = 3
+            UIApplication.shared.keyWindow?.rootViewController = vc
+        }else if type == "1001" {
+            //面单成功
+            let vc = XYMyWalletViewController.init()
+            vc.walletType = .normal
+            getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
+        }else if type == "1002"{
+            //提现成功和提现失败
+            let vc = XYDealDetailViewController.init()
+            getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+
     
 }

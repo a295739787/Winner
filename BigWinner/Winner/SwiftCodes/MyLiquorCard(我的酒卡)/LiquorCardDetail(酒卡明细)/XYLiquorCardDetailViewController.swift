@@ -36,7 +36,7 @@ import UIKit
         
         mainView = UIView.init()
         mainView.backgroundColor = .white
-        mainView.frame = CGRect(x: 0, y: deviceHeight-(deviceHeight * 0.6), width: deviceWidth, height: deviceHeight * 0.6)
+        mainView.frame = CGRect(x: 0, y: deviceHeight-(deviceHeight * 0.7), width: deviceWidth, height: deviceHeight * 0.7)
         self.view.addSubview(mainView)
         loadMasksDynamicCorner(targetView: mainView, corners: [.topLeft,.topRight], cornerRadii: CGSize(width: 10, height: 10))
 
@@ -45,7 +45,7 @@ import UIKit
         mainView.addSubview(topView)
         
         let messageLabel = UILabel.init()
-        messageLabel.loadMasksDynamicLabel(text: "提货明细", color: .hexString("#D40006"), textAlignment: .left, font: .systemFont(ofSize: 15), number: 1)
+        messageLabel.loadMasksDynamicLabel(text: "库存明细", color: .hexString("#D40006"), textAlignment: .left, font: .systemFont(ofSize: 15), number: 1)
         messageLabel.frame = CGRect(x: 25, y: (topView.frame.size.height-15)/2, width: 65, height: 15)
         topView.addSubview(messageLabel)
         

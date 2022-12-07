@@ -122,6 +122,7 @@
 #import "LLWalletDrawController.h"
 #import "LLPersonalChangeVC.h"
 #import "LLPersonalModel.h"
+#import "LLStorageController.h"
 
 ///推送
 #import <CloudPushSDK/CloudPushSDK.h>

@@ -7,20 +7,13 @@
 
 import UIKit
 
-@objc public enum MyLiquorCardOption : Int{
-    
-    case popView = 0
-    case popRootView = 1
-}
-
 @objcMembers class XYMyLiquorCardViewController: LMHBaseViewController {
     
     private var tableView = LLBaseTableView()
     private var bottomView = UIView()
     private var bindCardButton = UIButton()
-    public var popViewOption : MyLiquorCardOption = .popView
-    
     var dataArray = [LiquorCardModel]()
+    
     private var page = 1
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,13 +33,13 @@ import UIKit
         self.customNavBar.title = "我的酒卡"
         self.customNavBar.onClickLeftButton = { [self] in
             
-            if popViewOption == .popView {
-                
-                self.navigationController?.popToRootViewController(animated: true)
-            }else{
-                
-                self.navigationController?.popViewController(animated: true)
-            }
+//            if popViewOption == .popView {
+//                
+//                self.navigationController?.popToRootViewController(animated: true)
+//            }else{
+//                
+//                self.navigationController?.popViewController(animated: true)
+//            }
         }
         
         tableView = LLBaseTableView.init(frame: CGRect(x: 0, y:statusBarForHeight+44 , width: deviceWidth, height: deviceHeight-(statusBarForHeight+44)-49-windowSafeAreaBottomMargin), style: .plain)
