@@ -118,10 +118,14 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
         let timestamp = NSString.getNowTimeTimestamp3();
         
         let param = NSMutableDictionary()
+        let deviceToken = UserDefaults.standard.string(forKey: "push_deviceToken")
+        let deviceId = UserDefaults.standard.string(forKey: "push_deviceId")
+
+        param.setValue(deviceToken, forKey: "deviceToken")
+        param.setValue(deviceId, forKey: "deviceId")
         param.setValue(tonken, forKey: "mobileToken")
         param.setValue("5", forKey: "platform")
         param.setValue(timestamp, forKey: "timestamp")
-        
         let url = "\(L_apioauthLogin)?n=5&client_id=admin&client_secret=123456&scope=all&grant_type=password"
         XJHttpTool.post(url, method: POST, params: param, isToken: false) { responseObj in
             print(responseObj)

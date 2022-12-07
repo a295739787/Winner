@@ -122,6 +122,10 @@
         return;
     }
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    NSString *deviceId = [[NSUserDefaults standardUserDefaults] stringForKey:@"push_deviceId"];
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"push_deviceToken"];
+    [param setValue:deviceId forKey:@"deviceId"];
+    [param setValue:deviceToken forKey:@"deviceToken"];
     [param setValue:self.phoneTx.text forKey:@"account"];
     [param setValue:self.passOrcodeTx.text forKey:@"code"];
     [param setValue:@"2" forKey:@"platform"];//登录方式（1 PC系统管理员用户，2 APP手机号验证码，3 APP微信授权）

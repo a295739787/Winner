@@ -13,11 +13,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     
     /// 初始化推送
     @objc func loadCloudPush(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?){
-        
-        let uuid = UIDevice.current.identifierForVendor ?? UUID()
-        let deviceID = uuid.uuidString.lowercased().replacingOccurrences(of:"-", with:"")
-        print("------------------\(deviceID)------------------")
-        
+      
         // APNs注册，获取deviceToken并上报
         registerAPNs(application)
         // 初始化阿里云推送SDK
@@ -29,6 +25,12 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         // 点击通知将App从关闭状态启动时，将通知打开回执上报
         CloudPushSDK.sendNotificationAck(launchOptions)
         
+        let deviceToken = CloudPushSDK.getApnsDeviceToken()
+        let deviceId = CloudPushSDK.getDeviceId()
+        UserDefaults.standard.set(deviceToken, forKey: "push_deviceToken")
+        UserDefaults.standard.set(deviceId, forKey: "push_deviceId")
+        UserDefaults.standard.synchronize()
+        
     }
     
     //MARK: - 初始化推送SDK
@@ -38,6 +40,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         CloudPushSDK.autoInit { res in
             if res!.success{
                 print("Push SDK init success, deviceId: \(CloudPushSDK.getDeviceId()!)")
+                
             }else{
                 print("Push SDK init failed, error: \(res!.error!).")
             }

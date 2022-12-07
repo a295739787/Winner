@@ -81,9 +81,14 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
             goodsMoneyLabel.textColor = .hexString("#D40006")
         }
         
+        var goodsNumString = "\(model.goodsNum)"
+        if model.goodsNum > 0 {
+            goodsNumString = "+\(model.goodsNum)"
+        }
+        
         oddNumberLabel.text = model.type
         oddTimeLabel.text = model.createTime
-        goodsMoneyLabel.text = "\(model.goodsNum)"
+        goodsMoneyLabel.text = goodsNumString
         goodsMoneyTimeLabel.text = "余额 \(model.remainNum)"
         
         

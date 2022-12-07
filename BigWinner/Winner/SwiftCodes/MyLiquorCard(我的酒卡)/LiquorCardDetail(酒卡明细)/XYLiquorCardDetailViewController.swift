@@ -38,11 +38,11 @@ import UIKit
         mainView.backgroundColor = .white
         mainView.frame = CGRect(x: 0, y: deviceHeight-(deviceHeight * 0.6), width: deviceWidth, height: deviceHeight * 0.6)
         self.view.addSubview(mainView)
-        
+        loadMasksDynamicCorner(targetView: mainView, corners: [.topLeft,.topRight], cornerRadii: CGSize(width: 10, height: 10))
+
         topView = UIView.init()
         topView.frame = CGRect(x: 0, y: 0, width: mainView.frame.size.width, height: 50)
         mainView.addSubview(topView)
-        loadMasksDynamicCorner(targetView: topView, corners: [.topLeft,.topRight], cornerRadii: CGSize(width: 10, height: 10))
         
         let messageLabel = UILabel.init()
         messageLabel.loadMasksDynamicLabel(text: "提货明细", color: .hexString("#D40006"), textAlignment: .left, font: .systemFont(ofSize: 15), number: 1)

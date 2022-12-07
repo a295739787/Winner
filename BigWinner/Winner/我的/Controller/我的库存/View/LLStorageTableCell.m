@@ -121,9 +121,18 @@
 #pragma mark--letBtnClick
 -(void)letBtnClick:(UIButton *)btn{
 
-    if (self.storageBtnBlock) {
-        self.storageBtnBlock(_listModel.ID);
+    int goodsNum = _listModel.goodsNum.intValue;
+    
+    if (goodsNum <= 0) {
+        
+        [MBProgressHUD showError:@"当前库存为0，无法提货"];
+        
+    }else{
+        if (self.storageBtnBlock) {
+            self.storageBtnBlock(_listModel.ID);
+        }
     }
+   
 }
 #pragma mark--letBtnClick
 -(void)rightBtnClick:(UIButton *)btn{

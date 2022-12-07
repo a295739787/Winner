@@ -46,6 +46,7 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         
         let  bottomImageView = UIImageView.init()
         bottomImageView.frame = CGRect(x: 57, y: 32, width: bottomView.frame.size.width-114, height: bottomView.frame.size.height-32-50)
+        bottomImageView.contentMode = .scaleAspectFit
         bottomImageView.image = UIImage(named: "bottomCard")
         bottomView.addSubview(bottomImageView)
         
