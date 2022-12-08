@@ -2967,12 +2967,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DB5C429F292C650C00442CB5 /* ShoppingPoint(推广点) */ = {
+		DB5C429F292C650C00442CB5 /* XYShoppingPoint(推广点) */ = {
 			isa = PBXGroup;
 			children = (
 				DB5C42A0292C69C400442CB5 /* ShopDetail(店铺详情) */,
 			);
-			path = "ShoppingPoint(推广点)";
+			path = "XYShoppingPoint(推广点)";
 			sourceTree = "<group>";
 		};
 		DB5C42A0292C69C400442CB5 /* ShopDetail(店铺详情) */ = {
@@ -2996,12 +2996,13 @@
 		DB8F334C28FFD12900474235 /* SwiftCodes */ = {
 			isa = PBXGroup;
 			children = (
-				DBA8A09B2939F19E009E6051 /* CloudPush(阿里推送) */,
-				DB99C65C292F658E00145C2C /* MyLiquorCard(我的酒卡) */,
-				DB5C429F292C650C00442CB5 /* ShoppingPoint(推广点) */,
+				DB9F4C842941C33C000531D8 /* XYGoodsPoster(商品海报) */,
+				DBA8A09B2939F19E009E6051 /* XYCloudPush(阿里推送) */,
+				DB99C65C292F658E00145C2C /* XYMyLiquorCard(我的酒卡) */,
+				DB5C429F292C650C00442CB5 /* XYShoppingPoint(推广点) */,
 				DB5C42892923730200442CB5 /* XYMyWallet(钱包) */,
 				DBBB7318291CFA7000010368 /* XYMySelf(我的) */,
-				DBABCA91291C95E40028E7B9 /* DataModelOrTool(公共) */,
+				DBABCA91291C95E40028E7B9 /* XyDataModelOrTool(公共) */,
 				DBABCA892918E6A30028E7B9 /* XYStockDetaile(库存明细) */,
 				DB0022A12910C1AB00A4526E /* XYSystemUpdate(系统更新) */,
 				DB0FCBB329079084003F7E6D /* XYAddressPickerView(地址) */,
@@ -3023,7 +3024,7 @@
 			path = OneKeyLogin;
 			sourceTree = "<group>";
 		};
-		DB99C65C292F658E00145C2C /* MyLiquorCard(我的酒卡) */ = {
+		DB99C65C292F658E00145C2C /* XYMyLiquorCard(我的酒卡) */ = {
 			isa = PBXGroup;
 			children = (
 				DB39C4B42930B78D00BF75AF /* BandLiquorCard(绑定酒卡) */,
@@ -3031,7 +3032,7 @@
 				DB99C66229309D9300145C2C /* LiquorCardDetail(酒卡明细) */,
 				DB99C65D292F66EC00145C2C /* XYMyLiquorCardViewController.swift */,
 			);
-			path = "MyLiquorCard(我的酒卡)";
+			path = "XYMyLiquorCard(我的酒卡)";
 			sourceTree = "<group>";
 		};
 		DB99C65F292F735C00145C2C /* View */ = {
@@ -3052,13 +3053,20 @@
 			path = "LiquorCardDetail(酒卡明细)";
 			sourceTree = "<group>";
 		};
-		DBA8A09B2939F19E009E6051 /* CloudPush(阿里推送) */ = {
+		DB9F4C842941C33C000531D8 /* XYGoodsPoster(商品海报) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "XYGoodsPoster(商品海报)";
+			sourceTree = "<group>";
+		};
+		DBA8A09B2939F19E009E6051 /* XYCloudPush(阿里推送) */ = {
 			isa = PBXGroup;
 			children = (
 				DBAEFA81293DA29A00C04E45 /* XYAppDelegate+CloudPushSDK.swift */,
 				DBA8A0A72939FA0B009E6051 /* XYFrameworks */,
 			);
-			path = "CloudPush(阿里推送)";
+			path = "XYCloudPush(阿里推送)";
 			sourceTree = "<group>";
 		};
 		DBA8A0A72939FA0B009E6051 /* XYFrameworks */ = {
@@ -3100,13 +3108,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DBABCA91291C95E40028E7B9 /* DataModelOrTool(公共) */ = {
+		DBABCA91291C95E40028E7B9 /* XyDataModelOrTool(公共) */ = {
 			isa = PBXGroup;
 			children = (
 				DBABCA94291C96B50028E7B9 /* DataModel.swift */,
 				DB5C429329247A1200442CB5 /* XYTool.swift */,
 			);
-			path = "DataModelOrTool(公共)";
+			path = "XyDataModelOrTool(公共)";
 			sourceTree = "<group>";
 		};
 		DBAEFACD293EF0E500C04E45 /* Winner-service-extension */ = {

@@ -90,17 +90,17 @@
 }
 #define buttonTag2 200
 -(void)creatui{
-    NSArray *titles = @[@"分享给微信好友",@"保存图片"];
-    NSArray *images = @[@"fxwx",@"bctp"];
+    NSArray *titles = @[@"发给好友",@"分享到朋友圈",@"保存图片"];
+    NSArray *images = @[@"fxwx",@"fxpyq",@"bctp"];
     for (int i = 0; i < titles.count; i++) {
-        CGFloat w =SCREEN_WIDTH/2;
+        CGFloat w =SCREEN_WIDTH/3;
         CGFloat h =CGFloatBasedI375(65);
-        CGFloat x = CGFloatBasedI375(0)+(w + CGFloatBasedI375(0))*(i%2);
-        CGFloat y =CGFloatBasedI375(0)+(h + CGFloatBasedI375(0))*(i/ 2);
+        CGFloat x = CGFloatBasedI375(0)+(w + CGFloatBasedI375(0))*(i%3);
+        CGFloat y =CGFloatBasedI375(0)+(h + CGFloatBasedI375(0))*(i/3);
         LLShowView *button = [[LLShowView alloc]init];;
         button.frame = CGRectMake(x, y, w, h);
         button.style = ShowViewNormalImage40State;
-        button.tag = i;
+        button.tag = 100+i;
         button.backgroundColor = [UIColor clearColor];
         button.titlelable.text = titles[i];
         button.showimage.image = [UIImage imageNamed:images[i]];
@@ -112,11 +112,14 @@
 }
 -(void)shareBtnClickbao:(UITapGestureRecognizer *)sender{
     LLShowView *showimage  =(LLShowView *)sender.view;
-    if( [showimage.titlelable.text isEqual:@"分享给微信好友"]){
+    if( [showimage.titlelable.text isEqual:@"发给好友"]){
         self.Platform = SSDKPlatformSubTypeWechatSession;
         [self share];
-    }else    if( [showimage.titlelable.text isEqual:@"保存图片"]){
+    }else if( [showimage.titlelable.text isEqual:@"保存图片"]){
         [self clickSave];
+    }else{
+        self.Platform = SSDKPlatformSubTypeWechatTimeline;
+        [self share];
     }
 
 }

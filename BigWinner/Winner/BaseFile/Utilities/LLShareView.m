@@ -199,13 +199,13 @@
 }
 #define buttonTag2 200
 -(void)creatui{
-    NSArray *titles = @[@"微信好友",@"朋友圈"];
-    NSArray *images = @[@"wx",@"pyq"];
+    NSArray *titles = @[@"微信好友",@"朋友圈",@"生成海报",@"复制链接"];
+    NSArray *images = @[@"wx",@"pyq",@"pyq",@"pyq"];
     for (int i = 0; i < titles.count; i++) {
-        CGFloat w =SCREEN_WIDTH/2;
+        CGFloat w =SCREEN_WIDTH/4;
         CGFloat h =CGFloatBasedI375(55);
-        CGFloat x = CGFloatBasedI375(0)+(w + CGFloatBasedI375(0))*(i%2);
-        CGFloat y =CGFloatBasedI375(0)+(h + CGFloatBasedI375(0))*(i/ 2);
+        CGFloat x = CGFloatBasedI375(0)+(w + CGFloatBasedI375(0))*(i%4);
+        CGFloat y =CGFloatBasedI375(0)+(h + CGFloatBasedI375(0))*(i/ 4);
         LLShowView *button = [[LLShowView alloc]init];;
         button.frame = CGRectMake(x, y, w, h);
         button.style = ShowViewNormalImage40State;
@@ -224,9 +224,21 @@
     if( [showimage.titlelable.text isEqual:@"微信好友"]){
         self.Platform = SSDKPlatformSubTypeWechatSession;
         [self share];
-    }else    if( [showimage.titlelable.text isEqual:@"朋友圈"]){
+    }else  if( [showimage.titlelable.text isEqual:@"朋友圈"]){
         self.Platform = SSDKPlatformSubTypeWechatTimeline;
         [self share];
+    }else  if( [showimage.titlelable.text isEqual:@"生成海报"]){
+       //生成海报
+    }else{
+        //复制链接
+        if (self.linkUrl == nil || [self.linkUrl isEqual: @""]) {
+            [MBProgressHUD showError:@"复制失败"];
+        }else{
+            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+            [pasteboard setString:self.linkUrl];
+            [MBProgressHUD showSuccess:@"复制成功"];
+        }
+        [self hideActionSheetView];
     }
 
 }
