@@ -64,11 +64,11 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
     
     private func loadNeededView(){
         
-        oddNumberLabel.frame = CGRect(x: 25, y: 14, width: (self.frame.size.width-25-25-10)*0.6, height: 14)
+        oddNumberLabel.frame = CGRect(x: 25, y: 14, width: (self.frame.size.width-25-25-10)*0.8, height: 14)
         
         oddTimeLabel.frame = CGRect(x: 25, y: oddNumberLabel.frame.maxY+14, width: (self.frame.size.width-25-25-10)/2, height: 10)
         
-        goodsMoneyLabel.frame = CGRect(x: oddNumberLabel.frame.maxX+10, y: 14, width: (self.frame.size.width-25-25-10)*0.4, height: 11)
+        goodsMoneyLabel.frame = CGRect(x: oddNumberLabel.frame.maxX+10, y: 14, width: (self.frame.size.width-25-25-10)*0.2, height: 11)
         
         goodsMoneyTimeLabel.frame = CGRect(x: oddTimeLabel.frame.maxX+10, y: goodsMoneyLabel.frame.maxY+17, width: (self.frame.size.width-25-25-10)/2, height: 10)
         

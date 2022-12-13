@@ -71,7 +71,16 @@ func labelForHeight(width:CGFloat,font:Float,string:NSString) -> CGFloat {
     
     return height.height
 }
-
+/// 动态获取label宽度
+func labelForWidth(height:CGFloat,font:Float,string:NSString) -> CGFloat {
+    
+    let size = CGSize(width: 1000000000000.0, height: height)
+    let font = UIFont.systemFont(ofSize: CGFloat(font))
+    let dict = NSDictionary.init(object: font,forKey: NSAttributedString.Key.font as NSCopying)
+    let height = string.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dict as? [NSAttributedString.Key : Any], context: nil).size
+    
+    return height.width
+}
 /// textField 光标间隔
 /// - Parameters:
 ///   - textField: 目标textField
@@ -117,6 +126,130 @@ func getVisibleViewControllerFrom(vc: UIViewController) -> UIViewController {
             return vc
         }
     }
+}
+
+/// 富文本设置金额失效划线
+/// - Parameter text: 文本
+/// - Returns: 返回文本
+func getPriceUnderlineStyleSingle(text:String)->NSAttributedString{
+    
+    let attStr = NSMutableAttributedString.init(string: text)
+    attStr.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, text.count))
+    attStr.addAttribute(NSAttributedString.Key.baselineOffset, value: 0, range: NSMakeRange(0, text.count))
+
+    return attStr
+}
+
+/// 富文本设置金额不同区域的字体大小
+/// - Parameters:
+///   - text: 文本
+///   - unChangedFont: 不需要字体大小
+///   - changedFont: 需要改变字体大小
+///   - firstArea: 从0开始需要改变的范围
+///   - lastArea: 从文(t.length-first-last)开始需要改变的范围
+/// - Returns: 返回文本
+func getPriceTextAreaFontSize(text:String,unChangedFont:Float,changedFont:Float,firstArea:Int,lastArea:Int) ->NSAttributedString{
+    
+    let attStr = NSMutableAttributedString.init(string: text)
+    attStr.addAttribute(NSAttributedString.Key.font, value:UIFont.systemFont(ofSize: CGFloat(changedFont)), range: NSMakeRange(0, firstArea))
+    attStr.addAttribute(NSAttributedString.Key.font, value:UIFont.systemFont(ofSize: CGFloat(changedFont)), range: NSMakeRange((text.count-lastArea), lastArea))
+    attStr.addAttribute(NSAttributedString.Key.font, value:UIFont.systemFont(ofSize: CGFloat(unChangedFont)), range: NSMakeRange(firstArea, (text.count-lastArea-firstArea)))
+    
+    return attStr
+}
+
+func getQRCodeAndLogo(info:String,size:CGFloat,logoString:String = "") -> UIImage {
+    
+    let imageCI = getQRCode(codeInfo: info)
+    var imageQR = getResizeQRCodeImage(image: imageCI, size: size)
+    
+    if logoString != ""{
+        
+        let logo = UIImage.init(named: logoString)!
+        UIGraphicsBeginImageContext(imageQR.size)
+        imageQR.draw(in: CGRect(x: 0, y: 0, width: imageQR.size.width, height: imageQR.size.height))
+        let logoWidth = imageQR.size.width * 0.15
+        logo.draw(in: CGRect(x: (imageQR.size.width - logoWidth) * 0.5, y: (imageQR.size.height - logoWidth) * 0.5, width: logoWidth, height: logoWidth))
+        imageQR = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+    }
+   
+    return imageQR
+}
+
+/// 生成一个二维码
+/// - Parameter codeInfo: 需要生成的参数
+/// - Returns: 二维码图片
+private func getQRCode(codeInfo:String) ->CIImage{
+    
+    let filer = CIFilter.init(name: "CIQRCodeGenerator")!
+    filer.setDefaults()
+    let data  = codeInfo.data(using: .utf8)
+    filer.setValue(data, forKey: "inputMessage")
+    filer.setValue("H", forKey: "inputCorrectionLevel")
+    let image = filer.outputImage!
+    
+    return image
+}
+    
+/// 生成一个固定大小的二维码
+/// - Parameters:
+///   - image: 二维码图片
+///   - size: 尺寸
+/// - Returns: 固定大小的二维码
+private func getResizeQRCodeImage(image:CIImage,size:CGFloat) -> UIImage {
+
+    let extent = image.extent
+    let scale: CGFloat = min(size/extent.width, size/extent.height) * UIScreen.main.scale
+    
+    let width :size_t = size_t(extent.width * scale)
+    let height :size_t = size_t(extent.height * scale)
+    let cs: CGColorSpace = CGColorSpaceCreateDeviceGray()
+    let bitmapRef = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 0, space: cs, bitmapInfo: CGImageAlphaInfo.none.rawValue)!
+    let context = CIContext(options: nil)
+    
+    let bitmapImage: CGImage = context.createCGImage(image, from: extent)!
+    bitmapRef.interpolationQuality = .none
+    bitmapRef.scaleBy(x: scale, y: scale)
+    bitmapRef.draw(bitmapImage, in: extent)
+    let scaledImage: CGImage = bitmapRef.makeImage()!
+    
+    let image = UIImage.init(cgImage: scaledImage)
+    
+    return image
+}
+
+/// 普通截图
+/// - Parameter bgView: 需要截图区域
+/// - Returns: image
+func screenshotImage(bgView:UIView) ->UIImage?{
+        
+    UIGraphicsBeginImageContextWithOptions(bgView.bounds.size, true, UIScreen.main.scale)
+    bgView.layer.render(in: UIGraphicsGetCurrentContext()!)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image
+}
+
+/// 截取UIScrollView上所有内容
+/// - Parameter scrollView: scrollView
+/// - Returns: image
+func screenshotScrollView(scrollView:UIScrollView) -> UIImage? {
+    
+    var image : UIImage? = nil
+    
+    UIGraphicsBeginImageContextWithOptions(scrollView.contentSize, true, UIScreen.main.scale)
+    let savedContentOffset = scrollView.contentOffset
+    let savedFrame = scrollView.frame
+    scrollView.frame = CGRect(x: 0 , y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+    scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
+   
+    image = UIGraphicsGetImageFromCurrentImageContext()
+    scrollView.contentOffset = savedContentOffset
+    scrollView.frame = savedFrame
+    UIGraphicsEndImageContext()
+    
+    return image ?? nil
 }
 
 // MARK: - UILabel模块

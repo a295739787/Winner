@@ -532,7 +532,8 @@ static NSString *const LLPraiseAllCellid = @"LLPraiseAllCell";
     }else if(_status == RoleStatusPingjian){
         type = @"3";
     }
-    self.shareView.linkUrl =FORMAT(@"%@/h5/#/pages/productdetail/productdetail?type=%@&id=%@",apiQiUrl,type,self.model.goodsId);
+    NSString *link = [NSString stringWithFormat:@"%@/h5/#/pages/productdetail/productdetail?type=%@&id=%@",apiQiUrl,type,self.model.goodsId];
+    self.shareView.linkUrl = link;
     NSArray *images = [_model.images componentsSeparatedByString:@","];
     if([images[0] containsString:@"http"]){
         self.shareView.imageUrl  =[NSString stringWithFormat:@"%@",images[0]];
@@ -540,6 +541,20 @@ static NSString *const LLPraiseAllCellid = @"LLPraiseAllCell";
         self.shareView.imageUrl  =[NSString stringWithFormat:@"%@%@",API_IMAGEHOST,images[0]];
     }
     self.shareView.nameUrl = [NSString stringWithFormat:@"%@",self.model.name];
+    WS(weakself);
+    self.shareView.posterBlock = ^{
+        
+        XYGoodsPosterViewController *vc = [[XYGoodsPosterViewController alloc] init];
+        vc.QRCodeString = link;
+        vc.goodsId = weakself.ID;
+        vc.type = type;
+        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [weakself presentViewController:vc animated:YES completion:nil];
+        
+        [weakself.shareView hideActionSheetView];
+    };
+    
     [self.shareView showActionSheetView];
 }
 -(void)setLayout{

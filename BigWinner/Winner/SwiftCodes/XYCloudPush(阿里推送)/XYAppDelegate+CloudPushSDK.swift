@@ -13,7 +13,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     
     /// 初始化推送
     @objc func loadCloudPush(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?){
-      
+        
         // APNs注册，获取deviceToken并上报
         registerAPNs(application)
         // 初始化阿里云推送SDK
@@ -53,7 +53,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             // iOS 10+
             let center = UNUserNotificationCenter.current()
             // 创建category，并注册到通知中心
-//            createCustomNotificationCategory()
+            //            createCustomNotificationCategory()
             center.delegate = self
             center.requestAuthorization(options: [.alert,.badge,.sound]) {(granted, error) in
                 if (granted) {
@@ -128,7 +128,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         // 设置角标数为0
         application.applicationIconBadgeNumber = 0;
         // 同步角标数到服务端
-         self.syncBadgeNum(0)
+        self.syncBadgeNum(0)
         CloudPushSDK.sendNotificationAck(userInfo)
         print("Notification, alert: \(alert), badge: \(badge), sound: \(sound), extras: \(String(describing: extras)).")
     }
@@ -149,24 +149,24 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         // 角标
         let badge = content.badge ?? 0
         // 取得通知自定义字段内容，例：获取key为"Extras"的内容
-        let extras = userInfo["Extras"]
+        let extras = userInfo["Extras"] as! NSDictionary
         // 设置角标数为0
         UIApplication.shared.applicationIconBadgeNumber = 0
         // 同步角标数到服务端
-         self.syncBadgeNum(0)
+        self.syncBadgeNum(0)
         // 通知打开回执上报
         CloudPushSDK.sendNotificationAck(userInfo)
         print("Notification, date: \(noticeDate), title: \(title), subtitle: \(subtitle), body: \(body), badge: \(badge), extras: \(String(describing: extras)).")
-//        cilckPushJumpView(type: "1001")
+        cilckPushJumpView(type: extras)
     }
     
     //MARK: - App处于前台时收到通知(iOS 10+)
     @available(iOS 10.0, *)
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("Receive a notification in foreground.")
-//        handleiOS10Notification(notification)
+        //        handleiOS10Notification(notification)
         // 通知不弹出
-//        completionHandler([])
+        //        completionHandler([])
         // 通知弹出，且带有声音、内容和角标
         completionHandler([.alert, .badge, .sound])
     }
@@ -210,25 +210,34 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     }
     
     //MARK: - 点击推送跳转对应界面
-    private func cilckPushJumpView(type:String){
+    private func cilckPushJumpView(type:NSDictionary){
         
-        if type == "1000" {
+        let msgType = type.object(forKey: "msgType") as! String
+        
+        if msgType == "1" {
             //推广审核通过
             let vc = LLTabbarViewController()
             vc.selectedIndex = 3
             UIApplication.shared.keyWindow?.rootViewController = vc
-        }else if type == "1001" {
-            //面单成功
+        }else if msgType == "2" || msgType == "6"{
+            //免单成功和推广佣金成功结算
             let vc = XYMyWalletViewController.init()
             vc.walletType = .normal
             getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
-        }else if type == "1002"{
+        }else if msgType == "3" || msgType == "4"{
             //提现成功和提现失败
             let vc = XYDealDetailViewController.init()
             getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
+        }else if msgType == "5" {
+            //发货成功（包括活动单、零售单物流配送、采购单）
+            let vc = LLMeOrderDetailController.init()
+            vc.orderNo = ""
+            getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
+             
+        }else{
+            print("暂无其他推送状态")
         }
         
     }
-
     
 }

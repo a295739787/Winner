@@ -373,11 +373,12 @@
 		DB99C65E292F66EC00145C2C /* XYMyLiquorCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99C65D292F66EC00145C2C /* XYMyLiquorCardViewController.swift */; };
 		DB99C661292F738500145C2C /* MyLiquorCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99C660292F738500145C2C /* MyLiquorCardTableViewCell.swift */; };
 		DB99C66429309DE100145C2C /* XYLiquorCardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB99C66329309DE100145C2C /* XYLiquorCardDetailViewController.swift */; };
-		DBA8A0B92939FCF2009E6051 /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B42939FCF1009E6051 /* CloudPushSDK.framework */; };
-		DBA8A0BA2939FCF2009E6051 /* AlicloudSender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B52939FCF1009E6051 /* AlicloudSender.framework */; };
-		DBA8A0BB2939FCF2009E6051 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B62939FCF2009E6051 /* UTMini.framework */; };
-		DBA8A0BC2939FCF2009E6051 /* EMASRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B72939FCF2009E6051 /* EMASRest.framework */; };
-		DBA8A0BD2939FCF2009E6051 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0B82939FCF2009E6051 /* AlicloudUtils.framework */; };
+		DB9F4C862941C835000531D8 /* XYGoodsPosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9F4C852941C835000531D8 /* XYGoodsPosterViewController.swift */; };
+		DB9F4C8C2941C8D9000531D8 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9F4C872941C8D9000531D8 /* UTMini.framework */; };
+		DB9F4C8D2941C8D9000531D8 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9F4C882941C8D9000531D8 /* AlicloudUtils.framework */; };
+		DB9F4C8E2941C8D9000531D8 /* EMASRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9F4C892941C8D9000531D8 /* EMASRest.framework */; };
+		DB9F4C8F2941C8D9000531D8 /* AlicloudSender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9F4C8A2941C8D9000531D8 /* AlicloudSender.framework */; };
+		DB9F4C902941C8D9000531D8 /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9F4C8B2941C8D9000531D8 /* CloudPushSDK.framework */; };
 		DBA8A0C12939FD60009E6051 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0C02939FD60009E6051 /* CoreTelephony.framework */; };
 		DBA8A0C32939FD74009E6051 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0C22939FD74009E6051 /* SystemConfiguration.framework */; };
 		DBA8A0D2293B26C5009E6051 /* libOpenInstallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA8A0CF293B26C5009E6051 /* libOpenInstallSDK.a */; };
@@ -1199,11 +1200,12 @@
 		DB99C65D292F66EC00145C2C /* XYMyLiquorCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMyLiquorCardViewController.swift; sourceTree = "<group>"; };
 		DB99C660292F738500145C2C /* MyLiquorCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLiquorCardTableViewCell.swift; sourceTree = "<group>"; };
 		DB99C66329309DE100145C2C /* XYLiquorCardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYLiquorCardDetailViewController.swift; sourceTree = "<group>"; };
-		DBA8A0B42939FCF1009E6051 /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CloudPushSDK.framework; sourceTree = "<group>"; };
-		DBA8A0B52939FCF1009E6051 /* AlicloudSender.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudSender.framework; sourceTree = "<group>"; };
-		DBA8A0B62939FCF2009E6051 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
-		DBA8A0B72939FCF2009E6051 /* EMASRest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EMASRest.framework; sourceTree = "<group>"; };
-		DBA8A0B82939FCF2009E6051 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
+		DB9F4C852941C835000531D8 /* XYGoodsPosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYGoodsPosterViewController.swift; sourceTree = "<group>"; };
+		DB9F4C872941C8D9000531D8 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
+		DB9F4C882941C8D9000531D8 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
+		DB9F4C892941C8D9000531D8 /* EMASRest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EMASRest.framework; sourceTree = "<group>"; };
+		DB9F4C8A2941C8D9000531D8 /* AlicloudSender.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudSender.framework; sourceTree = "<group>"; };
+		DB9F4C8B2941C8D9000531D8 /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CloudPushSDK.framework; sourceTree = "<group>"; };
 		DBA8A0BE2939FD36009E6051 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DBA8A0C02939FD60009E6051 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		DBA8A0C22939FD74009E6051 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1431,23 +1433,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBA8A0C32939FD74009E6051 /* SystemConfiguration.framework in Frameworks */,
+				DB9F4C902941C8D9000531D8 /* CloudPushSDK.framework in Frameworks */,
 				DBA8A0C12939FD60009E6051 /* CoreTelephony.framework in Frameworks */,
-				DBA8A0B92939FCF2009E6051 /* CloudPushSDK.framework in Frameworks */,
+				DB9F4C8E2941C8D9000531D8 /* EMASRest.framework in Frameworks */,
+				DB9F4C8C2941C8D9000531D8 /* UTMini.framework in Frameworks */,
 				DB8F335228FFF4A700474235 /* ATAuthSDK.framework in Frameworks */,
 				DB8F335828FFF7C800474235 /* YTXMonitor.framework in Frameworks */,
-				DBA8A0BB2939FCF2009E6051 /* UTMini.framework in Frameworks */,
 				42BEC91E27FC307D0057F1C3 /* libresolv.tbd in Frameworks */,
 				42BEC91B27FC2FD10057F1C3 /* libsqlite3.tbd in Frameworks */,
 				DBA8A0D2293B26C5009E6051 /* libOpenInstallSDK.a in Frameworks */,
-				DBA8A0BC2939FCF2009E6051 /* EMASRest.framework in Frameworks */,
 				42BEC91A27FC2FD10057F1C3 /* libz.tbd in Frameworks */,
-				DBA8A0BA2939FCF2009E6051 /* AlicloudSender.framework in Frameworks */,
 				42D3933527FD7DB1008B4138 /* QMLineSDK.framework in Frameworks */,
 				DB8F335928FFF7C800474235 /* YTXOperators.framework in Frameworks */,
 				426BA40D27EB39F700B7D318 /* Pods_Winner.framework in Frameworks */,
 				42BEC91C27FC2FD10057F1C3 /* libresolv.tbd in Frameworks */,
+				DB9F4C8F2941C8D9000531D8 /* AlicloudSender.framework in Frameworks */,
 				42D3947227FD7DBC008B4138 /* libmp3lame.a in Frameworks */,
-				DBA8A0BD2939FCF2009E6051 /* AlicloudUtils.framework in Frameworks */,
+				DB9F4C8D2941C8D9000531D8 /* AlicloudUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3056,6 +3058,7 @@
 		DB9F4C842941C33C000531D8 /* XYGoodsPoster(商品海报) */ = {
 			isa = PBXGroup;
 			children = (
+				DB9F4C852941C835000531D8 /* XYGoodsPosterViewController.swift */,
 			);
 			path = "XYGoodsPoster(商品海报)";
 			sourceTree = "<group>";
@@ -3072,11 +3075,11 @@
 		DBA8A0A72939FA0B009E6051 /* XYFrameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DBA8A0B52939FCF1009E6051 /* AlicloudSender.framework */,
-				DBA8A0B82939FCF2009E6051 /* AlicloudUtils.framework */,
-				DBA8A0B42939FCF1009E6051 /* CloudPushSDK.framework */,
-				DBA8A0B72939FCF2009E6051 /* EMASRest.framework */,
-				DBA8A0B62939FCF2009E6051 /* UTMini.framework */,
+				DB9F4C8A2941C8D9000531D8 /* AlicloudSender.framework */,
+				DB9F4C882941C8D9000531D8 /* AlicloudUtils.framework */,
+				DB9F4C8B2941C8D9000531D8 /* CloudPushSDK.framework */,
+				DB9F4C892941C8D9000531D8 /* EMASRest.framework */,
+				DB9F4C872941C8D9000531D8 /* UTMini.framework */,
 			);
 			path = XYFrameworks;
 			sourceTree = "<group>";
@@ -4310,6 +4313,7 @@
 				F9ADEBFA279D474000F16885 /* LLBuyBackBuyController.m in Sources */,
 				F9A99747279C06A600D23C6E /* LLPlaceOrderController.m in Sources */,
 				F9A99764279C4A6E00D23C6E /* XLPageViewController.m in Sources */,
+				DB9F4C862941C835000531D8 /* XYGoodsPosterViewController.swift in Sources */,
 				429054F3278C06690053C4E1 /* main.m in Sources */,
 				F9734A3C27E24AA20065B7F4 /* LLBackBuySuccessModel.m in Sources */,
 				42905583278C08AE0053C4E1 /* LLTabBarItem.m in Sources */,
@@ -4608,6 +4612,7 @@
 					"$(PROJECT_DIR)/Winner/OneKeyLogin",
 					"$(PROJECT_DIR)/Winner/OneKeyLogin/YTXOperators2_v1.2.9-SNAPSHOT_Release_25222179",
 					"$(PROJECT_DIR)/Winner/SwiftCodes/CloudPush(阿里推送)/XYFrameworks",
+					"$(PROJECT_DIR)/Winner/SwiftCodes/XYCloudPush(阿里推送)/XYFrameworks",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Winner/BaseFile/pchConfig/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4675,6 +4680,7 @@
 					"$(PROJECT_DIR)/Winner/OneKeyLogin",
 					"$(PROJECT_DIR)/Winner/OneKeyLogin/YTXOperators2_v1.2.9-SNAPSHOT_Release_25222179",
 					"$(PROJECT_DIR)/Winner/SwiftCodes/CloudPush(阿里推送)/XYFrameworks",
+					"$(PROJECT_DIR)/Winner/SwiftCodes/XYCloudPush(阿里推送)/XYFrameworks",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Winner/BaseFile/pchConfig/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;

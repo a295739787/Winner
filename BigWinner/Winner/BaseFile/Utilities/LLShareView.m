@@ -200,7 +200,7 @@
 #define buttonTag2 200
 -(void)creatui{
     NSArray *titles = @[@"微信好友",@"朋友圈",@"生成海报",@"复制链接"];
-    NSArray *images = @[@"wx",@"pyq",@"pyq",@"pyq"];
+    NSArray *images = @[@"wx",@"pyq",@"genPoster",@"copyLink"];
     for (int i = 0; i < titles.count; i++) {
         CGFloat w =SCREEN_WIDTH/4;
         CGFloat h =CGFloatBasedI375(55);
@@ -229,6 +229,10 @@
         [self share];
     }else  if( [showimage.titlelable.text isEqual:@"生成海报"]){
        //生成海报
+        
+        if (self.posterBlock) {
+            self.posterBlock();
+        }
     }else{
         //复制链接
         if (self.linkUrl == nil || [self.linkUrl isEqual: @""]) {

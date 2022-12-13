@@ -121,12 +121,12 @@
     [XJHttpTool post:L_StorageTakeOrderUrl method:POST params:params isToken:YES success:^(id  _Nonnull responseObj) {
         
         NSString *code = responseObj[@"code"];
-        [MBProgressHUD showSuccess:@"提货成功"];
         
         if ([code intValue] == 200) {
+            [MBProgressHUD showSuccess:@"提货成功"];
             [weakself.navigationController popToRootViewControllerAnimated:YES];
         }
-        [weakself.tableView reloadData];
+//        [weakself.tableView reloadData];
         
     } failure:^(NSError * _Nonnull error) {
     }];
@@ -140,7 +140,12 @@
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 121;
+    
+    if (indexPath.section == 0) {
+        return 88;
+    }else{
+        return 121;
+    }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -153,6 +158,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.isHidden = YES;
     cell.showOther = NO;
+    cell.showLAndRSpec = YES;
     cell.stockListModel =  self.stockListModel ;
     return cell;
 }

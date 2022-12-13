@@ -23,6 +23,8 @@ typedef void (^shareButton)(NSInteger tagindex,NSString *content);
 @property (nonatomic,copy) NSString *notice;/** <#class#> **/
 @property (nonatomic,assign) BOOL isVite;/** <#class#> **/
 
+@property (nonatomic,copy) void (^posterBlock)(void);
+
 - (void)showActionSheetView;
 - (void)hideActionSheetView;
 @end

@@ -157,6 +157,7 @@
     LLStorageTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLStorageTableCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.showOther = YES;
+    cell.showLAndRSpec = NO;
     LLStorageListModel *listModel = self.dataArray[indexPath.row];
     cell.listModel = listModel;
     WS(weakself);

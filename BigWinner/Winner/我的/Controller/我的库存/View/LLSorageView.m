@@ -44,7 +44,7 @@
     
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.mas_equalTo(0);
-        make.top.mas_equalTo(CGFloatBasedI375(10));
+        make.top.mas_equalTo(CGFloatBasedI375(0));
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

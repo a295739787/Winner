@@ -92,6 +92,16 @@
     }];
     
 }
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    if (self.showLAndRSpec == YES) {
+        
+        [self.mainView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.equalTo(self.contentView).offset(0);
+        }];
+    }
+}
 -(void)setIsHidden:(BOOL)isHidden{
     _letBtn.hidden = isHidden;
 }

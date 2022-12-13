@@ -28,7 +28,8 @@ typedef void(^LLStorageRightBtnBlock)(LLStorageListModel *model);
 
 ///显示详情按钮
 @property (assign, nonatomic)BOOL showOther;
-
+///显示左右间距
+@property (assign, nonatomic)BOOL showLAndRSpec;
 
 @end
 
