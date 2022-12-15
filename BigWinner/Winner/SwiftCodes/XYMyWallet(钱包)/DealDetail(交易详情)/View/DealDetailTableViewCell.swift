@@ -48,7 +48,7 @@ class DealDetailTableViewCell: UITableViewCell {
         
         valueLabel = UILabel.init()
         valueLabel.numberOfLines = 0
-        valueLabel.loadMasksDynamicLabel(text: "推广佣金", color: .hexString("#443415"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14),number: 1)
+        valueLabel.loadMasksDynamicLabel(text: "推广佣金", color: .hexString("#443415"), textAlignment: .left, font: UIFont.systemFont(ofSize: 14),number: 0)
         contentView.addSubview(valueLabel)
         
     }

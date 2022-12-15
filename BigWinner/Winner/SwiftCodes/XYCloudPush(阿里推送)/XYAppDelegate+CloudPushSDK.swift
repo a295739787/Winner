@@ -239,5 +239,24 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         }
         
     }
+    //MARK: - 点击推送消息已读
+    private func loadReadPushNews(msgId:String){
+        
+        let param = NSMutableDictionary()
+        param.setValue(msgId, forKey: "msgId")
+        
+        XJHttpTool.post(L_pushReadMessageUrl, method: GET, params: param, isToken: true) { [self] responseObj in
     
+            let data = responseObj as! NSDictionary
+            let msg = data.object(forKey: "msg") as? String
+            if msg == "Success" {
+               print("push消息已读成功")
+            }
+            
+        } failure: { errore in
+            
+        }
+        
+        
+    }
 }

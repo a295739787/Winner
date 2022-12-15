@@ -124,9 +124,11 @@
         
         if ([code intValue] == 200) {
             [MBProgressHUD showSuccess:@"提货成功"];
-            [weakself.navigationController popToRootViewControllerAnimated:YES];
+            LLTabbarViewController *thirdVC=  [[LLTabbarViewController alloc]init];
+            thirdVC.selectedIndex = 3;
+            [UIApplication sharedApplication ].delegate.window.rootViewController =  thirdVC;
+            
         }
-//        [weakself.tableView reloadData];
         
     } failure:^(NSError * _Nonnull error) {
     }];

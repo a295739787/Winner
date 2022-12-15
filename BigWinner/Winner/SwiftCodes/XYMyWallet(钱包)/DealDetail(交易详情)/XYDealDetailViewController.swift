@@ -13,14 +13,14 @@ class XYDealDetailViewController: LMHBaseViewController {
     
     var dealPrice = ""
     var dealHexString = ""
-    
+    var urlId = ""
     var dataArrar = [[String:String]]()
-    var model = WalletIncomeAndRecoverModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         loadMainView()
+        loadMainNetwork()
     }
     
     private func loadMainView(){
@@ -36,6 +36,29 @@ class XYDealDetailViewController: LMHBaseViewController {
         tableView.dataSource = self
         tableView.register(DealDetailTableViewCell.self, forCellReuseIdentifier: "DealDetailCell")
         self.view.addSubview(tableView)
+      }
+    
+    private func loadMainNetwork(){
+        
+        let param = NSMutableDictionary()
+        param.setValue(urlId, forKey: "urlId")
+        
+        XJHttpTool.post(L_getUserRecordByrId, method: GET, params: param, isToken: true) { [self] responseObj in
+    
+            let data = responseObj as! NSDictionary
+            let msg = data.object(forKey: "msg") as? String
+            if msg == "Success" {
+                let dataList = data.object(forKey: "data") as! NSDictionary
+                let model: WalletIncomeAndRecoverModel = WalletIncomeAndRecoverModel.mj_object(withKeyValues: dataList)
+                loadDataSource(model: model)
+            }
+            
+        } failure: { errore in
+            
+        }
+    }
+    
+    private func loadDataSource(model:WalletIncomeAndRecoverModel){
         
         let price = String(format: "%.2f", model.price)
         dealPrice = "\(price)"
@@ -46,8 +69,10 @@ class XYDealDetailViewController: LMHBaseViewController {
             colorHex = "#CA363B"
         }
         dataArrar = [["key":"交易类型","value":WalletType[model.type]!,"color":"#443415"],["key":"交易金额","value":dealPrice,"color":"#443415"],["key":"交易时间","value":model.createTime,"color":"#443415"],["key":"交易单号","value":model.orderNo,"color":"#443415"],["key":"交易状态","value":msg ,"color":colorHex]]
+        
+        tableView.reloadData()
     }
-    
+ 
 }
 
 extension XYDealDetailViewController:UITableViewDelegate,UITableViewDataSource {

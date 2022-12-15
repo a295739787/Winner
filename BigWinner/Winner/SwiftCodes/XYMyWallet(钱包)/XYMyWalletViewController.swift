@@ -236,7 +236,7 @@ extension XYMyWalletViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataModel = dataArray[indexPath.row]
         let vc = XYDealDetailViewController.init()
-        vc.model = dataModel
+        vc.urlId = dataModel.id
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
