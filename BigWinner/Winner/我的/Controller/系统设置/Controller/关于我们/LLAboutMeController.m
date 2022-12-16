@@ -9,6 +9,7 @@
 #import "LLSystemTableCell.h"
 #import "LLAboutMeView.h"
 #import "LLMeAdressView.h"
+#import "AFNetworking.h"
 
 @interface LLAboutMeController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -16,7 +17,7 @@
 @property (nonatomic,strong)UILabel *titleLabel;
 @property (nonatomic,strong)UILabel *noteLabel;
 @property (nonatomic,strong)LLMeAdressDeleteView *updateView;
-
+@property (nonatomic ,assign) BOOL showInfo;
 @end
 
 @implementation LLAboutMeController
@@ -24,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createUI];
+    [self getCurrentVersionInfo];
 }
 
 #pragma mark--createUI
@@ -45,6 +47,76 @@
         make.centerX.mas_equalTo(self.view);
     }];
 }
+#pragma mark - 获取当前版本信息
+-(void)getCurrentVersionInfo{
+    
+    WS(weakself);
+    NSString *appStoreUrl = @"http://itunes.apple.com/lookup?id=1586242929";
+    
+    [[AFHTTPSessionManager manager] GET:appStoreUrl parameters:nil headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        int resultCount = [responseObject[@"resultCount"] intValue];
+        if (resultCount > 0) {
+            NSArray *results = responseObject[@"results"];
+            NSDictionary *dic = results.firstObject;
+            NSString *lineVersion = dic[@"version"];//线上版本
+            NSString *locVersion = [[[NSBundle mainBundle]  infoDictionary] objectForKey:@"CFBundleShortVersionString"];//本地版本
+            NSInteger result = [weakself compareOnlineVersion:lineVersion locVersion:locVersion];
+            switch (result) {
+                case -1:
+                    //线上小
+                    
+                    weakself.showInfo = NO;
+                    break;
+                case 0:
+                    //相同
+                    
+                    weakself.showInfo = NO;
+                    break;
+                case 1:
+                    //线上大
+                    
+                    weakself.showInfo = YES;
+                    weakself.updateView.textStr = [NSString stringWithFormat:@"新版本：%@",lineVersion];
+                    [weakself.tableView reloadData];
+                    break;
+                default:
+                    break;
+            }
+            
+
+        }else{
+            weakself.showInfo = NO;
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        weakself.showInfo = NO;
+    }];
+    
+}
+#pragma mark - 版本比较
+- (NSComparisonResult)compareOnlineVersion:(NSString*)online locVersion:(NSString*)local {
+    NSArray* onlineArr = [online componentsSeparatedByString:@"."];
+    NSArray* localArr = [local componentsSeparatedByString:@"."];
+    NSInteger pos = 0;
+    while ([onlineArr count] > pos || [localArr count] > pos) {
+        NSInteger v1 = [onlineArr count] > pos ? [[onlineArr objectAtIndex:pos] integerValue] : 0;
+        NSInteger v2 = [localArr count] > pos ? [[localArr objectAtIndex:pos] integerValue] : 0;
+        if (v1 < v2) {
+            //版本2大
+            return NSOrderedAscending;
+        }
+        else if (v1 > v2) {
+            //版本1大
+            return NSOrderedDescending;
+        }
+        pos++;
+    }
+    //版本相同
+    return NSOrderedSame;
+}
 
 #pragma mark
 #pragma mark--UITableViewDelegate,UITableViewDataSource
@@ -52,12 +124,21 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return 3;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LLSystemTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LLSystemTableCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textStr = @[@"服务协议",@"隐私保护指引"][indexPath.row];
+    cell.textStr = @[@"版本更新",@"服务协议",@"隐私保护指引"][indexPath.row];
+    if (indexPath.row == 0) {
+        if (self.showInfo == YES) {
+            cell.infoStr = @"有新版本";
+        }else{
+            cell.infoStr = @"当前为新版本";
+        }
+    }else{
+        cell.infoStr = @"";
+    }
     
     return cell;
 }
@@ -79,29 +160,32 @@
     return headerView;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.row == 0) {
-//        //版本更新
-//        [self.updateView show];
-//    }else
-        if (indexPath.row == 0){
-        //服务协议
+    if (indexPath.row == 0) {
         
-        LLWebViewController *vc = [[LLWebViewController alloc]init];
+        if (self.showInfo == YES) {
+            //版本更新
+            [self.updateView show];
+        }
+    }else
+        if (indexPath.row == 1){
+            //服务协议
+            
+            LLWebViewController *vc = [[LLWebViewController alloc]init];
             vc.isHiddenNavgationBar = YES;
-        vc.htmlStr = @"AppServiceAgreement";
-        vc.name = @"服务协议";
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    }else if (indexPath.row == 1){
-        //隐私保护指引
-        
-        LLWebViewController *vc = [[LLWebViewController alloc]init];
-        vc.isHiddenNavgationBar = YES;
-        vc.htmlStr = @"AppPrivacyAgreement";
-        vc.name = @"隐私协议";
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
+            vc.htmlStr = @"AppServiceAgreement";
+            vc.name = @"服务协议";
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else if (indexPath.row == 2){
+            //隐私保护指引
+            
+            LLWebViewController *vc = [[LLWebViewController alloc]init];
+            vc.isHiddenNavgationBar = YES;
+            vc.htmlStr = @"AppPrivacyAgreement";
+            vc.name = @"隐私协议";
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }
 }
 
 -(UITableView *)tableView{
@@ -143,6 +227,9 @@
         _updateView.rightStr = @"更新";
         _updateView.deleteBtnBlock = ^{
             
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id1586242929?mt=8"]] options:@{} completionHandler:^(BOOL success) {
+                
+            }];
         };
     }
     return _updateView;

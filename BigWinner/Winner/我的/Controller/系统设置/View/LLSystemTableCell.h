@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LLSystemTableCell : UITableViewCell
 
 @property (nonatomic,strong)NSString *textStr;
+@property (nonatomic,strong)NSString *infoStr;
 
 
 @end

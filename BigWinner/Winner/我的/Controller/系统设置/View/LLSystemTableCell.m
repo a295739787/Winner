@@ -10,6 +10,7 @@
 @interface LLSystemTableCell ()
 
 @property (nonatomic,strong)UILabel *titleLabel;
+@property (nonatomic,strong)UILabel *messageLabel;
 @property (nonatomic,strong)UIImageView *nextImg;
 
 @end
@@ -30,7 +31,8 @@
     self.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.titleLabel];
     [self.contentView addSubview:self.nextImg];
-    
+    [self.contentView addSubview:self.messageLabel];
+
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(CGFloatBasedI375(15));
         make.centerY.mas_equalTo(self.contentView);
@@ -43,9 +45,16 @@
         make.width.mas_equalTo(CGFloatBasedI375(5));
     }];
     
+    [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.contentView);
+        make.right.mas_equalTo(self.nextImg.mas_left).offset(-5);
+    }];
 }
 -(void)setTextStr:(NSString *)textStr{
     _titleLabel.text = textStr;
+}
+-(void)setInfoStr:(NSString *)infoStr{
+    _messageLabel.text = infoStr;
 }
 #pragma mark--lazy
 -(UILabel *)titleLabel{
@@ -56,6 +65,15 @@
         _titleLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(15)];
     }
     return _titleLabel;
+}
+-(UILabel *)messageLabel{
+    if (!_messageLabel) {
+        _messageLabel = [[UILabel alloc]init];
+        _messageLabel.textColor = UIColorFromRGB(0x443415);
+        _messageLabel.textAlignment = NSTextAlignmentCenter;
+        _messageLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(12)];
+    }
+    return _messageLabel;
 }
 -(UIImageView *)nextImg{
     if (!_nextImg) {

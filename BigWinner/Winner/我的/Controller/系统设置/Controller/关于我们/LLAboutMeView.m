@@ -57,7 +57,8 @@
         _titleLabel.textColor = UIColorFromRGB(0x666666);
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(14)];
-        _titleLabel.text = @"";
+       NSString *version = [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        _titleLabel.text = [NSString stringWithFormat:@"当前版本: %@",version];
     }
     return _titleLabel;
 }
