@@ -212,8 +212,11 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     //MARK: - 点击推送跳转对应界面
     private func cilckPushJumpView(type:NSDictionary){
         
-        let msgType = type.object(forKey: "msgType") as! String
-        
+        let msgType = type.object(forKey: "msgType") as! String //消息类型
+        let orderNo = type.object(forKey: "orderNo") as! String //订单号
+        let msgId = type.object(forKey: "msgId") as! String //消息ID
+        let urlId = type.object(forKey: "urlId") as! String //提现ID
+
         if msgType == "1" {
             //推广审核通过
             let vc = LLTabbarViewController()
@@ -227,17 +230,17 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         }else if msgType == "3" || msgType == "4"{
             //提现成功和提现失败
             let vc = XYDealDetailViewController.init()
+            vc.urlId = urlId
             getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
         }else if msgType == "5" {
             //发货成功（包括活动单、零售单物流配送、采购单）
             let vc = LLMeOrderDetailController.init()
-            vc.orderNo = ""
+            vc.orderNo = orderNo
             getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
-             
         }else{
             print("暂无其他推送状态")
         }
-        
+        loadReadPushNews(msgId: msgId)
     }
     //MARK: - 点击推送消息已读
     private func loadReadPushNews(msgId:String){
@@ -245,7 +248,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         let param = NSMutableDictionary()
         param.setValue(msgId, forKey: "msgId")
         
-        XJHttpTool.post(L_pushReadMessageUrl, method: GET, params: param, isToken: true) { [self] responseObj in
+        XJHttpTool.post(L_pushReadMessageUrl, method: GET, params: param, isToken: true) { responseObj in
     
             let data = responseObj as! NSDictionary
             let msg = data.object(forKey: "msg") as? String
