@@ -286,6 +286,8 @@
 #define L_cardGetListUrl @"/api/app/card/getList"
 /* 酒卡明细 */
 #define L_cardGetMyStockUrl @"/api/app/user/getMyStockDetail"
+/* 酒卡背景 */
+#define L_cardGetSetInfoUrl @"/api/app/card/getSetInfo/1"
 
 /* 推送消息 */
 /* 已读 */

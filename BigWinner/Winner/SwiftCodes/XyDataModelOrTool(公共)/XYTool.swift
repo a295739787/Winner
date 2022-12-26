@@ -153,8 +153,7 @@ func getPriceTextAreaFontSize(text:String,unChangedFont:Float,changedFont:Float,
     let attStr = NSMutableAttributedString.init(string: text)
     attStr.addAttribute(NSAttributedString.Key.font, value:UIFont.systemFont(ofSize: CGFloat(changedFont)), range: NSMakeRange(0, firstArea))
     attStr.addAttribute(NSAttributedString.Key.font, value:UIFont.systemFont(ofSize: CGFloat(changedFont)), range: NSMakeRange((text.count-lastArea), lastArea))
-    attStr.addAttribute(NSAttributedString.Key.font, value:UIFont.systemFont(ofSize: CGFloat(unChangedFont)), range: NSMakeRange(firstArea, (text.count-lastArea-firstArea)))
-    
+    attStr.addAttribute(NSAttributedString.Key.font, value:UIFont.boldSystemFont(ofSize: CGFloat(unChangedFont)), range: NSMakeRange(firstArea, (text.count-lastArea-firstArea)))
     return attStr
 }
 
@@ -249,7 +248,9 @@ func screenshotScrollView(scrollView:UIScrollView) -> UIImage? {
     scrollView.frame = savedFrame
     UIGraphicsEndImageContext()
     
-    return image ?? nil
+    let data =  image?.jpegData(compressionQuality: 1)
+    let jpegImage = UIImage(data: data!)
+    return jpegImage ?? nil
 }
 
 // MARK: - UILabel模块

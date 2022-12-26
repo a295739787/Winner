@@ -10,17 +10,21 @@ import UIKit
 class XYBandLiquorCardViewController: LMHBaseViewController {
     
     var topView = UIView()
+    var topImageView = UIImageView()
     var contentView = UIView()
     var bottomView = UIView()
+    var bottomImageView = UIImageView()
     
     var accountTextField = UITextField()
     var passWordTextField = UITextField()
     var bindButton = UIButton()
+    var cardModel = LiquorCardStyleModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadMainView()
+        loadCardInfoNetwork()
     }
     
     private func loadMainView(){
@@ -37,7 +41,7 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         topView.backgroundColor = .hexString("#FA4C55");
         scrollView.addSubview(topView)
         
-        let topImageView = UIImageView.init()
+        topImageView = UIImageView.init()
         topImageView.frame = CGRect(x: 0, y: 0, width: topView.frame.size.width, height: topView.frame.size.height)
         topImageView.image = UIImage(named: "topCard")
         //        topImageView.contentMode = .scaleAspectFill
@@ -55,8 +59,8 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         bottomView.backgroundColor = .hexString("#F8F4F4");
         scrollView.insertSubview(bottomView, belowSubview: contentView)
         
-        let  bottomImageView = UIImageView.init()
-        bottomImageView.frame = CGRect(x: 57, y: 32, width: bottomView.frame.size.width-114, height: bottomView.frame.size.height-32)
+        bottomImageView = UIImageView.init()
+        bottomImageView.frame = CGRect(x: 0, y: 32, width: bottomView.frame.size.width, height: bottomView.frame.size.height-32)
         bottomImageView.contentMode = .scaleAspectFit
         bottomImageView.image = UIImage(named: "bottomCard")
         bottomView.addSubview(bottomImageView)
@@ -175,6 +179,34 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         }
     }
     
+    /// 绑卡网络请求
+    private func loadCardInfoNetwork(){
+        
+        let param = NSMutableDictionary()
+        
+        XJHttpTool.post(L_cardGetSetInfoUrl, method: GET, params: param, isToken: true) { [self] responseObj in
+            
+            let data = responseObj as! NSDictionary
+            let code = data.object(forKey: "code") as? Int
+            if code == 200 {
+                let dataList = data.object(forKey: "data") as! NSDictionary
+                let model: LiquorCardStyleModel = LiquorCardStyleModel.mj_object(withKeyValues: dataList)
+                loadDataSource(model: model)
+            }
+        } failure: { errore in
+            
+        }
+    }
+    private func loadDataSource(model:LiquorCardStyleModel){
+        
+        cardModel = model
+        topImageView.sd_setImage(withUrlString: model.bgImages, placeholderImageName: "topCard")
+        bottomImageView.sd_setImage(withUrlString: model.footImages, placeholderImageName: "bottomCard")
+        bindButton.backgroundColor = .hexString(model.buttonEnColor).withAlphaComponent(0.33)
+        
+    }
+
+    
     ///TextField方法
     @objc private func changeTextFieldValue(textField:UITextField){
         
@@ -183,11 +215,11 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
             if textField.text!.count > 0 {
                 
                 bindButton.isEnabled = true
-                bindButton.backgroundColor = .hexString("#D40006").withAlphaComponent(1)
+                bindButton.backgroundColor = .hexString(cardModel.buttonDisColor).withAlphaComponent(1)
             }else{
                 
                 bindButton.isEnabled = false
-                bindButton.backgroundColor = .hexString("#D40006").withAlphaComponent(0.33)
+                bindButton.backgroundColor = .hexString(cardModel.buttonEnColor).withAlphaComponent(0.33)
             }
         }
     }

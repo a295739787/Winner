@@ -44,14 +44,10 @@
 }
 -(void)setLayout{
     WS(weakself);
-    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.offset(0);
-        make.height.mas_equalTo(CGFloatBasedI375(40));
-    }];
+
     [self.sycleview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.offset(0);
+        make.top.left.right.offset(0);
         make.height.mas_equalTo(CGFloatBasedI375(175));
-        make.top.equalTo(weakself.topView.mas_bottom).mas_equalTo(CGFloatBasedI375(0));
     }];
     [self.midImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(CGFloatBasedI375(10));
@@ -127,6 +123,12 @@
         make.right.offset(-CGFloatBasedI375(10));
         make.height.mas_equalTo(CGFloatBasedI375(100));
         make.top.equalTo(weakself.redImage.mas_bottom).mas_equalTo(CGFloatBasedI375(10));
+    }];
+    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(CGFloatBasedI375(10));
+        make.right.offset(-CGFloatBasedI375(10));
+        make.height.mas_equalTo(CGFloatBasedI375(40));
+        make.top.equalTo(weakself.boImage.mas_bottom).mas_equalTo(CGFloatBasedI375(0));
     }];
     [self.leftImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(0);
@@ -273,10 +275,20 @@
             [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
         }
     }else if(model.type == 1){
-        LLGoodDetailViewController *vc = [[LLGoodDetailViewController alloc]init];
-        vc.ID = model.goodsId;
-        vc.status = RoleStatusStore;
-        [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
+        if ([model.link isEqual: @"app-download"]) {
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id1586242929?mt=8"]] options:@{} completionHandler:^(BOOL success) {
+                
+            }];
+            
+        }else{
+            
+            LLGoodDetailViewController *vc = [[LLGoodDetailViewController alloc]init];
+            vc.ID = model.goodsId;
+            vc.status = RoleStatusStore;
+            [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
+        }
+       
     }else if(model.type == 2){
         NSString *url = model.link;
         if(![model.link containsString:@"http"]){
@@ -376,8 +388,8 @@
     return _showBackimage;
 }
 -(void)tapclick:(UITapGestureRecognizer *)sender{
-    LLSurpriseRegBagViewController *vc = [[LLSurpriseRegBagViewController alloc]init];
-    [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
+//    LLSurpriseRegBagViewController *vc = [[LLSurpriseRegBagViewController alloc]init];
+//    [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
 }
 - (UIView *)topView{
     if(!_topView){

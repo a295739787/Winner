@@ -83,7 +83,7 @@ class XYGoodsPosterViewController: UIViewController {
         //顶部容器
         mainView = UIScrollView.init()
         mainView.backgroundColor = .white
-        mainView.frame = CGRect(x: deviceWidth * 0.192, y: deviceHeight * 0.134, width: deviceWidth-(deviceWidth * 0.192 * 2), height: deviceHeight * 0.556)
+        mainView.frame = CGRect(x: deviceWidth * 0.192, y: deviceHeight * 0.134, width: deviceWidth-(deviceWidth * 0.192 * 2), height: deviceHeight * 0.558)
         self.view.addSubview(mainView)
         loadMasksToBounds(targetView: mainView, corners: 5)
         
@@ -116,18 +116,17 @@ class XYGoodsPosterViewController: UIViewController {
         
         yuanPriceLabel = UILabel.init()
         yuanPriceLabel.frame = CGRect(x: zheKouPriceLabel.frame.maxX+4, y: goodsImageView.frame.maxY+10, width: 45, height: 14)
-        yuanPriceLabel.loadMasksDynamicLabel(text: "789.00", color: .hexString("#66666"), textAlignment: .left, font: UIFont.systemFont(ofSize: 12), number: 1)
+        yuanPriceLabel.loadMasksDynamicLabel(text: "789.00", color: .hexString("#666666"), textAlignment: .left, font: UIFont.systemFont(ofSize: 12), number: 1)
         mainView.addSubview(yuanPriceLabel)
         
         posterIconImageView = UIImageView.init()
         posterIconImageView.frame = CGRect(x: yuanPriceLabel.frame.maxX+9, y: goodsImageView.frame.maxY+12, width: 48, height: 12)
-        posterIconImageView.contentMode = .scaleAspectFit
         posterIconImageView.image = UIImage(named: "posterAppIcon");
         mainView.addSubview(posterIconImageView)
         
         goodsTitleLabel = UILabel.init()
         goodsTitleLabel.frame = CGRect(x: 14, y: posterIconImageView.frame.maxY+11, width: mainView.frame.size.width-14-20, height: 30)
-        goodsTitleLabel.loadMasksDynamicLabel(text: "大赢家进取 壬寅虎年生肖纪念酒 53度 500ml 酱香酒白酒", color: .hexString("#1A1A1A"), textAlignment: .left, font: UIFont.systemFont(ofSize: 12), number: 2)
+        goodsTitleLabel.loadMasksDynamicLabel(text: "大赢家进取 壬寅虎年生肖纪念酒 53度 500ml 酱香酒白酒", color: .hexString("#1A1A1A"), textAlignment: .left, font: UIFont.boldSystemFont(ofSize: 12), number: 2)
         mainView.addSubview(goodsTitleLabel)
         
         goodsSpecLabel = UILabel.init()
@@ -149,9 +148,12 @@ class XYGoodsPosterViewController: UIViewController {
          mainView.contentSize = CGSize(width: mainView.frame.size.width, height: QRMessageLabel.frame.maxY+10)
         
         //尾部容器
-        var bottomH = deviceHeight * 0.27
+        var bottomH = deviceHeight * 0.25
+        var cancelY = 20.0
+
         if bottomH < 200 {
             bottomH = 200
+            cancelY = 10.0
         }
         buttomView = UIView.init()
         buttomView.backgroundColor = .white
@@ -160,17 +162,17 @@ class XYGoodsPosterViewController: UIViewController {
         loadMasksDynamicCorner(targetView: buttomView, corners: [.topLeft,.topRight], cornerRadii: CGSize(width: 12, height: 12))
         
         let buttomLabel = UILabel.init()
-        buttomLabel.frame = CGRect(x: 0, y: 20, width: buttomView.frame.size.width, height: 14)
+        buttomLabel.frame = CGRect(x: 0, y: 15, width: buttomView.frame.size.width, height: 14)
         buttomLabel.loadMasksDynamicLabel(text: "分享当前图片到", color: .hexString("#443415"), textAlignment: .center, font: UIFont.systemFont(ofSize: 15), number: 1)
         buttomView.addSubview(buttomLabel)
         
         let buttonViews = UIView.init()
-        buttonViews.frame = CGRect(x: 0, y: buttomLabel.frame.maxY+20, width: buttomView.frame.size.width, height: 74)
+        buttonViews.frame = CGRect(x: 0, y: buttomLabel.frame.maxY+10, width: buttomView.frame.size.width, height: 74)
         buttomView.addSubview(buttonViews)
         setButtons(view: buttonViews)
         
         let cancelButton = UIButton(type: .custom)
-        cancelButton.frame = CGRect(x: 0, y: buttonViews.frame.maxY+15, width:buttomView.frame.size.width , height: 44)
+        cancelButton.frame = CGRect(x: 0, y: buttonViews.frame.maxY+cancelY, width:buttomView.frame.size.width , height: 44)
         cancelButton.backgroundColor = UIColor.hexString("#FAFAFA")
         cancelButton.setTitle("取消", for: .normal)
         cancelButton.setTitleColor(UIColor.hexString("#999999"), for: .normal)

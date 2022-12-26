@@ -52,7 +52,7 @@ class XYMyWalletHeaderView: UIView {
         bgView.addSubview(bgImageView)
         
         moneyNumberLabel = UILabel.init()
-        moneyNumberLabel.text = "2,235.00"
+        moneyNumberLabel.text = "0.00"
         moneyNumberLabel.textColor = .hexString("#FFFFFF")
         moneyNumberLabel.font = UIFont.systemFont(ofSize: 24)
         moneyNumberLabel.textAlignment = .left
@@ -77,7 +77,7 @@ class XYMyWalletHeaderView: UIView {
         bgView.addSubview(bottomView)
         
         incomeLabel = UILabel.init()
-        incomeLabel.text = "10000.00"
+        incomeLabel.text = "0.00"
         incomeLabel.textColor = .white
         incomeLabel.textAlignment = .center
         incomeLabel.font = UIFont.systemFont(ofSize: 12)
@@ -94,7 +94,7 @@ class XYMyWalletHeaderView: UIView {
         bottomView.addSubview(lineView)
         
         recoverLabel = UILabel.init()
-        recoverLabel.text = "7765.00"
+        recoverLabel.text = "0.00"
         recoverLabel.textColor = .white
         recoverLabel.textAlignment = .center
         recoverLabel.font = UIFont.systemFont(ofSize: 12)

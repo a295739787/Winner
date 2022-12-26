@@ -123,7 +123,7 @@ import UIKit
                 walletView.model = model
             }
         } failure: { errore in
-            
+            MBProgressHUD.showError("网络请求失败，请重新刷新页面", to: self.view)
         }
     }
     

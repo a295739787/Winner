@@ -87,3 +87,14 @@ class LiquorCardDetailModel:NSObject{
     @objc var createTime : String = ""
     
 }
+
+///酒卡背景样式数据
+class LiquorCardStyleModel:NSObject{
+    
+    @objc var id : String = ""
+    @objc var buttonEnColor : String = ""
+    @objc var bgImages : String = ""
+    @objc var buttonDisColor : String = ""
+    @objc var footImages : String = ""
+    
+}
