@@ -181,6 +181,19 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
 }
 -(void)setLayout{
     WS(weakself);
+    
+    [self.view addSubview:self.collectionView];
+    CALayer *layer = [CALayer layer];
+    layer.contents = (id)[UIImage imageNamed:@"home_bg"].CGImage;
+    layer.anchorPoint = CGPointZero;
+    layer.bounds = CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT);
+    CGRect rect = layer.frame;
+    rect.origin.y = 0;
+    layer.frame = rect;
+    [self.collectionView.layer addSublayer:layer];
+    layer.zPosition = -5;
+    
+    
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(CGFloatBasedI375(0));
         make.top.mas_equalTo(SCREEN_top+CGFloatBasedI375(0));
@@ -294,7 +307,6 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
         [_collectionView registerClass:[LLMainCell class] forCellWithReuseIdentifier:LLMainCellid];
         [_collectionView registerClass:[LLMainReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:LLMainReusableViewid];
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerCollectionIdentifier];
-        [self.view addSubview:_collectionView];
         MJRefreshNormalHeader *header = [[MJRefreshNormalHeader alloc] init];
         [header setRefreshingTarget:self refreshingAction:@selector(header)];
         _collectionView.mj_header = header;

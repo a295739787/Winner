@@ -119,6 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *shopName;/** <#class#> **/
 @property (nonatomic, copy) NSString *purchasePrice;
 @property (nonatomic, copy) NSString *userId;
+@property (nonatomic, copy) NSString *shareImage;
 
 @end
 

@@ -548,6 +548,7 @@ static NSString *const LLPraiseAllCellid = @"LLPraiseAllCell";
         vc.QRCodeString = link;
         vc.goodsId = weakself.ID;
         vc.type = type;
+        vc.shareImage = weakself.model.shareImage;
         vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
         vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [weakself presentViewController:vc animated:YES completion:nil];

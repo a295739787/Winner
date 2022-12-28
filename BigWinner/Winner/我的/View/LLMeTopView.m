@@ -40,7 +40,7 @@
     
     [self.textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self);
-        make.top.mas_equalTo(CGFloatBasedI375(35));
+        make.top.mas_equalTo(CGFloatBasedI375(45));
     }];
     
     [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {

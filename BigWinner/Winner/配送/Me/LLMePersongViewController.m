@@ -195,10 +195,15 @@
         cell.moudleBtnBlock = ^(NSInteger index) {
             if (index == 100) {
                 //我的钱包
-                LLWalletController *walletVC = [[LLWalletController alloc]init];
-                walletVC.type = @"1";
-                walletVC.balance = self.personalModel.balance;
-                [weakself.navigationController pushViewController:walletVC animated:YES];
+//                LLWalletController *walletVC = [[LLWalletController alloc]init];
+//                walletVC.type = @"1";
+//                walletVC.balance = self.personalModel.balance;
+//                [weakself.navigationController pushViewController:walletVC animated:YES];
+                
+                XYMyWalletViewController *vc = [[XYMyWalletViewController alloc] init];
+                vc.walletType = MyWalletTypeNormal;
+                [weakself.navigationController pushViewController:vc animated:YES];
+                
             }else if (index == 101){
                 //收货地址
                 LLMeAdressController *adressVC = [[LLMeAdressController alloc]init];

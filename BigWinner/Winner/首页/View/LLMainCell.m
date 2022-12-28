@@ -99,7 +99,8 @@
     _titlelable.text = _model.name;
     _pricelable.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont boldFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ Main_Color, Main_Color]];
     
-    self.redlable.text = FORMAT(@"单次限%ld瓶",_model.purchaseRestrictions);
+    self.redlable.text = @"惊喜红包商品";
+//    FORMAT(@"单次限%ld瓶",_model.purchaseRestrictions);
     self.kcbzView.hidden =YES;
     if(_model.stock.integerValue <= 0){
         self.kcbzView.hidden =NO;

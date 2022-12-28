@@ -138,8 +138,8 @@
     }];
     [self.rightImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(0);
-        make.height.mas_equalTo(CGFloatBasedI375(30));
-        make.width.mas_equalTo(CGFloatBasedI375(15));
+        make.height.mas_equalTo(CGFloatBasedI375(25));
+        make.width.mas_equalTo(CGFloatBasedI375(36));
         make.centerY.equalTo(weakself.topView.mas_centerY);
     }];
     [_verticalMarquee marqueeOfSettingWithState:MarqueeContinue_V];
@@ -225,7 +225,7 @@
 }
 - (JhtVerticalMarquee *)verticalMarquee {
     if (!_verticalMarquee) {
-        _verticalMarquee = [[JhtVerticalMarquee alloc]  initWithFrame:CGRectMake(30, 0, SCREEN_WIDTH-CGFloatBasedI375(60), CGFloatBasedI375(40))];
+        _verticalMarquee = [[JhtVerticalMarquee alloc]  initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-CGFloatBasedI375(75), CGFloatBasedI375(40))];
         
         _verticalMarquee.tag = 101;
 //        _verticalMarquee.isCounterclockwise = YES;
@@ -315,11 +315,13 @@
 //    _isPauseV = YES;
     
 //    [self.navigationController pushViewController:[[testVC alloc] init] animated:YES];
+    
+    [self loadWebView];
 }
 -(UIImageView *)rightImage{
     if(!_rightImage){
         _rightImage = [[UIImageView alloc]init];
-        _rightImage.image = [UIImage imageNamed:@"logo_r"];
+        _rightImage.image = [UIImage imageNamed:@"how"];
         _rightImage.userInteractionEnabled = YES;
         [self.topView addSubview:self.rightImage];
     }
@@ -390,6 +392,17 @@
 -(void)tapclick:(UITapGestureRecognizer *)sender{
 //    LLSurpriseRegBagViewController *vc = [[LLSurpriseRegBagViewController alloc]init];
 //    [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
+    
+    [self loadWebView];
+}
+#pragma mark 消费红包规则
+-(void)loadWebView{
+    
+    LLWebViewController *vc = [[LLWebViewController alloc]init];
+    vc.isHiddenNavgationBar = YES;
+    vc.htmlStr = @"AppRedActivityRule";
+    vc.name = @"惊喜红包活动";
+    [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
 }
 - (UIView *)topView{
     if(!_topView){

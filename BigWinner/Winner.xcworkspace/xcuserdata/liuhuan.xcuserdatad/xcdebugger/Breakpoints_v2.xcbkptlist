@@ -44,16 +44,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "61B7E8A5-CD2B-40B0-B4DE-2B1D6CA151CE"
-            shouldBeEnabled = "Yes"
+            uuid = "782456F3-00AE-4EAF-839E-FC4F63C3EF40"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Winner/&#x9996;&#x9875;/View/LLMainReusableView.m"
+            filePath = "Winner/&#x914d;&#x9001;/Me/LLMePersongViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "-cycleScrollView:didSelectItemAtIndex:"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

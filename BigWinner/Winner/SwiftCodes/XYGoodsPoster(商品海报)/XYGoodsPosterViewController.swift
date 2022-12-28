@@ -19,6 +19,8 @@ class XYGoodsPosterViewController: UIViewController {
     @objc var QRCodeString : String = "我是一条测试数据"
     @objc var goodsId : String = ""
     @objc var type : String = "1"
+    @objc var shareImage : String = ""
+    private var shareImageView = UIImageView()
 
     
     let QRCodeW : CGFloat = 58.0
@@ -28,7 +30,7 @@ class XYGoodsPosterViewController: UIViewController {
         super.viewDidLoad()
         
         loadMainView()
-        loadMainNetwork()
+//        loadMainNetwork()
     }
     private func loadMainNetwork(){
         
@@ -76,7 +78,6 @@ class XYGoodsPosterViewController: UIViewController {
         goodsSpecLabel.text = "规格：\(spec.name)"
     
     }
-    
     private func loadMainView(){
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
 //        self.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(dissMissView(_:))))
@@ -87,10 +88,20 @@ class XYGoodsPosterViewController: UIViewController {
         self.view.addSubview(mainView)
         loadMasksToBounds(targetView: mainView, corners: 5)
         
+        #warning("暂时用全图片代替")
+        shareImageView = UIImageView.init()
+        shareImageView.frame = CGRect(x: 0, y: 0, width: mainView.frame.size.width, height: mainView.frame.size.height)
+        mainView.addSubview(shareImageView)
+        MBProgressHUD.showMessage("图片生成中", to: self.view)
+        shareImageView.sd_setImage(with: URL(string: "\(API_IMAGEHOST)\(shareImage)")) { image, error, type, url in
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
+
+        
         let topTitleView = UIView.init()
         topTitleView.frame = CGRect(x: mainView.frame.size.width * 0.182, y: 14, width: mainView.frame.size.width-(mainView.frame.size.width * 0.182*2), height: 16)
         topTitleView.backgroundColor = .hexString("#E6E6E6")
-        mainView.addSubview(topTitleView)
+//        mainView.addSubview(topTitleView)
         loadMasksToBounds(targetView: topTitleView, corners: 8)
         
         let topIconImageView = UIImageView.init()
@@ -107,43 +118,43 @@ class XYGoodsPosterViewController: UIViewController {
         goodsImageView = UIImageView.init()
         goodsImageView.frame = CGRect(x: 0, y: topTitleView.frame.maxY+11, width: mainView.frame.size.width, height: mainView.frame.size.height * 0.508)
         goodsImageView.contentMode = .scaleAspectFit
-        mainView.addSubview(goodsImageView)
+//        mainView.addSubview(goodsImageView)
         
         zheKouPriceLabel = UILabel.init()
         zheKouPriceLabel.frame = CGRect(x: 13, y: goodsImageView.frame.maxY+10, width: 48, height: 14)
         zheKouPriceLabel.loadMasksDynamicLabel(text: "¥380.00", color: .hexString("#D40006"), textAlignment: .left, font: UIFont.systemFont(ofSize: 18), number: 1)
-        mainView.addSubview(zheKouPriceLabel)
+//        mainView.addSubview(zheKouPriceLabel)
         
         yuanPriceLabel = UILabel.init()
         yuanPriceLabel.frame = CGRect(x: zheKouPriceLabel.frame.maxX+4, y: goodsImageView.frame.maxY+10, width: 45, height: 14)
         yuanPriceLabel.loadMasksDynamicLabel(text: "789.00", color: .hexString("#666666"), textAlignment: .left, font: UIFont.systemFont(ofSize: 12), number: 1)
-        mainView.addSubview(yuanPriceLabel)
+//        mainView.addSubview(yuanPriceLabel)
         
         posterIconImageView = UIImageView.init()
         posterIconImageView.frame = CGRect(x: yuanPriceLabel.frame.maxX+9, y: goodsImageView.frame.maxY+12, width: 48, height: 12)
         posterIconImageView.image = UIImage(named: "posterAppIcon");
-        mainView.addSubview(posterIconImageView)
+//        mainView.addSubview(posterIconImageView)
         
         goodsTitleLabel = UILabel.init()
         goodsTitleLabel.frame = CGRect(x: 14, y: posterIconImageView.frame.maxY+11, width: mainView.frame.size.width-14-20, height: 30)
         goodsTitleLabel.loadMasksDynamicLabel(text: "大赢家进取 壬寅虎年生肖纪念酒 53度 500ml 酱香酒白酒", color: .hexString("#1A1A1A"), textAlignment: .left, font: UIFont.boldSystemFont(ofSize: 12), number: 2)
-        mainView.addSubview(goodsTitleLabel)
+//        mainView.addSubview(goodsTitleLabel)
         
         goodsSpecLabel = UILabel.init()
         goodsSpecLabel.frame = CGRect(x: 14, y: goodsTitleLabel.frame.maxY+5, width: mainView.frame.size.width-14-20, height: 9)
         goodsSpecLabel.loadMasksDynamicLabel(text: "规格：58度单瓶装", color: .hexString("#808080"), textAlignment: .left, font: UIFont.systemFont(ofSize: 9), number: 1)
-        mainView.addSubview(goodsSpecLabel)
+//        mainView.addSubview(goodsSpecLabel)
         
        let qrCodeImageView = UIImageView.init()
         qrCodeImageView.frame = CGRect(x: (mainView.frame.size.width-QRCodeW)/2, y: goodsSpecLabel.frame.maxY+18, width: QRCodeW, height: QRCodeW)
-        mainView.addSubview(qrCodeImageView)
+//        mainView.addSubview(qrCodeImageView)
         qrCodeImageView.image = getQRCodeAndLogo(info: QRCodeString, size: QRCodeW)
 
         
         let QRMessageLabel = UILabel.init()
         QRMessageLabel.frame = CGRect(x: 0, y: qrCodeImageView.frame.maxY+5, width: mainView.frame.size.width, height: 8)
         QRMessageLabel.loadMasksDynamicLabel(text: "长按或扫描查看", color: .hexString("#808080"), textAlignment: .center, font: UIFont.systemFont(ofSize: 8), number: 1)
-        mainView.addSubview(QRMessageLabel)
+//        mainView.addSubview(QRMessageLabel)
         
          mainView.contentSize = CGSize(width: mainView.frame.size.width, height: QRMessageLabel.frame.maxY+10)
         
@@ -225,7 +236,7 @@ class XYGoodsPosterViewController: UIViewController {
     //MARK: -分享到朋友圈或者微信好友
     private func shareWechat(platformType:SSDKPlatformType){
         let param = NSMutableDictionary()
-        param.ssdkSetupShareParams(byText: "", images: screenshotScrollView(scrollView:mainView), url: nil, title: "", type: SSDKContentType.auto)
+        param.ssdkSetupShareParams(byText: "", images: shareImageView.image, url: nil, title: "", type: SSDKContentType.auto)
         ShareSDK.share(platformType, parameters: param) { state, data, contentEntity, error in
             
             if state == .success {
@@ -241,7 +252,7 @@ class XYGoodsPosterViewController: UIViewController {
     //MARK: - 保存图片
     private func savePhoto(){
         
-        UIImageWriteToSavedPhotosAlbum(screenshotScrollView(scrollView:mainView) ?? UIImage.init(), self, #selector(imageSavedToPhotosAlbum), nil)
+        UIImageWriteToSavedPhotosAlbum(shareImageView.image ?? UIImage.init(), self, #selector(imageSavedToPhotosAlbum), nil)
     }
     @objc private func imageSavedToPhotosAlbum(image:UIImage,error:NSError?,contextInfo:AnyObject) {
         

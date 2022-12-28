@@ -38,12 +38,11 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         
         topView = UIView.init()
         topView.frame = CGRect(x: 0, y: 0, width: deviceWidth, height: 204)
-        topView.backgroundColor = .hexString("#FA4C55");
+//        topView.backgroundColor = .white;
         scrollView.addSubview(topView)
         
         topImageView = UIImageView.init()
         topImageView.frame = CGRect(x: 0, y: 0, width: topView.frame.size.width, height: topView.frame.size.height)
-        topImageView.image = UIImage(named: "topCard")
         //        topImageView.contentMode = .scaleAspectFill
         topView.addSubview(topImageView)
         
@@ -202,7 +201,7 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         cardModel = model
         topImageView.sd_setImage(withUrlString: model.bgImages, placeholderImageName: "topCard")
         bottomImageView.sd_setImage(withUrlString: model.footImages, placeholderImageName: "bottomCard")
-        bindButton.backgroundColor = .hexString(model.buttonEnColor).withAlphaComponent(0.33)
+        bindButton.backgroundColor = .hexString(model.buttonDisColor)
         
     }
 
@@ -215,11 +214,11 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
             if textField.text!.count > 0 {
                 
                 bindButton.isEnabled = true
-                bindButton.backgroundColor = .hexString(cardModel.buttonDisColor).withAlphaComponent(1)
+                bindButton.backgroundColor = .hexString(cardModel.buttonEnColor)
             }else{
                 
                 bindButton.isEnabled = false
-                bindButton.backgroundColor = .hexString(cardModel.buttonEnColor).withAlphaComponent(0.33)
+                bindButton.backgroundColor = .hexString(cardModel.buttonDisColor)
             }
         }
     }

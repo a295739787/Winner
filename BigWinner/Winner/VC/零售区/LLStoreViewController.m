@@ -41,7 +41,6 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
     self.page = 1;
     self.sidx = @"Sort";
     self.sort = @"asc";
-    self.view.backgroundColor = BG_Color ;
     self.customNavBar.title = @"零售区";
     [self.customNavBar wr_setRightButtonWithImage:[UIImage imageNamed:@"search"]];
     WS(weakself);
@@ -119,10 +118,22 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
 
 -(void)setLayout{
     WS(weakself);
+    
+    [self.view addSubview:self.collectionView];
+    CALayer *layer = [CALayer layer];
+    layer.contents = (id)[UIImage imageNamed:@"home_bg"].CGImage;
+    layer.anchorPoint = CGPointZero;
+    layer.bounds = CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT);
+    CGRect rect = layer.frame;
+    rect.origin.y = 0;
+    layer.frame = rect;
+    [self.collectionView.layer addSublayer:layer];
+    layer.zPosition = -5;
+    
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(CGFloatBasedI375(0));
         make.top.mas_equalTo(SCREEN_top+CGFloatBasedI375(0));
-        make.bottom.offset(CGFloatBasedI375(0));
+        make.bottom.offset(CGFloatBasedI375(-0));
         make.right.offset(CGFloatBasedI375(0));
 
     }];
@@ -231,9 +242,9 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
     if (!_collectionView) {
         CGFloat itermSpace = 0;
         UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-          layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-          layout.minimumLineSpacing = itermSpace;
-          layout.minimumInteritemSpacing = itermSpace;
+//          layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//          layout.minimumLineSpacing = itermSpace;
+//          layout.minimumInteritemSpacing = itermSpace;
 //        layout.sectionInset = UIEdgeInsetsMake(itermSpace, itermSpace, itermSpace, itermSpace);
 //        layout.sectionHeadersPinToVisibleBounds = YES;
           _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -245,19 +256,19 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
 //          _collectionView.alwaysBounceVertical = NO;
 //          _collectionView.showsHorizontalScrollIndicator = NO;
 //          _collectionView.showsVerticalScrollIndicator = NO;
-        _collectionView.backgroundColor =BG_Color;
+        _collectionView.backgroundColor = [UIColor colorWithHexString:@"#DEDCD5"];
 //        layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, CGFloatBasedI375(175+44));
 //        layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, CGFloatBasedI375(50));
         [_collectionView registerClass:[LLMainCell class] forCellWithReuseIdentifier:LLMainCellid];
         [_collectionView registerClass:[LLStoreReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:LLMainReusableViewid];
         [_collectionView registerClass:[LLStoreFooterReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerCollectionIdentifier];
-        [self.view addSubview:_collectionView];
         MJRefreshNormalHeader *header = [[MJRefreshNormalHeader alloc] init];
         [header setRefreshingTarget:self refreshingAction:@selector(header)];
         _collectionView.mj_header = header;
         MJRefreshAutoNormalFooter *footer = [[MJRefreshAutoNormalFooter alloc] init];
         [footer setRefreshingTarget:self refreshingAction:@selector(footer)];
         _collectionView.mj_footer = footer;
+        adjustsScrollViewInsets_NO(_collectionView, self);
     }
     return _collectionView;
 }
