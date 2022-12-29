@@ -278,7 +278,7 @@
 }
 #pragma mark--createUI
 -(void)createUI{
-    
+    WS(weakself);
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.phoneLabel];
     [self.contentView addSubview:self.adressLabel];
@@ -293,14 +293,13 @@
     
     [self.phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(CGFloatBasedI375(14));
-        make.left.mas_equalTo(CGFloatBasedI375(81));
+        make.left.equalTo(weakself.nameLabel.mas_right).offset(CGFloatBasedI375(15));
     }];
     
     [self.adressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.phoneLabel.mas_bottom).offset(CGFloatBasedI375(0));
-        make.left.mas_equalTo(CGFloatBasedI375(81));
-        make.right.mas_equalTo(CGFloatBasedI375(-57));
-        make.bottom.mas_equalTo(CGFloatBasedI375(-5));
+        make.top.equalTo(weakself.phoneLabel.mas_bottom).offset(CGFloatBasedI375(10));
+        make.left.equalTo(weakself.phoneLabel.mas_left);
+        make.right.offset(-CGFloatBasedI375(50));
     }];
     
     

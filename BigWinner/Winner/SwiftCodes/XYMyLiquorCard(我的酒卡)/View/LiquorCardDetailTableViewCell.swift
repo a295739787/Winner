@@ -22,6 +22,7 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
     
     var model = LiquorCardDetailModel()
     
+    var cellType : Int = -1
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -74,23 +75,30 @@ class LiquorCardDetailTableViewCell: UITableViewCell {
         
         lineView.frame = CGRect(x: 25, y: self.frame.size.height-1, width:(self.frame.size.width-50) , height: 1)
         
-        if model.goodsNum > 0 {
-            goodsMoneyLabel.textColor = .hexString("#999999")
+        if cellType == 1 {
+            
+            if model.goodsNum > 0 {
+                goodsMoneyLabel.textColor = .hexString("#999999")
+            }else{
+                goodsMoneyLabel.textColor = .hexString("#D40006")
+            }
+            
+            var goodsNumString = "\(model.goodsNum)"
+            if model.goodsNum > 0 {
+                goodsNumString = "+\(model.goodsNum)"
+            }
+            
+            oddNumberLabel.text = "\(model.type)\(model.orderNo)"
+            oddTimeLabel.text = model.createTime
+            goodsMoneyLabel.text = goodsNumString
+            goodsMoneyTimeLabel.text = "余额 \(model.remainNum)"
             
         }else{
-            goodsMoneyLabel.textColor = .hexString("#D40006")
+            oddNumberLabel.text = "\(model.typeName)\(model.orderNo)"
+            oddTimeLabel.text = model.createTime
+            goodsMoneyLabel.text = "+\(model.goodsNum)"
+            goodsMoneyTimeLabel.text = ""
         }
-        
-        var goodsNumString = "\(model.goodsNum)"
-        if model.goodsNum > 0 {
-            goodsNumString = "+\(model.goodsNum)"
-        }
-        
-        oddNumberLabel.text = "\(model.type)\(model.orderNo)"
-        oddTimeLabel.text = model.createTime
-        goodsMoneyLabel.text = goodsNumString
-        goodsMoneyTimeLabel.text = "余额 \(model.remainNum)"
-        
-        
+
     }
 }

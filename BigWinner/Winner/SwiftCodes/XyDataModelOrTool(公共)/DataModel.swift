@@ -86,6 +86,11 @@ class LiquorCardDetailModel:NSObject{
     @objc var type : String = ""
     @objc var createTime : String = ""
     
+    @objc var goodsSpecsPriceId : String = ""
+    @objc var stockType : Int = 0
+    @objc var orderId : String = ""
+    @objc var status : String = ""
+    @objc var typeName : String = ""
 }
 
 ///酒卡背景样式数据

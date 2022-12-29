@@ -148,7 +148,7 @@
         _titleLabel.textColor = UIColorFromRGB(0x443415);
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(15)];
-        _titleLabel.text = @"提供数量";
+        _titleLabel.text = @"提货数量";
     }
     return _titleLabel;
 }

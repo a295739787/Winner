@@ -49,6 +49,7 @@
     if([UserModel sharedUserInfo].token.length > 0){
         [self getPersonalUrl];
     }
+   
 }
 
 - (void)viewDidLoad {

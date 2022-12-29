@@ -125,9 +125,10 @@
         if ([code intValue] == 200) {
             [MBProgressHUD showSuccess:@"提货成功"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                LLTabbarViewController *thirdVC=  [[LLTabbarViewController alloc]init];
-                thirdVC.selectedIndex = 3;
-                [UIApplication sharedApplication ].delegate.window.rootViewController =  thirdVC;
+//                LLTabbarViewController *thirdVC=  [[LLTabbarViewController alloc]init];
+//                thirdVC.selectedIndex = 3;
+//                [UIApplication sharedApplication ].delegate.window.rootViewController =  thirdVC;
+                [weakself.navigationController popViewControllerAnimated:YES];
             });
            
         }

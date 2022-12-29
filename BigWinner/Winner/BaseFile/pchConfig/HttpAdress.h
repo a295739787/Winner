@@ -284,8 +284,10 @@
 #define L_cardBindUrl @"/api/app/card/bind"
 /* 酒卡列表 */
 #define L_cardGetListUrl @"/api/app/card/getList"
-/* 酒卡明细 */
+/* 酒卡明细_当前酒卡 */
 #define L_cardGetMyStockUrl @"/api/app/user/getMyStockDetail"
+/* 酒卡明细_当前账号 */
+#define L_cardGetBindRecordByUserId @"/api/app/card/getBindRecordByUserId"
 /* 酒卡背景 */
 #define L_cardGetSetInfoUrl @"/api/app/card/getSetInfo/1"
 

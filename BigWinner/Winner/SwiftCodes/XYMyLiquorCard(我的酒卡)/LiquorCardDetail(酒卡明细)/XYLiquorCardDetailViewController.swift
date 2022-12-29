@@ -7,9 +7,17 @@
 
 import UIKit
 
+@objc enum LiquorCardDetailType : Int {
+    ///所有详情
+    case all = 0
+    ///单个详情
+    case single = 1
+}
 
 @objcMembers class XYLiquorCardDetailViewController: UIViewController {
     
+    public var liquorCardDetailType : LiquorCardDetailType = .single
+
     private var mainView = UIView()
     private var topView = UIView()
     private var tableView = UITableView()
@@ -94,12 +102,18 @@ import UIKit
     private func loadMainNetwork(){
         
         let param = NSMutableDictionary()
-        param.setValue(userType, forKey: "userType")
+        var url = ""
+        if self.liquorCardDetailType == .all {
+            url = L_cardGetBindRecordByUserId
+        }else{
+            url = L_cardGetMyStockUrl
+            param.setValue(userType, forKey: "userType")
+            param.setValue(status, forKey: "status")
+            param.setValue(goodId, forKey: "goodId")
+        }
         param.setValue(userId, forKey: "userId")
-        param.setValue(status, forKey: "status")
-        param.setValue(goodId, forKey: "goodId")
         
-        XJHttpTool.post(L_cardGetMyStockUrl, method:GET, params: param, isToken: true) { [self] responseObj in
+        XJHttpTool.post(url, method:GET, params: param, isToken: true) { [self] responseObj in
             
             let data = responseObj as! NSDictionary
             let code = data.object(forKey: "code") as? Int
@@ -147,6 +161,7 @@ extension XYLiquorCardDetailViewController:UITableViewDelegate,UITableViewDataSo
         
         let dataModel = dataArray[indexPath.row]
         cell.model = dataModel
+        cell.cellType = liquorCardDetailType.rawValue
         
         return cell
     }

@@ -30,6 +30,17 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
     private func loadMainView(){
         
         self.customNavBar.title = "绑定酒卡"
+        self.customNavBar.wr_setRightButton(withTitle: "绑卡记录", titleColor: UIColor.hexString("#443415"))
+        self.customNavBar.onClickRightButton = {[self] in
+            
+            let vc = XYLiquorCardDetailViewController.init()
+            vc.userId = UserModel.sharedUserInfo().userId
+            vc.liquorCardDetailType = .all
+            vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+            self.present(vc, animated: true)
+           
+        }
         
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .hexString("#F8F4F4");
@@ -61,7 +72,7 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         bottomImageView = UIImageView.init()
         bottomImageView.frame = CGRect(x: 0, y: 32, width: bottomView.frame.size.width, height: bottomView.frame.size.height-32)
         bottomImageView.contentMode = .scaleAspectFit
-        bottomImageView.image = UIImage(named: "bottomCard")
+//        bottomImageView.image = UIImage(named: "bottomCard")
         bottomView.addSubview(bottomImageView)
         
         scrollView.contentSize = CGSize(width: deviceWidth, height: bottomView.frame.maxY)
@@ -122,7 +133,6 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         bindButton = UIButton(type: .custom)
         bindButton.frame = CGRect(x: 30, y: passWordTextField.frame.maxY+36, width: view.frame.size.width-60, height: 47)
         bindButton.loadMasksButton(title: "绑定", color: .white, fontSize: 15)
-        bindButton.backgroundColor = .hexString("#D40006").withAlphaComponent(0.33)
         bindButton.isEnabled = false
         view.addSubview(bindButton)
         loadMasksToBounds(targetView: bindButton, corners: 47/2)

@@ -74,7 +74,6 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [XJHttpTool post:url method:POST params:param isToken:YES success:^(id  _Nonnull responseObj) {
         NSDictionary *data = responseObj[@"data"];
-//        NSLog(<#NSString * _Nonnull format, ...#>)
         self.model = [LLGoodModel mj_objectWithKeyValues:data];
         self.boView.model = self.model;
         [self.tableView reloadData];
@@ -159,7 +158,7 @@ static NSString *const LLPinJianViewCountCellid = @"LLPinJianViewCountCell";
             [goodAs addObject:goodpram.mutableCopy];
         }];
         if(goodAs.count <= 0){
-            return;;
+            return;
         }
         [param setValue:goodAs forKey:@"appOrderSubmitGoodsForm"];
 

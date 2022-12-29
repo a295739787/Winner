@@ -176,6 +176,7 @@
          vc.userId = [UserModel sharedUserInfo].userId;
          vc.status = @"1";
          vc.userType = @"1";
+         vc.liquorCardDetailType = LiquorCardDetailTypeSingle;
         vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
         vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [weakself presentViewController:vc animated:YES completion:nil];
