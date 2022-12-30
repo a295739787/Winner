@@ -119,7 +119,6 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
 -(void)setLayout{
     WS(weakself);
     
-    [self.view addSubview:self.collectionView];
     CALayer *layer = [CALayer layer];
     layer.contents = (id)[UIImage imageNamed:@"home_bg"].CGImage;
     layer.anchorPoint = CGPointZero;
@@ -127,9 +126,10 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
     CGRect rect = layer.frame;
     rect.origin.y = 0;
     layer.frame = rect;
-    [self.collectionView.layer addSublayer:layer];
+    [self.view.layer addSublayer:layer];
     layer.zPosition = -5;
-    
+
+    [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(CGFloatBasedI375(0));
         make.top.mas_equalTo(SCREEN_top+CGFloatBasedI375(0));
@@ -256,7 +256,7 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
 //          _collectionView.alwaysBounceVertical = NO;
 //          _collectionView.showsHorizontalScrollIndicator = NO;
 //          _collectionView.showsVerticalScrollIndicator = NO;
-        _collectionView.backgroundColor = [UIColor colorWithHexString:@"#DEDCD5"];
+        _collectionView.backgroundColor = [UIColor clearColor];
 //        layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, CGFloatBasedI375(175+44));
 //        layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, CGFloatBasedI375(50));
         [_collectionView registerClass:[LLMainCell class] forCellWithReuseIdentifier:LLMainCellid];

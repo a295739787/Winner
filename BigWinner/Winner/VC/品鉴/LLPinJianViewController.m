@@ -44,8 +44,6 @@ static NSString *const LLPinJianPicViewCellid = @"LLPinJianPicViewCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor =BG_Color;
-    // Do any additional setup after loading the view.
     [self setLayout];
     [self getDatas:YES];
 }
@@ -122,7 +120,8 @@ static NSString *const LLPinJianPicViewCellid = @"LLPinJianPicViewCell";
 -(void)setLayout{
     WS(weakself);
 
-    [self.view addSubview:self.tableView];
+    [self.customNavBar setHidden:YES];
+    
     CALayer *layer = [CALayer layer];
     layer.contents = (id)[UIImage imageNamed:@"pj_bg"].CGImage;
     layer.anchorPoint = CGPointZero;
@@ -130,10 +129,10 @@ static NSString *const LLPinJianPicViewCellid = @"LLPinJianPicViewCell";
     CGRect rect = layer.frame;
     rect.origin.y = 0;
     layer.frame = rect;
-    [self.tableView.layer addSublayer:layer];
+    [self.view.layer addSublayer:layer];
     layer.zPosition = -5;
     
-    
+
     _assistiveTouch = [[SuspensionAssistiveTouch alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-CGFloatBasedI375(70), SCREEN_HEIGHT-DeviceXTabbarHeigh(130), CGFloatBasedI375(63),CGFloatBasedI375(63))];
     NSLog(@" == %@",_assistiveTouch.showimage);
     _assistiveTouch.showimage.userInteractionEnabled = YES;
@@ -143,7 +142,8 @@ static NSString *const LLPinJianPicViewCellid = @"LLPinJianPicViewCell";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(requestzujiForUrl)];
     [ _assistiveTouch.showimage addGestureRecognizer:tap];
     
-  
+    [self.view addSubview:self.tableView];
+    
     if([UserModel sharedUserInfo]){
         if([UserModel sharedUserInfo].isShop || [UserModel sharedUserInfo].isClerk){
             _assistiveTouch.hidden = YES;

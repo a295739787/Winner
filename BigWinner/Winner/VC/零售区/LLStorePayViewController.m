@@ -154,7 +154,7 @@ static NSString *const LLPayViewStyleCellid = @"LLPayViewCell";
 }
 - (void)applicationBecomeActive    // 添加检测app进入后台的观察者
 {
-    if((_status == RoleStatusRedBag) ||  (_status == RoleStatusPingjian)||  (_status == RoleStatusStockPeisong)){//惊喜红包没有详情接口
+    if((_status == RoleStatusRedBag) || (_status == RoleStatusPingjian)||  (_status == RoleStatusStockPeisong)){//惊喜红包没有详情接口
         self.headView.dataDic = _datas;
     }else{
         [self getData];
@@ -218,11 +218,11 @@ static NSString *const LLPayViewStyleCellid = @"LLPayViewCell";
         [param setValue:FORMAT(@"%@",_datas[@"orderNo"]) forKey:@"orderNo"];
         if(_status == RoleStatusStore){//订单类型（1零售商品、2惊喜红包商品、3品鉴商品）
             [param setValue:@"1" forKey:@"orderType"];
-        }else     if(_status == RoleStatusRedBag){//订单类型（1零售商品、2惊喜红包商品、3品鉴商品）
+        }else if(_status == RoleStatusRedBag){//订单类型（1零售商品、2惊喜红包商品、3品鉴商品）
             [param setValue:@"2" forKey:@"orderType"];
         }else     if(_status == RoleStatusPingjian){//订单类型（1零售商品、2惊喜红包商品、3品鉴商品）
             [param setValue:@"3" forKey:@"orderType"];
-        }else     if(_status == RoleStatusStockPeisong){//订单类型（1零售商品、2惊喜红包商品、3品鉴商品）
+        }else if(_status == RoleStatusStockPeisong){//订单类型（1零售商品、2惊喜红包商品、3品鉴商品）
             [param setValue:@"5" forKey:@"orderType"];
         }else{
             [param setValue:@"1" forKey:@"orderType"];

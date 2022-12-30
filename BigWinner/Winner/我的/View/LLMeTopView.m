@@ -83,7 +83,7 @@
         _textLabel = [[UILabel alloc]init];
         _textLabel.textColor = UIColorFromRGB(0xFFFFFF);
         _textLabel.textAlignment = NSTextAlignmentCenter;
-        _textLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(18)];
+        _textLabel.font = [UIFont boldFontWithFontSize:18];
         _textLabel.text = @"我的";
     }
     return _textLabel;

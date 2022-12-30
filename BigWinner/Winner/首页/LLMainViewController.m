@@ -68,7 +68,7 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getDatas) name:@"updateName" object:nil];
 
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithHexString:@"#F4F4F4"];
+//    self.view.backgroundColor = [UIColor colorWithHexString:@"#F4F4F4"];
     self.customNavBar.imageStr = @"logo_home";
     [self.customNavBar wr_setRightButtonWithImage:[UIImage imageNamed:@"notice_home"]];
     
@@ -182,7 +182,6 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
 -(void)setLayout{
     WS(weakself);
     
-    [self.view addSubview:self.collectionView];
     CALayer *layer = [CALayer layer];
     layer.contents = (id)[UIImage imageNamed:@"home_bg"].CGImage;
     layer.anchorPoint = CGPointZero;
@@ -190,10 +189,10 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
     CGRect rect = layer.frame;
     rect.origin.y = 0;
     layer.frame = rect;
-    [self.collectionView.layer addSublayer:layer];
+    [self.view.layer addSublayer:layer];
     layer.zPosition = -5;
     
-    
+    [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(CGFloatBasedI375(0));
         make.top.mas_equalTo(SCREEN_top+CGFloatBasedI375(0));
@@ -301,7 +300,7 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
           _collectionView.dataSource = self;
           _collectionView.delegate = self;
 //          _collectionView.bounces = NO;
-        _collectionView.backgroundColor = [UIColor colorWithHexString:@"#DEDCD5"];
+        _collectionView.backgroundColor = [UIColor clearColor];
         layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, CGFloatBasedI375(475));
         layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, CGFloatBasedI375(50));
         [_collectionView registerClass:[LLMainCell class] forCellWithReuseIdentifier:LLMainCellid];
