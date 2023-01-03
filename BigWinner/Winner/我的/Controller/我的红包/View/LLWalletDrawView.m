@@ -180,7 +180,6 @@
 
 @property (nonatomic,strong)UIView *bottomView;
 @property (nonatomic,strong)UIButton *drawBtn;
-@property (nonatomic,strong)UILabel *titleLabel;
 
 @end
 
@@ -260,7 +259,7 @@
         _titleLabel.textAlignment = NSTextAlignmentLeft;
         _titleLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(12)];
         _titleLabel.numberOfLines = 0;
-        _titleLabel.text = @"温馨提示！\n1.提现金额最低100元起申请，提现手续费1%；\n2.申请提现后将在1-3个工作日内到账，请注意查收。";
+        _titleLabel.text = @"温馨提示！\n1.提现金额最低10000元起申请，提现手续费1%；\n2.申请提现后将在1-3个工作日内到账，请注意查收。";
     }
     return _titleLabel;
 }

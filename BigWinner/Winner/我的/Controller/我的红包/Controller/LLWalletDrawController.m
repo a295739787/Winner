@@ -16,7 +16,8 @@
 
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) LLPersonalModel *personalModel;/** <#class#> **/
-@property (nonatomic,strong)  LLWalletDrawView *headerView;/** <#class#> **/
+@property (nonatomic,strong) LLWalletDrawView *headerView;/** <#class#> **/
+@property (nonatomic,strong)NSString *withdrawalInfo;
 
 @end
 
@@ -26,6 +27,8 @@
     [super viewDidLoad];
     [self createUI];
     [self getPersonalUrl];
+    [self getWithdrawal];
+    
 }
 
 #pragma mark--getPersonalUrl
@@ -40,6 +43,19 @@
         
     }];
     [self.tableView reloadData];
+}
+
+#pragma mark --获取提现提示
+-(void)getWithdrawal{
+    WS(weakself);
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    [XJHttpTool post:L_getById method:GET params:params isToken:YES success:^(id  _Nonnull responseObj) {
+        NSDictionary *data = responseObj[@"data"];
+        weakself.withdrawalInfo = [data objectForKey:@"content"];
+
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 -(void)postUrl{
     if(self.headerView.textField.text.floatValue <= 0){
@@ -114,6 +130,7 @@
     
     if (section == 0) {
         LLWalletDrawFooterView *footerView = [[LLWalletDrawFooterView alloc]initWithFrame:tableView.tableFooterView.frame];
+        footerView.titleLabel.text = self.withdrawalInfo;
         WS(weakself);
         footerView.clickTap = ^{
             [weakself postUrl];

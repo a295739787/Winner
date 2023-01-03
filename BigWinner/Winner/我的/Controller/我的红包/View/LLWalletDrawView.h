@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LLWalletDrawFooterView : UIView
 @property (nonatomic,strong) LLPersonalModel *model;/** <#class#> **/
 @property (nonatomic, copy) void(^clickTap)(void);
+@property (nonatomic,strong)UILabel *titleLabel;
 
 @end
 

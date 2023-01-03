@@ -141,7 +141,7 @@
         _countTtitleLabel.textColor = UIColorFromRGB(0x443415);
         _countTtitleLabel.textAlignment = NSTextAlignmentCenter;
         _countTtitleLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(15)];
-        _countTtitleLabel.text = @"我的库存";
+        _countTtitleLabel.text = @"可回购库存";
     }
     return _countTtitleLabel;
 }

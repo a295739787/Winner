@@ -165,6 +165,8 @@
 /* 个人中心 */
 /* 获取用户信息 */
 #define L_getUserInfo  @"/api/app/user/getUserInfo"
+/* 获取提现提示 */
+#define L_getById @"/api/app/system/config/getById/APPWithdrawTips"
 /* 编辑用户信息 */
 #define L_UpdateUserInfo @"/api/app/user/updateById"
 /* 推广员信息编辑 */
