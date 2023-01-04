@@ -33,7 +33,10 @@
     
     return [UIFont fontWithName:@"PingFangSC-Semibold" size:fontSize];
 }
-
++ (UIFont *)dinFontWithFontSize:(CGFloat)fontSize{
+    
+    return [UIFont fontWithName:@"DINAlternate-Bold" size:fontSize];
+}
 + (UIFont *) fontWithFontSize:( CGFloat ) fontSize
                    fontWeight:( UIFontWeight )fontWeight {
     

@@ -200,13 +200,13 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
         make.right.offset(CGFloatBasedI375(0));
 
     }];
-    CGFloat orY = CGFloatBasedI375(32);
+    CGFloat orY = 32;
     if([NSString isPhoneXxxx]){
-        orY += 16;
+        orY += 18;
     }
     [self.redLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(orY);
-        make.right.equalTo(-2);
+        make.right.mas_equalTo(weakself.customNavBar.rightButton.right).equalTo(-2);
         make.height.mas_equalTo(CGFloatBasedI375(11));
         make.width.mas_equalTo(CGFloatBasedI375(15));
     }];

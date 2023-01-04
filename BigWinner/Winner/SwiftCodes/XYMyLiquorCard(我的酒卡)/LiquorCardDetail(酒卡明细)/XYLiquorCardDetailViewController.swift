@@ -83,6 +83,13 @@ import UIKit
         bottomView.addSubview(bottomCanceButton)
         bottomCanceButton.addTarget(self, action: #selector(cilckButton(_:)), for: .touchUpInside)
         loadMasksToBounds(targetView: bottomCanceButton, corners: 37/2)
+        
+        
+        if self.liquorCardDetailType == .all {
+            
+            messageLabel.text = "绑卡记录"
+        }
+        
     }
     
     ///点击背景退出界面

@@ -97,7 +97,7 @@
     int allSales = _model.realSalesVolume.intValue+_model.salesVolume.intValue;
     _delable.text = FORMAT(@"销量%d",allSales);
     _titlelable.text = _model.name;
-    _pricelable.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont boldFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ Main_Color, Main_Color]];
+    _pricelable.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont dinFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ Main_Color, Main_Color]];
     
     self.redlable.text = @"惊喜红包商品";
 //    FORMAT(@"单次限%ld瓶",_model.purchaseRestrictions);

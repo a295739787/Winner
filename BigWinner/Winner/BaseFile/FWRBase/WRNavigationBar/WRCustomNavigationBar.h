@@ -16,8 +16,9 @@
 
 @property (nonatomic, copy) void(^onClickRightView)(NSInteger selectIndex);
 
-@property (nonatomic, strong) UILabel     *titleLable;
-@property (nonatomic, strong) UIImageView     *showImage;
+@property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UIImageView *showImage;
 @property (nonatomic, copy)   NSString *imageStr;
 
 @property (nonatomic, copy)   NSString *title;

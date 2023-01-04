@@ -54,7 +54,7 @@ class XYMyWalletHeaderView: UIView {
         moneyNumberLabel = UILabel.init()
         moneyNumberLabel.text = "0.00"
         moneyNumberLabel.textColor = .hexString("#FFFFFF")
-        moneyNumberLabel.font = UIFont.systemFont(ofSize: 24)
+        moneyNumberLabel.font = UIFont.dinFont(withFontSize: 24)
         moneyNumberLabel.textAlignment = .left
         bgView.addSubview(moneyNumberLabel)
         

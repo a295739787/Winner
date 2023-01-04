@@ -137,7 +137,7 @@
     [self.showImage  sd_setImageWithUrlString:FORMAT(@"%@",_model.coverImage) placeholderImage:[UIImage imageNamed:morenpic]];
     self.detailsLabel.text = FORMAT(@"%@",_model.specsValName);
     self.nameLabel1.text = _model.name;
-    self.priceLabel.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont boldFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ Main_Color, Main_Color]];
+    self.priceLabel.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont dinFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ Main_Color, Main_Color]];
 
 }
 #pragma mark ============= 懒加载 =============

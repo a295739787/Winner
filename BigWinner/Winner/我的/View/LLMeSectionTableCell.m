@@ -56,6 +56,7 @@
         [moudleBtn addTarget:self action:@selector(sectionBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         moudleBtn.textStr = titleArray[i];
         moudleBtn.countStr = @"0.00";
+        moudleBtn.countLabel.font = [UIFont dinFontWithFontSize:16];
         [self.bottomView addSubview:moudleBtn];
     }
     

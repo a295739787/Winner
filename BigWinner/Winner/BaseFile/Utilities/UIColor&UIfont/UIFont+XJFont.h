@@ -55,4 +55,6 @@
  @return font
  */
 + (UIFont *) boldFontWithFontSize:( CGFloat ) fontSize;
+
++ (UIFont *)dinFontWithFontSize:(CGFloat)fontSize;
 @end
