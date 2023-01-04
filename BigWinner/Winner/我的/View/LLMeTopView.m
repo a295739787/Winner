@@ -10,8 +10,6 @@
 @interface LLMeTopView ()
 
 @property (nonatomic,strong)UIImageView *bgImgView;
-@property (nonatomic,strong)UILabel *textLabel;
-@property (nonatomic,strong)UIButton *rightBtn;
 
 @end
 
@@ -28,31 +26,8 @@
 -(void)createUI{
     
     [self addSubview:self.bgImgView];
-    [self addSubview:self.textLabel];
-    [self addSubview:self.rightBtn];
-    [self addSubview:self.redLabel];
-
-    
     [self.bgImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.mas_equalTo(0);
-    }];
-    
-    
-    [self.textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self);
-        make.top.mas_equalTo(CGFloatBasedI375(45));
-    }];
-    
-    [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.textLabel);
-        make.right.mas_equalTo(CGFloatBasedI375(-18));
-        make.height.width.mas_equalTo(CGFloatBasedI375(21));
-    }];
-    [self.redLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.rightBtn.mas_top).offset(10);
-        make.left.equalTo(self.rightBtn.mas_right).offset(-7);
-        make.height.mas_equalTo(CGFloatBasedI375(13));
-        make.width.mas_equalTo(CGFloatBasedI375(20));
     }];
 }
 
@@ -64,42 +39,6 @@
         _bgImgView.image = [UIImage imageNamed:@"Personal_bg"];
     }
     return _bgImgView;
-}
--(UILabel *)redLabel{
-    if (!_redLabel) {
-        _redLabel = [[UILabel alloc]init];
-        _redLabel.textColor = UIColorFromRGB(0xFFFFFF);
-        _redLabel.textAlignment = NSTextAlignmentCenter;
-        _redLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(11)];
-        _redLabel.layer.masksToBounds = YES;
-        _redLabel.layer.cornerRadius = CGFloatBasedI375(13)/2;
-        _redLabel.backgroundColor = Red_Color;
-        self.redLabel.hidden = YES;
-    }
-    return _redLabel;
-}
--(UILabel *)textLabel{
-    if (!_textLabel) {
-        _textLabel = [[UILabel alloc]init];
-        _textLabel.textColor = UIColorFromRGB(0xFFFFFF);
-        _textLabel.textAlignment = NSTextAlignmentCenter;
-        _textLabel.font = [UIFont boldFontWithFontSize:18];
-        _textLabel.text = @"我的";
-    }
-    return _textLabel;
-}
--(UIButton *)rightBtn{
-    if (!_rightBtn) {
-        _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _rightBtn.backgroundColor = [UIColor clearColor];
-        [_rightBtn setImage:[UIImage imageNamed:@"notice_white"] forState:UIControlStateNormal];
-        [_rightBtn addTarget:self action:@selector(tapActionnoteImgView) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _rightBtn;
-}
--(void)tapActionnoteImgView{
-    LLNewsViewController *vc = [[LLNewsViewController alloc]init];
-    [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
 }
 @end
 

@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LLMeTopView : UIView
 
-@property (nonatomic,strong)UILabel *redLabel;
-
 @end
 
 typedef NS_OPTIONS(NSUInteger,  LLMeHeaderType) {

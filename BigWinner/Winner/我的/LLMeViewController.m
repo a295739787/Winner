@@ -23,6 +23,7 @@
 #import "LLMeFirstGuideView.h"
 #import "LLSurpriseRegBagRecordViewController.h"
 #import "LLMePromoteController.h"
+#import "LLNewsViewController.h"
 #import "Winner-Swift.h"
 @interface LLMeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -64,6 +65,17 @@
 #pragma mark--createUI
 -(void)createUI{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getPersonalUrl) name:@"updateName" object:nil];
+    
+    self.customNavBar.title = @"我的";
+    self.customNavBar.titleLabelColor = [UIColor whiteColor];
+    self.customNavBar.barBackgroundColor = [UIColor HexString:@"#e55055"];
+    [self.customNavBar wr_setRightButtonWithImage:[UIImage imageNamed:@"notice_white"]];
+    WS(weakself);
+    self.customNavBar.onClickRightButton = ^{
+        LLNewsViewController *vc = [[LLNewsViewController alloc]init];
+        [weakself.navigationController pushViewController:vc animated:YES];
+    };
+    
     
     self.view.backgroundColor = UIColorFromRGB(0xF0EFED);
     [self.view addSubview:self.topView];
@@ -135,10 +147,8 @@
         [AccessTool saveUserInfo];
         [UserModel saveInfo];
         self.personalModel = [LLPersonalModel mj_objectWithKeyValues:data];
-        self.topView.redLabel.hidden = YES;
         if(self.personalModel.messageNum > 0){
-            self.topView.redLabel.hidden = NO;
-            self.topView.redLabel.text = FORMAT(@"%ld",self.personalModel.messageNum);
+            self.customNavBar.markerNumber = FORMAT(@"%ld",self.personalModel.messageNum);
         }
         [weakself loadUserWalletNetwork];
     } failure:^(NSError * _Nonnull error) {
@@ -428,8 +438,7 @@
 }
 -(LLMeTopView *)topView{
     if (!_topView) {
-        _topView = [[LLMeTopView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, CGFloatBasedI375(263))];
-        
+        _topView = [[LLMeTopView alloc]initWithFrame:CGRectMake(0, SCREEN_top, SCREEN_WIDTH, CGFloatBasedI375(175))];
     }
     return _topView;
 }
