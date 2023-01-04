@@ -170,7 +170,7 @@
         _countLabel = [[UILabel alloc]init];
         _countLabel.textColor = UIColorFromRGB(0xFFFFFF);
         _countLabel.textAlignment = NSTextAlignmentCenter;
-        _countLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(24)];
+        _countLabel.font = [UIFont dinFontWithFontSize:24];
         _countLabel.text = @"-";
     }
     return _countLabel;
@@ -198,7 +198,7 @@
         _incomeLabel = [[UILabel alloc]init];
         _incomeLabel.textColor = UIColorFromRGB(0xFFFFFF);
         _incomeLabel.textAlignment = NSTextAlignmentCenter;
-        _incomeLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(24)];
+        _incomeLabel.font = [UIFont dinFontWithFontSize:24];
         _incomeLabel.text = @"-";
     }
     return _incomeLabel;

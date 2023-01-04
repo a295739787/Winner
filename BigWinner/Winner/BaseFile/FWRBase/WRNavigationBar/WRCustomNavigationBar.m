@@ -123,11 +123,10 @@
         make.right.mas_equalTo(self).offset(-10);
         make.bottom.mas_equalTo(0);
         make.height.mas_equalTo(buttonHeight);
-        make.width.mas_equalTo(buttonWidth);
     }];
     
     [self.redLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self).offset(-12);
+        make.right.mas_equalTo(self).offset(-5);
         make.bottom.mas_equalTo(self.rightButton.mas_top).offset(12);
         make.height.mas_equalTo(13);
         make.width.mas_equalTo(13);

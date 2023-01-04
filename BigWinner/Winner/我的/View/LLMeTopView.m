@@ -395,7 +395,7 @@
         _nameLabel = [[UILabel alloc]init];
         _nameLabel.textColor = UIColorFromRGB(0xFFFFFF);
         _nameLabel.textAlignment = NSTextAlignmentCenter;
-        _nameLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(16)];
+        _nameLabel.font = [UIFont boldSystemFontOfSize:16];
         _nameLabel.text = [UserModel sharedUserInfo].nickName;
     }
     return _nameLabel;
