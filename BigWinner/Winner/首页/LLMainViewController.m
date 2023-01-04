@@ -26,7 +26,6 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
 @property (nonatomic,strong) NSMutableArray *redUsers;/** <#class#> **/
 @property (nonatomic,strong) NSMutableArray *dataArr;/** <#class#> **/
 @property (nonatomic,assign) NSInteger page;/** class **/
-@property (nonatomic,strong) UILabel *redLabel;/** <#class#> **/
 @property (nonatomic,strong) CLLocationManager *locationManager ;/** <#class#> **/
 
 @property (nonatomic,strong) LLXieyiview *xieyiview;/** <#class#> **/
@@ -39,8 +38,7 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
     if([UserModel sharedUserInfo].token > 0){
         [UserModel saveInfo];
         if([[UserModel sharedUserInfo] messageNum] > 0){
-            self.redLabel.hidden = NO;
-            self.redLabel.text = FORMAT(@"%ld",[UserModel sharedUserInfo].messageNum);
+            self.customNavBar.markerNumber = FORMAT(@"%ld",[UserModel sharedUserInfo].messageNum);
         }
     }
     
@@ -126,22 +124,6 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
     }
     return _xieyiview;
 }
--(UILabel *)redLabel{
-    if (!_redLabel) {
-        _redLabel = [[UILabel alloc]init];
-        _redLabel.textColor = UIColorFromRGB(0xFFFFFF);
-        _redLabel.textAlignment = NSTextAlignmentCenter;
-        _redLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(10)];
-        _redLabel.layer.masksToBounds = YES;
-        _redLabel.text = @"8";
-        _redLabel.adjustsFontSizeToFitWidth = YES;
-        _redLabel.layer.cornerRadius = CGFloatBasedI375(12)/2;
-        _redLabel.backgroundColor = Red_Color;
-        [self.customNavBar addSubview:_redLabel];
-        self.redLabel.hidden = YES;
-    }
-    return _redLabel;
-}
 -(void)header{
     self.page = 1;
     [self getDatas];
@@ -200,16 +182,7 @@ static NSString *const footerCollectionIdentifier = @"footerCollection";
         make.right.offset(CGFloatBasedI375(0));
 
     }];
-    CGFloat orY = 32;
-    if([NSString isPhoneXxxx]){
-        orY += 18;
-    }
-    [self.redLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(orY);
-        make.right.mas_equalTo(weakself.customNavBar.rightButton.right).equalTo(-2);
-        make.height.mas_equalTo(CGFloatBasedI375(11));
-        make.width.mas_equalTo(CGFloatBasedI375(15));
-    }];
+ 
 }
 -(void)locations{
 [[PLLocationManage shareInstance] requestLocationWithCompletionBlock:^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull regeocode, NSError * _Nonnull error) {

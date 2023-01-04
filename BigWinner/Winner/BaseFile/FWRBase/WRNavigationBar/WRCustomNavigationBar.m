@@ -60,11 +60,12 @@
 
 @interface WRCustomNavigationBar ()
 @property (nonatomic, strong) UIButton    *leftButton;
+@property (nonatomic, strong) UIButton    *rightButton;
 @property (nonatomic, strong) UIView      *bottomLine;
 @property (nonatomic, strong) UIView      *backgroundView;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic,strong) UILabel *countsL;/** <#class#> **/
-
+@property (nonatomic,strong) UILabel *redLabel;
 @end
 
 @implementation WRCustomNavigationBar
@@ -96,6 +97,7 @@
     [self addSubview:self.bottomLine];
     [self addSubview:self.rightView];
     [self addSubview:self.showImage];
+    [self addSubview:self.redLabel];
     [self updateFrame];
     self.backgroundColor = [UIColor clearColor];
     self.backgroundView.backgroundColor = kWRDefaultBackgroundColor;
@@ -106,8 +108,8 @@
 //    NSInteger top = ([WRCustomNavigationBar isIphoneX]) ? 44 : 20;
     NSInteger top = iphoneXTop+20;
     NSInteger margin = 0;
-    NSInteger buttonHeight = 44;
-    NSInteger buttonWidth = 44;
+    NSInteger buttonHeight = 35;
+    NSInteger buttonWidth = 35;
     NSInteger titleLabelHeight = 44;
 //    NSInteger titleLabelWidth = 180;
 
@@ -121,7 +123,16 @@
         make.right.mas_equalTo(self).offset(-10);
         make.bottom.mas_equalTo(0);
         make.height.mas_equalTo(buttonHeight);
+        make.width.mas_equalTo(buttonWidth);
     }];
+    
+    [self.redLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self).offset(-12);
+        make.bottom.mas_equalTo(self.rightButton.mas_top).offset(12);
+        make.height.mas_equalTo(13);
+        make.width.mas_equalTo(13);
+    }];
+    
     [self.rightView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self).offset(-10);
         make.bottom.mas_equalTo(-10);
@@ -376,6 +387,11 @@
     self.showImage.hidden = NO;
     self.showImage.image = [UIImage imageNamed:_imageStr];
 }
+-(void)setMarkerNumber:(NSString *)markerNumber{
+    _markerNumber = markerNumber;
+    self.redLabel.hidden = NO;
+    self.redLabel.text = _markerNumber;
+}
 -(void)setTitle:(NSString *)title {
     _title = title;
     self.titleLable.hidden = NO;
@@ -489,6 +505,22 @@
     }
     BOOL isIPhoneX = [platform isEqualToString:@"iPhone10,3"] || [platform isEqualToString:@"iPhone10,6"];
     return isIPhoneX;
+}
+
+-(UILabel *)redLabel{
+    if (!_redLabel) {
+        _redLabel = [[UILabel alloc]init];
+        _redLabel.textColor = UIColorFromRGB(0xFFFFFF);
+        _redLabel.textAlignment = NSTextAlignmentCenter;
+        _redLabel.font = [UIFont fontWithName:@"arial" size:CGFloatBasedI375(9)];
+        _redLabel.layer.masksToBounds = YES;
+        _redLabel.text = @"9";
+        _redLabel.adjustsFontSizeToFitWidth = YES;
+        _redLabel.layer.cornerRadius = 6.5;
+        _redLabel.backgroundColor = Red_Color;
+        _redLabel.hidden = YES;
+    }
+    return _redLabel;
 }
 
 @end

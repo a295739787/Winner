@@ -16,11 +16,11 @@
 
 @property (nonatomic, copy) void(^onClickRightView)(NSInteger selectIndex);
 
-@property (nonatomic, strong) UIButton *rightButton;
 @property (nonatomic, strong) UILabel *titleLable;
 @property (nonatomic, strong) UIImageView *showImage;
 @property (nonatomic, copy)   NSString *imageStr;
 
+@property (nonatomic, copy)   NSString *markerNumber;
 @property (nonatomic, copy)   NSString *title;
 @property (nonatomic, strong) UIColor  *titleLabelColor;
 @property (nonatomic, strong) UIFont   *titleLabelFont;
