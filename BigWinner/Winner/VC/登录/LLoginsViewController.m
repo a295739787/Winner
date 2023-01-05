@@ -122,8 +122,9 @@
         return;
     }
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    NSString *deviceId = [[NSUserDefaults standardUserDefaults] stringForKey:@"push_deviceId"];
-    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"push_deviceToken"];
+
+    NSString *deviceToken = [CloudPushSDK getApnsDeviceToken];
+    NSString *deviceId = [CloudPushSDK getDeviceId];
     [param setValue:deviceId forKey:@"deviceId"];
     [param setValue:deviceToken forKey:@"deviceToken"];
     [param setValue:self.phoneTx.text forKey:@"account"];

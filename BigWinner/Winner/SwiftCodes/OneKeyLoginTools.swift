@@ -118,8 +118,8 @@ let ATAuthSDKKey = "pSwlMF1p/3qRN9vlcGvi59EwIzqNFWtw3pC41gABjn2DaQODnYlFINw5yFcW
         let timestamp = NSString.getNowTimeTimestamp3();
         
         let param = NSMutableDictionary()
-        let deviceToken = UserDefaults.standard.string(forKey: "push_deviceToken")
-        let deviceId = UserDefaults.standard.string(forKey: "push_deviceId")
+        let deviceToken = CloudPushSDK.getApnsDeviceToken()
+        let deviceId = CloudPushSDK.getDeviceId()
 
         param.setValue(deviceToken, forKey: "deviceToken")
         param.setValue(deviceId, forKey: "deviceId")

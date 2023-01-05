@@ -24,13 +24,6 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         registerMessageReceive()
         // 点击通知将App从关闭状态启动时，将通知打开回执上报
         CloudPushSDK.sendNotificationAck(launchOptions)
-        
-        let deviceToken = CloudPushSDK.getApnsDeviceToken()
-        let deviceId = CloudPushSDK.getDeviceId()
-        UserDefaults.standard.set(deviceToken, forKey: "push_deviceToken")
-        UserDefaults.standard.set(deviceId, forKey: "push_deviceId")
-        UserDefaults.standard.synchronize()
-        
     }
     
     //MARK: - 初始化推送SDK
