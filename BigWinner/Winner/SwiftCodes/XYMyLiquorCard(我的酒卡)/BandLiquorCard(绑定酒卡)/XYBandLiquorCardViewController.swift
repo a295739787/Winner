@@ -20,11 +20,14 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
     var bindButton = UIButton()
     var cardModel = LiquorCardStyleModel()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadCardInfoNetwork()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadMainView()
-        loadCardInfoNetwork()
     }
     
     private func loadMainView(){
@@ -49,12 +52,10 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         
         topView = UIView.init()
         topView.frame = CGRect(x: 0, y: 0, width: deviceWidth, height: 204)
-//        topView.backgroundColor = .white;
         scrollView.addSubview(topView)
         
         topImageView = UIImageView.init()
-        topImageView.frame = CGRect(x: 0, y: 0, width: topView.frame.size.width, height: topView.frame.size.height)
-        //        topImageView.contentMode = .scaleAspectFill
+        topImageView.frame = CGRect(x: (deviceWidth-298)/2, y: 11, width: 298, height: 170)
         topView.addSubview(topImageView)
         
         contentView = UIView.init()
@@ -65,14 +66,11 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         loadContentSubView(view: contentView)
         
         bottomView = UIView.init()
-        bottomView.frame = CGRect(x: 0, y: contentView.frame.maxY-12, width: deviceWidth, height: 182)
-        bottomView.backgroundColor = .hexString("#F8F4F4");
+        bottomView.frame = CGRect(x: 0, y: contentView.frame.maxY-12, width: deviceWidth, height: scrollView.frame.size.height-contentView.frame.maxY+12)
         scrollView.insertSubview(bottomView, belowSubview: contentView)
         
         bottomImageView = UIImageView.init()
-        bottomImageView.frame = CGRect(x: 0, y: 32, width: bottomView.frame.size.width, height: bottomView.frame.size.height-32)
-        bottomImageView.contentMode = .scaleAspectFit
-//        bottomImageView.image = UIImage(named: "bottomCard")
+        bottomImageView.frame = CGRect(x:(deviceWidth-270)/2, y: 32, width: 270, height: 118)
         bottomView.addSubview(bottomImageView)
         
         scrollView.contentSize = CGSize(width: deviceWidth, height: bottomView.frame.maxY)
@@ -131,7 +129,7 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         loadTextFieldBlankView(textField: passWordTextField)
         
         bindButton = UIButton(type: .custom)
-        bindButton.frame = CGRect(x: 30, y: passWordTextField.frame.maxY+36, width: view.frame.size.width-60, height: 47)
+        bindButton.frame = CGRect(x: 30, y: passWordTextField.frame.maxY+19, width: view.frame.size.width-60, height: 47)
         bindButton.loadMasksButton(title: "绑定", color: .white, fontSize: 15)
         bindButton.isEnabled = false
         view.addSubview(bindButton)
@@ -212,7 +210,9 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         topImageView.sd_setImage(withUrlString: model.bgImages, placeholderImageName: "topCard")
         bottomImageView.sd_setImage(withUrlString: model.footImages, placeholderImageName: "bottomCard")
         bindButton.backgroundColor = .hexString(model.buttonDisColor)
-        
+        topView.backgroundColor = .hexString(model.bgColor)
+        bottomView.backgroundColor = .hexString(model.bgColor)
+
     }
 
     

@@ -101,5 +101,7 @@ class LiquorCardStyleModel:NSObject{
     @objc var bgImages : String = ""
     @objc var buttonDisColor : String = ""
     @objc var footImages : String = ""
+    @objc var bgColor : String = ""
+
     
 }
