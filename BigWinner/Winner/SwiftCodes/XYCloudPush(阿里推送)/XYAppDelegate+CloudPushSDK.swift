@@ -212,14 +212,14 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
 
         if msgType == "1" {
             //推广审核通过
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 let vc = LLTabbarViewController()
                 vc.selectedIndex = 3
                 UIApplication.shared.keyWindow?.rootViewController = vc
             }
         }else if msgType == "2" || msgType == "6"{
             //免单成功和推广佣金成功结算
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 let vc = XYMyWalletViewController.init()
                 vc.walletType = .normal
                 getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
@@ -227,7 +227,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
            
         }else if msgType == "3" || msgType == "4"{
             //提现成功和提现失败
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 let vc = XYDealDetailViewController.init()
                 vc.urlId = urlId
                 getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
@@ -235,7 +235,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
            
         }else if msgType == "5" {
             //发货成功（包括活动单、零售单物流配送、采购单）
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 let vc = LLMeOrderDetailController.init()
                 vc.orderNo = orderNo
                 getCurrentViewController().navigationController?.pushViewController(vc, animated: true)
