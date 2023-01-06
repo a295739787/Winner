@@ -98,10 +98,13 @@ import UIKit
     @objc private func buttonClick(_ sender:UIButton){
         
         if sender.tag == 101 {
+          
+            let phone = "telprompt://400-156-9788"
+            if UIApplication.shared.canOpenURL(URL(string: phone)!) {
+               
+                UIApplication.shared.open(URL(string: phone)!, options: [:], completionHandler: nil)
+            }
             
-            let callWebview = UIWebView()
-            callWebview.loadRequest(NSURLRequest(url: URL(string: "tel:400-156-9788")!) as URLRequest)
-            self.view.addSubview(callWebview)
         }else{
             loadService()
         }

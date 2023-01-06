@@ -45,7 +45,7 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
            
         }
         
-        let scrollView = UIScrollView()
+        let scrollView = UIScrollView.init()
         scrollView.backgroundColor = .hexString("#F8F4F4");
         scrollView.frame = CGRect(x: 0, y: statusBarForHeight+44, width: deviceWidth, height: deviceHeight-statusBarForHeight-44)
         self.view.addSubview(scrollView)
@@ -65,8 +65,13 @@ class XYBandLiquorCardViewController: LMHBaseViewController {
         loadMasksToBounds(targetView: contentView, corners: 10)
         loadContentSubView(view: contentView)
         
+        var bottomH  =  scrollView.frame.size.height-contentView.frame.maxY+12
+        if bottomH < 181 {
+            bottomH = 181
+        }
+        
         bottomView = UIView.init()
-        bottomView.frame = CGRect(x: 0, y: contentView.frame.maxY-12, width: deviceWidth, height: scrollView.frame.size.height-contentView.frame.maxY+12)
+        bottomView.frame = CGRect(x: 0, y: contentView.frame.maxY-12, width: deviceWidth, height: bottomH)
         scrollView.insertSubview(bottomView, belowSubview: contentView)
         
         bottomImageView = UIImageView.init()
