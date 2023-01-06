@@ -44,7 +44,7 @@
 }
 -(void)setLayout{
     WS(weakself);
-
+    
     [self.sycleview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.offset(0);
         make.height.mas_equalTo(CGFloatBasedI375(175));
@@ -71,7 +71,7 @@
         make.right.offset(-CGFloatBasedI375(15));
         make.height.mas_equalTo(CGFloatBasedI375(45));
         make.bottom.offset(-CGFloatBasedI375(15));
-
+        
     }];
     [self.noimage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(CGFloatBasedI375(84));
@@ -102,7 +102,7 @@
         make.height.offset(CGFloatBasedI375(24));
         make.centerY.equalTo(weakself.showBackimage.mas_centerY);
     }];
-
+    
     [self.titlelable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakself.headImage.mas_right).offset(CGFloatBasedI375(6));
         make.centerY.equalTo(weakself.backView.mas_centerY);
@@ -110,7 +110,7 @@
     [self.delable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-CGFloatBasedI375(20));
         make.centerY.equalTo(weakself.backView.mas_centerY);
-    
+        
     }];
     [self.redImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(CGFloatBasedI375(10));
@@ -157,16 +157,16 @@
         NSString *realName = FORMAT(@"%@", mo[@"nickName"]);
         NSString *redPrice =FORMAT(@"￥%@", mo[@"redPrice"]);
         if(realName.length > 0){
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:str];
-        [attrStr addAttribute:NSForegroundColorAttributeName value:Main_Color range:NSMakeRange(4, [realName length])];
-        [attrStr addAttribute:NSForegroundColorAttributeName value:Main_Color range:NSMakeRange([realName length]+11, [redPrice length])];
-        NSTextAttachment *attch = [[NSTextAttachment alloc] init];
-        attch.image = [UIImage imageNamed:@"hb"];
-        attch.bounds = CGRectMake(0, -2, 14, 15);
-        NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attch];
-        [attrStr insertAttributedString:string atIndex:0];
-
-        [redUse addObject:attrStr];
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:str];
+            [attrStr addAttribute:NSForegroundColorAttributeName value:Main_Color range:NSMakeRange(4, [realName length])];
+            [attrStr addAttribute:NSForegroundColorAttributeName value:Main_Color range:NSMakeRange([realName length]+11, [redPrice length])];
+            NSTextAttachment *attch = [[NSTextAttachment alloc] init];
+            attch.image = [UIImage imageNamed:@"hb"];
+            attch.bounds = CGRectMake(0, -2, 14, 15);
+            NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attch];
+            [attrStr insertAttributedString:string atIndex:0];
+            
+            [redUse addObject:attrStr];
         }
     }
     self.verticalMarquee.sourceArray = redUse.mutableCopy;;
@@ -185,7 +185,7 @@
     if(_model.userInfo){
         self.noimage.hidden = YES;
         self.nolable.hidden = YES;
-   
+        
         self.titlelable.hidden = NO;
         self.numlable.hidden = NO;
         self.headImage.hidden = NO;
@@ -217,9 +217,17 @@
     [self layoutIfNeeded];
     [self.topView addSubview:self.verticalMarquee];
     
+    //切底部左右圆角
+    UIBezierPath *cornerRadiusPath = [UIBezierPath bezierPathWithRoundedRect:self.topView.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(10, 10)];
+    
+    CAShapeLayer *cornerRadiusLayer = [ [CAShapeLayer alloc ] init];
+    cornerRadiusLayer.frame = self.topView.bounds;
+    cornerRadiusLayer.path = cornerRadiusPath.CGPath;
+    self.topView.layer.mask = cornerRadiusLayer;
+    
     [self.verticalMarquee scrollWithCallbackBlock:^(JhtVerticalMarquee *view, NSInteger currentIndex) {
     }];
-
+    
     // 开始滚动
     [self.verticalMarquee marqueeOfSettingWithState:MarqueeStart_V];
 }
@@ -228,10 +236,10 @@
         _verticalMarquee = [[JhtVerticalMarquee alloc]  initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-CGFloatBasedI375(75), CGFloatBasedI375(40))];
         
         _verticalMarquee.tag = 101;
-//        _verticalMarquee.isCounterclockwise = YES;
+        //        _verticalMarquee.isCounterclockwise = YES;
         _verticalMarquee.numberOfLines = 0;
         _verticalMarquee.textAlignment = NSTextAlignmentCenter;
-//        _verticalMarquee.backgroundColor = [UIColor yellowColor];
+        //        _verticalMarquee.backgroundColor = [UIColor yellowColor];
         _verticalMarquee.textColor = lightGray9999_Color;
         
         // 添加点击手势
@@ -242,7 +250,7 @@
     return _verticalMarquee;
 }
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-
+    
     LLGoodModel *model = _model.carousels[index];
     if(model.type == 3){
         if([UserModel sharedUserInfo].token.length <= 0){
@@ -281,7 +289,7 @@
                 
             }];
         }
-       
+        
     }else if(model.type == 2){
         NSString *url = model.link;
         if(![model.link containsString:@"http"]){
@@ -298,22 +306,22 @@
         vc.status = RoleStatusStore;
         [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
     }
-  
+    
 }
 #pragma mark Get Method
 /** 点击 滚动跑马灯 触发方法 */
 - (void)marqueeTapGes:(UITapGestureRecognizer *)ges {
-//    if (ges.view.tag == 100) {
-//        NSLog(@"点击__水平__滚动的跑马灯啦！！！");
-//
-//    } else if (ges.view.tag == 101) {
-//        NSLog(@"点击__纵向__滚动的跑马灯_第 %ld 条数据啦！！！", (long)self.verticalMarquee.currentIndex);
-//    }
-
-//    [self.verticalMarquee marqueeOfSettingWithState:MarqueePause_V];
-//    _isPauseV = YES;
+    //    if (ges.view.tag == 100) {
+    //        NSLog(@"点击__水平__滚动的跑马灯啦！！！");
+    //
+    //    } else if (ges.view.tag == 101) {
+    //        NSLog(@"点击__纵向__滚动的跑马灯_第 %ld 条数据啦！！！", (long)self.verticalMarquee.currentIndex);
+    //    }
     
-//    [self.navigationController pushViewController:[[testVC alloc] init] animated:YES];
+    //    [self.verticalMarquee marqueeOfSettingWithState:MarqueePause_V];
+    //    _isPauseV = YES;
+    
+    //    [self.navigationController pushViewController:[[testVC alloc] init] animated:YES];
     
     [self loadWebView];
 }
@@ -325,7 +333,7 @@
         [self.topView addSubview:self.rightImage];
     }
     return _rightImage;
-    }
+}
 -(UIImageView *)midImage{
     if(!_midImage){
         _midImage = [[UIImageView alloc]init];
@@ -334,10 +342,10 @@
         [self addSubview:self.midImage];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickpaihang)];
         [_midImage addGestureRecognizer:tap];
-      
+        
     }
     return _midImage;
-    }
+}
 
 -(void)clickpaihang{
     if([UserModel sharedUserInfo].token.length <= 0){
@@ -356,7 +364,7 @@
         [self.topView addSubview:self.leftImage];
     }
     return _leftImage;
-    }
+}
 -(UIImageView *)redImage{
     if(!_redImage){
         _redImage = [[UIImageView alloc]init];
@@ -365,7 +373,7 @@
         [self addSubview:self.redImage];
     }
     return _redImage;
-    }
+}
 -(UIImageView *)boImage{
     if(!_boImage){
         _boImage = [[UIImageView alloc]init];
@@ -374,10 +382,10 @@
         [self addSubview:self.boImage];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapclick:)];
         [_boImage addGestureRecognizer:tap];
-     
+        
     }
     return _boImage;
-    }
+}
 -(UIImageView *)showBackimage{
     if (!_showBackimage) {
         _showBackimage = [[UIImageView alloc]init];
@@ -389,8 +397,8 @@
     return _showBackimage;
 }
 -(void)tapclick:(UITapGestureRecognizer *)sender{
-//    LLSurpriseRegBagViewController *vc = [[LLSurpriseRegBagViewController alloc]init];
-//    [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
+    //    LLSurpriseRegBagViewController *vc = [[LLSurpriseRegBagViewController alloc]init];
+    //    [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
     
     [self loadWebView];
 }
@@ -414,14 +422,14 @@
 
 -(SDCycleScrollView *)sycleview{
     if(!_sycleview){
-      _sycleview= [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero delegate:self placeholderImage:nil];
-           _sycleview.autoScrollTimeInterval = 4;
-//        _sycleview.localizationImageNamesGroup = @[@"banner01",@"banner01"];
+        _sycleview= [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero delegate:self placeholderImage:nil];
+        _sycleview.autoScrollTimeInterval = 4;
+        //        _sycleview.localizationImageNamesGroup = @[@"banner01",@"banner01"];
         _sycleview.pageDotColor = [UIColor colorWithHexString:@"#ffffff"];
-   [self addSubview:_sycleview];
+        [self addSubview:_sycleview];
         _sycleview.currentPageDotColor = [UIColor darkGrayColor];
         _sycleview.pageDotColor = [UIColor lightGrayColor];
-           _sycleview.delegate = self;
+        _sycleview.delegate = self;
     }
     return _sycleview;
 }
@@ -442,7 +450,7 @@
         [self.backView addSubview:self.noimage];
     }
     return _noimage;
-    }
+}
 -(UILabel *)nolable{
     if(!_nolable){
         _nolable =[[UILabel alloc]init];
@@ -464,9 +472,9 @@
         _titlelable.font = [UIFont systemFontOfSize:CGFloatBasedI375(13)];
         [self.backView addSubview:self.titlelable];
         _titlelable.numberOfLines =2;
- 
+        
         self.titlelable.hidden = YES;
-  
+        
     }
     return _titlelable;
 }
@@ -482,7 +490,7 @@
         _numlable.layer.cornerRadius = CGFloatBasedI375(10);
         _numlable.layer.borderColor =[[[UIColor colorWithHexString:@"#443415"]colorWithAlphaComponent:0.4] CGColor];
         _numlable.layer.borderWidth = .5f;
-    
+        
         self.numlable.hidden = YES;
     }
     return _numlable;
@@ -495,9 +503,9 @@
         _delable.textAlignment = NSTextAlignmentRight;
         _delable.font = [UIFont boldFontWithFontSize:CGFloatBasedI375(14)];
         [self.backView addSubview:self.delable];
-  
+        
         self.delable.hidden = YES;
-
+        
     }
     return _delable;
 }
@@ -509,7 +517,7 @@
         _timelable.textAlignment = NSTextAlignmentRight;
         _timelable.font = [UIFont systemFontOfSize:CGFloatBasedI375(12)];
         [self.midImage addSubview:self.timelable];
-//        _timelable.numberOfLines = 2;
+        //        _timelable.numberOfLines = 2;
         self.timelable.hidden = YES;
     }
     return _timelable;
@@ -525,7 +533,7 @@
         self.headImage.hidden = YES;
     }
     return _headImage;
-    }
+}
 -(UIImageView *)allowImage{
     if(!_allowImage){
         _allowImage = [[UIImageView alloc]init];
@@ -535,6 +543,6 @@
         [self.midImage addSubview:self.allowImage];
     }
     return _allowImage;
-    }
+}
 
 @end
