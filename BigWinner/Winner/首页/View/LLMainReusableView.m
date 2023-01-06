@@ -274,19 +274,12 @@
             vc.refuseStutas = YES;
             [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
         }
-    }else if(model.type == 1){
+    }else if(model.type == 4){
         if ([model.link isEqual: @"app-download"]) {
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id1586242929?mt=8"]] options:@{} completionHandler:^(BOOL success) {
                 
             }];
-            
-        }else{
-            
-            LLGoodDetailViewController *vc = [[LLGoodDetailViewController alloc]init];
-            vc.ID = model.goodsId;
-            vc.status = RoleStatusStore;
-            [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
         }
        
     }else if(model.type == 2){
@@ -298,6 +291,12 @@
             
         }];
         
+    }else if(model.type == 1){
+        
+        LLGoodDetailViewController *vc = [[LLGoodDetailViewController alloc]init];
+        vc.ID = model.goodsId;
+        vc.status = RoleStatusStore;
+        [[UIViewController getCurrentController].navigationController pushViewController:vc animated:YES];
     }
   
 }

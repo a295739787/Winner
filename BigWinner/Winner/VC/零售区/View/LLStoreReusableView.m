@@ -63,18 +63,17 @@
         if(![model.link containsString:@"http"]){
             url = FORMAT(@"https://%@",model.link);
         }
-//        url = @"www.baidu.com";
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:^(BOOL success) {
             
         }];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.baidu.com/"]];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:model.link] options:@{} completionHandler:^(BOOL success) {
-//            if(success) {
-//
-//                    }
-//
-//              }];
-//
+
+    }else if(model.type == 4){
+        if ([model.link isEqual: @"app-download"]) {
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id1586242929?mt=8"]] options:@{} completionHandler:^(BOOL success) {
+                
+            }];
+        }
     }
 }
 -(SDCycleScrollView *)sycleview{

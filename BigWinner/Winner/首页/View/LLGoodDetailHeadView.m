@@ -34,7 +34,7 @@
         [self.limitTextView setHidden:YES];
     }
 
-    self.pricelable.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(13)], [UIFont dinFontWithFontSize:CGFloatBasedI375(20)]] colors:@[ Main_Color, Main_Color]];
+    self.pricelable.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_model.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(15)], [UIFont dinFontWithFontSize:CGFloatBasedI375(24)]] colors:@[Main_Color, Main_Color]];
 //    
     if(_model.scribingPrice.length  > 0){
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:FORMAT(@"￥%.2f",_model.scribingPrice.floatValue)];
