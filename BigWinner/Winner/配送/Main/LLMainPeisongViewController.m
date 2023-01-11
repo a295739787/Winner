@@ -43,6 +43,15 @@
             [weakSelf updateTimeInVisibleCells];
         }];
     }
+    
+    if(![self determineWhetherTheAPPOpensTheLocation]){//未授权
+        [UIAlertController showAlertViewWithTitle:@"当前定位权限" Message:@"需要您同意定位授权,否则部分功能将受限" BtnTitles:@[@"取消",@"确定"] ClickBtn:^(NSInteger index) {
+            if(index == 1){
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{}  completionHandler:nil];
+            }
+        }];
+    }
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

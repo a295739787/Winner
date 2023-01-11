@@ -228,7 +228,7 @@
         make.height.mas_equalTo(CGFloatBasedI375(42));
     }];
     
-    NSArray *titleArray = @[@"待付款",@"待发货 ",@"待收货",@"已完成",@"售后"];
+    NSArray *titleArray = @[@"待付款",@"待发货 ",@"待收货",@"待评价",@"售后"];
     NSArray *imgArray = @[@"dfk",@"dfh",@"dsh",@"ywc",@"sh"];
     
     CGFloat btnWidth = (SCREEN_WIDTH - CGFloatBasedI375(20)) / titleArray.count;
