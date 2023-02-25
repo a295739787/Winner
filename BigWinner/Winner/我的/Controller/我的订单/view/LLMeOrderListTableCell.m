@@ -20,6 +20,11 @@
 
 @property (nonatomic,strong)UIView *typeNoteView;
 
+///订单状态提示语baseView
+@property (nonatomic ,strong) UIView *orderHintBaseView;
+@property (nonatomic ,strong) UIImageView *orderHintImageView;
+@property (nonatomic ,strong) UILabel *orderHintLabel;
+
 @end
 
 @implementation LLMeOrderListTableCell
@@ -53,18 +58,22 @@
 //    [self.goodsImgView addSubview:self.typeNoteView];
     [self.goodsImgView addSubview:self.typeLabel];
     
+    [self.bottomView addSubview:self.orderHintBaseView];
+    [self.orderHintBaseView addSubview:self.orderHintImageView];
+    [self.orderHintBaseView addSubview:self.orderHintLabel];
+
     [self.goodsImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(CGFloatBasedI375(15));
         make.width.height.mas_equalTo(CGFloatBasedI375(80));
     }];
     
     [self.goodsNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(CGFloatBasedI375(18));
+        make.top.mas_equalTo(CGFloatBasedI375(15));
         make.left.mas_equalTo(CGFloatBasedI375(105));
-        make.right.mas_equalTo(CGFloatBasedI375(-40));
+        make.right.mas_equalTo(CGFloatBasedI375(-15));
     }];
     [self.goodsSpecLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.goodsNameLabel.mas_bottom).offset(CGFloatBasedI375(10));
+        make.top.mas_equalTo(self.goodsNameLabel.mas_bottom).offset(CGFloatBasedI375(8));
         make.left.mas_equalTo(CGFloatBasedI375(105));
     }];
 //    [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -72,12 +81,12 @@
 //        make.top.mas_equalTo(self.goodsSpecLabel.mas_bottom).offset(CGFloatBasedI375(10));
 //    }];
     [self.goodsPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.goodsSpecLabel.mas_bottom).offset(CGFloatBasedI375(10));
+        make.top.mas_equalTo(self.goodsSpecLabel.mas_bottom).offset(CGFloatBasedI375(8));
         make.left.mas_equalTo(CGFloatBasedI375(105));
     }];
     
     [self.goodsCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(CGFloatBasedI375(-13));
+        make.right.mas_equalTo(CGFloatBasedI375(-15));
         make.centerY.mas_equalTo(self.goodsPriceLabel);
     }];
     
@@ -87,7 +96,6 @@
         make.right.mas_equalTo(CGFloatBasedI375(-15));
         make.height.mas_equalTo(0.5);
     }];
-    
     [self.typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.mas_equalTo(0);
         make.width.equalTo(CGFloatBasedI375(40));
@@ -100,6 +108,25 @@
    cornerRadiusLayer.frame = self.typeLabel.bounds;
     cornerRadiusLayer.path = cornerRadiusPath.CGPath;
     self.typeLabel.layer.mask = cornerRadiusLayer;
+
+    [self.orderHintBaseView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.goodsImgView.mas_bottom).offset(15);
+        make.left.mas_equalTo(15);
+        make.right.mas_equalTo(-15);
+        make.height.mas_equalTo(34);
+    }];
+    
+    [self.orderHintImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(10);
+        make.centerY.mas_equalTo(self.orderHintBaseView);
+        make.width.height.mas_equalTo(15);
+    }];
+    
+    [self.orderHintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.orderHintImageView.mas_right).offset(5);
+        make.right.mas_equalTo(-7);
+        make.centerY.mas_equalTo(self.orderHintBaseView);
+    }];
     
 }
 -(void)setAppOrderListGoodsVo:(LLMeOrderListModel *)appOrderListGoodsVo{
@@ -163,7 +190,6 @@
     self.goodsCountLabel.text = FORMAT(@"x%@",_issmodel.goodsNum);
     self.goodsNameLabel.text = _issmodel.name;
     self.goodsPriceLabel.attributedText = [self getAttribuStrWithStrings:@[@"￥",FORMAT(@"%.2f",_issmodel.salesPrice.floatValue)] fonts:@[ [UIFont systemFontOfSize:CGFloatBasedI375(12)], [UIFont boldFontWithFontSize:CGFloatBasedI375(16)]] colors:@[ Main_Color, Main_Color]];
-    
 }
 
 -(void)setFaModel:(LLMeOrderListModel *)faModel{
@@ -196,6 +222,33 @@
    cornerRadiusLayer.frame = self.typeLabel.bounds;
     cornerRadiusLayer.path = cornerRadiusPath.CGPath;
     self.typeLabel.layer.mask = cornerRadiusLayer;
+    
+    
+    switch (_faModel.orderStatus.integerValue) {
+        case 1:
+        case 5:
+        case 6:
+        case 7:
+            [self.orderHintBaseView setHidden:YES];
+            break;
+        case 2:
+            [self.orderHintBaseView setHidden:NO];
+            self.orderHintImageView.image = [UIImage imageNamed:@"DFHOrderHint"];
+            self.orderHintLabel.text = @"平台正在准备发货，请稍等";
+            break;
+        case 3:
+            [self.orderHintBaseView setHidden:NO];
+            self.orderHintImageView.image = [UIImage imageNamed:@"DSHOrderHint"];
+            self.orderHintLabel.text = @"你的订单由【广州博展分拣中心】送往【广…";
+            break;
+        case 4:
+            [self.orderHintBaseView setHidden:NO];
+            self.orderHintImageView.image = [UIImage imageNamed:@"DPJOrderHint"];
+            self.orderHintLabel.text = @"订单已完成，评个价鼓励一下";
+            break;
+        default:
+            break;
+    }
 }
 -(void)setOrderType:(NSString *)orderType{
     _orderType = orderType;
@@ -306,11 +359,30 @@
         _typeLabel.text = @"品鉴";
         _typeLabel.mj_size = CGSizeMake(SCREEN_WIDTH, CGFloatBasedI375(30));
         _typeLabel.size = CGSizeMake(SCREEN_WIDTH, CGFloatBasedI375(30));
-        
-
     }
     return _typeLabel;
 }
-
-
+- (UIView *)orderHintBaseView{
+    if (!_orderHintBaseView) {
+        _orderHintBaseView = [[UIView alloc]init];
+        _orderHintBaseView.backgroundColor = [UIColor whiteColor];
+    }
+    return _orderHintBaseView;
+}
+-(UIImageView *)orderHintImageView{
+    if (!_orderHintImageView) {
+        _orderHintImageView = [[UIImageView alloc]init];
+        _orderHintImageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _orderHintImageView;
+}
+-(UILabel *)orderHintLabel{
+    if (!_orderHintLabel) {
+        _orderHintLabel = [[UILabel alloc]init];
+        _orderHintLabel.textAlignment = NSTextAlignmentLeft;
+        _orderHintLabel.textColor = [UIColor blackColor];
+        _orderHintLabel.font = [UIFont boldSystemFontOfSize:14];
+    }
+    return _orderHintLabel;
+}
 @end

@@ -373,7 +373,7 @@
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return CGFloatBasedI375(110);
+    return 158;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     LLMeOrderListModel *orderModel = self.dataArray[section];
